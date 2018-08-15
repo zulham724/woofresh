@@ -16,12 +16,12 @@ class RolesTableSeeder extends Seeder
         $data = [
 		    [
 		    	"id"=>1,
-        		"role"=>"admin",
+        		"name"=>"admin",
         		"description"=>"Superadmin"
         	],
 		    [
 		    	"id"=>2,
-        		"role"=>"customer",
+        		"name"=>"customer",
         		"description"=>"Buyer"
         	],
 		];

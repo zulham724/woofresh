@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Resources\UserCollection as UserResource;
-use App\Role;
-use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +17,11 @@ use App\User;
 //     return $request->user();
 // });
 
-Route::group(['middleware'=>'auth:api'],function(){
-	Route::get('/user', function () {
-	    return new UserResource(User::get());
-	});
+Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
+
+	Route::apiResources([
+		'/users'=>'UserController',
+		'/products'=>'ProductController'
+	]);
+	
 });

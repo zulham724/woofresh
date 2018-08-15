@@ -17,11 +17,13 @@ class CreateProductsTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('supplier_id')->unsigned();
+            $table->integer('sub_category_id')->unsigned();
             $table->string('name');
             $table->string('description');
             $table->timestamps();
 
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

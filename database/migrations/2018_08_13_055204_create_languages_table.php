@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBiodataTable extends Migration
+class CreateLanguagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateBiodataTable extends Migration
      */
     public function up()
     {
-        Schema::create('biodata', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->string('image');
+            $table->string('name');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateBiodataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('biodata');
+        Schema::dropIfExists('languages');
     }
 }
