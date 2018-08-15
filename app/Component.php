@@ -12,4 +12,8 @@ class Component extends Model
     	return $this->belongsTo('App\Product');
     }
 
+    public function component_values(){
+    	return $this->hasMany('App\ComponentValue');
+    }
+
 }

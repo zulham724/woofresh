@@ -19,6 +19,9 @@ class CreateRecipesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('description');
+            $table->integer('difficulty_level');
+            $table->integer('preparation_time');
+            $table->integer('portion_per_serve');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

@@ -8,6 +8,10 @@ class Category extends Model
 {
     protected $guarded = ["id"];
 
+    public function group(){
+    	return $this->belongsTo('App\Group');
+    }
+
     public function sub_categories(){
     	return $this->hasMany('App\SubCategory');
     }

@@ -20,8 +20,23 @@ use Illuminate\Http\Request;
 Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 
 	Route::apiResources([
+		'/language'=>'LanguageController',
 		'/users'=>'UserController',
-		'/products'=>'ProductController'
+		'/biodata'=>'BiodataController',
+		'/products'=>'ProductController',
+		'/recipe'=>'RecipeController',
+		'/order'=>'OrderController',
+		'/supplier'=>'SupplierController',
+		'/transaction'=>'TransactionController',
+		'/role'=>'RoleController',
+		'/ingredient'=>'IngredientController',
+		'/content'=>'ContentController',
+		'/component'=>'ComponentController',
+		'/componentvalue'=>'ComponentValueController',
+		'/city'=>'CityController',
+		'/group'=>'GroupController',
+		'/category'=>'CategoryController',
+		'/subcategory'=>'SubCategoryController',
 	]);
 	
 });

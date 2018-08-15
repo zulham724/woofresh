@@ -17,6 +17,9 @@ class CreateTransactionsTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->integer('transaction_number');
+            $table->integer('status')->default(0);
+            $table->string('payment_type');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

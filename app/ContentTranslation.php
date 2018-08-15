@@ -9,6 +9,6 @@ class ContentTranslation extends Model
     protected $guarded = ["id"];
 
     public function language(){
-    	return $this->hasOne('App\Language');
+    	return $this->belongsTo('App\Language');
     }
 }

@@ -14,9 +14,12 @@ class CreateGroupTranslationsTable extends Migration
     public function up()
     {
         Schema::create('group_translations', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('language_id')->unsigned();
             $table->integer('group_id')->unsigned();
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
 
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade')->onUpdate('cascade');

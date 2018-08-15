@@ -19,6 +19,12 @@ class CreateSuppliersTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->string('name');
             $table->string('description');
+            $table->string('contact_first_name');
+            $table->string('contact_last_name');
+            $table->string('contact_title');
+            $table->string('address_detail');
+            $table->string('email');
+            $table->string('phone_number');
             $table->timestamps();
 
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');

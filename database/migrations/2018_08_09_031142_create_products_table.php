@@ -18,8 +18,11 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->integer('supplier_id')->unsigned();
             $table->integer('sub_category_id')->unsigned();
-            $table->string('name');
-            $table->string('description');
+            $table->integer('quantity')->default(0);
+            $table->bigInteger('price')->default(0);
+            $table->integer('stock')->default(0);
+            $table->integer('weight')->default(0);
+            $table->integer('is_available')->default(0);
             $table->timestamps();
 
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade')->onUpdate('cascade');

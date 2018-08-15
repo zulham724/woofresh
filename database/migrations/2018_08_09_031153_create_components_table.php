@@ -17,6 +17,7 @@ class CreateComponentsTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('product_id')->unsigned();
+            $table->string('name');
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');

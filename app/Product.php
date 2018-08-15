@@ -16,9 +16,6 @@ class Product extends Model
         return $this->belongsTo('App\SubCategory');
     }
 
-    public function language(){
-    	return $this->hasOne('App\Language');
-    }
 
     public function product_translations(){
     	return $this->hasMany('App\ProductTranslation');

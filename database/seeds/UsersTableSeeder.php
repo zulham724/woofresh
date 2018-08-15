@@ -12,21 +12,22 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::insert([
-        	[
-        		"id"=>1,
-        		"role_id"=>1,
-        		"name"=>"admin",
-        		"email"=>"admin@admin.com",
-        		"password"=>bcrypt("password")
-        	],
-        	[
-        		"id"=>2,
-        		"role_id"=>2,
-        		"name"=>"customer",
-        		"email"=>"customer@customer.com",
-        		"password"=>bcrypt("password")
-        	]
-        ]);
+        $data = [
+            [
+                "id"=>1,
+                "role_id"=>1,
+                "name"=>"admin",
+                "email"=>"admin@admin.com",
+                "password"=>bcrypt("password")
+            ],
+            [
+                "id"=>2,
+                "role_id"=>2,
+                "name"=>"customer",
+                "email"=>"customer@customer.com",
+                "password"=>bcrypt("password")
+            ]
+        ]
+        User::insert($data);
     }
 }
