@@ -5,7 +5,7 @@
     <h2 class="h5 no-margin-bottom">Language</h2>
   </div>
 </div>
-<div class="container" ng-controller="LanguageController">
+<div class="container">
 	<div class="row">
 		<div class="offset-3 col-6">
 			<div class="card">

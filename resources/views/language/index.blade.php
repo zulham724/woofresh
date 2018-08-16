@@ -5,7 +5,7 @@
     <h2 class="h5 no-margin-bottom">Language</h2>
   </div>
 </div>
-<div class="container-fluid" ng-controller="LanguageController">
+<div class="container-fluid">
     <div class="card">
     	<div class="card-header">
     		<i class="fa fa-flag"></i> Language List
@@ -29,7 +29,6 @@
 							<td>{{ $language->name }}</td>
 							<td>{{ $language->description }}</td>
 							<td>
-								{{-- <button type="button" class="btn btn-danger" ng-click="delete()"><i class="fa fa-trash"></i> Delete</button> --}}
 								{{ Form::open(['route'=>['languages.destroy',$language->id],'method'=>'DELETE']) }}
 									<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
 								{{ Form::close() }}
