@@ -1,7 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+<div class="page-header">
+  <div class="container-fluid">
+    <h2 class="h5 no-margin-bottom">Dashboard</h2>
+  </div>
+</div>
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
