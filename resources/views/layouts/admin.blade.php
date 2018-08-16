@@ -63,14 +63,6 @@
                   <div class="profile"><img src="img/avatar-2.jpg" alt="..." class="img-fluid">
                     <div class="status away"></div>
                   </div>
-                  <div class="content">   <strong class="d-block">Peter Ramsy</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">7:40am</small></div></a><a href="#" class="dropdown-item message d-flex align-items-center">
-                  <div class="profile"><img src="img/avatar-1.jpg" alt="..." class="img-fluid">
-                    <div class="status busy"></div>
-                  </div>
-                  <div class="content">   <strong class="d-block">Sam Kaheil</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">6:55am</small></div></a><a href="#" class="dropdown-item message d-flex align-items-center">
-                  <div class="profile"><img src="img/avatar-5.jpg" alt="..." class="img-fluid">
-                    <div class="status offline"></div>
-                  </div>
                   <div class="content">   <strong class="d-block">Sara Wood</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">10:30pm</small></div></a><a href="#" class="dropdown-item text-center message"> <strong>See All Messages <i class="fa fa-angle-right"></i></strong></a></div>
             </div>
             <!-- Tasks-->
@@ -83,24 +75,13 @@
                   <div class="text d-flex justify-content-between"><strong>Task 2</strong><span>20% complete</span></div>
                   <div class="progress">
                     <div role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" class="progress-bar dashbg-3"></div>
-                  </div></a><a href="#" class="dropdown-item">
-                  <div class="text d-flex justify-content-between"><strong>Task 3</strong><span>70% complete</span></div>
-                  <div class="progress">
-                    <div role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar dashbg-2"></div>
-                  </div></a><a href="#" class="dropdown-item">
-                  <div class="text d-flex justify-content-between"><strong>Task 4</strong><span>30% complete</span></div>
-                  <div class="progress">
-                    <div role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar dashbg-4"></div>
-                  </div></a><a href="#" class="dropdown-item">
-                  <div class="text d-flex justify-content-between"><strong>Task 5</strong><span>65% complete</span></div>
-                  <div class="progress">
-                    <div role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" class="progress-bar dashbg-1"></div>
-                  </div></a><a href="#" class="dropdown-item text-center"> <strong>See All Tasks <i class="fa fa-angle-right"></i></strong></a>
+                  </div></a>
+                  <a href="#" class="dropdown-item text-center"> <strong>See All Tasks <i class="fa fa-angle-right"></i></strong></a>
               </div>
             </div>
             <!-- Tasks end-->
             <!-- Megamenu-->
-            <div class="list-inline-item dropdown menu-large"><a href="#" data-toggle="dropdown" class="nav-link">Mega <i class="fa fa-ellipsis-v"></i></a>
+            {{-- <div class="list-inline-item dropdown menu-large"><a href="#" data-toggle="dropdown" class="nav-link">Mega <i class="fa fa-ellipsis-v"></i></a>
               <div class="dropdown-menu megamenu">
                 <div class="row">
                   <div class="col-lg-3 col-md-6"><strong class="text-uppercase">Elements Heading</strong>
@@ -161,7 +142,7 @@
                   <div class="col-lg-2 col-md-4"><a href="#" class="d-block megamenu-button-link bg-info"><i class="fa fa-clock-o"></i><strong>Demo 6</strong></a></div>
                 </div>
               </div>
-            </div>
+            </div> --}}
             <!-- Megamenu end     -->
             <!-- Languages dropdown    -->
             <div class="list-inline-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
@@ -192,23 +173,20 @@
         </div>
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
-                <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-                <li><a href="tables.html"> <i class="icon-grid"></i>Tables </a></li>
-                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
-                <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
-                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
+                <li {{ Request::is('home') ? 'class=active' : '' }}><a href="{{ route('home') }}"> <i class="icon-home"></i>Dashboard </a></li>
+                <li {{ Request::is('products') ? 'class=active' : '' }}><a href="{{ url('products') }}"> <i class="icon-grid"></i>Products </a></li>
+                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Menu 3 </a></li>
+                <li><a href="forms.html"> <i class="icon-padnote"></i>Menu 4 </a></li>
+                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Menu 5 </a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                     <li><a href="#">Page</a></li>
                     <li><a href="#">Page</a></li>
                     <li><a href="#">Page</a></li>
                   </ul>
                 </li>
-                <li><a href="login.html"> <i class="icon-logout"></i>Login page </a></li>
         </ul><span class="heading">Extras</span>
         <ul class="list-unstyled">
-          <li> <a href="#"> <i class="icon-settings"></i>Demo </a></li>
-          <li> <a href="#"> <i class="icon-writing-whiteboard"></i>Demo </a></li>
-          <li> <a href="#"> <i class="icon-chart"></i>Demo </a></li>
+          <li {{ Request::is('languages') ? 'class=active' : '' }}> <a href="{{ url('/languages') }}"> <i class="icon-settings"></i>Language </a></li>
         </ul>
       </nav>
       <!-- Sidebar Navigation end-->
