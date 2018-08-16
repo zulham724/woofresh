@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
                 "email"=>"customer@customer.com",
                 "password"=>bcrypt("password")
             ]
-        ]
+        ];
         User::insert($data);
     }
 }

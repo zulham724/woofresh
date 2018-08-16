@@ -25,7 +25,7 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        //
+        return view('language.create');
     }
 
     /**
@@ -36,7 +36,11 @@ class LanguageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $language = new Language;
+        $language->fill($request->all());
+        $language->save();
+        return redirect('languages');
     }
 
     /**
@@ -81,6 +85,9 @@ class LanguageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        $language = Language::find($id)->delete();
+        
+        return redirect('languages');
     }
 }

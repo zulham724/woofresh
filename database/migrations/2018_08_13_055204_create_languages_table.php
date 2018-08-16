@@ -16,8 +16,9 @@ class CreateLanguagesTable extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('image');
+            $table->string('image')->default('-');
             $table->string('name');
+            $table->string('description')->default('-');
             $table->timestamps();
         });
     }
