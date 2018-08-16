@@ -175,15 +175,17 @@
         <ul class="list-unstyled">
                 <li {{ Request::is('home') ? 'class=active' : '' }}><a href="{{ route('home') }}"> <i class="icon-home"></i>Dashboard </a></li>
                 <li {{ Request::is('products') ? 'class=active' : '' }}><a href="{{ url('products') }}"> <i class="icon-grid"></i>Products </a></li>
-                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Menu 3 </a></li>
-                <li><a href="forms.html"> <i class="icon-padnote"></i>Menu 4 </a></li>
-                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Menu 5 </a>
+                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i> Users</a></li>
+                <li><a href="forms.html"> <i class="icon-padnote"></i>Recipes </a></li>
+                <li><a href="forms.html"> <i class="icon-padnote"></i>Transactions </a></li>
+                <li><a href="forms.html"> <i class="icon-padnote"></i>Content </a></li>
+                {{-- <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Group </a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
+                    <li><a href="#">Group</a></li>
+                    <li><a href="#">Category</a></li>
+                    <li><a href="#">Sub Category</a></li>
                   </ul>
-                </li>
+                </li> --}}
         </ul><span class="heading">Extras</span>
         <ul class="list-unstyled">
           <li {{ Request::is('languages') ? 'class=active' : '' }}> <a href="{{ url('/languages') }}"> <i class="icon-settings"></i>Language </a></li>
