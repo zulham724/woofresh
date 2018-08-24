@@ -175,10 +175,10 @@
         <ul class="list-unstyled">
                 <li {{ Request::is('home') ? 'class=active' : '' }}><a href="{{ route('home') }}"> <i class="icon-home"></i>Dashboard </a></li>
                 <li {{ Request::is('products') ? 'class=active' : '' }}><a href="{{ url('products') }}"> <i class="icon-grid"></i>Products </a></li>
-                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i> Users</a></li>
-                <li><a href="forms.html"> <i class="icon-padnote"></i>Recipes </a></li>
-                <li><a href="forms.html"> <i class="icon-padnote"></i>Transactions </a></li>
-                <li><a href="forms.html"> <i class="icon-padnote"></i>Content </a></li>
+                <li><a href="{{ url('users') }}"> <i class="fa fa-bar-chart"></i> Users</a></li>
+                <li><a href="{{ url('recipes') }}"> <i class="icon-padnote"></i>Recipes </a></li>
+                <li><a href="{{ url('transactions') }}"> <i class="icon-padnote"></i>Transactions </a></li>
+                <li><a href="{{ url('contents') }}"> <i class="icon-padnote"></i>Content </a></li>
                 {{-- <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Group </a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                     <li><a href="#">Group</a></li>

@@ -23,7 +23,8 @@ Route::group(['middleware'=>'auth'],function(){
 
 	Route::resources([
 		'/languages'=>'LanguageController',
-		'/products'=>'ProductController'
+		'/products'=>'ProductController',
+		'/contents'=>'ContentController',
 	]);
 
 });
