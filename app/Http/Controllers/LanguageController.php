@@ -82,6 +82,7 @@ class LanguageController extends Controller
         $language = Language::find($id);
         $language->fill($request->all());
         if($request->file('image')){
+            $file = Storage::delete($language->image);
             $path = $request->file('image')->store('languages');
             $language->image = $path;
         }

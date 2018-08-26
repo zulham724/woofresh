@@ -44,32 +44,34 @@
 					<div class="tab-content">
 						@foreach ($languages as $l => $language)
 						@foreach ($content['content_translations'] as $ct => $content_translation)
-							@if($language->id == $content_translation->language->id)
-							<div id="{{$content_translation->language->name}}" class="tab-pane {{$ct==0 ? 'active':null}}">
-								<input type="hidden" name="languages[{{$ct}}][language_id]" value="{{$content_translation->language->id}}">
-								<input type="hidden" name="languages[{{$ct}}][id]" value="{{$content_translation->id}}">
+							@if($content_translation->language->id == $language->id)
+							<div id="{{$language->name}}" class="tab-pane {{$ct==0 ? 'active':null}}">
+								<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$content_translation->language->id}}">
+								<input type="hidden" name="languages[{{$l}}][id]" value="{{$content_translation->id}}">
 								<div class="form-group">
-									<label>Content Name in {{$content_translation->name}}</label>
-									<input type="text" value="{{$content_translation->name}}" class="form-control" name="languages[{{$ct}}][name]" placeholder="Type something" required>
+									<label>Content Name in {{$content_translation->language->name}}</label>
+									<input type="text" value="{{$content_translation->name}}" class="form-control" name="languages[{{$l}}][name]" placeholder="Type something" required>
 								</div>
 								<div class="form-group">
-									<label>Content Description in {{$content_translation->name}}</label>
-									<input type="text" value="{{$content_translation->description}}" class="form-control" name="languages[{{$ct}}][description]" placeholder="Type something" required>
+									<label>Content Description in {{$content_translation->language->name}}</label>
+									<input type="text" value="{{$content_translation->description}}" class="form-control" name="languages[{{$l}}][description]" placeholder="Type something" required>
 								</div>
 							</div>
 							@endif
 						@endforeach
-							<div id="{{$language->name}}" class="tab-pane fade">
-								<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$language->id}}">
-								<div class="form-group">
-									<label>Content Name in {{$language->name}}</label>
-									<input type="text" class="form-control" name="languages[{{$l}}][name]" placeholder="Type something" required>
-								</div>
-								<div class="form-group">
-									<label>Content Description in {{$language->name}}</label>
-									<input type="text" class="form-control" name="languages[{{$l}}][description]" placeholder="Type something" required>
-								</div>
+						@if(!isset($content['content_translations'][$l]))
+						<div id="{{$language->name}}" class="tab-pane {{$l==0 ? 'active':null}}">
+							<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$language->id}}">
+							<div class="form-group">
+								<label>Content Name in {{$language->name}}</label>
+								<input type="text" class="form-control" name="languages[{{$l}}][name]" placeholder="Type something" required>
 							</div>
+							<div class="form-group">
+								<label>Content Description in {{$language->name}}</label>
+								<input type="text" class="form-control" name="languages[{{$l}}][description]" placeholder="Type something" required>
+							</div>
+						</div>
+						@endif
 						@endforeach
 					</div>
 				</div>

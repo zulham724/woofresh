@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Content;
 use App\ContentTranslation;
 use App\Language;
@@ -82,7 +83,7 @@ class ContentController extends Controller
     {
         $data["content"] = Content::with('content_translations.language')->find($id);
         $data["languages"] = Language::get();
-        // dd($data["content"]["content_translations"]);
+        // dd($data);
         return view('content.edit',$data);
     }
 
@@ -95,21 +96,22 @@ class ContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        // dd($request);
         $content = Content::find($id);
         $content->name = $request["name"];
         if($request->file('image')){
+            $file = Storage::delete($content->image);
             $path = $request->file('image')->store('content');
             $content->image = $path;
         }
         $content->update();
         foreach ($request['languages'] as $l => $language) {
-            $translation = $language['id'] ? ContentTranslation::find($language["id"]) : new ContentTranslation;
-            $translation->content_id = $content->id;
-            $translation->language_id = $language['language_id'];
-            $translation->name = $language['name'];
-            $translation->description = $language['description'];
-            $translation->save();
+            $translation = ContentTranslation::updateOrCreate([
+                "content_id"=>$content->id,
+                "language_id"=>$language['language_id'],
+                'name'=>$language['name'],
+                'description'=>$language['description']
+            ]);
         }
         return redirect('contents');
     }
@@ -122,7 +124,9 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-        $content = Content::find($id)->delete();
+        $content = Content::find($id);
+        $file = Storage::delete($content->image);
+        $content->delete();
 
         return response()->json($content);
     }

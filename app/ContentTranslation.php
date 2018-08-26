@@ -11,4 +11,8 @@ class ContentTranslation extends Model
     public function language(){
     	return $this->belongsTo('App\Language');
     }
+
+    public function content(){
+    	return $this->belongsTo('App\Content');
+    }
 }
