@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
 Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 
 	Route::apiResources([
-		'/language'=>'LanguageController',
+		'/languages'=>'LanguageController',
 		'/users'=>'UserController',
 		'/biodata'=>'BiodataController',
 		'/products'=>'ProductController',

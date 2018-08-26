@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\language; // daftarkan model Languge terlebih dahulu
+use App\Language; // daftarkan model Languge terlebih dahulu
+use Illuminate\Support\Facades\Storage;
 
 class LanguageController extends Controller
 {
@@ -37,8 +38,10 @@ class LanguageController extends Controller
     public function store(Request $request)
     {
         // dd($request);
+        $path = $request->file('image')->store('languages');
         $language = new Language;
         $language->fill($request->all());
+        $language->image = $path;
         $language->save();
         return redirect('languages');
     }
@@ -62,7 +65,9 @@ class LanguageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data["language"] = Language::find($id);
+        // dd($data);
+        return view('language.edit',$data);
     }
 
     /**
@@ -74,7 +79,15 @@ class LanguageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $language = Language::find($id);
+        $language->fill($request->all());
+        if($request->file('image')){
+            $path = $request->file('image')->store('languages');
+            $language->image = $path;
+        }
+        $language->update();
+
+        return redirect('languages');
     }
 
     /**
@@ -86,8 +99,10 @@ class LanguageController extends Controller
     public function destroy($id)
     {
         // dd($id);
-        $language = Language::find($id)->delete();
+        $language = Language::find($id);
+        $file = Storage::delete($language->image);
+        $language->delete();
         
-        return redirect('languages');
+        return response()->json($language);
     }
 }

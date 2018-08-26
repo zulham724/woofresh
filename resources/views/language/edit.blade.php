@@ -14,14 +14,17 @@
 					<h5 class="pull-right"> Fill the Form</h5>
 				</div>
 				<div class="card-body"> 
-					{{ Form::open(['route'=>'languages.store','method'=>'post','files'=>true]) }}
+					{{ Form::open(['route'=>['languages.update',$language->id],'method'=>'patch','files'=>true]) }}
 						<div class="form-group">
 							<label>Language ID</label>
-							<input type="text" class="form-control" name="name" placeholder="type something" required> 
+							<input type="text" class="form-control" value="{{ $language->name }}" name="name" placeholder="type something" required> 
+						</div>
+						<div class="form-group">
+							<img src="{{ asset('storage/'.$language->image) }}" class="img-responsive" width="100">
 						</div>
 						<div class="form-group">
 							<label>Image</label>
-							{{ Form::file('image',['class'=>'form-control','required'=>true])}}
+							{{ Form::file('image',['class'=>'form-control'])}}
 						</div> 
 						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					{{ Form::close() }}

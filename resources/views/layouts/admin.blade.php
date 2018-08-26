@@ -29,6 +29,12 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+    <script>
+       window.Laravel = {!! json_encode([
+           'csrfToken' => csrf_token(),
+       ]) !!};
+    </script>
   </head>
   <body>
     <header class="header">   
@@ -192,7 +198,7 @@
         </ul>
       </nav>
       <!-- Sidebar Navigation end-->
-      <div class="page-content">
+      <div class="page-content" id="app">
         @yield('content')
         <footer class="footer">
           <div class="footer__block block no-margin-bottom">
@@ -207,8 +213,14 @@
     <!-- JavaScript files-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/popper.js/umd/popper.min.js') }}"> </script>
-    {{-- <script src="vendor/bootstrap/js/bootstrap.min.js"></script> --}}
     <script src="{{ asset('vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
     <script src="{{ asset('js/front.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.12/sweetalert2.all.js"></script>
+    @yield('script')
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('table').DataTable();
+      });
+    </script>
   </body>
 </html>

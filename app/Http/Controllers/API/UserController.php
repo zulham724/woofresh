@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::get();
+        $data = User::with('biodata')->get();
         return response()->json($data);
     }
 

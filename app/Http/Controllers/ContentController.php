@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Content;
+use App\ContentTranslation;
+use App\Language;
 
 class ContentController extends Controller
 {
@@ -14,7 +16,8 @@ class ContentController extends Controller
      */
     public function index()
     {
-        $data["contents"] = Content::get();
+        $data["contents"] = Content::with('content_translations.language')->get();
+        // dd($data);
         return view('content.index',$data);
     }
 
@@ -25,7 +28,8 @@ class ContentController extends Controller
      */
     public function create()
     {
-        //
+        $data["languages"] = Language::get();
+        return view('content.create',$data);
     }
 
     /**
@@ -36,7 +40,25 @@ class ContentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $content = new Content;
+        $content->name = $request["name"];
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('content');
+            $content->image = $path;    
+        }
+        $content->save();
+
+        foreach ($request['languages'] as $l => $language) {
+            $translation = new ContentTranslation;
+            $translation->content_id = $content->id;
+            $translation->language_id = $language['language_id'];
+            $translation->name = $language['name'];
+            $translation->description = $language['description'];
+            $translation->save();
+        }
+
+        return redirect('contents');
     }
 
     /**
@@ -58,7 +80,10 @@ class ContentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data["content"] = Content::with('content_translations.language')->find($id);
+        $data["languages"] = Language::get();
+        // dd($data["content"]["content_translations"]);
+        return view('content.edit',$data);
     }
 
     /**
@@ -70,7 +95,23 @@ class ContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
+        $content = Content::find($id);
+        $content->name = $request["name"];
+        if($request->file('image')){
+            $path = $request->file('image')->store('content');
+            $content->image = $path;
+        }
+        $content->update();
+        foreach ($request['languages'] as $l => $language) {
+            $translation = $language['id'] ? ContentTranslation::find($language["id"]) : new ContentTranslation;
+            $translation->content_id = $content->id;
+            $translation->language_id = $language['language_id'];
+            $translation->name = $language['name'];
+            $translation->description = $language['description'];
+            $translation->save();
+        }
+        return redirect('contents');
     }
 
     /**
@@ -81,6 +122,8 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $content = Content::find($id)->delete();
+
+        return response()->json($content);
     }
 }

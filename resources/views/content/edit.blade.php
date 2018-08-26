@@ -6,7 +6,7 @@
   </div>
 </div>
 <div class="container">
-	{{ Form::open(['route'=>'contents.store','method'=>'post','files'=>true]) }}
+	{{ Form::open(['route'=>['contents.update',$content->id],'method'=>'patch','files'=>true]) }}
 	<div class="row">
 		<div class="col-6">
 			<div class="card">
@@ -17,8 +17,9 @@
 				<div class="card-body"> 
 						<div class="form-group">
 							<label>Content Name</label>
-							<input type="text" class="form-control" name="name" placeholder="type something" required> 
+							<input type="text" class="form-control" value="{{ $content->name }}" name="name" placeholder="type something" required> 
 						</div>
+						<img src="{{ asset('storage/'.$content->image) }}" class="img-responsive" width="100">
 						<div class="form-group">
 							<label>Image</label>
 							{{ Form::file('image',['class'=>'form-control'])}}
@@ -42,6 +43,22 @@
 					</ul>
 					<div class="tab-content">
 						@foreach ($languages as $l => $language)
+						@foreach ($content['content_translations'] as $ct => $content_translation)
+							@if($language->id == $content_translation->language->id)
+							<div id="{{$content_translation->language->name}}" class="tab-pane fade">
+								<input type="hidden" name="languages[{{$ct}}][language_id]" value="{{$content_translation->language->id}}">
+								<input type="hidden" name="languages[{{$ct}}][id]" value="{{$content_translation->id}}">
+								<div class="form-group">
+									<label>Content Name in {{$content_translation->name}}</label>
+									<input type="text" value="{{$content_translation->name}}" class="form-control" name="languages[{{$ct}}][name]" placeholder="Type something" required>
+								</div>
+								<div class="form-group">
+									<label>Content Description in {{$content_translation->name}}</label>
+									<input type="text" value="{{$content_translation->description}}" class="form-control" name="languages[{{$ct}}][description]" placeholder="Type something" required>
+								</div>
+							</div>
+							@endif
+						@endforeach
 							<div id="{{$language->name}}" class="tab-pane fade">
 								<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$language->id}}">
 								<div class="form-group">

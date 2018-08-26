@@ -15,7 +15,9 @@ class ContentController extends Controller
      */
     public function index()
     {
-        //
+        $content = Content::with('content_translations.language')->get();
+
+        return response()->json($content);
     }
 
     /**
