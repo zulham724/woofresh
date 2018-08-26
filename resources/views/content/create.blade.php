@@ -34,15 +34,15 @@
 				</div>
 				<div class="card-body">
 					<ul class="nav nav-tabs">
-						@foreach ($languages as $language)
+						@foreach ($languages as $l => $language)
 							<li class="nav-item">
-						  		<a class="nav-link" data-toggle="tab" href="#{{$language->name}}">{{ $language->name }}</a>
+						  		<a class="nav-link {{$l==0 ? 'active':null}}" data-toggle="tab" href="#{{$language->name}}">{{ $language->name }}</a>
 							</li>
 						@endforeach
 					</ul>
 					<div class="tab-content">
 						@foreach ($languages as $l => $language)
-							<div id="{{$language->name}}" class="tab-pane fade">
+							<div id="{{$language->name}}" class="tab-pane {{$l==0 ? 'active':null}}">
 								<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$language->id}}">
 								<div class="form-group">
 									<label>Content Name in {{$language->name}}</label>
