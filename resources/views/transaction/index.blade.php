@@ -2,15 +2,14 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Language</h2>
+    <h2 class="h5 no-margin-bottom">Transaction</h2>
   </div>
 </div>
 
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-flag"></i> Language List
-            <a href="{{ route('transactions.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <i class="fa fa-flag"></i> Transaction List
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -18,23 +17,26 @@
                     <thead>
                         <tr>
                             <td>No</td>
-                            <td>Language code</td>
-                            <td>image</td>
+                            <td>User</td>
+                            <td>Transaction number</td>
+                            <td>Payment type</td>
+                            <td>Status</td>
                             <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
-                       @foreach ($languages as $l => $language)
-                           <tr>
-                               <td>{{ $l+1 }}</td>
-                               <td>{{ $language->name }}</td>
-                               <td><img src="{{ asset('storage/'.$language->image) }}" class="img-responsive" width="30"></td>
-                               <td>
-                                   <a type="button" class="btn btn-info" href="{{ route('languages.edit',$language->id) }}"><i class="fa fa-gear"></i> Edit</a>
-                                   <button type="button" class="btn btn-danger" onclick="destroy({{$language->id}})"><i class="fa fa-trash"></i> Delete</button>
-                               </td>
-                           </tr>
-                       @endforeach
+                        @foreach ($transactions as $t => $transaction)
+                            <tr>
+                                <td>{{ $t+1 }}</td>
+                                <td>{{ $transaction->user->name }}</td>
+                                <td>{{ $transaction->trasaction_number }}</td>
+                                <td>{{ $transaction->payment_type }}</td>
+                                <td>{{ $transaction->status }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" onclick="destroy({{ $transaction->id }})"><i class="fa fa-trash"></i> Delete</button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>   
@@ -66,15 +68,15 @@
                     _method:'delete',
                     _token:"{{csrf_token()}}"
                 }
-                $.post("{{ url('languages') }}/"+id,access)
+                $.post("{{ url('transactions') }}/"+id,access)
                 .done(res=>{
                     console.log(res);
                     swal({
                         title:"Okay",
-                        text:"You deleted language",
+                        text:"You deleted transaction",
                         type:"success",
                     }).then(result=>{
-                        window.location = "{{ url('languages') }}";
+                        window.location = "{{ url('transactions') }}";
                     })
                 }).fail(err=>{
                     console.log(err);
