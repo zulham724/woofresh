@@ -180,7 +180,13 @@
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
                 <li {{ Request::is('home') ? 'class=active' : '' }}><a href="{{ route('home') }}"> <i class="icon-home"></i>Dashboard </a></li>
-                <li {{ Request::is('products') ? 'class=active' : '' }}><a href="{{ url('products') }}"> <i class="icon-grid"></i>Products </a></li>
+                <li  {{ Request::is('products') ? 'class=active' : '' }}><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Product </a>
+                  <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                    <li><a href="{{ url('products') }}">All Product</a></li>
+                    <li><a href="{{ url('subcategories') }}">Category</a></li>
+                    <li><a href="{{ url('suppliers') }}">Supplier</a></li>
+                  </ul>
+                </li>
                 <li><a href="{{ url('users') }}"> <i class="fa fa-bar-chart"></i> Users</a></li>
                 <li><a href="{{ url('recipes') }}"> <i class="icon-padnote"></i>Recipes </a></li>
                 <li><a href="{{ url('transactions') }}"> <i class="icon-padnote"></i>Transactions </a></li>

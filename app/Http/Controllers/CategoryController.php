@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product; 
-use App\SubCategory; 
-use App\Supplier; 
+use App\Category;
+use App\Group;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
      /**
      * Display a listing of the resource.
@@ -16,8 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data["products"] = Product::get();
-        return view('product.index',$data);
+        
+        $data["categories"] = Category::get();
+        return view('category.index',$data);
     }
 
     /**
@@ -27,9 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data['products'] = SubCategory::get();
-        $dati['productss'] = Supplier::get();
-        return view('product.create',$data,$dati);
+        $data['categories'] = Group::get();
+        return view('category.create',$data);
     }
 
     /**
@@ -40,10 +39,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
-        $product->fill($request->all());
-        $product->save();
-        return redirect('products');
+        $category = new Category;
+        $category->fill($request->all());
+        $category->save();
+        return redirect('categories');
     }
 
     /**

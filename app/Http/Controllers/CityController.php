@@ -3,21 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product; 
-use App\SubCategory; 
-use App\Supplier; 
+use App\City;
 
-class ProductController extends Controller
+class CityController extends Controller
 {
-     /**
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data["products"] = Product::get();
-        return view('product.index',$data);
+        $data["cities"] = City::get();
+        return view('city.index',$data);
     }
 
     /**
@@ -27,9 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data['products'] = SubCategory::get();
-        $dati['productss'] = Supplier::get();
-        return view('product.create',$data,$dati);
+        return view('city.create');
     }
 
     /**
@@ -40,10 +37,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
-        $product->fill($request->all());
-        $product->save();
-        return redirect('products');
+        $city = new City;
+        $city->fill($request->all());
+        $city->save();
+        return redirect('cities');
     }
 
     /**
