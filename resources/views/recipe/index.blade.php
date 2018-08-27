@@ -34,11 +34,20 @@
                                <td>{{ $recipe->user->name }}</td>
                                <td>{{ $recipe->name }}</td>
                                <td>{{ $recipe->description }}</td>
-                               <td>{{ $recipe->difficulty_level }}</td>
-                               <td>{{ $recipe->portion_per_serve }}</td>
                                <td>
-                                   <a type="button" class="btn btn-info" href="{{ route('recipes.edit',$recipe->id) }}"><i class="fa fa-gear"></i> Edit</a>
-                                   <button type="button" class="btn btn-danger" onclick="destroy({{$language->id}})"><i class="fa fa-trash"></i> Delete</button>
+                                 <select id="recipe_rating{{ $recipe->id }}">
+                                   <option value="1">1</option>
+                                   <option value="2">2</option>
+                                   <option value="3">3</option>
+                                   <option value="4">4</option>
+                                   <option value="5">5</option>
+                                 </select>
+                               </td>
+                               <td>{{ $recipe->preparation_time }} Minutes</td>
+                               <td>{{ $recipe->portion_per_serve }} pcs</td>
+                               <td>
+                                   {{-- <a type="button" class="btn btn-info" href="{{ route('recipes.edit',$recipe->id) }}"><i class="fa fa-gear"></i> Edit</a>  --}}
+                                   <button type="button" class="btn btn-danger" onclick="destroy({{$recipe->id}})"><i class="fa fa-trash"></i> Delete</button>
                                </td>
                            </tr>
                        @endforeach
@@ -54,7 +63,13 @@
 @section('script')
 <script type="text/javascript">
     $(()=>{
-        console.log("language page");
+        $.each({!! $recipes !!},(key,val)=>{
+          $("#recipe_rating"+val.id).barrating({
+            theme: 'fontawesome-stars-o',
+            initialRating:2,
+            readonly:true
+          });
+        });
     });
 
     const destroy = (id)=>{

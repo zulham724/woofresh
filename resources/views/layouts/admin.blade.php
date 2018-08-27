@@ -92,70 +92,6 @@
               </div>
             </div>
             <!-- Tasks end-->
-            <!-- Megamenu-->
-            {{-- <div class="list-inline-item dropdown menu-large"><a href="#" data-toggle="dropdown" class="nav-link">Mega <i class="fa fa-ellipsis-v"></i></a>
-              <div class="dropdown-menu megamenu">
-                <div class="row">
-                  <div class="col-lg-3 col-md-6"><strong class="text-uppercase">Elements Heading</strong>
-                    <ul class="list-unstyled mb-3">
-                      <li><a href="#">Lorem ipsum dolor</a></li>
-                      <li><a href="#">Sed ut perspiciatis</a></li>
-                      <li><a href="#">Voluptatum deleniti</a></li>
-                      <li><a href="#">At vero eos</a></li>
-                      <li><a href="#">Consectetur adipiscing</a></li>
-                      <li><a href="#">Duis aute irure</a></li>
-                      <li><a href="#">Necessitatibus saepe</a></li>
-                      <li><a href="#">Maiores alias</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-3 col-md-6"><strong class="text-uppercase">Elements Heading</strong>
-                    <ul class="list-unstyled mb-3">
-                      <li><a href="#">Lorem ipsum dolor</a></li>
-                      <li><a href="#">Sed ut perspiciatis</a></li>
-                      <li><a href="#">Voluptatum deleniti</a></li>
-                      <li><a href="#">At vero eos</a></li>
-                      <li><a href="#">Consectetur adipiscing</a></li>
-                      <li><a href="#">Duis aute irure</a></li>
-                      <li><a href="#">Necessitatibus saepe</a></li>
-                      <li><a href="#">Maiores alias</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-3 col-md-6"><strong class="text-uppercase">Elements Heading</strong>
-                    <ul class="list-unstyled mb-3">
-                      <li><a href="#">Lorem ipsum dolor</a></li>
-                      <li><a href="#">Sed ut perspiciatis</a></li>
-                      <li><a href="#">Voluptatum deleniti</a></li>
-                      <li><a href="#">At vero eos</a></li>
-                      <li><a href="#">Consectetur adipiscing</a></li>
-                      <li><a href="#">Duis aute irure</a></li>
-                      <li><a href="#">Necessitatibus saepe</a></li>
-                      <li><a href="#">Maiores alias</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-3 col-md-6"><strong class="text-uppercase">Elements Heading</strong>
-                    <ul class="list-unstyled mb-3">
-                      <li><a href="#">Lorem ipsum dolor</a></li>
-                      <li><a href="#">Sed ut perspiciatis</a></li>
-                      <li><a href="#">Voluptatum deleniti</a></li>
-                      <li><a href="#">At vero eos</a></li>
-                      <li><a href="#">Consectetur adipiscing</a></li>
-                      <li><a href="#">Duis aute irure</a></li>
-                      <li><a href="#">Necessitatibus saepe</a></li>
-                      <li><a href="#">Maiores alias</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="row megamenu-buttons text-center">
-                  <div class="col-lg-2 col-md-4"><a href="#" class="d-block megamenu-button-link dashbg-1"><i class="fa fa-clock-o"></i><strong>Demo 1</strong></a></div>
-                  <div class="col-lg-2 col-md-4"><a href="#" class="d-block megamenu-button-link dashbg-2"><i class="fa fa-clock-o"></i><strong>Demo 2</strong></a></div>
-                  <div class="col-lg-2 col-md-4"><a href="#" class="d-block megamenu-button-link dashbg-3"><i class="fa fa-clock-o"></i><strong>Demo 3</strong></a></div>
-                  <div class="col-lg-2 col-md-4"><a href="#" class="d-block megamenu-button-link dashbg-4"><i class="fa fa-clock-o"></i><strong>Demo 4</strong></a></div>
-                  <div class="col-lg-2 col-md-4"><a href="#" class="d-block megamenu-button-link bg-danger"><i class="fa fa-clock-o"></i><strong>Demo 5</strong></a></div>
-                  <div class="col-lg-2 col-md-4"><a href="#" class="d-block megamenu-button-link bg-info"><i class="fa fa-clock-o"></i><strong>Demo 6</strong></a></div>
-                </div>
-              </div>
-            </div> --}}
-            <!-- Megamenu end     -->
             <!-- Languages dropdown    -->
             <div class="list-inline-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
               <div aria-labelledby="languages" class="dropdown-menu"><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/DE.png" alt="English" class="mr-2"><span>German</span></a><a rel="nofollow" href="#" class="dropdown-item"> <img src="img/flags/16/FR.png" alt="English" class="mr-2"><span>French  </span></a></div>
@@ -193,9 +129,14 @@
                     <li><a href="{{ url('suppliers') }}">Suppliers</a></li>
                   </ul>
                 </li>
+                <li><a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Report </a>
+                  <ul id="report" class="collapse list-unstyled ">
+                    <li><a href="{{ url('transactions') }}"> <i class="icon-padnote"></i>Transactions </a></li>
+                  </ul>
+                </li>
                 <li {{ Request::is('users') ? 'class=active' : '' }}><a href="{{ url('users') }}"> <i class="fa fa-bar-chart"></i> Users</a></li>
                 <li {{ Request::is('recipes') ? 'class=active' : '' }}><a href="{{ url('recipes') }}"> <i class="icon-padnote"></i>Recipes </a></li>
-                <li {{ Request::is('transactions') ? 'class=active' : '' }}><a href="{{ url('transactions') }}"> <i class="icon-padnote"></i>Transactions </a></li>
+                
         </ul><span class="heading">Settings</span>
         <ul class="list-unstyled">
           <li {{ Request::is('contents') ? 'class=active' : '' }}><a href="{{ url('contents') }}"> <i class="icon-padnote"></i>Content </a></li>
@@ -223,10 +164,10 @@
     <script src="{{ asset('js/front.js') }}"></script>
 
     {{-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.12/sweetalert2.all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script>
-    --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.12/sweetalert2.all.js"></script> --}}
+   
     @yield('script')
     <script type="text/javascript">
       $(document).ready(function(){
@@ -242,10 +183,6 @@
 
         $('.rating').barrating({
           theme: 'fontawesome-stars-o'
-        });
-
-        $(function () {
-            $('.date').datetimepicker();
         });
       
       });

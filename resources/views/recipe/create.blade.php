@@ -14,7 +14,7 @@
 					<h5 class="pull-right"> Fill the Form</h5>
 				</div>
 				<div class="card-body"> 
-					{{ Form::open(['route'=>'languages.store','method'=>'post','files'=>true]) }}
+					{{ Form::open(['route'=>'recipes.store','method'=>'post','files'=>true]) }}
 						<div class="form-group">
 							<label>User ID</label>
 							<select class="form-control select2" name="user_id" required>
@@ -45,6 +45,10 @@
 						<div class="form-group">
 							<label>Preparation Time</label>
 							<input type="number" class="form-control" name="preparation_time" placeholder="How long ?"><p>Minutes</p>
+						</div>
+						<div class="form-group">
+							<label>Portion per Serve</label>
+							<input type="number" class="form-control" name="portion_per_serve" placeholder="How much ?">
 						</div>
 						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					{{ Form::close() }}

@@ -11,10 +11,9 @@ window.Vue = require('vue');
 
 import $ from 'jquery';
 import 'datatables.net';
-import swal from 'sweetalert2';
 import 'select2';
 import 'jquery-bar-rating';
-import 'bootstrap-datetimepicker-npm';
+window.swal = require('sweetalert2');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

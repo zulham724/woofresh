@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Recipe;
-use App\User;
 
-class RecipeController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $data["recipes"] = Recipe::with('user')->get();
-        return view('recipe.index',$data);
+        return view('transaction.index');
     }
 
     /**
@@ -26,8 +23,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $data["users"] = User::get();
-        return view('recipe.create',$data);
+        //
     }
 
     /**
@@ -38,11 +34,7 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        $recipe = new Recipe();
-        $recipe->fill($request->all());
-        $recipe->save();
-
-        return redirect('recipes');
+        //
     }
 
     /**
@@ -87,7 +79,6 @@ class RecipeController extends Controller
      */
     public function destroy($id)
     {
-        $recipe = Recipe::find($id)->delete();
-        return response()->json($recipe);
+        //
     }
 }
