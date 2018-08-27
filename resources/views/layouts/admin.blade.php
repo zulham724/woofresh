@@ -219,7 +219,12 @@
     @yield('script')
     <script type="text/javascript">
       $(document).ready(function(){
-        $('table').DataTable();
+        $('table').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+          ]
+        });
       });
     </script>
   </body>

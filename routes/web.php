@@ -23,8 +23,22 @@ Route::group(['middleware'=>'auth'],function(){
 
 	Route::resources([
 		'/languages'=>'LanguageController',
+		'/users'=>'UserController',
+		'/biodata'=>'BiodataController',
 		'/products'=>'ProductController',
-		'/contents'=>'ContentController',
+		'/recipe'=>'RecipeController',
+		'/order'=>'OrderController',
+		'/supplier'=>'SupplierController',
+		'/transaction'=>'TransactionController',
+		'/role'=>'RoleController',
+		'/ingredient'=>'IngredientController',
+		'/content'=>'ContentController',
+		'/component'=>'ComponentController',
+		'/componentvalue'=>'ComponentValueController',
+		'/city'=>'CityController',
+		'/group'=>'GroupController',
+		'/category'=>'CategoryController',
+		'/subcategory'=>'SubCategoryController',
 	]);
 
 });
