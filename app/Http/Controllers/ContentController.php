@@ -44,7 +44,7 @@ class ContentController extends Controller
         // dd($request);
         $content = new Content;
         $content->name = $request["name"];
-        if ($request->file('image')) {
+        if ($request->hasFile('image')) {
             $path = $request->file('image')->store('content');
             $content->image = $path;    
         }
@@ -99,7 +99,7 @@ class ContentController extends Controller
         // dd($request);
         $content = Content::find($id);
         $content->name = $request["name"];
-        if($request->file('image')){
+        if($request->hasFile('image')){
             $file = Storage::delete($content->image);
             $path = $request->file('image')->store('content');
             $content->image = $path;

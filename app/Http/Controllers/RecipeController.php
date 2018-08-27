@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Language; // daftarkan model Languge terlebih dahulu
-use Illuminate\Support\Facades\Storage;
+use App\Recipe;
+use App\User;
 
-class LanguageController extends Controller
+class RecipeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        $data["languages"] = Language::get(); // rangkum menjadi sebuah data yang berisikan model languages
-        return view('language.index',$data); // kasih data language ke dalam view
+        $data["recipes"] = Recipe::with('user')->get();
+        return view('recipe.index',$data);
     }
 
     /**
@@ -26,7 +26,8 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        return view('language.create');
+        $data["users"] = User::get();
+        return view('recipe.create',$data);
     }
 
     /**
@@ -37,13 +38,7 @@ class LanguageController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $path = $request->file('image')->store('languages');
-        $language = new Language;
-        $language->fill($request->all());
-        $language->image = $path;
-        $language->save();
-        return redirect('languages');
+        //
     }
 
     /**
@@ -65,9 +60,7 @@ class LanguageController extends Controller
      */
     public function edit($id)
     {
-        $data["language"] = Language::find($id);
-        // dd($data);
-        return view('language.edit',$data);
+        //
     }
 
     /**
@@ -79,16 +72,7 @@ class LanguageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $language = Language::find($id);
-        $language->fill($request->all());
-        if($request->hasFile('image')){
-            $file = Storage::delete($language->image);
-            $path = $request->file('image')->store('languages');
-            $language->image = $path;
-        }
-        $language->update();
-
-        return redirect('languages');
+        //
     }
 
     /**
@@ -99,11 +83,7 @@ class LanguageController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
-        $language = Language::find($id);
-        $file = Storage::delete($language->image);
-        $language->delete();
-        
-        return response()->json($language);
+        $recipe = Recipe::find($id)->delete();
+        return response()->json($recipe);
     }
 }

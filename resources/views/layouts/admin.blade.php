@@ -30,11 +30,17 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/themes/fontawesome-stars-o.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/bootstrap-clockpicker.min.css">
     <script>
        window.Laravel = {!! json_encode([
            'csrfToken' => csrf_token(),
        ]) !!};
     </script>
+    <style type="text/css">
+      .select2 span { display:block }
+    </style>
   </head>
   <body>
     <header class="header">   
@@ -180,26 +186,19 @@
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
                 <li {{ Request::is('home') ? 'class=active' : '' }}><a href="{{ route('home') }}"> <i class="icon-home"></i>Dashboard </a></li>
-                <li  {{ Request::is('products') ? 'class=active' : '' }}><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Product </a>
+                <li  {{ Request::is('products') ? 'class=active' : '' }}><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Products </a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="{{ url('products') }}">All Product</a></li>
-                    <li><a href="{{ url('subcategories') }}">Category</a></li>
-                    <li><a href="{{ url('suppliers') }}">Supplier</a></li>
+                    <li><a href="{{ url('products') }}">All Products</a></li>
+                    <li><a href="{{ url('subcategories') }}">Categories</a></li>
+                    <li><a href="{{ url('suppliers') }}">Suppliers</a></li>
                   </ul>
                 </li>
-                <li><a href="{{ url('users') }}"> <i class="fa fa-bar-chart"></i> Users</a></li>
-                <li><a href="{{ url('recipes') }}"> <i class="icon-padnote"></i>Recipes </a></li>
-                <li><a href="{{ url('transactions') }}"> <i class="icon-padnote"></i>Transactions </a></li>
-                <li><a href="{{ url('contents') }}"> <i class="icon-padnote"></i>Content </a></li>
-                {{-- <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Group </a>
-                  <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="#">Group</a></li>
-                    <li><a href="#">Category</a></li>
-                    <li><a href="#">Sub Category</a></li>
-                  </ul>
-                </li> --}}
-        </ul><span class="heading">Extras</span>
+                <li {{ Request::is('users') ? 'class=active' : '' }}><a href="{{ url('users') }}"> <i class="fa fa-bar-chart"></i> Users</a></li>
+                <li {{ Request::is('recipes') ? 'class=active' : '' }}><a href="{{ url('recipes') }}"> <i class="icon-padnote"></i>Recipes </a></li>
+                <li {{ Request::is('transactions') ? 'class=active' : '' }}><a href="{{ url('transactions') }}"> <i class="icon-padnote"></i>Transactions </a></li>
+        </ul><span class="heading">Settings</span>
         <ul class="list-unstyled">
+          <li {{ Request::is('contents') ? 'class=active' : '' }}><a href="{{ url('contents') }}"> <i class="icon-padnote"></i>Content </a></li>
           <li {{ Request::is('languages') ? 'class=active' : '' }}> <a href="{{ url('/languages') }}"> <i class="icon-settings"></i>Language </a></li>
         </ul>
       </nav>
@@ -220,17 +219,35 @@
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/popper.js/umd/popper.min.js') }}"> </script>
     <script src="{{ asset('vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/front.js') }}"></script>
+
+    {{-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.12/sweetalert2.all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script>
+    --}}
     @yield('script')
     <script type="text/javascript">
       $(document).ready(function(){
+        
         $('table').DataTable({
             dom: 'Bfrtip',
             buttons: [
               'copy', 'csv', 'excel', 'pdf', 'print'
           ]
         });
+
+        $('.select2').select2();
+
+        $('.rating').barrating({
+          theme: 'fontawesome-stars-o'
+        });
+
+        $(function () {
+            $('.date').datetimepicker();
+        });
+      
       });
     </script>
   </body>
