@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Role;
+use App\Biodata;
 
 class UserController extends Controller
-{
+{   
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $data["users"] = User::with('role')->get();
+        return view('user.index',$data);
     }
 
     /**
@@ -23,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $data['roles'] = Role::get();
+        return view('user.create',$data);
     }
 
     /**
@@ -34,7 +39,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $user = new User;
+        $user->fill($request->all());
+        $user->save();
+
+        $biodata = new Biodata;
+        $biodata->user_id = $user->id;
+        $biodata->fill($request->except(['role_id','name','email','password']));
+        $biodata->save();
+
+        return redirect('users');
     }
 
     /**
@@ -79,6 +94,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id)->delete();
+        return response()->json($user);
     }
 }

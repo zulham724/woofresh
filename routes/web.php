@@ -39,6 +39,7 @@ Route::group(['middleware'=>'auth'],function(){
 		'/groups'=>'GroupController',
 		'/categories'=>'CategoryController',
 		'/subcategories'=>'SubCategoryController',
+		'/users'=>'UserController',
 	]);
 
 });

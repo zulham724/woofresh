@@ -34,7 +34,7 @@
 							<td>{{ $product->stock }}</td>
 							<td>{{ $product->weight }}</td>
 							<td>{{ $product->is_available }}</td>
-							<td><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button></td>
+							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$product->id}})"><i class="fa fa-trash"></i> Delete</button></td>
 						</tr>
 						@endforeach
     				</tbody>
@@ -43,4 +43,43 @@
     	</div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+	const destroy = (id)=>{
+        swal({
+            type:"warning",
+            title:"Are you sure?",
+            text:"You won't be able to revert this!",
+            showCancelButton:true,
+            cancelButtonColor:"#d33",
+            confirmButtonText:"Yes, delete it!",
+            confirmButtonColor:"#3085d6"
+        }).then(result=>{
+            if(result.value){
+                let access = {
+                    id:id,
+                    _method:"delete",
+                    _token:"{{ csrf_token() }}"
+                }
+
+                $.post("{{ url('products') }}/"+id,access)
+                .done(res=>{
+                    swal({
+                        title:"Okay!",
+                        text:"You deleted product",
+                        type:"success"
+                    }).then(result=>{
+                        window.location = "{{ url('products') }}";
+                    });
+                })
+                .fail(err=>{
+                    // console.log(err);
+                    swal("Oops","Something not right","error");
+                });
+            }
+        });
+    }
+</script>
 @endsection
