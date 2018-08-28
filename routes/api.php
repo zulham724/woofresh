@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+Route::get('client','ClientController@index')->name('client.secret');
+
 Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 
 	Route::apiResources([
