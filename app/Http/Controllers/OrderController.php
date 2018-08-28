@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\User;
 
-class UserController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +13,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::with('biodata')
-        ->with('transactions.orders')
-        ->with('recipes.ingredients.product')
-        ->get();
-        return response()->json($user);
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -30,11 +34,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
-        $user->role_id = 2;
-        $user->fill($request->all());
-        $user->save();
-        return response()->json($user);
+        //
     }
 
     /**
@@ -45,11 +45,18 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::with('biodata')
-        ->with('transactions.orders')
-        ->with('recipes.ingredients.product')
-        ->find($id);
-        return response()->json($user);
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -61,10 +68,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->fill($request->all());
-        $user->update();
-        return response()->json($user);
+        //
     }
 
     /**
@@ -75,7 +79,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
-        return response()->json($user);
+        //
     }
 }
