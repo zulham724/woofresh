@@ -20,21 +20,29 @@
 							<input type="text" class="form-control" name="id" placeholder="type something" required> 
 						</div> -->
 						<div class="form-group">
-							<label>Supplier ID</label>
-							<select class="form-control" name="supplier_id">
-								@foreach ($productss as $l => $category)
-								<option value="{{ $category->id }}">{{ $category->name }}</option>
+							<label>Supplier</label>
+							<select class="form-control select2" name="supplier_id">
+								@foreach ($suppliers as $s => $supplier)
+								<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
 								@endforeach
 							</select>
 						</div> 
 						<div class="form-group">
-							<label>Sub Category ID</label>
-							<select class="form-control" name="sub_category_id">
-								@foreach ($products as $l => $category)
-								<option value="{{ $category->id }}">{{ $category->name }}</option>
+							<label>Sub Category</label>
+							<select class="form-control select2" name="sub_category_id">
+								@foreach ($subcategories as $sc => $subcategory)
+								<option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
 								@endforeach
 							</select>
 						</div> 
+						<div class="form-group">
+							<label>Where do you want to sell ?</label>
+							<select class="form-control select2" name="city_id">
+								@foreach ($cities as $city)
+								<option value="{{ $city->id }}">{{ $city->name }}</option>
+								@endforeach
+							</select>
+						</div>
 						<div class="form-group">
 							<label>Quantity</label>
 							<input type="text" class="form-control" name="quantity" placeholder="type something" required> 
@@ -50,10 +58,6 @@
 						<div class="form-group">
 							<label>Weight</label>
 							<input type="text" class="form-control" name="weight" placeholder="type something" required> 
-						</div>  
-						<div class="form-group">
-							<label>Is Available?</label>
-							<input type="text" class="form-control" name="is_available" placeholder="type something" required> 
 						</div> 
 						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					{{ Form::close() }}

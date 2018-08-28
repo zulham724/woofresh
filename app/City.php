@@ -8,7 +8,7 @@ class City extends Model
 {
     protected $guarded = ["id"];
 
-    public function suppliers(){
-    	return $this->hasMany('App\Supplier');
+    public function products(){
+    	return $this->hasMany('App\Product');
     }
 }

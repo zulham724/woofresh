@@ -12,6 +12,10 @@ class Product extends Model
     	return $this->belongsTo('App\Supplier');
     }
 
+    public function city(){
+        return $this->belongsTo('App\City');
+    }
+
     public function sub_category(){
         return $this->belongsTo('App\SubCategory');
     }

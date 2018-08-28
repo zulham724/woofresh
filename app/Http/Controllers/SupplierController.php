@@ -27,8 +27,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        $data['cities'] = City::get();
-        return view('supplier.create',$data);
+        return view('supplier.create');
     }
 
     /**

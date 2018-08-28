@@ -45,7 +45,6 @@
 						@endforeach
     				</tbody>
     			</table>
-                <small>have a New City Data? <a href="{{ url('cities') }}">click here</a></small>
     		</div>
     	</div>
     </div>

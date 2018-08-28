@@ -17,6 +17,8 @@
     				<thead>
     					<tr>
     						<td>No</td>
+                            <td>Supplier</td>
+                            <td>City</td>
     						<td>Quantity</td>
     						<td>Price</td>
     						<td>Stock</td>
@@ -29,11 +31,13 @@
     					@foreach ($products as $l => $product)
     					<tr>
 							<td>{{ $l+1 }}</td>
+                            <td>{{ $product->supplier->name }}</td>
+                            <td>{{ $product->city->name }}</td>
 							<td>{{ $product->quantity }}</td>
 							<td>{{ $product->price }}</td>
 							<td>{{ $product->stock }}</td>
 							<td>{{ $product->weight }}</td>
-							<td>{{ $product->is_available }}</td>
+							<td>{{ $product->is_available == 0 ? 'Not available' : 'Available' }}</td>
 							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$product->id}})"><i class="fa fa-trash"></i> Delete</button></td>
 						</tr>
 						@endforeach

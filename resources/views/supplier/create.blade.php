@@ -14,19 +14,7 @@
 					<h5 class="pull-right"> Fill the Form</h5>
 				</div>
 					<div class="card-body"> 
-					{{ Form::open(['route'=>'suppliers.store','method'=>'post']) }}
-						<!-- <div class="form-group">
-							<label>Products ID</label>
-							<input type="text" class="form-control" name="id" placeholder="type something" required> 
-						</div> -->
-						<div class="form-group">
-							<label>City ID</label>
-							<select class="form-control" name="city_id">
-								@foreach ($cities as $l => $city)
-								<option value="{{ $city->id }}">{{ $city->name }}</option>
-								@endforeach
-							</select>
-						</div> 
+					{{ Form::open(['route'=>'suppliers.store','method'=>'post']) }} 
 						<div class="form-group">
 							<label>Name</label>
 							<input type="text" class="form-control" name="name" placeholder="type something" required> 

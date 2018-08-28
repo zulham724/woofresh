@@ -96,6 +96,7 @@
                     <li><a href="{{ url('products') }}">All Products</a></li>
                     <li><a href="{{ url('subcategories') }}">Categories</a></li>
                     <li><a href="{{ url('suppliers') }}">Suppliers</a></li>
+                    <li><a href="{{ url('cities') }}">Cities</a></li>
                   </ul>
                 </li>
                 <li><a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Report </a>

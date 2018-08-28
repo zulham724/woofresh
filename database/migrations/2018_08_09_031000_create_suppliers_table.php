@@ -16,7 +16,6 @@ class CreateSuppliersTable extends Migration
         Schema::create('suppliers', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->integer('city_id')->unsigned();
             $table->string('name');
             $table->string('description');
             $table->string('contact_first_name');
@@ -27,7 +26,6 @@ class CreateSuppliersTable extends Migration
             $table->string('phone_number');
             $table->timestamps();
 
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

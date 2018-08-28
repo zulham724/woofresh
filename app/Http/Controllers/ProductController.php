@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product; 
 use App\SubCategory; 
 use App\Supplier; 
+use App\City;
 
 class ProductController extends Controller
 {
@@ -16,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data["products"] = Product::get();
+        $data["products"] = Product::
+        with('supplier')
+        ->with('city')
+        ->get();
         return view('product.index',$data);
     }
 
@@ -27,9 +31,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data['products'] = SubCategory::get();
-        $dati['productss'] = Supplier::get();
-        return view('product.create',$data,$dati);
+        $data["cities"] = City::get();
+        $data['subcategories'] = SubCategory::get();
+        $data['suppliers'] = Supplier::get();
+        return view('product.create',$data);
     }
 
     /**
