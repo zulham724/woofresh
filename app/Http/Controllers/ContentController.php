@@ -18,7 +18,6 @@ class ContentController extends Controller
     public function index()
     {
         $data["contents"] = Content::with('content_translations.language')->get();
-        // dd($data);
         return view('content.index',$data);
     }
 
