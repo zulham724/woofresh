@@ -99,13 +99,12 @@
                     <li><a href="{{ url('cities') }}">Cities</a></li>
                   </ul>
                 </li>
-                <li><a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Report </a>
+                {{-- <li><a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Report </a>
                   <ul id="report" class="collapse list-unstyled ">
                     <li><a href="{{ url('transactions') }}"> <i class="icon-padnote"></i>Transactions </a></li>
                   </ul>
-                </li>
+                </li> --}}
                 <li {{ Request::is('users') ? 'class=active' : '' }}><a href="{{ url('users') }}"> <i class="fa fa-bar-chart"></i> Users</a></li>
-                <li {{ Request::is('recipes') ? 'class=active' : '' }}><a href="{{ url('recipes') }}"> <i class="icon-padnote"></i>Recipes </a></li>
                 
         </ul><span class="heading">Settings</span>
         <ul class="list-unstyled">
