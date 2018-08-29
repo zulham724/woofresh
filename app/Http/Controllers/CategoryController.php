@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Group;
+use App\CategoryTranslation;
+use App\Language;
 
 class CategoryController extends Controller
 {
@@ -16,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         
-        $data["categories"] = Category::get();
+        $data["categories"] = Category::with('category_translations.language')->get();
         return view('category.index',$data);
     }
 
@@ -27,6 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $data['languages'] = Language::get();
         $data['categories'] = Group::get();
         return view('category.create',$data);
     }
@@ -40,8 +43,16 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $category = new Category;
-        $category->fill($request->all());
+        $category->fill($request->except('languages'));
         $category->save();
+
+        foreach ($request['languages'] as $l => $language) {
+            $translation = new CategoryTranslation;
+            $translation->category_id = $category->id;
+            $translation->language_id = $language['language_id'];
+            $translation->name = $language['name'];
+            $translation->save();
+        }
         return redirect('categories');
     }
 
@@ -87,6 +98,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id)->delete();
+        return response()->json($category);
     }
 }

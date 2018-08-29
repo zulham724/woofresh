@@ -19,16 +19,22 @@
     						<td>No</td>
     						<td>Group Id</td>
     						<td>Name</td>
+                            <td>Available Language</td>
     						<td>Action</td>
     					</tr>
     				</thead>
     				<tbody>
-    					@foreach ($subcategories as $l => $category)
+    					@foreach ($subcategories as $sc => $subcategory)
     					<tr>
-							<td>{{ $l+1 }}</td>
-							<td>{{ $category->category_id }}</td>
-							<td>{{ $category->name }}</td>
-							<td><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button></td>
+							<td>{{ $sc+1 }}</td>
+							<td>{{ $subcategory->category->name }}</td>
+							<td>{{ $subcategory->name }}</td>
+                            <td>
+                                @foreach ($subcategory['sub_category_translations'] as $sub_category_translation)
+                                    <img src="{{ asset('storage/'.$sub_category_translation->language->image) }}" class="img-responsive" width="30">
+                                @endforeach                                
+                            </td>
+							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$subcategory->id}})"><i class="fa fa-trash"></i> Delete</button></td>
 						</tr>
 						@endforeach
     				</tbody>
@@ -38,4 +44,43 @@
     	</div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+    const destroy = (id)=>{
+        swal({
+            type:"warning",
+            title:"Are you sure?",
+            text:"You won't be able to revert this!",
+            showCancelButton:true,
+            cancelButtonColor:"#d33",
+            confirmButtonText:"Yes, delete it!",
+            confirmButtonColor:"#3085d6"
+        }).then(result=>{
+            if(result.value){
+                let access = {
+                    id:id,
+                    _method:"delete",
+                    _token:"{{ csrf_token() }}"
+                }
+
+                $.post("{{ url('subcategories') }}/"+id,access)
+                .done(res=>{
+                    swal({
+                        title:"Okay!",
+                        text:"You deleted data",
+                        type:"success"
+                    }).then(result=>{
+                        window.location = "{{ url('subcategories') }}";
+                    });
+                })
+                .fail(err=>{
+                    // console.log(err);
+                    swal("Oops","Something not right","error");
+                });
+            }
+        });
+    }
+</script>
 @endsection

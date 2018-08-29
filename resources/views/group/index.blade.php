@@ -18,15 +18,23 @@
     					<tr>
     						<td>No</td>
     						<td>Name</td>
+                            <td>Available Language</td>
     						<td>Action</td>
     					</tr>
     				</thead>
     				<tbody>
-    					@foreach ($groups as $l => $group)
+    					@foreach ($groups as $g => $group)
     					<tr>
-							<td>{{ $l+1 }}</td>
+							<td>{{ $g+1 }}</td>
 							<td>{{ $group->name }}</td>
-							<td><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button></td>
+                            <td>
+                                @foreach ($group['group_translations'] as $group_translation)
+                                    <img src="{{ asset('storage/'.$group_translation->language->image) }}" class="img-responsive" width="30">
+                                @endforeach
+                            </td>
+							<td>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$group->id}})"><i class="fa fa-trash"></i> Delete</button>
+                            </td>
 						</tr>
 						@endforeach
     				</tbody>
@@ -35,4 +43,44 @@
     	</div>
     </div>
 </div>
+@endsection
+
+
+@section('script')
+<script type="text/javascript">
+    const destroy = (id)=>{
+        swal({
+            type:"warning",
+            title:"Are you sure?",
+            text:"You won't be able to revert this!",
+            showCancelButton:true,
+            cancelButtonColor:"#d33",
+            confirmButtonText:"Yes, delete it!",
+            confirmButtonColor:"#3085d6"
+        }).then(result=>{
+            if(result.value){
+                let access = {
+                    id:id,
+                    _method:"delete",
+                    _token:"{{ csrf_token() }}"
+                }
+
+                $.post("{{ url('groups') }}/"+id,access)
+                .done(res=>{
+                    swal({
+                        title:"Okay!",
+                        text:"You deleted data",
+                        type:"success"
+                    }).then(result=>{
+                        window.location = "{{ url('groups') }}";
+                    });
+                })
+                .fail(err=>{
+                    // console.log(err);
+                    swal("Oops","Something not right","error");
+                });
+            }
+        });
+    }
+</script>
 @endsection
