@@ -30,7 +30,10 @@
                             <td>{{ $user->role->name }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-							<td><button type="button" class="btn btn-danger" onclick="destroy({{$user->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+							<td>
+                                <button type="button" class="btn btn-danger" onclick="destroy({{$user->id}})"><i class="fa fa-trash"></i> Delete</button>
+                                <a href="{{ route('users.recipes.index',$user->id) }}" type="button" class="btn btn-info"><i class="fa fa-folder"></i> Show Recipes</a>
+                            </td>
 						</tr>
 						@endforeach
     				</tbody>

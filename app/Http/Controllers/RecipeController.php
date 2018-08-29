@@ -13,9 +13,9 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $data["recipes"] = Recipe::with('user')->get();
+        $data["user"] = User::with('recipes')->find($id);
         return view('recipe.index',$data);
     }
 
