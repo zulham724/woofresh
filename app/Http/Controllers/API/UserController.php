@@ -30,14 +30,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
-        $user->role_id = 2;
-        $user->fill($request->all());
-        if($user->save()){
-            return response()->json($user);
-        } else {
+        $exist = User::where('email',$request["email"])->first();
+        if($exist){
             return response()->json(['error'=>'duplicate email'],500);
+        } else {
+            $user = new User;
+            $user->role_id = 2;
+            $user->fill($request->all());
+            $user->save();
+            return response()->json($user);
         }
+
     }
 
     /**
