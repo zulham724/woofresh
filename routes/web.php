@@ -24,10 +24,10 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::resources([
 		'/languages'=>'LanguageController',
 		'/users'=>'UserController',
-		'/biodatas'=>'BiodataController',
-		'/products'=>'ProductController',
 		'/users.recipes'=>'RecipeController',
 		'/users.transactions'=>'TransactionController',
+		'/biodatas'=>'BiodataController',
+		'/products'=>'ProductController',
 		'/orders'=>'OrderController',
 		'/suppliers'=>'SupplierController',
 		'/roles'=>'RoleController',

@@ -9,7 +9,7 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-flag"></i> Transaction List
+            <i class="fa fa-flag"></i> {{ $user['transactions'][0]->user->name }} Transaction List
             <a href="{{ route('users.transactions.create',$user->id) }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
         </div>
         <div class="card-body">
@@ -18,10 +18,8 @@
                     <thead>
                         <tr>
                             <td>No</td>
-                            <td>User</td>
                             <td>Transaction number</td>
                             <td>Payment type</td>
-                            <td>Status</td>
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -29,10 +27,8 @@
                         @foreach ($user['transactions'] as $t => $transaction)
                             <tr>
                                 <td>{{ $t+1 }}</td>
-                                <td>{{ $transaction->user->name }}</td>
-                                <td>{{ $transaction->trasaction_number }}</td>
+                                <td>{{ $transaction->transaction_number }}</td>
                                 <td>{{ $transaction->payment_type }}</td>
-                                <td>{{ $transaction->status }}</td>
                                 <td>
                                     <button type="button" class="btn btn-danger" onclick="destroy({{ $transaction->id }})"><i class="fa fa-trash"></i> Delete</button>
                                 </td>
@@ -69,7 +65,7 @@
                     _method:'delete',
                     _token:"{{csrf_token()}}"
                 }
-                $.post("{{ url('transactions') }}/"+id,access)
+                $.post("transactions/"+id,access)
                 .done(res=>{
                     console.log(res);
                     swal({
@@ -77,7 +73,7 @@
                         text:"You deleted transaction",
                         type:"success",
                     }).then(result=>{
-                        window.location = "{{ url('transactions') }}";
+                        window.location.reload();
                     })
                 }).fail(err=>{
                     console.log(err);
