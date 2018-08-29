@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Supplier;
+use App\City;
 
 class SupplierController extends Controller
 {
@@ -15,7 +16,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $supplier = Supplier::get();
+        return response()->json($supplier);
     }
 
     /**
@@ -26,7 +28,10 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $supplier = new Supplier;
+        $supplier->fill($request->all());
+        $supplier->save();
+        return response()->json($supplier);
     }
 
     /**
@@ -60,6 +65,8 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $supplier = Supplier::find($id)->delete();
+        return response()->json($supplier);
+
     }
 }

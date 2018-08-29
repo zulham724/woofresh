@@ -15,7 +15,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        $cities = City::get();
+        return response()->json($cities);
     }
 
     /**
@@ -26,7 +27,10 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $city = new City;
+        $city->fill($request->all());
+        $city->save();
+        return response()->json($city);
     }
 
     /**
@@ -37,7 +41,8 @@ class CityController extends Controller
      */
     public function show($id)
     {
-        //
+        $city = City::find($id);
+        return response()->json($city);
     }
 
     /**
@@ -60,6 +65,7 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $city = City::find($id)->delete();
+        return response()->json($city);
     }
 }

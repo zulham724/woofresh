@@ -11,4 +11,8 @@ class City extends Model
     public function products(){
     	return $this->hasMany('App\Product');
     }
+
+    public function state(){
+    	return $this->belongsTo('App\State');
+    }
 }

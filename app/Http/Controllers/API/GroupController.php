@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Group;
+use App\GroupTranslation;
+use App\Language;
 
 class GroupController extends Controller
 {
@@ -15,7 +17,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $groups = Group::with('group_translations.language')->get();
+        return response()->json($groups);
     }
 
     /**
@@ -26,7 +29,18 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $group = new Group;
+        $group->fill($request->except('languages'));
+        $group->save();
+
+        foreach ($request['languages'] as $l => $language) {
+            $translation = new GroupTranslation;
+            $translation->group_id = $group->id;
+            $translation->language_id = $language['language_id'];
+            $translation->name = $language['name'];
+            $translation->save();
+        }
+        return response()->json($group);
     }
 
     /**
@@ -60,6 +74,7 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $group = Group::find($id)->delete();
+        return response()->json($group);
     }
 }

@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('price')->default(0);
             $table->integer('stock')->default(0);
             $table->integer('weight')->default(0);
+            $table->integer('discount')->default(0);
             $table->integer('is_available')->default(1);
             $table->timestamps();
 

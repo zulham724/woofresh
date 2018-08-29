@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Category;
-use App\Group;
-use App\CategoryTranslation;
-use App\Language;
+use App\State;
 
-class CategoryController extends Controller
+class StateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +14,18 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('category_translations.language')->get();
-        return response()->json($categories);
+        $data["states"] = State::get();
+        return view('state.index',$data);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('state.create');
     }
 
     /**
@@ -30,19 +36,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category;
-        $category->fill($request->except('languages'));
-        $category->save();
-
-        foreach ($request['languages'] as $l => $language) {
-            $translation = new CategoryTranslation;
-            $translation->category_id = $category->id;
-            $translation->language_id = $language['language_id'];
-            $translation->name = $language['name'];
-            $translation->save();
-             }
-
-        return response()->json($category);
+        $state = new State;
+        $state->fill($request->all());
+        $state->save();
+        return redirect('states');
     }
 
     /**
@@ -52,6 +49,17 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         //
     }
@@ -76,7 +84,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id)->delete();
-        return response()->json($category);
+        $state = State::find($id)->delete();
+        return response()->json($state);
     }
 }

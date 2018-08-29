@@ -2,14 +2,15 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Cities</h2>
+    <h2 class="h5 no-margin-bottom">States</h2>
   </div>
 </div>
 <div class="container-fluid">
     <div class="card">
     	<div class="card-header">
-    		<i class="fa fa-flag"></i> Cities List
-    		<a href="{{ route('cities.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+    		<i class="fa fa-flag"></i> States List
+    		<a href="{{ route('states.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <a href="{{ url('cities') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"> </i> Back</a>
     	</div>
     	<div class="card-body">
     		<div class="table-responsive">
@@ -17,25 +18,22 @@
     				<thead>
     					<tr>
     						<td>No</td>
-                            <td>State</td>
-    						<td>City</td>
+    						<td>Name</td>
     						<td>Description</td>
     						<td>Action</td>
     					</tr>
     				</thead>
     				<tbody>
-    					@foreach ($cities as $c => $city)
+    					@foreach ($states as $st => $state)
     					<tr>
-							<td>{{ $c+1 }}</td>
-                            <td>{{ $city->state->name }}</td>
-							<td>{{ $city->name }}</td>
-							<td>{{ $city->description }}</td>
-							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$city->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+							<td>{{ $st+1 }}</td>
+							<td>{{ $state->name }}</td>
+							<td>{{ $state->description }}</td>
+							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$state->id}})"><i class="fa fa-trash"></i> Delete</button></td>
 						</tr>
 						@endforeach
     				</tbody>
     			</table>
-                 <small>Have a New Data State ? <a href="{{ url('states') }}">click here</a></small>
     		</div>
     	</div>
     </div>
@@ -61,14 +59,14 @@
                     _token:"{{ csrf_token() }}"
                 }
 
-                $.post("{{ url('cities') }}/"+id,access)
+                $.post("{{ url('states') }}/"+id,access)
                 .done(res=>{
                     swal({
                         title:"Okay!",
                         text:"You deleted product",
                         type:"success"
                     }).then(result=>{
-                        window.location = "{{ url('cities') }}";
+                        window.location = "{{ url('states') }}";
                     });
                 })
                 .fail(err=>{

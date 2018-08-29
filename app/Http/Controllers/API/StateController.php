@@ -4,12 +4,8 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Category;
-use App\Group;
-use App\CategoryTranslation;
-use App\Language;
 
-class CategoryController extends Controller
+class StateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('category_translations.language')->get();
-        return response()->json($categories);
+        //
     }
 
     /**
@@ -30,19 +25,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category;
-        $category->fill($request->except('languages'));
-        $category->save();
-
-        foreach ($request['languages'] as $l => $language) {
-            $translation = new CategoryTranslation;
-            $translation->category_id = $category->id;
-            $translation->language_id = $language['language_id'];
-            $translation->name = $language['name'];
-            $translation->save();
-             }
-
-        return response()->json($category);
+        //
     }
 
     /**
@@ -76,7 +59,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id)->delete();
-        return response()->json($category);
+        //
     }
 }

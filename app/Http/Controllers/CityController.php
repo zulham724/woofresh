@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\City;
+use App\State;
 
 class CityController extends Controller
 {
@@ -15,7 +16,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $data["cities"] = City::get();
+        $data["cities"] = City::with('state')->get();
         return view('city.index',$data);
     }
 
@@ -26,7 +27,8 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('city.create');
+        $data["states"] = State::get();
+        return view('city.create',$data);
     }
 
     /**
@@ -85,6 +87,7 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $city = City::find($id)->delete();
+        return response()->json($city);
     }
 }

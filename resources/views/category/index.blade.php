@@ -10,6 +10,7 @@
         <div class="card-header">
             <i class="fa fa-flag"></i>Categories List
             <a href="{{ route('categories.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <a href="{{ url('subcategories') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"> </i> Back</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
