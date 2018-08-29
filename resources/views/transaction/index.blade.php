@@ -10,6 +10,7 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-flag"></i> Transaction List
+            <a href="{{ route('users.transactions.create',$user->id) }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -25,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($transactions as $t => $transaction)
+                        @foreach ($user['transactions'] as $t => $transaction)
                             <tr>
                                 <td>{{ $t+1 }}</td>
                                 <td>{{ $transaction->user->name }}</td>

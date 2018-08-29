@@ -11,6 +11,7 @@
         <div class="card-header">
             <i class="fa fa-flag"></i> Recipe List
             <a href="{{ route('users.recipes.create',$user->id) }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <a href="{{ route('users.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back to User</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -87,7 +88,7 @@
                     _method:'delete',
                     _token:"{{csrf_token()}}"
                 }
-                $.post("{{ url('recipes') }}/"+id,access)
+                $.post("recipes/"+id,access)
                 .done(res=>{
                     console.log(res);
                     swal({
@@ -95,7 +96,7 @@
                         text:"You deleted language",
                         type:"success",
                     }).then(result=>{
-                        window.location = "{{ url('recipes') }}";
+                        window.location.reload();
                     })
                 }).fail(err=>{
                     console.log(err);
