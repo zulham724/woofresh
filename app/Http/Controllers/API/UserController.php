@@ -33,8 +33,11 @@ class UserController extends Controller
         $user = new User;
         $user->role_id = 2;
         $user->fill($request->all());
-        $user->save();
-        return response()->json($user);
+        if($user->save()){
+            return response()->json($user);
+        } else {
+            return response()->json(['error'=>'duplicate email'],500);
+        }
     }
 
     /**
