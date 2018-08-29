@@ -19,7 +19,6 @@ class CreateGroupTranslationsTable extends Migration
             $table->integer('language_id')->unsigned();
             $table->integer('group_id')->unsigned();
             $table->string('name');
-            $table->string('description');
             $table->timestamps();
 
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade')->onUpdate('cascade');

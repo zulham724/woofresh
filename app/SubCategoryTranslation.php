@@ -11,4 +11,8 @@ class SubCategoryTranslation extends Model
     public function sub_category(){
     	return $this->belongsTo('App\SubCategory');
     }
+
+    public function language(){
+    	return $this->belongsTo('App\Language');
+    }
 }

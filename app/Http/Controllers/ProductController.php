@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Product; 
 use App\SubCategory; 
 use App\Supplier; 
 use App\City;
+use App\Language;
+use App\ProductTranslation;
 
 class ProductController extends Controller
 {
@@ -19,7 +22,7 @@ class ProductController extends Controller
     {
         $data["products"] = Product::
         with('supplier')
-        ->with('city')
+        ->with('product_translations.language')
         ->get();
         return view('product.index',$data);
     }
@@ -31,6 +34,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $data["languages"] = Language::get();
         $data["cities"] = City::get();
         $data['subcategories'] = SubCategory::get();
         $data['suppliers'] = Supplier::get();
@@ -45,9 +49,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->request);
         $product = new Product;
-        $product->fill($request->all());
+        $product->fill($request->except('languages'));
         $product->save();
+
+        foreach ($request['languages'] as $l => $language) {
+            $translation = new ProductTranslation;
+            $translation->product_id = $product->id;
+            $translation->language_id = $language['language_id'];
+            $translation->name = $language['name'];
+            $translation->description = $language['description'];
+            $translation->save();
+        }
+
         return redirect('products');
     }
 

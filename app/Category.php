@@ -16,7 +16,7 @@ class Category extends Model
     	return $this->hasMany('App\SubCategory');
     }
 
-    public function category_translation(){
+    public function category_translations(){
     	return $this->hasMany('App\CategoryTranslation');
     }
 }

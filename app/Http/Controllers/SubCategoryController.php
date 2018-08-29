@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SubCategory;
 use App\Category;
+use App\SubCategoryTranslation;
+use App\Language;
 class SubCategoryController extends Controller
 {
        /**
@@ -15,7 +17,7 @@ class SubCategoryController extends Controller
     public function index()
     {
         
-        $data["subcategories"] = SubCategory::get();
+        $data["subcategories"] = SubCategory::with('sub_category_translations.language')->get();
         return view('subcategory.index',$data);
     }
 
@@ -26,6 +28,7 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
+        $data["languages"] = Language::get();
         $data['subcategories'] = Category::get();
         return view('subcategory.create',$data);
     }
@@ -39,8 +42,16 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
         $subcategory = new SubCategory;
-        $subcategory->fill($request->all());
+        $subcategory->fill($request->except('languages'));
         $subcategory->save();
+
+        foreach ($request['languages'] as $l => $language) {
+            $translation = new SubCategoryTranslation;
+            $translation->sub_category_id = $subcategory->id;
+            $translation->language_id = $language['language_id'];
+            $translation->name = $language['name'];
+            $translation->save();
+        }
         return redirect('subcategories');
     }
 
@@ -86,6 +97,7 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subcategory = SubCategory::find($id)->delete();
+        return response()->json($subcategory);
     }
 }

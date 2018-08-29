@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Group;
+use App\GroupTranslation;
+use App\Language;
 
 class GroupController extends Controller
 {
@@ -14,7 +17,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $data["groups"] = Group::get();
+        // dd('ey');
+        $data["groups"] = Group::with('group_translations.language')->get();
         return view('group.index',$data);
     }
 
@@ -25,7 +29,8 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('group.create');
+        $data["languages"] = Language::get();
+        return view('group.create',$data);
     }
 
     /**
@@ -37,9 +42,17 @@ class GroupController extends Controller
     public function store(Request $request)
     {
         $group = new Group;
-        $group->fill($request->all());
+        $group->fill($request->except('languages'));
         $group->save();
-        return redirect('groups');
+
+        foreach ($request['languages'] as $l => $language) {
+            $translation = new GroupTranslation;
+            $translation->group_id = $group->id;
+            $translation->language_id = $language['language_id'];
+            $translation->name = $language['name'];
+            $translation->save();
+        }
+        return redirect()->route('groups.index');
     }
 
     /**
@@ -84,6 +97,7 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $group = Group::find($id)->delete();
+        return response()->json($group);
     }
 }
