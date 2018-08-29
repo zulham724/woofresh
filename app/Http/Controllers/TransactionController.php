@@ -16,7 +16,7 @@ class TransactionController extends Controller
     public function index($id)
     {
        $data["user"] = User::with('transactions')->find($id);
-        return view('transactions.index',$data);
+        return view('transaction.index',$data);
     }
 
     /**
@@ -24,10 +24,12 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-       $data['transactions'] = Transaction::get();
-        return view('transactions.create',$data);
+        $data["transactions"] = Transaction::get();
+        $data["users"] = User::get();
+        $data['id'] = $id;
+        return view('transaction.create',$data);
     }
 
     /**
@@ -42,7 +44,7 @@ class TransactionController extends Controller
         $transaction->fill($request->all());
         $transaction->save();
 
-        return redirect('transactions');
+        return redirect()->route('users.transactions.index',$transaction->user_id);
     }
 
     /**
@@ -85,8 +87,9 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id,$id)
     {
-        //
+        $transaction = Transaction::find($id)->delete();
+        return response()->json($transaction);
     }
 }
