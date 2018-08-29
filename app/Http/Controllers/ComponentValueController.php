@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Language;
 
-class LanguageController extends Controller
+class ComponentValueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,17 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        $language = Language::get();
-        return response()->json($language);
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -27,11 +34,7 @@ class LanguageController extends Controller
      */
     public function store(Request $request)
     {
-        $language = new Language;
-        $language->fill($request->all());
-        $language->save();
-
-        return response()->json($language);
+        //
     }
 
     /**
@@ -42,8 +45,18 @@ class LanguageController extends Controller
      */
     public function show($id)
     {
-        $language = Language::find($id);
-        return response()->json($language);
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -55,11 +68,7 @@ class LanguageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $language = Language::find($id);
-        $language->fill($request->all());
-        $language->update();
-
-        return response()->json($language);
+        //
     }
 
     /**
@@ -70,7 +79,6 @@ class LanguageController extends Controller
      */
     public function destroy($id)
     {
-        $language = Language::find($id)->delete();
-        return response()->json($language);
+        //
     }
 }

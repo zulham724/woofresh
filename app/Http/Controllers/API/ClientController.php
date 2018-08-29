@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Language;
+use Illuminate\Support\Facades\DB;
 
-class LanguageController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        $language = Language::get();
-        return response()->json($language);
+        $client = DB::table('oauth_clients')->find(2);
+        return response()->json($client);
     }
 
     /**
@@ -27,11 +27,7 @@ class LanguageController extends Controller
      */
     public function store(Request $request)
     {
-        $language = new Language;
-        $language->fill($request->all());
-        $language->save();
-
-        return response()->json($language);
+        //
     }
 
     /**
@@ -42,8 +38,7 @@ class LanguageController extends Controller
      */
     public function show($id)
     {
-        $language = Language::find($id);
-        return response()->json($language);
+        //
     }
 
     /**
@@ -55,11 +50,7 @@ class LanguageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $language = Language::find($id);
-        $language->fill($request->all());
-        $language->update();
-
-        return response()->json($language);
+        //
     }
 
     /**
@@ -70,7 +61,6 @@ class LanguageController extends Controller
      */
     public function destroy($id)
     {
-        $language = Language::find($id)->delete();
-        return response()->json($language);
+        //
     }
 }

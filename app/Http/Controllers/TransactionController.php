@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transaction;
+use App\User;
 
 class TransactionController extends Controller
 {
@@ -12,10 +13,10 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $data["transactions"] = Transaction::get();
-        return view('transaction.index',$data);
+       $data["user"] = User::with('transactions')->find($id);
+        return view('transactions.index',$data);
     }
 
     /**
@@ -25,7 +26,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+       $data['transactions'] = Transaction::get();
+        return view('transactions.create',$data);
     }
 
     /**
@@ -36,7 +38,11 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $transaction = new Transaction;
+        $transaction->fill($request->all());
+        $transaction->save();
+
+        return redirect('transactions');
     }
 
     /**

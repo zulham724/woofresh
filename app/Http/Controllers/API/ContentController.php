@@ -28,7 +28,24 @@ class ContentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $content = new Content;
+        $content->name = $request["name"];
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('content');
+            $content->image = $path;    
+        }
+        $content->save();
+
+        foreach ($request['languages'] as $l => $language) {
+            $translation = new ContentTranslation;
+            $translation->content_id = $content->id;
+            $translation->language_id = $language['language_id'];
+            $translation->name = $language['name'];
+            $translation->description = $language['description'];
+            $translation->save();
+        }
+
+        return response()->json($content);
     }
 
     /**
@@ -39,7 +56,8 @@ class ContentController extends Controller
      */
     public function show($id)
     {
-        //
+        $content = Content::with('content_translations.language')->find($id);
+        return response()->json($content);
     }
 
     /**
@@ -51,7 +69,24 @@ class ContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $content = Content::find($id);
+        $content->name = $request["name"];
+        if($request->hasFile('image')){
+            $file = Storage::delete($content->image);
+            $path = $request->file('image')->store('content');
+            $content->image = $path;
+        }
+        $content->update();
+        foreach ($request['languages'] as $l => $language) {
+            $translation = ContentTranslation::updateOrCreate([
+                "content_id"=>$content->id,
+                "language_id"=>$language['language_id'],
+                'name'=>$language['name'],
+                'description'=>$language['description']
+            ]);
+        }
+
+        return response()->json($content);
     }
 
     /**
@@ -62,6 +97,9 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $content = Content::find($id);
+        $file = Storage::delete($content->image);
+        $content->delete();
+        return response()->json($content);
     }
 }

@@ -13,9 +13,9 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $data["recipes"] = Recipe::with('user')->get();
+        $data["user"] = User::with('recipes')->find($id);
         return view('recipe.index',$data);
     }
 
@@ -24,9 +24,11 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
+        // dd($id);
         $data["users"] = User::get();
+        $data['id'] = $id;
         return view('recipe.create',$data);
     }
 
@@ -42,7 +44,7 @@ class RecipeController extends Controller
         $recipe->fill($request->all());
         $recipe->save();
 
-        return redirect('recipes');
+        return redirect()->route('users.recipes.index',$recipe->user_id);
     }
 
     /**
@@ -85,7 +87,7 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id,$id)
     {
         $recipe = Recipe::find($id)->delete();
         return response()->json($recipe);

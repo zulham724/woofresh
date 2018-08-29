@@ -10,7 +10,8 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-flag"></i> Recipe List
-            <a href="{{ route('recipes.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <a href="{{ route('users.recipes.create',$user->id) }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <a href="{{ route('users.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back to User</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -28,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                       @foreach ($recipes as $r => $recipe)
+                       @foreach ($user['recipes'] as $r => $recipe)
                            <tr>
                                <td>{{ $r+1 }}</td>
                                <td>{{ $recipe->user->name }}</td>
@@ -46,7 +47,6 @@
                                <td>{{ $recipe->preparation_time }} Minutes</td>
                                <td>{{ $recipe->portion_per_serve }} pcs</td>
                                <td>
-                                   {{-- <a type="button" class="btn btn-info" href="{{ route('recipes.edit',$recipe->id) }}"><i class="fa fa-gear"></i> Edit</a>  --}}
                                    <button type="button" class="btn btn-danger" onclick="destroy({{$recipe->id}})"><i class="fa fa-trash"></i> Delete</button>
                                </td>
                            </tr>
@@ -63,7 +63,7 @@
 @section('script')
 <script type="text/javascript">
     $(()=>{
-        $.each({!! $recipes !!},(key,val)=>{
+        $.each({!! $user->recipes !!},(key,val)=>{
           $("#recipe_rating"+val.id).barrating({
             theme: 'fontawesome-stars-o',
             initialRating:2,
@@ -88,7 +88,7 @@
                     _method:'delete',
                     _token:"{{csrf_token()}}"
                 }
-                $.post("{{ url('recipes') }}/"+id,access)
+                $.post("recipes/"+id,access)
                 .done(res=>{
                     console.log(res);
                     swal({
@@ -96,7 +96,7 @@
                         text:"You deleted language",
                         type:"success",
                     }).then(result=>{
-                        window.location = "{{ url('recipes') }}";
+                        window.location.reload();
                     })
                 }).fail(err=>{
                     console.log(err);
