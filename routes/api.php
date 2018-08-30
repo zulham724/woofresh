@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 
 Route::get('/client','API\ClientController@index');
 Route::post('/register','API\UserController@store');
+Route::post('/forgot/password', 'API\Auth\ForgotPasswordController')->name('forgot.password');
 
 Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 
