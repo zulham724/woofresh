@@ -15,7 +15,8 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        $recipe = Recipe::get();
+        return response()->json($recipe);
     }
 
     /**
@@ -60,6 +61,7 @@ class RecipeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $recipe = Recipe::find($id)->delete();
+        return response()->json($recipe);
     }
 }
