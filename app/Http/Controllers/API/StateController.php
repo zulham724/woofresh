@@ -14,7 +14,8 @@ class StateController extends Controller
      */
     public function index()
     {
-        //
+        $states = State::get();
+        return response()->json($states)
     }
 
     /**
@@ -25,7 +26,10 @@ class StateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $state = new State;
+        $state->fill($request->all());
+        $state->save();
+        return response()->json($states)
     }
 
     /**
@@ -59,6 +63,7 @@ class StateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $state = State::find($id)->delete();
+        return response()->json($state);
     }
 }
