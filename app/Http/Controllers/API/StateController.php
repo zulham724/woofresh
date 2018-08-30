@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\State;
 
 class StateController extends Controller
 {
@@ -14,7 +15,8 @@ class StateController extends Controller
      */
     public function index()
     {
-        //
+        $state = State::get();
+        return response()->json($state);
     }
 
     /**
@@ -59,6 +61,7 @@ class StateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $state = State::find($id)->delete();
+        return response()->json($state);
     }
 }
