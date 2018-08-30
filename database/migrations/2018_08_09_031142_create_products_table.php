@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
             $table->integer('sub_category_id')->unsigned();
+            $table->integer('voucher_id')->nullable()->unsigned();
             $table->string('name');
             $table->string('description');
             $table->integer('quantity')->default(0);
@@ -32,6 +33,7 @@ class CreateProductsTable extends Migration
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('voucher_id')->references('id')->on('vouchers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
