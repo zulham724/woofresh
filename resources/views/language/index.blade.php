@@ -28,7 +28,7 @@
                            <tr>
                                <td>{{ $l+1 }}</td>
                                <td>{{ $language->name }}</td>
-                               <td><img src="{{ url('storage/'.$language->image) }}" class="img-responsive" width="30"></td>
+                               <td><img src="{{ asset('storage/'.$language->image) }}" class="img-responsive" width="30"></td>
                                <td>
                                    <a type="button" class="btn btn-info" href="{{ route('languages.edit',$language->id) }}"><i class="fa fa-gear"></i> Edit</a>
                                    <button type="button" class="btn btn-danger" onclick="destroy({{$language->id}})"><i class="fa fa-trash"></i> Delete</button>
