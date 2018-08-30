@@ -20,11 +20,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data["products"] = Product::
+        $products = Product::
         with('supplier')
         ->with('product_translations.language')
         ->get();
-        return view('product.index',$data);
+        return response()->json($products);
     }
 
     /**
