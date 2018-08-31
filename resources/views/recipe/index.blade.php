@@ -12,8 +12,8 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-flag"></i> Recipe List
-            <a href="{{ route('users.recipes.create',$user->id) }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
-            <a href="{{ route('users.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back</a>
+            <a href="{{ route('recipes.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <a href="{{ route('recipes.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                       @foreach ($user['recipes'] as $r => $recipe)
+                       @foreach ($recipes as $r => $recipe)
                            <tr>
                                <td>{{ $r+1 }}</td>
                                <td>{{ $recipe->user->name }}</td>
@@ -67,7 +67,7 @@
 @section('script')
 <script type="text/javascript">
     $(()=>{
-        $.each({!! $user->recipes !!},(key,val)=>{
+        $.each({!! $recipes !!},(key,val)=>{
           $("#recipe_rating"+val.id).barrating({
             theme: 'fontawesome-stars-o',
             initialRating:2,

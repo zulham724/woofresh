@@ -13,11 +13,11 @@
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ route('users.recipes.index',$id) }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
+					<a href="{{ route('recipes.index') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
 					<h5 class="pull-right"> Fill the Form</h5>
 				</div>
 				<div class="card-body"> 
-					{{ Form::open(['route'=>['users.recipes.store',$id],'method'=>'post','files'=>true]) }}
+					{{ Form::open(['route'=>['recipes.store'],'method'=>'post','files'=>true]) }}
 						<div class="form-group">
 							<label>User ID</label>
 							<select class="form-control select2" name="user_id" required>

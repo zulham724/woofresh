@@ -28,8 +28,8 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::resources([
 		'/languages'=>'LanguageController',
 		'/users'=>'UserController',
-		'/users.recipes'=>'RecipeController',
-		'/users.transactions'=>'TransactionController',
+		'/recipes'=>'RecipeController',
+		'/transactions'=>'TransactionController',
 		'/biodatas'=>'BiodataController',
 		'/products'=>'ProductController',
 		'/orders'=>'OrderController',

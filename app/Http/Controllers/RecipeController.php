@@ -13,9 +13,9 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $data["user"] = User::with('recipes')->find($id);
+        $data["recipes"] = Recipe::with('user')->get();
         return view('recipe.index',$data);
     }
 
@@ -24,11 +24,9 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        // dd($id);
         $data["users"] = User::get();
-        $data['id'] = $id;
         return view('recipe.create',$data);
     }
 
@@ -55,7 +53,8 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        //
+        $data["user"] = User::with('recipes')->find($id);
+        return view('recipe.show',$data);
     }
 
     /**

@@ -22,6 +22,8 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ asset('adminlte/css/custom.css') }}">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/themes/fontawesome-stars-o.min.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -73,7 +75,11 @@
           </div>
           <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
            <ul class="list-unstyled">
-            <li {{ Request::is('home') ? 'class=active' : '' }}><a href="{{ route('home') }}"> <i class="icon-home"></i>Dashboard </a></li>
+
+            <li {{ Request::is('home') ? 'class=active' : '' }}>
+              <a href="{{ route('home') }}"> <i class="icon-home"></i>Dashboard </a>
+            </li>
+
             <li  {{ Request::is('products') ? 'class=active' : '' }}><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Products </a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ url('products') }}">All Products</a></li>
@@ -82,12 +88,18 @@
                 <li><a href="{{ url('cities') }}">Cities</a></li>
               </ul>
             </li>
-            {{-- <li><a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Report </a>
-              <ul id="report" class="collapse list-unstyled ">
-                <li><a href="{{ url('transactions') }}"> <i class="icon-padnote"></i>Transactions </a></li>
-              </ul>
-            </li> --}}
-            <li {{ Request::is('users') ? 'class=active' : '' }}><a href="{{ url('users') }}"> <i class="fa fa-bar-chart"></i> Users</a></li>
+        
+            <li {{ Request::is('users') ? 'class=active' : '' }}>
+              <a href="{{ url('users') }}"> <i class="fa fa-bar-chart"></i> Users</a>
+            </li>
+
+            <li {{ Request::is('recipes') ? 'class=active' : '' }}>
+              <a href="{{ route('recipes.index') }}"> <i class="fa fa-bar-chart"></i> Recipes</a>
+            </li>
+
+            <li {{ Request::is('transactions') ? 'class=active' : '' }}>
+              <a href="{{ route('transactions.index') }}"> <i class="fa fa-bar-chart"></i> Transactions</a>
+            </li>
                 
         </ul><span class="heading">Settings</span>
         <ul class="list-unstyled">
