@@ -69,7 +69,7 @@
           <div class="sidebar-header d-flex align-items-center">
             <div class="avatar"><img src="{{ asset('storage/uploads/avatars/default.png') }}" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
-              <h1 class="h4">Mark Stephen</h1>
+              <h1 class="h4">Maryya Sari</h1>
               <p>Web Designer</p>
             </div>
           </div>
@@ -95,6 +95,10 @@
 
             <li {{ Request::is('recipes') ? 'class=active' : '' }}>
               <a href="{{ route('recipes.index') }}"> <i class="fa fa-bar-chart"></i> Recipes</a>
+            </li>
+
+            <li {{ Request::is('ingredients') ? 'class=active' : '' }}>
+              <a href="{{ route('ingredients.index') }}"> <i class="fa fa-bar-chart"></i> Ingredients</a>
             </li>
 
             <li {{ Request::is('transactions') ? 'class=active' : '' }}>

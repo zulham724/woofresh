@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+
 Route::get('test',function(){
 	return route('users.show',2);
 });
