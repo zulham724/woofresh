@@ -5,6 +5,9 @@
     <h2 class="h5 no-margin-bottom">Language</h2>
   </div>
 </div>
+
+<section>
+	
 <div class="container">
 	<div class="row">
 		<div class="offset-3 col-6">
@@ -30,4 +33,6 @@
 		</div>
 	</div>
 </div>
+	
+</section>
 @endsection

@@ -6,6 +6,8 @@
   </div>
 </div>
 
+<section>
+    
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
@@ -40,6 +42,8 @@
         </div>
     </div>
 </div>
+    
+</section>
 
 @endsection
 

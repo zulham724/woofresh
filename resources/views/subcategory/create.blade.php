@@ -5,6 +5,9 @@
     <h2 class="h5 no-margin-bottom"> Sub Categories</h2>
   </div>
 </div>
+
+<section>
+	
 <div class="container">
 	{{ Form::open(['route'=>'subcategories.store','method'=>'post']) }}
 	<div class="row">
@@ -61,4 +64,6 @@
 	</div>
 	{{ Form::close() }}
 </div>
+	
+</section>
 @endsection

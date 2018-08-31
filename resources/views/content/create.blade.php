@@ -5,6 +5,9 @@
     <h2 class="h5 no-margin-bottom">Content</h2>
   </div>
 </div>
+
+<section>
+	
 <div class="container">
 	{{ Form::open(['route'=>'contents.store','method'=>'post','files'=>true]) }}
 	<div class="row">
@@ -61,4 +64,6 @@
 	</div>
 	{{ Form::close() }}
 </div>
+	
+</section>
 @endsection

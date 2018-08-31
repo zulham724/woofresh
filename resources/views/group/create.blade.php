@@ -5,6 +5,9 @@
     <h2 class="h5 no-margin-bottom">Groups</h2>
   </div>
 </div>
+
+<section>
+	
 <div class="container">
 	{{ Form::open(['route'=>'groups.store','method'=>'post']) }}
 	<div class="row">
@@ -53,4 +56,6 @@
 	</div>
 	{{ Form::close() }}
 </div>
+	
+</section>
 @endsection
