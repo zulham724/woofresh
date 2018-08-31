@@ -29,3 +29,12 @@
     </div>
 </section>
 @endsection
+@section('script')
+<script type="text/javascript">
+    $(()=>{
+        if({!! $login !!}){
+            swal("Hello :)","You Have Login as Admin, Feel free to surf","success");
+        }
+    });
+</script>
+@endsection

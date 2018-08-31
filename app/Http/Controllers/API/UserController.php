@@ -77,8 +77,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
+        if($request->hasFile('avatar')){
+            $path = $request->file('avatar')->store('uploads/avatars');
+            $user->avatar = $path;
+        }
         $user->fill($request->all());
         $user->update();
+
+        $biodata = new Biodata;
+        $biodata->user_id = $user->id;
+        $biodata->fill($request->except(['role_id','name','email','password','avatar']));
+        $biodata->update();
         return response()->json($user);
     }
 

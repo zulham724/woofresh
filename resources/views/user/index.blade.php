@@ -32,7 +32,7 @@
 							<td>{{ $l+1 }}</td>
                             <td>{{ $user->role->name }}</td>
                             <td>
-                                <img src="{{ asset('storage/'.$user->avatar) }}" class="rounded mx-auto d-block" width="150">
+                                <img src="{{ asset($user->avatar == null ? 'storage/uploads/avatars/default.png' : 'storage/'.$user->avatar) }}" class="rounded mx-auto d-block" width="150">
                             </td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
