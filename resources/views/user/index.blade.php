@@ -20,6 +20,7 @@
     					<tr>
     						<td>No</td>
                             <td>Role</td>
+                            <td>Avatar</td>
                             <td>Name</td>
                             <td>Email</td>
     						<td>Action</td>
@@ -30,6 +31,9 @@
     					<tr>
 							<td>{{ $l+1 }}</td>
                             <td>{{ $user->role->name }}</td>
+                            <td>
+                                <img src="{{ asset('storage/'.$user->avatar) }}" class="rounded mx-auto d-block" width="150">
+                            </td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
 							<td>

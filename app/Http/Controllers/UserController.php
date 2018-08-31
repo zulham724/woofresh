@@ -41,12 +41,16 @@ class UserController extends Controller
     {
         // dd($request);
         $user = new User;
+        if($request->hasFile('avatar')){
+            $path = $request->file('avatar')->store('uploads/avatars');
+            $user->avatar = $path;
+        }
         $user->fill($request->all());
         $user->save();
 
         $biodata = new Biodata;
         $biodata->user_id = $user->id;
-        $biodata->fill($request->except(['role_id','name','email','password']));
+        $biodata->fill($request->except(['role_id','name','email','password','avatar']));
         $biodata->save();
 
         return redirect('users');

@@ -11,6 +11,13 @@ window.Vue = require('vue');
 
 import $ from 'jquery';
 import 'datatables.net';
+// import 'datatables.net-buttons';
+// import 'datatables.net-editor';
+// import 'datatables.net-buttons/js/buttons.colVis.js';
+// import 'datatables.net-buttons/js/buttons.html5.js';
+// import 'datatables.net-buttons/js/buttons.flash.js';
+// import 'datatables.net-buttons/js/buttons.print.js';
+// import 'datatables.net-buttons/js/dataTables.buttons.min.js';
 import 'select2';
 import 'jquery-bar-rating';
 window.swal = require('sweetalert2');
