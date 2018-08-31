@@ -11,8 +11,8 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-flag"></i> {{ $user['transactions'][0]->user->name }} Transaction List
-            <a href="{{ route('users.transactions.create',$user->id) }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <i class="fa fa-flag"></i> Transaction List
+            <a href="{{ route('transactions.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -26,12 +26,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($user['transactions'] as $t => $transaction)
+                        @foreach ($transactions as $t => $transaction)
                             <tr>
                                 <td>{{ $t+1 }}</td>
                                 <td>{{ $transaction->transaction_number }}</td>
                                 <td>{{ $transaction->payment_type }}</td>
                                 <td>
+                                    <a href="{{ route('transactions.edit',$transaction->id) }}" type="button" class="btn btn-info" ><i class="fa fa-pencil"></i>Edit</a>
                                     <button type="button" class="btn btn-danger" onclick="destroy({{ $transaction->id }})"><i class="fa fa-trash"></i> Delete</button>
                                 </td>
                             </tr>

@@ -13,9 +13,9 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-       $data["user"] = User::with('transactions')->find($id);
+        $data["transactions"] = Transaction::get();
         return view('transaction.index',$data);
     }
 
@@ -24,11 +24,10 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
         $data["transactions"] = Transaction::get();
         $data["users"] = User::get();
-        $data['id'] = $id;
         return view('transaction.create',$data);
     }
 
@@ -44,7 +43,7 @@ class TransactionController extends Controller
         $transaction->fill($request->all());
         $transaction->save();
 
-        return redirect()->route('users.transactions.index',$transaction->user_id);
+        return redirect()->route('transactions.index',$transaction->user_id);
     }
 
     /**
@@ -66,7 +65,10 @@ class TransactionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data["transaction"] = Transaction::find($id);
+        // dd($data);
+        $data["users"] = User::get();
+        return view('transaction.edit',$data);
     }
 
     /**
@@ -78,7 +80,11 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $transaction = Transaction::find($id);
+        $transaction->fill($request->all());
+        $transaction->update();
+
+        return redirect()->route('transactions.index',$transaction->user_id);
     }
 
     /**
@@ -87,7 +93,7 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user_id,$id)
+    public function destroy($id)
     {
         $transaction = Transaction::find($id)->delete();
         return response()->json($transaction);
