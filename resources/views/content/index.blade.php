@@ -5,6 +5,8 @@
     <h2 class="h5 no-margin-bottom">Language</h2>
   </div>
 </div>
+<section>
+
 <div class="container-fluid">
     <div class="card">
     	<div class="card-header">
@@ -46,6 +48,8 @@
     	</div>
     </div>
 </div>
+    
+</section>
 @endsection
 
 @section('script')
