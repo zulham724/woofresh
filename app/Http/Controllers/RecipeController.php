@@ -54,7 +54,7 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        $data["ingredients"] = Ingredient::with('recipe')->get();;
+        $data["recipe"] = Recipe::with('ingredients')->find($id);
         return view('recipe.show',$data);
     }
 

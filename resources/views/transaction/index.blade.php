@@ -32,7 +32,8 @@
                                 <td>{{ $transaction->transaction_number }}</td>
                                 <td>{{ $transaction->payment_type }}</td>
                                 <td>
-                                    <a href="{{ route('transactions.edit',$transaction->id) }}" type="button" class="btn btn-info" ><i class="fa fa-pencil"></i>Edit</a>
+                                    <a href="{{ route('transactions.show',$transaction->id) }}" type="button" class="btn btn-info" ><i class="fa fa-folder"></i> Show Orders</a>
+                                    <a href="{{ route('transactions.edit',$transaction->id) }}" type="button" class="btn btn-secondary" ><i class="fa fa-pencil"></i>Edit</a>
                                     <button type="button" class="btn btn-danger" onclick="destroy({{ $transaction->id }})"><i class="fa fa-trash"></i> Delete</button>
                                 </td>
                             </tr>
