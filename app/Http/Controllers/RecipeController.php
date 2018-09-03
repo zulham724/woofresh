@@ -53,8 +53,8 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        $data["user"] = User::with('recipes')->find($id);
-        return view('recipe.show',$data);
+        $data["recipes"] = User::with('recipes')->find($id);
+        return view('recipes.show',$data);
     }
 
     /**

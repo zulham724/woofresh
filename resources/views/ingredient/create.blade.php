@@ -6,7 +6,7 @@
   </div>
 </div>
 <div class="container">
-	{{ Form::open(['route'=>['recipes.ingredients.store',$id],'method'=>'post']) }}
+	{{ Form::open(['route'=>['ingredients.store'],'method'=>'post']) }}
 	<div class="row">
 		<div class="offset-3 col-6">
 			<div class="card">

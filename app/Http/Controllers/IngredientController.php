@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Ingredient;
+use App\Product;
+use App\Recipe;
 
 class IngredientController extends Controller
 {
@@ -13,7 +15,8 @@ class IngredientController extends Controller
      */
     public function index()
     {
-        //
+       $data["ingredients"] = Ingredient::with('recipe')->with('product')->get();
+        return view('ingredient.index',$data);
     }
 
     /**
@@ -23,7 +26,10 @@ class IngredientController extends Controller
      */
     public function create()
     {
-        //
+        $data["ingredients"] = Ingredient::get();
+        $data["products"] = Product::get();
+        $data["recipes"] = Recipe::get();
+        return view('ingredient.create',$data);
     }
 
     /**
@@ -34,7 +40,11 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ingredient = new Ingredient;
+        $ingredient->fill($request->all());
+        $ingredient->save();
+
+        return redirect()->route('ingredients.index',$ingredient);
     }
 
     /**
@@ -45,7 +55,8 @@ class IngredientController extends Controller
      */
     public function show($id)
     {
-        //
+        $data["recipes"] = User::with('recipes')->find($id);
+        return view('recipes.show',$data);
     }
 
     /**
@@ -79,6 +90,7 @@ class IngredientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ingredient = Ingredient::find($id)->delete();
+        return response()->json($ingredient);
     }
 }

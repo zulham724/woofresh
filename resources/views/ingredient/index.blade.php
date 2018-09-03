@@ -10,8 +10,8 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-flag"></i> Ingredients List
-            <a href="{{ route('recipes.ingredients.create',$id) }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
-            <a href="{{ route('users.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back</a>
+            <a href="{{ route('ingredients.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <a href="{{ route('ingredients.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -25,9 +25,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach ($recipe['ingredients'] as $i => $ingredient)
+                      @foreach ($ingredients as $i => $ingredient)
                            <tr>
                                <td>{{ $i+1 }}</td>
+                               <td>{{ $ingredient->recipe->name }}</td>
                                <td>{{ $ingredient->product->name }}</td>
                                <td>
                                    <button type="button" class="btn btn-danger" onclick="destroy({{$ingredient->id}})"><i class="fa fa-trash"></i> Delete</button>
@@ -74,8 +75,7 @@
                     });
                 })
                 .fail(err=>{
-                    // console.log(err);
-                    swal("Oops","Something not right","error");
+                     console.log(err);
                 });
             }
         });

@@ -90,11 +90,11 @@
             </li>
         
             <li {{ Request::is('users') ? 'class=active' : '' }}>
-              <a href="{{ url('users') }}"> <i class="fa fa-bar-chart"></i> Users</a>
+              <a href="{{ url('users') }}"> <i class="fa fa-users"></i> Users</a>
             </li>
 
             <li {{ Request::is('recipes') ? 'class=active' : '' }}>
-              <a href="{{ route('recipes.index') }}"> <i class="fa fa-bar-chart"></i> Recipes</a>
+              <a href="{{ route('recipes.index') }}"> <i class="fa fa-book"></i> Recipes</a>
             </li>
 
             <li {{ Request::is('ingredients') ? 'class=active' : '' }}>
@@ -102,7 +102,7 @@
             </li>
 
             <li {{ Request::is('transactions') ? 'class=active' : '' }}>
-              <a href="{{ route('transactions.index') }}"> <i class="fa fa-bar-chart"></i> Transactions</a>
+              <a href="{{ route('transactions.index') }}"> <i class="fa fa-money"></i> Transactions</a>
             </li>
                 
         </ul><span class="heading">Settings</span>

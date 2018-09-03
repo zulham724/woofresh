@@ -13,6 +13,6 @@ class Ingredient extends Model
     }
 
     public function product(){
-    	return $this->hasOne('App\Product');
+    	return $this->belongsTo('App\Product');
     }
 }
