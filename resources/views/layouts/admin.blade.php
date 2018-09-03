@@ -80,12 +80,17 @@
               <a href="{{ route('home') }}"> <i class="icon-home"></i>Dashboard </a>
             </li>
 
-            <li  {{ Request::is('products') ? 'class=active' : '' }}><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Products </a>
+            <li  {{ Request::is('products') ? 'class=active' : '' }}><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Master </a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="{{ url('products') }}">All Products</a></li>
-                <li><a href="{{ url('subcategories') }}">Categories</a></li>
-                <li><a href="{{ url('suppliers') }}">Suppliers</a></li>
-                <li><a href="{{ url('cities') }}">Cities</a></li>
+                <li><a href="{{ route('products.index') }}">All Products</a></li>
+                <li><a href="{{ route('components.index') }}">Components</a></li>
+                <li><a href="{{ route('groups.index') }}">Groups</a></li>
+                <li><a href="{{ route('categories.index') }}">Categories</a></li>
+                <li><a href="{{ route('subcategories.index') }}">Sub Categories</a></li>
+                <li><a href="{{ route('suppliers.index') }}">Suppliers</a></li>
+                <li><a href="{{ route('states.index') }}"> States</a></li>
+                <li><a href="{{ route('cities.index') }}">Cities</a></li>
+                <li><a href="">Sub Districts</a></li>
               </ul>
             </li>
         
@@ -101,8 +106,16 @@
               <a href="{{ route('ingredients.index') }}"> <i class="fa fa-bar-chart"></i> Ingredients</a>
             </li>
 
+            <li {{ Request::is('components') ? 'class=active' : '' }}>
+              <a href="{{ route('components.index') }}"> <i class="fa fa-beer"></i> Components</a>
+            </li>
+
             <li {{ Request::is('transactions') ? 'class=active' : '' }}>
               <a href="{{ route('transactions.index') }}"> <i class="fa fa-money"></i> Transactions</a>
+            </li>
+
+            <li {{ Request::is('orders') ? 'class=active' : '' }}>
+              <a href="{{ route('orders.index') }}"> <i class="fa fa-bookmark"></i> Orders</a>
             </li>
                 
         </ul><span class="heading">Settings</span>
