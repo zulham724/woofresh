@@ -27,7 +27,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        
+        $data["transactions"] = Transaction::get();
+        $data["products"] = Product::get();
+        return view('order.create',$data);
     }
 
     /**
@@ -38,7 +40,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = new Order;
+        $order->fill($request->all());
+        $order->save();
     }
 
     /**
