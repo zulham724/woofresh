@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Product</h2>
+    <h2 class="h5 no-margin-bottom">Ingredients</h2>
   </div>
 </div>
 <div class="container">
@@ -11,7 +11,7 @@
 		<div class="offset-3 col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ url('products') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
+					<a href="{{ url('ingredients') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
 					<h5 class="pull-right"> Fill the Form</h5>
 				</div>
 				<div class="card-body"> 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transaction;
 use App\User;
+use App\Order;
 
 class TransactionController extends Controller
 {
@@ -54,8 +55,13 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
+<<<<<<< HEAD
         $data["users"] = User::with('transactions')->find($id);
         return view('user.show',$data);
+=======
+        $data["transaction"] = Transaction::with('orders')->find($id);
+        return view('transaction.show',$data);
+>>>>>>> 49c2345da7e17b4aac60564002949f8809b2032a
     }
 
     /**

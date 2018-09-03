@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
+use App\Transaction;
+use App\Product;
 
 class OrderController extends Controller
 {
@@ -13,7 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $data["orders"] = Order::with('transaction')->with('product')->get();
+        return view('order.index',$data);
     }
 
     /**
@@ -23,7 +27,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -79,6 +83,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::find($id)->delete();
+        return response()->json($order);
     }
 }
