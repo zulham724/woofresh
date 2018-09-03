@@ -108,10 +108,6 @@
               <a href="{{ route('ingredients.index') }}"> <i class="fa fa-bar-chart"></i> Ingredients</a>
             </li>
 
-            <li {{ Request::is('components') ? 'class=active' : '' }}>
-              <a href="{{ route('components.index') }}"> <i class="fa fa-beer"></i> Components</a>
-            </li>
-
             <li {{ Request::is('transactions') ? 'class=active' : '' }}>
               <a href="{{ route('transactions.index') }}"> <i class="fa fa-money"></i> Transactions</a>
             </li>
