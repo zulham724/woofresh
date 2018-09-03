@@ -32,7 +32,7 @@
     <style type="text/css">
       .select2 span { display:block }
     </style>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
   </head>
   <body>
     <div class="page">
@@ -80,40 +80,49 @@
               <a href="{{ route('home') }}"> <i class="icon-home"></i>Dashboard </a>
             </li>
 
-            <li  {{ Request::is('products') ? 'class=active' : '' }}><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Master </a>
-              <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="{{ route('products.index') }}">All Products</a></li>
-                <li><a href="{{ route('products.index') }}">Product Sales</a></li>
-                <li><a href="{{ route('components.index') }}">Component Lists</a></li>
-                <li><a href="{{ route('components.index') }}">Components</a></li>
-                <li><a href="{{ route('groups.index') }}">Groups</a></li>
-                <li><a href="{{ route('categories.index') }}">Categories</a></li>
-                <li><a href="{{ route('subcategories.index') }}">Sub Categories</a></li>
-                <li><a href="{{ route('suppliers.index') }}">Suppliers</a></li>
-                <li><a href="{{ route('states.index') }}"> States</a></li>
-                <li><a href="{{ route('cities.index') }}">Cities</a></li>
-                <li><a href="">Sub Districts</a></li>
+            <li  {{ Request::is('recipes') ? 'class=active' : '' }}><a href="#areadropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Area </a>
+              <ul id="areadropdown" class="collapse list-unstyled ">
+                <li><a href="{{ route('states.index') }}"><i class="fa fa-angle-right"></i>States</a></li>
+                <li><a href="{{ route('cities.index') }}"><i class="fa fa-angle-right"></i>Cities</a></li>
+                <li><a href=""><i class="fa fa-angle-right"></i>Sub Districts</a></li>
               </ul>
             </li>
-        
+
+            <li  {{ Request::is('groups') ? 'class=active' : '' }}><a href="#groupingdropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Grouping </a>
+              <ul id="groupingdropdown" class="collapse list-unstyled ">
+                <li><a href="{{ route('groups.index') }}"><i class="fa fa-angle-right"></i>Groups</a></li>
+                <li><a href="{{ route('categories.index') }}"><i class="fa fa-angle-right"></i>Categories</a></li>
+                <li><a href="{{ route('subcategories.index') }}"><i class="fa fa-angle-right"></i>Sub Categories</a></li>
+              </ul>
+            </li>
+
+            <li  {{ Request::is('products') ? 'class=active' : '' }}><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Products </a>
+              <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                <li><a href="{{ route('products.index') }}"><i class="fa fa-angle-right"></i>All Products</a></li>
+                <li><a href="{{ route('products.index') }}"><i class="fa fa-angle-right"></i>Product Sales</a></li>
+                <li><a href="{{ route('components.index') }}"><i class="fa fa-angle-right"></i>Component Lists</a></li>
+                <li><a href="{{ route('components.index') }}"><i class="fa fa-angle-right"></i>Components</a></li>
+                <li><a href="{{ route('suppliers.index') }}"><i class="fa fa-angle-right"></i>Suppliers</a></li>
+                
+              </ul>
+            </li>
+
+            <li  {{ Request::is('recipes') ? 'class=active' : '' }}><a href="#recipesdropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Recipes </a>
+              <ul id="recipesdropdown" class="collapse list-unstyled ">
+                <li><a href="{{ route('recipes.index') }}"><i class="fa fa-angle-right"></i>All Recipes</a></li>
+                <li><a href="{{ route('ingredients.index') }}"><i class="fa fa-angle-right"></i>Ingredients</a></li>
+              </ul>
+            </li>
+            
+            <li  {{ Request::is('transactions') ? 'class=active' : '' }}><a href="#transactionsdropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Transactions </a>
+              <ul id="transactionsdropdown" class="collapse list-unstyled ">
+                <li><a href="{{ route('transactions.index') }}"><i class="fa fa-angle-right"></i> Transactions</a></li>
+                <li><a href="{{ route('orders.index') }}"><i class="fa fa-angle-right"></i> Orders</a></li>
+              </ul>
+            </li>
+
             <li {{ Request::is('users') ? 'class=active' : '' }}>
               <a href="{{ url('users') }}"> <i class="fa fa-users"></i> Users</a>
-            </li>
-
-            <li {{ Request::is('recipes') ? 'class=active' : '' }}>
-              <a href="{{ route('recipes.index') }}"> <i class="fa fa-book"></i> Recipes</a>
-            </li>
-
-            <li {{ Request::is('ingredients') ? 'class=active' : '' }}>
-              <a href="{{ route('ingredients.index') }}"> <i class="fa fa-bar-chart"></i> Ingredients</a>
-            </li>
-
-            <li {{ Request::is('transactions') ? 'class=active' : '' }}>
-              <a href="{{ route('transactions.index') }}"> <i class="fa fa-money"></i> Transactions</a>
-            </li>
-
-            <li {{ Request::is('orders') ? 'class=active' : '' }}>
-              <a href="{{ route('orders.index') }}"> <i class="fa fa-bookmark"></i> Orders</a>
             </li>
                 
         </ul><span class="heading">Settings</span>
