@@ -15,11 +15,11 @@
     	</div>
     	<div class="card-body">
     		<div class="table-responsive">
-    			<table id="table_id" class="table table-striped display">
+    			<table id="table_id" class="table table-striped customDatatable">
     				<thead>
     					<tr>
     						<td>No</td>
-    						<td>Content</td>
+    						<td>Category</td>
                             <td>Image</td>
                             <td>Available Language</td>
     						<td>Action</td>
@@ -87,5 +87,30 @@
             }
         });
     }
+
+    $('.customDatatable').DataTable({
+        "dom": '<"toolbar">frtip',
+        initComplete: function () {
+            this.api().columns([1]).every( function (index) {
+                var column = this;
+                var select = $('<select><option value="">Choose Category</option></select>')
+                    .appendTo( $("div.toolbar") )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                  // console.log("ini",d,j);
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
+    });
 </script>
 @endsection

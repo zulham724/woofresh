@@ -137,15 +137,18 @@
     <script src="{{ asset('adminlte/vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
     <script src="{{ asset('adminlte/vendor/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('adminlte/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.12/sweetalert2.all.js"></script>
     <!-- Main File-->
     <script src="{{ asset('adminlte/js/front.js') }}"></script>
     @yield('script')
     <script type="text/javascript">
       $(document).ready(function(){
         
-        $('table').DataTable({
-            dom: 'Bfrtip',
-        
+        $('.datatable').DataTable({
+            
         });
 
         $('.select2').select2();

@@ -19,8 +19,12 @@
 				</div>
 				<div class="card-body"> 
 						<div class="form-group">
-							<label>Content Name</label>
-							<input type="text" class="form-control" name="name" placeholder="type something" required> 
+							<label>Content Category</label>
+							<select class="form-control" name="name" required>
+								<option value="">--Choose--</option>
+								<option value="slider">Slider</option>
+								<option value="picture">Picture</option>
+							</select> 
 						</div>
 						<div class="form-group">
 							<label>Image</label>

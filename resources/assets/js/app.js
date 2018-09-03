@@ -11,13 +11,13 @@ window.Vue = require('vue');
 
 import $ from 'jquery';
 import 'datatables.net';
-// import 'datatables.net-buttons';
-// import 'datatables.net-editor';
-// import 'datatables.net-buttons/js/buttons.colVis.js';
-// import 'datatables.net-buttons/js/buttons.html5.js';
-// import 'datatables.net-buttons/js/buttons.flash.js';
-// import 'datatables.net-buttons/js/buttons.print.js';
-// import 'datatables.net-buttons/js/dataTables.buttons.min.js';
+import 'datatables.net-buttons';
+import 'datatables.net-editor';
+import 'datatables.net-buttons/js/buttons.colVis.js';
+import 'datatables.net-buttons/js/buttons.html5.js';
+import 'datatables.net-buttons/js/buttons.flash.js';
+import 'datatables.net-buttons/js/buttons.print.js';
+import 'datatables.net-buttons/js/dataTables.buttons.min.js';
 import 'select2';
 import 'jquery-bar-rating';
 window.swal = require('sweetalert2');
@@ -34,26 +34,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app',
     created() {
-        // let data = {
-        //     grant_type: 'password',
-        //     client_id: 2,
-        //     client_secret: 'NQekh2G0CtUVGndZfXcCUUCy3hr8BAkfXdgeiGo1', // Laravel Password Grant Client
-        //     username: 'admin@admin.com',
-        //     password: 'password',
-        // };
-        // axios.post('http://localhost/woofresh/public/oauth/token', data)
-        //     .then(response => {
-        //         console.log('got response');
-        //         console.log(response.data);
 
-        //     }).catch(response => {
-        //         console.log('got a error!');
-        //         console.error(response);
-        // })
     },
     methods:{
-    	// destroy(){
-    	// 	swal("err","err","error");
-    	// }
+    	
     }
 });
