@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Recipe;
 use App\User;
+use App\Ingredient;
 
 class RecipeController extends Controller
 {
@@ -53,8 +54,8 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        $data["recipes"] = User::with('recipes')->find($id);
-        return view('recipes.show',$data);
+        $data["ingredients"] = Ingredient::with('recipe')->get();;
+        return view('recipe.show',$data);
     }
 
     /**

@@ -15,4 +15,8 @@ class Recipe extends Model
     public function recipe_comments(){
     	return $this->hasMany('App\RecipeComment');
     }
+
+    public function ingredient(){
+    	return $ths->belongsTo('App\Ingredient');
+    }
 }
