@@ -54,7 +54,8 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $data["users"] = User::with('transactions')->find($id);
+        return view('user.show',$data);
     }
 
     /**

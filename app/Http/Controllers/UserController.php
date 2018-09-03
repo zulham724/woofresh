@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use App\Biodata;
+use App\Transaction;
+
 
 class UserController extends Controller
 {   
@@ -64,7 +66,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+       $data["users"] = User::with('transactions')->find($id);
+        return view('user.show',$data);
     }
 
     /**
