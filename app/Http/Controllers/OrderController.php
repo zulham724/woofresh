@@ -43,6 +43,8 @@ class OrderController extends Controller
         $order = new Order;
         $order->fill($request->all());
         $order->save();
+
+        return redirect()->route('orders.index');
     }
 
     /**
