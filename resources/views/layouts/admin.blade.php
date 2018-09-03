@@ -83,6 +83,8 @@
             <li  {{ Request::is('products') ? 'class=active' : '' }}><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Master </a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('products.index') }}">All Products</a></li>
+                <li><a href="{{ route('products.index') }}">Product Sales</a></li>
+                <li><a href="{{ route('components.index') }}">Component Lists</a></li>
                 <li><a href="{{ route('components.index') }}">Components</a></li>
                 <li><a href="{{ route('groups.index') }}">Groups</a></li>
                 <li><a href="{{ route('categories.index') }}">Categories</a></li>

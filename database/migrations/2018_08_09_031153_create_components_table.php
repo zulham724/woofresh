@@ -16,10 +16,12 @@ class CreateComponentsTable extends Migration
         Schema::create('components', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
+            $table->integer('component_list_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->string('name');
             $table->timestamps();
 
+            $table->foreign('component_list_id')->references('id')->on('component_lists')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
         });
     }
