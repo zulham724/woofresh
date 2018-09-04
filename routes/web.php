@@ -49,6 +49,8 @@ Route::group(['middleware'=>'auth'],function(){
 		'/subcategories'=>'SubCategoryController',
 		'/users'=>'UserController',
 		'/states'=>'StateController',
+		'/deliveryfees'=>'DeliveryFeeController',
+		'/vouchers'=>'VoucherController',
 	]);
 
 });

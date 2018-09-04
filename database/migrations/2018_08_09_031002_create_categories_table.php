@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->integer('group_id')->unsigned();
             $table->string('name');
+            $table->string('image');
             $table->timestamps();
 
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade')->onUpdate('cascade');

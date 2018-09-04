@@ -17,6 +17,7 @@ class CreateGroupsTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('name');
+            $table->string('image');
             $table->timestamps();
         });
     }

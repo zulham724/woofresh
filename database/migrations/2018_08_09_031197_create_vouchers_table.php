@@ -17,6 +17,7 @@ class CreateVouchersTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('name');
+            $table->string('image');
             $table->string('code')->unique();
             $table->string('description');
             $table->integer('value')->default(0);
