@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\DeliveryFee;
+use App\State;
 
 class DeliveryFeeController extends Controller
 {
@@ -13,7 +15,8 @@ class DeliveryFeeController extends Controller
      */
     public function index()
     {
-        //
+        $data["deliveryfees"] = DeliveryFee::with('state')->get();
+        return view('deliveryfee.index',$data);
     }
 
     /**
@@ -23,7 +26,8 @@ class DeliveryFeeController extends Controller
      */
     public function create()
     {
-        //
+        $data["states"] = State::get();
+        return view('deliveryfee.create',$data);
     }
 
     /**
@@ -34,7 +38,10 @@ class DeliveryFeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $deliveryfee = new DeliveryFee;
+        $deliveryfee->fill($request->all());
+        $deliveryfee->save();
+        return redirect('deliveryfees');
     }
 
     /**
@@ -79,6 +86,7 @@ class DeliveryFeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deliveryfee = DeliveryFee::find($id)->delete();
+        return response()->json($deliveryfee);
     }
 }
