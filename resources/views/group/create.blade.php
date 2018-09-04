@@ -9,7 +9,7 @@
 <section>
 	
 <div class="container">
-	{{ Form::open(['route'=>'groups.store','method'=>'post']) }}
+	{{ Form::open(['route'=>'groups.store','method'=>'post','files'=>true]) }}
 	<div class="row">
 		<div class="col-6">
 			<div class="card">
@@ -21,6 +21,10 @@
 						<div class="form-group">
 							<label>Name</label>
 							<input type="text" class="form-control" name="name" placeholder="type something" required> 
+						</div> 
+						<div class="form-group">
+							<label>Upload Image</label>
+							{{ Form::file('image',['class'=>'form-control','required'=>true])}}
 						</div> 
 						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 				</div>

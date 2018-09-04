@@ -23,6 +23,7 @@
                             <td>No</td>
                             <td>Group Id</td>
                             <td>Name</td>
+                            <td>Image</td>
                             <td>Available Language</td>
                             <td>Action</td>
                         </tr>
@@ -33,6 +34,9 @@
                             <td>{{ $l+1 }}</td>
                             <td>{{ $category->group->name}}</td>
                             <td>{{ $category->name }}</td>
+                            <td>
+                                <img src="{{ asset('storage/'.$category->image) }}" width="50">
+                            </td>
                             <td>
                                 @foreach ($category['category_translations'] as $category_translation)
                                     <img src="{{ asset('storage/'.$category_translation->language->image) }}" class="img-responsive" width="30">

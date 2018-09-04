@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Category;
 use App\Group;
 use App\CategoryTranslation;
@@ -42,8 +43,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $path = $request->file('image')->store('categories');
         $category = new Category;
         $category->fill($request->except('languages'));
+        $category->image = $path;
         $category->save();
 
         foreach ($request['languages'] as $l => $language) {
@@ -98,7 +101,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id)->delete();
+        $category = Category::find($id);
+        $file = Storage::delete($category->image);
+        $category->delete();
         return response()->json($category);
     }
 }

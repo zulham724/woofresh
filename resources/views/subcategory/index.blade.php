@@ -22,6 +22,7 @@
     						<td>No</td>
     						<td>Group Id</td>
     						<td>Name</td>
+                            <td>Image</td>
                             <td>Available Language</td>
     						<td>Action</td>
     					</tr>
@@ -32,6 +33,9 @@
 							<td>{{ $sc+1 }}</td>
 							<td>{{ $subcategory->category->name }}</td>
 							<td>{{ $subcategory->name }}</td>
+                            <td>
+                                <img src="{{ asset('storage/'.$subcategory->image) }}" width="50">
+                            </td>
                             <td>
                                 @foreach ($subcategory['sub_category_translations'] as $sub_category_translation)
                                     <img src="{{ asset('storage/'.$sub_category_translation->language->image) }}" class="img-responsive" width="30">

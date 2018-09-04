@@ -22,6 +22,7 @@
     					<tr>
     						<td>No</td>
     						<td>Name</td>
+                            <td>Image</td>
                             <td>Available Language</td>
     						<td>Action</td>
     					</tr>
@@ -31,6 +32,9 @@
     					<tr>
 							<td>{{ $g+1 }}</td>
 							<td>{{ $group->name }}</td>
+                            <td>
+                                <img src="{{ asset('storage/'.$group->image) }}" width="50">
+                            </td>
                             <td>
                                 @foreach ($group['group_translations'] as $group_translation)
                                     <img src="{{ asset('storage/'.$group_translation->language->image) }}" class="img-responsive" width="30">
