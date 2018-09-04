@@ -15,7 +15,7 @@
     	</div>
     	<div class="card-body">
     		<div class="table-responsive">
-    			<table id="table_id" class="table table-striped custom">
+    			<table id="table_id" class="table table-striped custom datatable">
     				<thead>
     					<tr>
     						<td>No</td>

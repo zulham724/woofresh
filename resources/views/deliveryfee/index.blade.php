@@ -15,8 +15,8 @@
     		<a href="{{ route('deliveryfees.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
     	</div>
     	<div class="card-body">
-    		<div class="table-responsive">
-    			<table class="table table-striped">
+    		<div class="table-responsive ">
+    			<table class="table table-striped datatable">
     				<thead>
     					<tr>
     						<td>No</td>
