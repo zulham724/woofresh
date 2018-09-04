@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\SubCategory;
 use App\Category;
 use App\SubCategoryTranslation;
@@ -41,8 +42,10 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $path = $request->file('image')->store('subcategories');
         $subcategory = new SubCategory;
         $subcategory->fill($request->except('languages'));
+        $subcategory->image = $path;
         $subcategory->save();
 
         foreach ($request['languages'] as $l => $language) {
@@ -97,7 +100,9 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $subcategory = SubCategory::find($id)->delete();
+        $subcategory = SubCategory::find($id);
+        $file = Storage::delete($subcategory->image);
+        $subcategory->delete();
         return response()->json($subcategory);
     }
 }

@@ -41,8 +41,10 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+        $path = $request->file('image')->store('groups');
         $group = new Group;
         $group->fill($request->except('languages'));
+        $group->image = $path;
         $group->save();
 
         foreach ($request['languages'] as $l => $language) {
@@ -97,7 +99,9 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        $group = Group::find($id)->delete();
+        $group = Group::find($id);
+        $file = Storage::delete($group->image);
+        $group->delete();
         return response()->json($group);
     }
 }
