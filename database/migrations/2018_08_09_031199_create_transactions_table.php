@@ -17,14 +17,17 @@ class CreateTransactionsTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->integer('voucher_id')->unsigned();
+            $table->integer('delivery_fee_id')->unsigned();
             $table->integer('transaction_number');
             $table->integer('status')->default(0);
             $table->string('payment_type');
             $table->bigInteger('totalPrice')->default(0);
-            $table->bigInteger('delivery_fee')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('voucher_id')->references('id')->on('vouchers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('delivery_fee_id')->references('id')->on('delivery_fees')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -85,6 +85,7 @@
                 <li><a href="{{ route('states.index') }}"><i class="fa fa-angle-right"></i>States</a></li>
                 <li><a href="{{ route('cities.index') }}"><i class="fa fa-angle-right"></i>Cities</a></li>
                 <li><a href=""><i class="fa fa-angle-right"></i>Sub Districts</a></li>
+                <li><a href=""><i class="fa fa-angle-right"></i>Delivery Fees</a></li>
               </ul>
             </li>
 
