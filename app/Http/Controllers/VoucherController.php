@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Voucher;
 
 class VoucherController extends Controller
 {
@@ -13,7 +15,8 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        //
+       $data["vouchers"] = Voucher::get();
+        return view('voucher.index',$data);
     }
 
     /**
@@ -23,7 +26,8 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        //
+        $data["vouchers"] = Voucher::get();
+        return view('voucher.create',$data);
     }
 
     /**
@@ -34,7 +38,15 @@ class VoucherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $voucher = new Voucher();
+        $voucher->fill($request->all());
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('voucher');
+            $voucher->image = $path;    
+        }
+        $voucher->save();
+
+        return redirect('vouchers');
     }
 
     /**
@@ -79,6 +91,9 @@ class VoucherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $voucher = Voucher::find($id);
+        $file = Storage::delete($voucher->image);
+        $voucher->delete();
+        return response()->json($voucher);
     }
 }
