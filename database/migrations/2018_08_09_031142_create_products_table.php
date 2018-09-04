@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->integer('city_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
+            $table->integer('group_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->integer('sub_category_id')->unsigned();
             $table->string('name');
             $table->string('description');
@@ -30,6 +32,8 @@ class CreateProductsTable extends Migration
             $table->timestamps();
 
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
         });
