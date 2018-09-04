@@ -20,9 +20,6 @@ class CreateOrdersTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->integer('quantity');
             $table->bigInteger('subtotal_price');
-            $table->bigInteger('discount');
-            $table->bigInteger('delivery_fee');
-            $table->bigInteger('total');
             $table->timestamps();
 
             $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade')->onUpdate('cascade');

@@ -20,6 +20,8 @@ class CreateTransactionsTable extends Migration
             $table->integer('transaction_number');
             $table->integer('status')->default(0);
             $table->string('payment_type');
+            $table->bigInteger('totalPrice')->default(0);
+            $table->bigInteger('delivery_fee')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

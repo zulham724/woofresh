@@ -17,7 +17,10 @@ class CreateIngredientsTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('recipe_id')->unsigned();
-            $table->integer('product_id')->unsigned();
+            $table->integer('product_id')->nullable()->unsigned();
+            $table->string('optional_product')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('unit')->nullable();
             $table->timestamps();
 
             $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade')->onUpdate('cascade');
