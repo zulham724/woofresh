@@ -19,16 +19,13 @@ class CreateProductsTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
             $table->integer('sub_group_id')->unsigned();
-            $table->integer('category_id')->unsigned();
-            $table->integer('sub_category_id')->unsigned();
-            $table->string('name');
-            $table->string('description');
             $table->integer('quantity')->default(0);
             $table->bigInteger('price')->default(0);
             $table->integer('stock')->default(0);
             $table->integer('weight')->default(0);
             $table->integer('unit')->default(0);
             $table->integer('discount')->default(0);
+             $table->integer('badge')->default(0);
             $table->integer('is_available')->default(1);
             $table->timestamps();
 

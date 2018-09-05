@@ -28,6 +28,9 @@
     						<td>Price</td>
     						<td>Stock</td>
     						<td>Weight</td>
+                            <td>Unit</td>
+                            <td>Discount</td>
+                            <td>Badge</td>
                             <td>Available Language</td>
     						<td>Is Available?</td>
     						<td>Action</td>
@@ -45,6 +48,9 @@
 							<td>{{ $product->price }}</td>
 							<td>{{ $product->stock }}</td>
 							<td>{{ $product->weight }}</td>
+                            <td>{{ $product->unit }}</td>
+                            <td>{{ $product->discount }}</td>
+                            <td>{{ $product->badge }}</td>
                             <td>
                                 @foreach ($product['product_translations'] as $product_translation)
                                     <img src="{{ asset('storage/'.$product_translation->language->image) }}" class="img-responsive" width="30">
