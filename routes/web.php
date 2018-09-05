@@ -55,6 +55,7 @@ Route::group(['middleware'=>'auth'],function(){
 		'/rimage'=>'RimageController',
 		'/pimage'=>'PimageController',
 		'/productsales'=>'ProductSalesController',
+		'/componentlists'=>'ComponentListController'
 	]);
 Route::post('/product/{id}/group','ProductController@group')->name('group');
 Route::post('/product/{id}/category','ProductController@category')->name('category');
