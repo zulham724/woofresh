@@ -10,6 +10,8 @@ use App\Supplier;
 use App\City;
 use App\Language;
 use App\ProductTranslation;
+use App\Group;
+use App\Category;
 
 class ProductController extends Controller
 {
@@ -38,6 +40,8 @@ class ProductController extends Controller
         $data["cities"] = City::get();
         $data['subcategories'] = SubCategory::get();
         $data['suppliers'] = Supplier::get();
+        $data['groups'] = Group::get();
+        $data['categories'] = Category::get();
         return view('product.create',$data);
     }
 

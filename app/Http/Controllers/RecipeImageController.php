@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\RecipeImage;
+use App\recipeimage;
 
 class RecipeImageController extends Controller
 {
@@ -14,7 +14,7 @@ class RecipeImageController extends Controller
      */
     public function index()
     {
-        $data["recipeimages"] = RecipeImage::get();
+        $data["recipeimages"] = recipeimage::get();
         return view('recipeimage.index',$data);
     }
 

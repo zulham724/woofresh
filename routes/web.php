@@ -52,8 +52,8 @@ Route::group(['middleware'=>'auth'],function(){
 		'/deliveryfees'=>'DeliveryFeeController',
 		'/vouchers'=>'VoucherController',
 		'/subdistricts'=>'SubdistrictController',
-		'/recipeimage'=>'RecipeImageController',
-		'/productimage'=>'ProductImageController',
+		'/recipeimages'=>'RecipeImageController',
+		'/productimages'=>'ProductImageController',
 		'/productsales'=>'ProductSalesController',
 		'/componentlists'=>'ComponentListController'
 	]);
