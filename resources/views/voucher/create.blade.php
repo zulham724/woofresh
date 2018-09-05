@@ -11,7 +11,7 @@
 <div class="container">
 	{{ Form::open(['route'=>'vouchers.store','method'=>'post','files'=>true]) }}
 	<div class="row">
-		<div class="col-6">
+		<div class="offset-3 col-6">
 			<div class="card">
 				<div class="card-header">
 					<a href="{{ url('vouchers') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
