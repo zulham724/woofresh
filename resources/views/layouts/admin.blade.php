@@ -84,7 +84,7 @@
               <ul id="areadropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('states.index') }}"><i class="fa fa-angle-right"></i>States</a></li>
                 <li><a href="{{ route('cities.index') }}"><i class="fa fa-angle-right"></i>Cities</a></li>
-                <li><a href=""><i class="fa fa-angle-right"></i>Sub Districts</a></li>
+                <li><a href="{{ route('subdistricts.index') }}"><i class="fa fa-angle-right"></i>Sub Districts</a></li>
                 <li><a href="{{ route('deliveryfees.index') }}"><i class="fa fa-angle-right"></i>Delivery Fees</a></li>
               </ul>
             </li>
@@ -100,8 +100,9 @@
             <li  {{ Request::is('products') ? 'class=active' : '' }}><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Products </a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('products.index') }}"><i class="fa fa-angle-right"></i>All Products</a></li>
-                <li><a href="{{ route('products.index') }}"><i class="fa fa-angle-right"></i>Product Sales</a></li>
+                <li><a href="{{ route('productsales.index') }}"><i class="fa fa-angle-right"></i>Product Sales</a></li>
                 <li><a href="{{ route('components.index') }}"><i class="fa fa-angle-right"></i>Component Lists</a></li>
+                <li><a href="{{ route('componentvalues.index') }}"><i class="fa fa-angle-right"></i>Component Values</a></li>
                 <li><a href="{{ route('components.index') }}"><i class="fa fa-angle-right"></i>Components</a></li>
                 <li><a href="{{ route('suppliers.index') }}"><i class="fa fa-angle-right"></i>Suppliers</a></li>
                 <li><a href="{{ route('vouchers.index') }}"><i class="fa fa-angle-right"></i>Vouchers</a></li>
@@ -124,6 +125,9 @@
 
             <li {{ Request::is('users') ? 'class=active' : '' }}>
               <a href="{{ url('users') }}"> <i class="fa fa-users"></i> Users</a>
+            </li>
+            <li {{ Request::is('rimage') ? 'class=active' : '' }}>
+              <a href="{{ url('rimages') }}"> <i class="fa fa-image"></i> Recipe Image</a>
             </li>
                 
         </ul><span class="heading">Settings</span>

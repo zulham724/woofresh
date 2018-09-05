@@ -9,7 +9,7 @@
 <section>
 <div class="container">
 	<div class="row">
-		<div class="offset-3 col-6">
+		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
 					<a href="{{ route('transactions.index') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
@@ -35,6 +35,35 @@
 						</div>
 						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					{{ Form::close() }}
+				</div>
+			</div>
+		</div>
+		<div class="col-6">
+			<div class="card">
+				<div class="card-header">
+					Shipping Address
+				</div>
+				<div class="card-body">
+					<div class="form-group">
+						<label>Transaction ID</label>
+						<input type="number" class="form-control" name="transaction_id" placeholder="type something" required> 
+					</div>
+					<div class="form-group">
+						<label>State ID</label>
+						<input type="number" class="form-control" name="state_id" placeholder="type something" required> 
+					</div>
+					<div class="form-group">
+						<label>City ID</label>
+						<input type="number" class="form-control" name="city_id" placeholder="type something" required> 
+					</div>
+					<div class="form-group">
+						<label>Subdistric ID</label>
+						<input type="number" class="form-control" name="subdistric_id" placeholder="type something" required> 
+					</div>
+					<div class="form-group">
+						<label>Address Detail</label>
+						<input type="number" class="form-control" name="address_detail" placeholder="type something" required> 
+					</div>
 				</div>
 			</div>
 		</div>
