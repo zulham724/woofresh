@@ -51,8 +51,12 @@ Route::group(['middleware'=>'auth'],function(){
 		'/states'=>'StateController',
 		'/deliveryfees'=>'DeliveryFeeController',
 		'/vouchers'=>'VoucherController',
+		'/subdistricts'=>'SubdistrictController',
+		'/rimage'=>'RimageController',
+		'/pimage'=>'PimageController',
+		'/productsales'=>'ProductSaleController',
 	]);
-
+Route::post('/product/{id}/group','ProductController@group')->name('group');
 });
 // end middleware auth
 

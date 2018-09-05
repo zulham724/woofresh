@@ -84,4 +84,15 @@ class ProductController extends Controller
         $product = Product::find($id)->delete();
         return response()->json($product);
     }
+
+    public function group($id){
+        $products = Product::with('group')->find($id)->get();
+        return response()->json($products);
+    }
+
+    public function category($id){
+        $prducts = Product::with('category')->find($id)->get();
+        return response()->json($products);
+    }
+    public
 }
