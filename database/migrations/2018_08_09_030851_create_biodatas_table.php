@@ -17,6 +17,9 @@ class CreateBiodatasTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->integer('state_id')->unsigned();
+            $table->integer('city_id')->unsigned();
+            $table->integer('sub_district_id')->unsigned();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('address')->nullable();
@@ -24,6 +27,9 @@ class CreateBiodatasTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('sub_district_id')->references('id')->on('subdistricts')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
