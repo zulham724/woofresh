@@ -20,6 +20,8 @@
                     <thead>
                         <tr>
                             <td>No</td>
+                            <td>Voucher ID</td>
+                            <td>Delivery Fee ID</td>
                             <td>Transaction number</td>
                             <td>Payment type</td>
                             <td>Action</td>
@@ -29,6 +31,8 @@
                         @foreach ($transactions as $t => $transaction)
                             <tr>
                                 <td>{{ $t+1 }}</td>
+                                <td>{{ $transaction->voucher_id }}</td>
+                                <td>{{ $transaction->delivery_fee_id }}</td>
                                 <td>{{ $transaction->transaction_number }}</td>
                                 <td>{{ $transaction->payment_type }}</td>
                                 <td>

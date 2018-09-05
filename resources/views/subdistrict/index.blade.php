@@ -23,6 +23,7 @@
     						<td>No</td>
                             <td>City ID</td>
     						<td>Name</td>
+                            <td>Action</td>
     					</tr>
     				</thead>
     				<tbody>
@@ -31,7 +32,7 @@
 							<td>{{ $sd+1 }}</td>
                             <td>{{ $subdistrict->city_id }}</td>
 							<td>{{ $subdistrict->name }}</td>
-							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$state->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$subdistrict->id}})"><i class="fa fa-trash"></i> Delete</button></td>
 						</tr>
 						@endforeach
     				</tbody>

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\RecipeImage;
 
-class RimageController extends Controller
+class RecipeImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class RimageController extends Controller
      */
     public function index()
     {
-        //
+        $data["recipeimages"] = RecipeImage::get();
+        return view('recipeimage.index',$data);
     }
 
     /**

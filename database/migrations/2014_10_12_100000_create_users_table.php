@@ -17,9 +17,6 @@ class CreateUsersTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('role_id')->unsigned();
-            $table->integer('state_id')->unsigned();
-            $table->integer('city_id')->unsigned();
-            $table->integer('sub_district_id')->unsigned();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
@@ -32,9 +29,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('sub_district_id')->references('id')->on('subdistricts')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -19,11 +19,11 @@
 				<div class="card-body"> 
 					{{ Form::open(['route'=>['subdistricts.store'],'method'=>'post','files'=>true]) }}
 						<div class="form-group">
-							<label>User ID</label>
-							<select class="form-control select2" name="user_id" required>
+							<label>City ID</label>
+							<select class="form-control select2" name="city_id" required>
 								<option>--select--</option>
-								@foreach ($cities as $citi)
-									<option value="{{ $citi->id }}">{{ $citi->name }}</option>
+								@foreach ($cities as $city)
+									<option value="{{ $city->id }}">{{ $city->name }}</option>
 								@endforeach
 							</select>
 						</div>
@@ -31,6 +31,7 @@
 							<label>Name</label>
 							<input type="text" class="form-control" name="name" placeholder="type something" required>
 						</div>
+						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					</div>
 				</div>
 			</div>
