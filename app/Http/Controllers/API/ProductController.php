@@ -91,8 +91,23 @@ class ProductController extends Controller
     }
 
     public function category($id){
-        $prducts = Product::with('category')->find($id)->get();
+        $products = Product::with('category')->find($id)->get();
         return response()->json($products);
     }
-    public
+    public function subcategory($id){
+        $products = Product::with('subcategory')->find($id)->get();
+        return response()->json($products);
+    }
+    public function state($id){
+        $products = Product::with('state')->find($id)->get();
+        return response()->json($products);
+    }
+    public function city($id){
+        $products = Product::with('city')->find($id)->get();
+        return response()->json($products);
+    }
+    public function subdistrict($id){
+        $products = Product::with('subdistict')->find($id)->get();
+        return response()->json($products);
+    }
 }
