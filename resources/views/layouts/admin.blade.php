@@ -101,9 +101,9 @@
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('products.index') }}"><i class="fa fa-angle-right"></i>All Products</a></li>
                 <li><a href="{{ route('productsales.index') }}"><i class="fa fa-angle-right"></i>Product Sales</a></li>
-                <li><a href="{{ route('components.index') }}"><i class="fa fa-angle-right"></i>Component Lists</a></li>
+                <li><a href="{{ route('componentlist.index') }}"><i class="fa fa-angle-right"></i>Component Lists</a></li>
                 <li><a href="{{ route('componentvalues.index') }}"><i class="fa fa-angle-right"></i>Component Values</a></li>
-                <li><a href="{{ route('components.index') }}"><i class="fa fa-angle-right"></i>Components</a></li>
+                <li><a href="{{ route('component.index') }}"><i class="fa fa-angle-right"></i>Components</a></li>
                 <li><a href="{{ route('suppliers.index') }}"><i class="fa fa-angle-right"></i>Suppliers</a></li>
                 <li><a href="{{ route('vouchers.index') }}"><i class="fa fa-angle-right"></i>Vouchers</a></li>
               </ul>
@@ -126,8 +126,11 @@
             <li {{ Request::is('users') ? 'class=active' : '' }}>
               <a href="{{ url('users') }}"> <i class="fa fa-users"></i> Users</a>
             </li>
-            <li {{ Request::is('rimage') ? 'class=active' : '' }}>
-              <a href="{{ url('rimages') }}"> <i class="fa fa-image"></i> Recipe Image</a>
+            <li {{ Request::is('recipeimages') ? 'class=active' : '' }}>
+              <a href="{{ url('recipeimages') }}"> <i class="fa fa-image"></i> Recipe Image</a>
+            </li>
+            <li {{ Request::is('productimage') ? 'class=active' : '' }}>
+              <a href="{{ url('productimages') }}"> <i class="fa fa-image"></i> Product Image</a>
             </li>
                 
         </ul><span class="heading">Settings</span>

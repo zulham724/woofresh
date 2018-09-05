@@ -26,6 +26,26 @@
 							</select>
 						</div> 
 						<div class="form-group">
+							<label>Voucher ID</label>
+							<select class="form-control select2" name="voucher_id">
+								@foreach ($vouchers as $v => $voucher)
+								<option value="{{ $voucher->id }}">{{ $voucher->name }}</option>
+								@endforeach
+							</select>
+						</div> 
+						<div class="form-group">
+							<label>Delivery Fee ID</label>
+							<select class="form-control select2" name="delivery_fee_id">
+								@foreach ($deliveryfees as $d => $deliveryfee)
+								<option value="{{ $deliveryfee->id }}">{{ $deliveryfee->name }}</option>
+								@endforeach
+							</select>
+						</div> 
+						<div class="form-group">
+							<label>Transaction Number</label>
+							<input type="number" class="form-control" name="transaction_number" placeholder="type something" required> 
+						</div> 
+						<div class="form-group">
 							<label>Transaction Number</label>
 							<input type="number" class="form-control" name="transaction_number" placeholder="type something" required> 
 						</div> 
@@ -50,16 +70,28 @@
 					</div>
 					<div class="form-group">
 						<label>State ID</label>
-						<input type="number" class="form-control" name="state_id" placeholder="type something" required> 
-					</div>
+						<select class="form-control select2" name="state_id">
+							@foreach ($states as $s => $state)
+								<option value="{{ $state->id }}">{{ $state->name }}</option>
+							@endforeach
+						</select>
+						</div> 
 					<div class="form-group">
 						<label>City ID</label>
-						<input type="number" class="form-control" name="city_id" placeholder="type something" required> 
-					</div>
+						<select class="form-control select2" name="city_id">
+							@foreach ($cities as $c => $city)
+							<option value="{{ $city->id }}">{{ $city->name }}</option>
+							@endforeach
+						</select>
+						</div> 
 					<div class="form-group">
-						<label>Subdistric ID</label>
-						<input type="number" class="form-control" name="subdistric_id" placeholder="type something" required> 
-					</div>
+						<label>Subdistrict ID</label>
+						<select class="form-control select2" name="subdistrict_id">
+							@foreach ($subdistricts as $sd => $subdistrict)
+							<option value="{{ $subdistrict->id }}">{{ $subdistrict->name }}</option>
+							@endforeach
+						</select>
+						</div> 
 					<div class="form-group">
 						<label>Address Detail</label>
 						<input type="number" class="form-control" name="address_detail" placeholder="type something" required> 

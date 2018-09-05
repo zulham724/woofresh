@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Subdistrict;
+use App\City;
 
 class SubdistrictController extends Controller
 {
@@ -14,7 +15,7 @@ class SubdistrictController extends Controller
      */
     public function index()
     {
-       $data["subdistricts"] = Subdistrict::with('cities')->get();
+       $data["subdistricts"] = Subdistrict::get();
         return view('subdistrict.index',$data);
     }
 
@@ -25,7 +26,9 @@ class SubdistrictController extends Controller
      */
     public function create()
     {
-        //
+        $data["subdistricts"] = Subdistrict::get();
+        $data["cities"] = City::get();
+        return view('subdistrict.create',$data);
     }
 
     /**
@@ -36,7 +39,11 @@ class SubdistrictController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $subdistrict = new subdistrict();
+        $subdistrict->fill($request->all());
+        $subdistrict->save();
+
+        return redirect('subdistricts');
     }
 
     /**

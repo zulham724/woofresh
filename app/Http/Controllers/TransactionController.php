@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Transaction;
 use App\User;
 use App\Order;
+use App\State;
+use App\City;
+use App\Subdistrict;
+use App\Voucher;
+use App\DeliveryFee;
 
 class TransactionController extends Controller
 {
@@ -29,6 +34,11 @@ class TransactionController extends Controller
     {
         $data["transactions"] = Transaction::get();
         $data["users"] = User::get();
+        $data["states"] = State::get();
+        $data["cities"] = City::get();
+        $data["subdistricts"] = Subdistrict::get();
+        $data["vouchers"] = Voucher::get();
+        $data["deliveryfees"] = DeliveryFee::get();
         return view('transaction.create',$data);
     }
 

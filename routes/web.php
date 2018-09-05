@@ -52,8 +52,8 @@ Route::group(['middleware'=>'auth'],function(){
 		'/deliveryfees'=>'DeliveryFeeController',
 		'/vouchers'=>'VoucherController',
 		'/subdistricts'=>'SubdistrictController',
-		'/rimage'=>'RimageController',
-		'/pimage'=>'PimageController',
+		'/recipeimages'=>'RecipeImageController',
+		'/productimages'=>'PimageController',
 		'/productsales'=>'ProductSaleController',
 	]);
 Route::post('/product/{id}/group','ProductController@group')->name('group');
