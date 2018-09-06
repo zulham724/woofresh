@@ -7,6 +7,9 @@ use App\User;
 use App\Role;
 use App\Biodata;
 use App\Transaction;
+use App\City;
+use App\State;
+use App\subdistrict;
 
 
 class UserController extends Controller
@@ -30,6 +33,9 @@ class UserController extends Controller
     public function create()
     {
         $data['roles'] = Role::get();
+        $data['cities'] = City::get();
+        $data['states'] = State::get();
+        $data['subdistricts'] = subdistrict::get();
         return view('user.create',$data);
     }
 

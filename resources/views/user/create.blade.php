@@ -38,6 +38,30 @@
 							<option value="{{ $role->id }}">{{ $role->name }}</option>
 							@endforeach
 						</select>
+					</div>
+					<div class="form-group">
+						<label>State</label>
+						<select class="form-control" name="state_id">
+							@foreach ($states as $s => $state)
+							<option value="{{ $state->id }}">{{ $state->name }}</option>
+							@endforeach
+						</select>
+					</div> 
+					<div class="form-group">
+						<label>City</label>
+						<select class="form-control" name="city_id">
+							@foreach ($cities as $s => $city)
+							<option value="{{ $city->id }}">{{ $city->name }}</option>
+							@endforeach
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Sub District</label>
+						<select class="form-control" name="subdistrict_id">
+							@foreach ($subdistricts as $s => $subdistrict)
+							<option value="{{ $subdistrict->id }}">{{ $subdistrict->name }}</option>
+							@endforeach
+						</select>
 					</div> 
 					<div class="form-group">
 						<label>Name</label>
