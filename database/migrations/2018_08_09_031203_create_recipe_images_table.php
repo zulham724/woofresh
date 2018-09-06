@@ -14,11 +14,14 @@ class CreateRecipeImagesTable extends Migration
     public function up()
     {
         Schema::create('recipe_images', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('recipe_id')->unsigned();
             $table->string('image');
             $table->string('description')->nullable();
             $table->timestamps();
+
+            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

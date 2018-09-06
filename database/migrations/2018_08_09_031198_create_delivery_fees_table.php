@@ -14,6 +14,7 @@ class CreateDeliveryFeesTable extends Migration
     public function up()
     {
         Schema::create('delivery_fees', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('state_id')->unsigned();
             $table->integer('value');

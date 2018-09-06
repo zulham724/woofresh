@@ -14,6 +14,7 @@ class CreateShippingAddressesTable extends Migration
     public function up()
     {
         Schema::create('shipping_addresses', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('transaction_id')->unsigned();
             $table->integer('state_id')->unsigned();
