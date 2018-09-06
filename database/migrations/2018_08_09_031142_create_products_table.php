@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->integer('city_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
-            $table->integer('sub_group_id')->unsigned();
+            $table->integer('group_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->integer('sub_category_id')->unsigned();
             $table->string('name');
