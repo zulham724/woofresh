@@ -21,6 +21,7 @@ class CreateShippingAddressesTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->integer('subdistrict_id')->unsigned();
             $table->string('address_detail');
+            $table->string('code_postal');
             $table->timestamps();
 
             $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade')->onUpdate('cascade');

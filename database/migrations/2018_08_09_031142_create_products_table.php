@@ -16,7 +16,6 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->integer('city_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
             $table->integer('group_id')->unsigned();
             $table->integer('category_id')->unsigned();
@@ -29,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->integer('weight')->default(0);
             $table->integer('unit')->default(0);
             $table->integer('discount')->default(0);
+            $table->string('badge')->nullable();
             $table->integer('is_available')->default(1);
             $table->timestamps();
 
@@ -36,7 +36,6 @@ class CreateProductsTable extends Migration
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -18,6 +18,7 @@ class CreateDeliveryFeesTable extends Migration
             $table->increments('id');
             $table->integer('state_id')->unsigned();
             $table->integer('value');
+            $table->string('description')->nullable();
             $table->timestamps();
 
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade')->onUpdate('cascade');

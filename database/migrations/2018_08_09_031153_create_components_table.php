@@ -18,7 +18,6 @@ class CreateComponentsTable extends Migration
             $table->increments('id');
             $table->integer('component_list_id')->unsigned();
             $table->integer('product_id')->unsigned();
-            $table->string('name');
             $table->timestamps();
 
             $table->foreign('component_list_id')->references('id')->on('component_lists')->onDelete('cascade')->onUpdate('cascade');

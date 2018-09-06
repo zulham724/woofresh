@@ -17,6 +17,8 @@ class CreateProductSalesTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->integer('state_id')->unsigned();
+            $table->integer('city_id')->unsigned();
+            $table->integer('subdistrict_id')->unsigned();
             $table->integer('quantity');
             $table->integer('stocks');
             $table->bigInteger('price');
@@ -24,6 +26,8 @@ class CreateProductSalesTable extends Migration
             $table->timestamps();
 
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('subdistrict_id')->references('id')->on('subdistricts')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
