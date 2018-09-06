@@ -23,7 +23,8 @@
 							<select class="form-control" name="name" required>
 								<option value="">--Choose--</option>
 								<option value="slider">Slider</option>
-								<option value="picture">Picture</option>
+								<option value="icon">Icon</option>
+								<option value="sale">Sale</option>
 							</select> 
 						</div>
 						<div class="form-group">
