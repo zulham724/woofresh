@@ -13,7 +13,7 @@
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ route('recipeimages.index') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
+					<a href="{{ url('recipeimages') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
 					<h5 class="pull-right"> Fill the Form</h5>
 				</div>
 				<div class="card-body"> 
