@@ -26,6 +26,22 @@
 							@endforeach
 						</select>
 					</div> 
+						<div class="form-group">
+						<label>Group ID</label>
+						<select class="form-control select2" name="group_id">
+							@foreach ($groups as $g => $group)
+							<option value="{{ $group->id }}">{{ $group->name }}</option>
+							@endforeach
+						</select>
+					</div> 
+					<!-- <div class="form-group">
+						<label>Category ID</label>
+						<select class="form-control select2" name="category_id">
+							@foreach ($categories as $ca => $category)
+							<option value="{{ $category->id }}">{{ $category->name }}</option>
+							@endforeach
+						</select>
+					</div> --> 
 					<div class="form-group">
 						<label>Sub Category</label>
 						<select class="form-control select2" name="sub_category_id">
@@ -65,6 +81,18 @@
 					<div class="form-group">
 						<label>Weight</label>
 						<input type="text" class="form-control" name="weight" placeholder="type something" required> 
+					</div> 
+					<div class="form-group">
+						<label>Unit</label>
+						<input type="text" class="form-control" name="unit" placeholder="type something" required> 
+					</div> 
+					<div class="form-group">
+						<label>Discount</label>
+						<input type="text" class="form-control" name="discount" placeholder="type something" required> 
+					</div> 
+					<div class="form-group">
+						<label>Badge</label>
+						<input type="text" class="form-control" name="badge" placeholder="type something" required> 
 					</div> 
 					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 					
 				</div>

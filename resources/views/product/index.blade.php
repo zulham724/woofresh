@@ -22,12 +22,18 @@
     						<td>No</td>
                             <td>Supplier</td>
                             <td>City</td>
+                            <td>Group</td>
+                            <!-- <td>Category</td> -->
+                            <td>Sub Category</td>
                             <td>Name</td>
                             <td>Description</td>
     						<td>Quantity</td>
     						<td>Price</td>
     						<td>Stock</td>
     						<td>Weight</td>
+                            <td>Unit</td>
+                            <td>Discount</td>
+                            <td>Badge</td>
                             <td>Available Language</td>
     						<td>Is Available?</td>
     						<td>Action</td>
@@ -39,12 +45,18 @@
 							<td>{{ $l+1 }}</td>
                             <td>{{ $product->supplier->name }}</td>
                             <td>{{ $product->city->name }}</td>
+                            <td>{{ $product->group_id }}</td>
+                            <!-- <td>{{ $product->category_id }}</td> -->
+                            <td>{{ $product->sub_category_id }}</td>
                             <td>{{ $product->name}}</td>
                             <td>{{ $product->description}}</td>
 							<td>{{ $product->quantity }}</td>
 							<td>{{ $product->price }}</td>
 							<td>{{ $product->stock }}</td>
 							<td>{{ $product->weight }}</td>
+                            <td>{{ $product->unit }}</td>
+                            <td>{{ $product->discount }}</td>
+                            <td>{{ $product->badge }}</td>
                             <td>
                                 @foreach ($product['product_translations'] as $product_translation)
                                     <img src="{{ asset('storage/'.$product_translation->language->image) }}" class="img-responsive" width="30">
