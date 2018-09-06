@@ -19,15 +19,10 @@ class CreateProductsTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
             $table->integer('group_id')->unsigned();
-<<<<<<< HEAD
             $table->integer('category_id')->unsigned();
             $table->integer('sub_category_id')->unsigned();
             $table->string('name');
             $table->string('description');
-=======
-            // $table->integer('category_id')->unsigned();
-            $table->integer('sud_category_id')->unsigned();
->>>>>>> af2433634e95bd1455c08e916f2909a242fbe7bf
             $table->integer('quantity')->default(0);
             $table->bigInteger('price')->default(0);
             $table->integer('stock')->default(0);
