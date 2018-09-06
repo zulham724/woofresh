@@ -24,4 +24,8 @@ class Product extends Model
     public function product_translations(){
     	return $this->hasMany('App\ProductTranslation');
     }
+     public function category(){
+        return $this->belongsTo('App\Category');
+    }
+
 }

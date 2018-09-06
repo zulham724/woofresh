@@ -34,27 +34,19 @@
 							@endforeach
 						</select>
 					</div> 
-					<!-- <div class="form-group">
+					<div class="form-group">
 						<label>Category ID</label>
 						<select class="form-control select2" name="category_id">
 							@foreach ($categories as $ca => $category)
 							<option value="{{ $category->id }}">{{ $category->name }}</option>
 							@endforeach
 						</select>
-					</div> --> 
+					</div> 
 					<div class="form-group">
 						<label>Sub Category</label>
 						<select class="form-control select2" name="sub_category_id">
 							@foreach ($subcategories as $sc => $subcategory)
 							<option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
-							@endforeach
-						</select>
-					</div> 
-					<div class="form-group">
-						<label>Where do you want to sell ?</label>
-						<select class="form-control select2" name="city_id">
-							@foreach ($cities as $city)
-							<option value="{{ $city->id }}">{{ $city->name }}</option>
 							@endforeach
 						</select>
 					</div>
