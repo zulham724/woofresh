@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
             $table->integer('group_id')->unsigned();
-            $table->integer('category_id')->unsigned();
+            // $table->integer('category_id')->unsigned();
             $table->integer('sud_category_id')->unsigned();
             $table->integer('quantity')->default(0);
             $table->bigInteger('price')->default(0);
