@@ -24,6 +24,7 @@
                             <td>Creator</td>
                             <td>Name</td>
                             <td>Description</td>
+                            <td>Tutorial</td>
                             <td>Difficulty Level</td>
                             <td>Preparation Time</td>
                             <td>Portion per Serve</td>
@@ -37,6 +38,7 @@
                                <td>{{ $recipe->user->name }}</td>
                                <td>{{ $recipe->name }}</td>
                                <td>{{ $recipe->description }}</td>
+                               <td>{{ $recipe->tutorial }}</td>
                                <td>
                                  <select id="recipe_rating{{ $recipe->id }}">
                                    <option value="1">1</option>

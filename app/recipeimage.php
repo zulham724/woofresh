@@ -4,7 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class recipeimage extends Model
+class RecipeImage extends Model
 {
-     protected $guarded = ["id"];
+    protected $guarded = ["id"];
+
+    public function recipe(){
+    	return $this->belongsTo('App\Recipe');
+    }
 }
