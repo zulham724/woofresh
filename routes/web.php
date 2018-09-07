@@ -57,13 +57,6 @@ Route::group(['middleware'=>'auth'],function(){
 		'/productsales'=>'ProductSalesController',
 		'/componentlists'=>'ComponentListController'
 	]);
-Route::get('/products/{id}/group','ProductController@group')->name('group');
-Route::get('/products/{id}/category','ProductController@category')->name('category');
-Route::get('/products/{id}/subcategory','ProductController@subcategory')->name('subcategory');
-Route::get('/products/{id}/state','ProductController@state')->name('state');
-Route::get('/products/{id}/city','ProductController@city')->name('city');
-Route::get('/products/{id}/subdistrict','ProductController@subdistrict')->name('subdistrict');
-
 
 });
 // end middleware auth
