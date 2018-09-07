@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Product; 
 use App\SubCategory; 
-use App\Supplier; 
-use App\City;
+use App\Supplier;
 use App\Language;
 use App\ProductTranslation;
 use App\Group;
@@ -37,7 +36,6 @@ class ProductController extends Controller
     public function create()
     {
         $data["languages"] = Language::get();
-        $data["cities"] = City::get();
         $data['subcategories'] = SubCategory::get();
         $data['suppliers'] = Supplier::get();
         $data['groups'] = Group::get();

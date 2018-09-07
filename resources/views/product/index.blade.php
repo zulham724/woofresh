@@ -21,7 +21,7 @@
     					<tr>
     						<td>No</td>
                             <td>Supplier</td>
-                            <td>City</td>
+                            {{-- <td>City</td> --}}
                             <td>Group</td>
                             <!-- <td>Category</td> -->
                             <td>Sub Category</td>
@@ -44,7 +44,6 @@
     					<tr>
 							<td>{{ $l+1 }}</td>
                             <td>{{ $product->supplier->name }}</td>
-                            <td>{{ $product->city->name }}</td>
                             <td>{{ $product->group_id }}</td>
                             <!-- <td>{{ $product->category_id }}</td> -->
                             <td>{{ $product->sub_category_id }}</td>

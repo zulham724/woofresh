@@ -57,12 +57,12 @@ Route::group(['middleware'=>'auth'],function(){
 		'/productsales'=>'ProductSalesController',
 		'/componentlists'=>'ComponentListController'
 	]);
-Route::post('/product/{id}/group','ProductController@group')->name('group');
-Route::post('/product/{id}/category','ProductController@category')->name('category');
-Route::post('/product/{id}/subcategory','ProductController@subcategory')->name('subcategory');
-Route::post('/product/{id}/state','ProductController@state')->name('state');
-Route::post('/product/{id}/city','ProductController@city')->name('city');
-Route::post('/product/{id}/subdistrict','ProductController@subdistrict')->name('subdistrict');
+Route::get('/products/{id}/group','ProductController@group')->name('group');
+Route::get('/products/{id}/category','ProductController@category')->name('category');
+Route::get('/products/{id}/subcategory','ProductController@subcategory')->name('subcategory');
+Route::get('/products/{id}/state','ProductController@state')->name('state');
+Route::get('/products/{id}/city','ProductController@city')->name('city');
+Route::get('/products/{id}/subdistrict','ProductController@subdistrict')->name('subdistrict');
 
 
 });
