@@ -37,7 +37,8 @@
 						</div>
 						<div class="form-group">
 							<label>Tutorial</label>
-							<input type="text" class="form-control" name="tutorial" placeholder="type something">
+							<!-- <input type="text" class="form-control" name="tutorial" placeholder="type something"> -->
+							<textarea class="form-control" name="tutorial" placeholder="Type something"></textarea>
 						</div>
 						<div class="form-group">
 							<label>Difficulty Level</label>
