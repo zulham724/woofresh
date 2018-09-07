@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ComponentValue;
-use App\Component;
-
-class ComponentValueController extends Controller
+use Illuminate\Support\Facades\Storage;
+use App\ProductSales; 
+use App\Product; 
+use App\State; 
+use App\City; 
+use App\Subdistrict;
+class ProductSalesController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data["componentvalues"] = ComponentValue::get();
-        return view('componentvalue.index',$data);
+        $data["productsales"] = ProductSales::get();
+        return view('productsales.index',$data);
     }
 
     /**
@@ -26,8 +29,11 @@ class ComponentValueController extends Controller
      */
     public function create()
     {
-        $data["components"] = Component::get();
-        return view('componentvalue.create',$data);
+        $data["products"] = Product::get();
+        $data["states"] = State::get();
+        $data["cities"] = City::get();
+        $data["subdistricts"] = Subdistrict::get();
+        return view('productsales.create',$data);
     }
 
     /**
@@ -38,10 +44,11 @@ class ComponentValueController extends Controller
      */
     public function store(Request $request)
     {
-        $componentvalue = new ComponentValue;
-        $componentvalue->fill($request->all());
-        $componentvalue->save();
-        return redirect('componentvalues');
+        // dd($request->request);
+        $productsale = new ProductSales;
+        $productsale->fill($request->all());
+        $productsale->save();
+        return redirect('productsales');
     }
 
     /**
@@ -86,7 +93,7 @@ class ComponentValueController extends Controller
      */
     public function destroy($id)
     {
-        $componentvalue = ComponentValue::find($id)->delete();
-        return response()->json($componentvalue);
+        $productsale = ProductSales::find($id)->delete();
+        return response()->json($productsale);
     }
 }
