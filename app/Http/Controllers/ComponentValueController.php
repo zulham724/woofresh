@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ComponentValue;
+use App\Component;
 
 class ComponentValueController extends Controller
 {
@@ -13,7 +15,8 @@ class ComponentValueController extends Controller
      */
     public function index()
     {
-        //
+        $data["componentvalues"] = ComponentValue::get();
+        return view('componentvalue.index',$data);
     }
 
     /**
@@ -23,7 +26,8 @@ class ComponentValueController extends Controller
      */
     public function create()
     {
-        //
+        $data["components"] = Component::get();
+        return view('componentvalue.create',$data);
     }
 
     /**
@@ -34,7 +38,10 @@ class ComponentValueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $componentvalue = new ComponentValue;
+        $componentvalue->fill($request->all());
+        $componentvalue->save();
+        return redirect('componentvalues');
     }
 
     /**
@@ -79,6 +86,7 @@ class ComponentValueController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $componentvalue = ComponentValue::find($id)->delete();
+        return response()->json($componentvalue);
     }
 }

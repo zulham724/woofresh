@@ -43,7 +43,7 @@ class RecipeController extends Controller
         $recipe->fill($request->all());
         $recipe->save();
 
-        return redirect()->route('users.recipes.index',$recipe->user_id);
+        return redirect()->route('recipes.index',$recipe->user_id);
     }
 
     /**

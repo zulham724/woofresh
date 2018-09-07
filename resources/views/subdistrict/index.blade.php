@@ -30,7 +30,7 @@
     					@foreach ($subdistricts as $sd => $subdistrict)
     					<tr>
 							<td>{{ $sd+1 }}</td>
-                            <td>{{ $subdistrict->city_id }}</td>
+                            <td>{{ $subdistrict->city->name }}</td>
 							<td>{{ $subdistrict->name }}</td>
 							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$subdistrict->id}})"><i class="fa fa-trash"></i> Delete</button></td>
 						</tr>

@@ -36,6 +36,10 @@
 							<input type="text" class="form-control" name="description" placeholder="type something">
 						</div>
 						<div class="form-group">
+							<label>Tutorial</label>
+							<input type="text" class="form-control" name="tutorial" placeholder="type something">
+						</div>
+						<div class="form-group">
 							<label>Difficulty Level</label>
 							<select class="form-control rating" name="difficulty_level">
 								<option value="1">1</option>

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\recipeimage;
+use App\RecipeImage;
+use App\Recipe;
 
 class RecipeImageController extends Controller
 {
@@ -14,7 +15,7 @@ class RecipeImageController extends Controller
      */
     public function index()
     {
-        $data["recipeimages"] = recipeimage::get();
+        $data["recipeimages"] = RecipeImage::get();
         return view('recipeimage.index',$data);
     }
 
@@ -25,8 +26,9 @@ class RecipeImageController extends Controller
      */
     public function create()
     {
-        //
-    }
+        $data["recipeimages"] = RecipeImage::get();
+         $data["recipes"] = Recipe::get();
+        return view('recipeimage.create',$data);  }
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +38,15 @@ class RecipeImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recipeimage = new RecipeImage();
+        $recipeimage->fill($request->all());
+         if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('recipeimage');
+            $recipeimage->image = $path;    
+        }
+        $recipeimage->save();
+
+        return redirect('recipeimages');
     }
 
     /**
@@ -81,6 +91,8 @@ class RecipeImageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $recipeimage = RecipeImage::find($id);
+        $recipeimage->delete();
+        return response()->json($recipeimage);
     }
 }

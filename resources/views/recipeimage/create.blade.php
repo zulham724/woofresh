@@ -19,7 +19,7 @@
 				<div class="card-body"> 
 					{{ Form::open(['route'=>['recipeimages.store'],'method'=>'post','files'=>true]) }}
 						<div class="form-group">
-							<label>User ID</label>
+							<label>Recipe ID</label>
 							<select class="form-control select2" name="recipe_id" required>
 								<option>--select--</option>
 								@foreach ($recipes as $recipe)
@@ -28,8 +28,8 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" name="name" placeholder="type something" required>
+							<label>Image</label>
+							{{ Form::file('image',['class'=>'form-control'])}}
 						</div>
 						<div class="form-group">
 							<label>Description</label>

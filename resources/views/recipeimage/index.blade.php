@@ -24,17 +24,20 @@
                             <td>Recipe ID</td>
                             <td>Image</td>
                             <td>Description</td>
+                            <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
                        @foreach ($recipeimages as $ri => $recipeimage)
                            <tr>
                                <td>{{ $ri+1 }}</td>
-                               <td>{{ $recipe->user->recipe_id }}</td>
-                               <td>{{ $recipe->name }}</td>
-                               <td>{{ $recipe->description }}</td>
+                               <td>{{ $recipeimage->recipe_id }}</td>
                                <td>
-                                  <button type="button" class="btn btn-danger" onclick="destroy({{$recipe->id}})"><i class="fa fa-trash"></i> Delete</button> 
+                                <img src="{{ asset('storage/'.$recipeimage->image) }}" class="rounded mx-auto d-block" width="150">
+                               </td>
+                               <td>{{ $recipeimage->description }}</td>
+                               <td>
+                                  <button type="button" class="btn btn-danger" onclick="destroy({{$recipeimage->id}})"><i class="fa fa-trash"></i> Delete</button> 
                                </td>
                            </tr>
                        @endforeach
@@ -52,13 +55,7 @@
 @section('script')
 <script type="text/javascript">
     $(()=>{
-        $.each({!! $recipes !!},(key,val)=>{
-          $("#recipe_rating"+val.id).barrating({
-            theme: 'fontawesome-stars-o',
-            initialRating:2,
-            readonly:true
-          });
-        });
+        console.log("recipeimage page");
     });
 
     const destroy = (id)=>{
@@ -77,7 +74,7 @@
                     _method:'delete',
                     _token:"{{csrf_token()}}"
                 }
-                $.post("recipes/"+id,access)
+                $.post("recipeimages/"+id,access)
                 .done(res=>{
                     console.log(res);
                     swal({
@@ -85,7 +82,7 @@
                         text:"You deleted language",
                         type:"success",
                     }).then(result=>{
-                        window.location.reload();
+                       window.location = "{{ url('recipeimages') }}";
                     })
                 }).fail(err=>{
                     console.log(err);

@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class subdistrict extends Model
+class Subdistrict extends Model
 {
+	//Subdistrict
     protected $guarded = ["id"];
 
      public function city(){

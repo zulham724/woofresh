@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Component;
+use App\ComponentList;
+use App\Product;
 
 class ComponentController extends Controller
 {
@@ -13,7 +16,8 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        //
+         $data["components"] = Component::get();
+        return view('component.index',$data);
     }
 
     /**
@@ -23,7 +27,9 @@ class ComponentController extends Controller
      */
     public function create()
     {
-        //
+       $data["componentlists"] = ComponentList::get();
+       $data["products"]=Product::get();
+       return view('component.create',$data);
     }
 
     /**
@@ -34,7 +40,10 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $component= new Component;
+        $component->fill($request->all());
+        $component->save();
+        return redirect('components');
     }
 
     /**
@@ -79,6 +88,7 @@ class ComponentController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $component = Component::find($id)->delete();
+        return response()->json($component);
     }
 }

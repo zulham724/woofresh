@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('price')->default(0);
             $table->integer('stock')->default(0);
             $table->integer('weight')->default(0);
-            $table->integer('unit')->default(0);
+            $table->string('unit')->default(0);
             $table->integer('discount')->default(0);
             $table->string('badge')->nullable();
             $table->integer('is_available')->default(1);
