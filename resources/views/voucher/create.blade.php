@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Content</h2>
+    <h2 class="h5 no-margin-bottom"> Voucher</h2>
   </div>
 </div>
 
