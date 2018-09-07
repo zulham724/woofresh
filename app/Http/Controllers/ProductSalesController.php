@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\RecipeImage;
-use App\Recipe;
-
-class RecipeImageController extends Controller
+use Illuminate\Support\Facades\Storage;
+use App\ProductSales; 
+use App\Product; 
+use App\State; 
+use App\City; 
+use App\Subdistrict;
+class ProductSalesController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data["recipeimages"] = RecipeImage::get();
-        return view('recipeimage.index',$data);
+        $data["productsales"] = ProductSales::get();
+        return view('productsales.index',$data);
     }
 
     /**
@@ -26,9 +29,12 @@ class RecipeImageController extends Controller
      */
     public function create()
     {
-        $data["recipeimages"] = RecipeImage::get();
-         $data["recipes"] = Recipe::get();
-        return view('recipeimage.create',$data);  }
+        $data["products"] = Product::get();
+        $data["states"] = State::get();
+        $data["cities"] = City::get();
+        $data["subdistricts"] = Subdistrict::get();
+        return view('productsales.create',$data);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,15 +44,11 @@ class RecipeImageController extends Controller
      */
     public function store(Request $request)
     {
-        $recipeimage = new RecipeImage();
-        $recipeimage->fill($request->all());
-         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('recipeimage');
-            $recipeimage->image = $path;    
-        }
-        $recipeimage->save();
-
-        return redirect('recipeimages');
+        // dd($request->request);
+        $productsale = new ProductSales;
+        $productsale->fill($request->all());
+        $productsale->save();
+        return redirect('productsales');
     }
 
     /**
@@ -91,8 +93,7 @@ class RecipeImageController extends Controller
      */
     public function destroy($id)
     {
-        $recipeimage = RecipeImage::find($id);
-        $recipeimage->delete();
-        return response()->json($recipeimage);
+        $productsale = ProductSales::find($id)->delete();
+        return response()->json($productsale);
     }
 }

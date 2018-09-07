@@ -15,7 +15,7 @@ class CreateComponentValuesTable extends Migration
     {
         Schema::create('component_values', function (Blueprint $table) {
             $table->engine = "InnoDB";
-            $table->increments('id');
+            $table->increments('id'); 
             $table->integer('component_id')->unsigned();
             $table->string('unit');
             $table->string('value');

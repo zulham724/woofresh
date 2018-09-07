@@ -101,7 +101,7 @@
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('products.index') }}"><i class="fa fa-angle-right"></i>All Products</a></li>
                 <li {{ Request::is('productimage') ? 'class=active' : '' }}>
-                  <a href="{{ url('productimages') }}"> <i class="fa fa-angle-right"></i>Product Images</a>
+                  <a href="{{ route('productimages.index') }}"> <i class="fa fa-angle-right"></i>Product Images</a>
                 </li>
                 <li><a href="{{ route('productsales.index') }}"><i class="fa fa-angle-right"></i>Product Sales</a></li>
                 <li><a href="{{ route('componentlists.index') }}"><i class="fa fa-angle-right"></i>Component Lists</a></li>
@@ -116,7 +116,7 @@
               <ul id="recipesdropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('recipes.index') }}"><i class="fa fa-angle-right"></i>All Recipes</a></li>
                 <li {{ Request::is('recipeimages') ? 'class=active' : '' }}>
-                  <a href="{{ url('recipeimages') }}"> <i class="fa fa-angle-right"></i>Recipe Images</a>
+                  <a href="{{ route('recipeimages.index') }}"> <i class="fa fa-angle-right"></i>Recipe Images</a>
                 </li>
                 <li><a href="{{ route('ingredients.index') }}"><i class="fa fa-angle-right"></i>Ingredients</a></li>
               </ul>

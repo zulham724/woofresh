@@ -12,8 +12,8 @@
     <div class="card">
         <div class="card-header">
             <i class="fa fa-flag"></i> Recipe List
-            <a href="{{ route('recipeimages.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
-            <a href="{{ route('recipeimages.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back</a>
+            <a href="{{ route('productimages.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <a href="{{ route('productimages.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -21,23 +21,21 @@
                     <thead>
                         <tr>
                             <td>No</td>
-                            <td>Recipe ID</td>
+                            <td>Product ID</td>
                             <td>Image</td>
-                            <td>Description</td>
                             <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
-                       @foreach ($recipeimages as $ri => $recipeimage)
+                       @foreach ($productimages as $pi => $productimage)
                            <tr>
-                               <td>{{ $ri+1 }}</td>
-                               <td>{{ $recipeimage->recipe_id }}</td>
+                               <td>{{ $pi+1 }}</td>
+                               <td>{{ $productimage->product->name }}</td>
                                <td>
-                                <img src="{{ asset('storage/'.$recipeimage->image) }}" class="rounded mx-auto d-block" width="150">
+                                <img src="{{ asset('storage/'.$productimage->image) }}" class="rounded mx-auto d-block" width="150">
                                </td>
-                               <td>{{ $recipeimage->description }}</td>
                                <td>
-                                  <button type="button" class="btn btn-danger" onclick="destroy({{$recipeimage->id}})"><i class="fa fa-trash"></i> Delete</button> 
+                                  <button type="button" class="btn btn-danger" onclick="destroy({{$productimage->id}})"><i class="fa fa-trash"></i> Delete</button> 
                                </td>
                            </tr>
                        @endforeach
@@ -55,7 +53,7 @@
 @section('script')
 <script type="text/javascript">
     $(()=>{
-        console.log("recipeimage page");
+        
     });
 
     const destroy = (id)=>{
@@ -74,7 +72,7 @@
                     _method:'delete',
                     _token:"{{csrf_token()}}"
                 }
-                $.post("recipeimages/"+id,access)
+                $.post("productimages/"+id,access)
                 .done(res=>{
                     console.log(res);
                     swal({
@@ -82,7 +80,7 @@
                         text:"You deleted language",
                         type:"success",
                     }).then(result=>{
-                       window.location = "{{ url('recipeimages') }}";
+                        window.location.reload();
                     })
                 }).fail(err=>{
                     console.log(err);
