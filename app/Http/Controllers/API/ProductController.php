@@ -86,28 +86,28 @@ class ProductController extends Controller
     }
 
     public function group($id){
-        $products = Product::with('group')->find($id)->get();
+        $products = Product::where('group_id',$id)->get();
         return response()->json($products);
     }
 
     public function category($id){
-        $products = Product::with('category')->find($id)->get();
+        $products = Product::where('category_id',$id)->get();
         return response()->json($products);
     }
     public function subcategory($id){
-        $products = Product::with('subcategory')->find($id)->get();
+        $products = Product::where('subcategory_id',$id)->get();
         return response()->json($products);
     }
     public function state($id){
-        $products = Product::with('state')->find($id)->get();
+        $products = Product::where('state_id',$id)->get();
         return response()->json($products);
     }
     public function city($id){
-        $products = Product::with('city')->find($id)->get();
+        $products = Product::where('city_id',$id)->get();
         return response()->json($products);
     }
     public function subdistrict($id){
-        $products = Product::with('subdistict')->find($id)->get();
+        $products = Product::where('subdistict_id',$id)->get();
         return response()->json($products);
     }
 }

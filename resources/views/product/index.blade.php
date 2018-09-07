@@ -21,7 +21,6 @@
     					<tr>
     						<td>No</td>
                             <td>Supplier</td>
-                            <td>City</td>
                             <td>Group</td>
                             <td>Category</td>
                             <td>Sub Category</td>

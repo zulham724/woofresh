@@ -41,7 +41,7 @@
 							<option value="{{ $category->id }}">{{ $category->name }}</option>
 							@endforeach
 						</select>
-					</div> 
+					</div>
 					<div class="form-group">
 						<label>Sub Category</label>
 						<select class="form-control select2" name="sub_category_id">
@@ -60,19 +60,19 @@
 					</div>
 					<div class="form-group">
 						<label>Quantity</label>
-						<input type="text" class="form-control" name="quantity" placeholder="type something" required> 
+						<input type="number" class="form-control" name="quantity" placeholder="type something" required> 
 					</div>
 					<div class="form-group">
 						<label>Price</label>
-						<input type="text" class="form-control" name="price" placeholder="type something" required> 
+						<input type="number" class="form-control" name="price" placeholder="type something" required> 
 					</div> 
 					<div class="form-group">
 						<label>Stock</label>
-						<input type="text" class="form-control" name="stock" placeholder="type something" required> 
+						<input type="number" class="form-control" name="stock" placeholder="type something" required> 
 					</div> 
 					<div class="form-group">
 						<label>Weight</label>
-						<input type="text" class="form-control" name="weight" placeholder="type something" required> 
+						<input type="number" class="form-control" name="weight" placeholder="type something" required> 
 					</div> 
 					<div class="form-group">
 						<label>Unit</label>
@@ -80,7 +80,7 @@
 					</div> 
 					<div class="form-group">
 						<label>Discount</label>
-						<input type="text" class="form-control" name="discount" placeholder="type something" required> 
+						<input type="number" class="form-control" name="discount" placeholder="type something" required> 
 					</div> 
 					<div class="form-group">
 						<label>Badge</label>
