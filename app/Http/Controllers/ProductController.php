@@ -73,7 +73,7 @@ class ProductController extends Controller
             $product_sale = new ProductSale;
             $product_sale->product_id = $product->id;
             $product_sale->state_id = $sale['state_id'];
-            $product_sale->stocks = $sale['stock'];
+            $product_sale->stock = $sale['stock'];
             $product_sale->price = $sale['price'];
             $product_sale->discount = $sale['discount'];
             $product_sale->save();
