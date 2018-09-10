@@ -54,7 +54,8 @@ class LanguageController extends Controller
      */
     public function show($id)
     {
-        //
+        $data["language"] = Language::find($id);
+        return view('language.show',$data);
     }
 
     /**
