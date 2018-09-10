@@ -20,16 +20,10 @@ class CreateProductsTable extends Migration
             $table->integer('group_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->integer('sub_category_id')->unsigned();
-            $table->string('name');
-            $table->string('description');
             $table->integer('quantity')->default(0);
-            $table->bigInteger('price')->default(0);
-            $table->integer('stock')->default(0);
             $table->integer('weight')->default(0);
             $table->string('unit')->default(0);
-            $table->integer('discount')->default(0);
             $table->string('badge')->nullable();
-            $table->integer('is_available')->default(1);
             $table->timestamps();
 
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade')->onUpdate('cascade');

@@ -18,12 +18,12 @@ class CreateProductSalesTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->integer('state_id')->unsigned();
-            $table->integer('city_id')->unsigned();
-            $table->integer('subdistrict_id')->unsigned();
-            $table->integer('quantity');
+            $table->integer('city_id')->nullable()->unsigned();
+            $table->integer('subdistrict_id')->nullable()->unsigned();
             $table->integer('stocks');
             $table->bigInteger('price');
-            $table->integer('discount');
+            $table->integer('discount')->default(0);
+            $table->integer('is_available')->default(1);
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');

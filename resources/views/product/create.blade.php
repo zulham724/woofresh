@@ -21,6 +21,7 @@
 					<div class="form-group">
 						<label>Supplier</label>
 						<select class="form-control select2" name="supplier_id">
+							<option value="">Choose one</option>
 							@foreach ($suppliers as $s => $supplier)
 							<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
 							@endforeach
@@ -29,6 +30,7 @@
 						<div class="form-group">
 						<label>Group ID</label>
 						<select class="form-control select2" name="group_id">
+							<option value="">Choose one</option>
 							@foreach ($groups as $g => $group)
 							<option value="{{ $group->id }}">{{ $group->name }}</option>
 							@endforeach
@@ -37,6 +39,7 @@
 					<div class="form-group">
 						<label>Category ID</label>
 						<select class="form-control select2" name="category_id">
+							<option value="">Choose one</option>
 							@foreach ($categories as $ca => $category)
 							<option value="{{ $category->id }}">{{ $category->name }}</option>
 							@endforeach
@@ -45,6 +48,7 @@
 					<div class="form-group">
 						<label>Sub Category</label>
 						<select class="form-control select2" name="sub_category_id">
+							<option value="">Choose one</option>
 							@foreach ($subcategories as $sc => $subcategory)
 							<option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
 							@endforeach

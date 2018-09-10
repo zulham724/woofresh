@@ -18,6 +18,7 @@
 					<div class="form-group">
 						<label>Product</label>
 						<select class="form-control select2" name="product_id">
+							<option value="">Choose one</option>
 							@foreach ($products as $product)
 							<option value="{{ $product->id }}">{{ $product->name }}</option>
 							@endforeach
@@ -26,15 +27,20 @@
 					<div class="form-group">
 						<label>Component List</label>
 						<select class="form-control select2" name="component_list_id">
+							<option value="">Choose one</option>
 							@foreach ($componentlists as  $componentlist)
 							<option value="{{ $componentlist->id }}">{{ $componentlist->name }}</option>
 							@endforeach
 						</select>
 					</div>  
 					<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" name="name" placeholder="type something" required> 
-						</div>
+						<label>Unit</label>
+						<input type="text" class="form-control" name="unit" placeholder="type something" required> 
+					</div>
+					<div class="form-group">
+						<label>Value</label>
+						<input type="number" class="form-control" name="value" placeholder="type something" required> 
+					</div>
 					
 					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 					
 				</div>
