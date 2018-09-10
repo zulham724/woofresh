@@ -23,6 +23,7 @@ class ProductController extends Controller
     {
         $data["products"] = Product::
         with('supplier')
+        ->with('group')
         ->with('product_translations.language')
         ->get();
         return view('product.index',$data);

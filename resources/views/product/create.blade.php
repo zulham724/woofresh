@@ -55,25 +55,9 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label>Name</label>
-						<input type="text" class="form-control" name="name" placeholder="type something" required> 
-					</div>
-					<div class="form-group">
-						<label>Description</label>
-						<input type="text" class="form-control" name="description" placeholder="type something" required> 
-					</div>
-					<div class="form-group">
 						<label>Quantity</label>
 						<input type="number" class="form-control" name="quantity" placeholder="type something" required> 
 					</div>
-					<div class="form-group">
-						<label>Price</label>
-						<input type="number" class="form-control" name="price" placeholder="type something" required> 
-					</div> 
-					<div class="form-group">
-						<label>Stock</label>
-						<input type="number" class="form-control" name="stock" placeholder="type something" required> 
-					</div> 
 					<div class="form-group">
 						<label>Weight</label>
 						<input type="number" class="form-control" name="weight" placeholder="type something" required> 
@@ -81,11 +65,7 @@
 					<div class="form-group">
 						<label>Unit</label>
 						<input type="text" class="form-control" name="unit" placeholder="type something" required> 
-					</div> 
-					<div class="form-group">
-						<label>Discount</label>
-						<input type="number" class="form-control" name="discount" placeholder="type something" required> 
-					</div> 
+					</div>  
 					<div class="form-group">
 						<label>Badge</label>
 						<input type="text" class="form-control" name="badge" placeholder="type something" required> 

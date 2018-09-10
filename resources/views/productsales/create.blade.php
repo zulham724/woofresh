@@ -21,8 +21,9 @@
 					<div class="form-group">
 						<label>Product </label>
 						<select class="form-control select2" name="product_id">
+							<option value="">Choose one</option>
 							@foreach ($products as $p => $product)
-							<option value="{{ $product->id }}">{{ $product->name }}</option>
+							<option value="{{ $product->id }}">{{ $product->product_translations[0]->name }}</option>
 							@endforeach
 						</select>
 					</div> 
@@ -51,12 +52,8 @@
 						</select>
 					</div> 
 					<div class="form-group">
-						<label>Quantity</label>
-						<input type="text" class="form-control" name="quantity" placeholder="type something" required> 
-					</div>
-					<div class="form-group">
 						<label>Stok</label>
-						<input type="text" class="form-control" name="stock" placeholder="type something" required> 
+						<input type="text" class="form-control" name="stocks" placeholder="type something" required> 
 					</div>
 					<div class="form-group">
 						<label>Price</label>

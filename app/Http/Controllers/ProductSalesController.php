@@ -18,7 +18,9 @@ class ProductSalesController extends Controller
      */
     public function index()
     {
-        $data["productsales"] = ProductSales::get();
+        $data["productsales"] = ProductSales::
+        with('product')
+        ->get();
         return view('productsales.index',$data);
     }
 
@@ -29,10 +31,11 @@ class ProductSalesController extends Controller
      */
     public function create()
     {
-        $data["products"] = Product::get();
+        $data["products"] = Product::with('product_translations')->get();
         $data["states"] = State::get();
         $data["cities"] = City::get();
         $data["subdistricts"] = Subdistrict::get();
+        // dd($data['products'][0]['product_translations'][0]);
         return view('productsales.create',$data);
     }
 

@@ -25,13 +25,9 @@
                             <td>Category</td>
                             <td>Sub Category</td>
                             <td>Name</td>
-                            <td>Description</td>
     						<td>Quantity</td>
-    						<td>Price</td>
-    						<td>Stock</td>
     						<td>Weight</td>
                             <td>Unit</td>
-                            <td>Discount</td>
                             <td>Badge</td>
                             <td>Available Language</td>
     						<td>Is Available?</td>
@@ -43,17 +39,13 @@
     					<tr>
 							<td>{{ $l+1 }}</td>
                             <td>{{ $product->supplier->name }}</td>
-                            <td>{{ $product->group_id }}</td>
-                            <td>{{ $product->category_id }}</td>
-                            <td>{{ $product->sub_category_id }}</td>
-                            <td>{{ $product->name}}</td>
-                            <td>{{ $product->description}}</td>
+                            <td>{{ $product->group->name }}</td>
+                            <td>{{ $product->category->name }}</td>
+                            <td>{{ $product->sub_category->name }}</td>
+                            <td>{{ $product->product_translations[0]->name }}</td>
 							<td>{{ $product->quantity }}</td>
-							<td>{{ $product->price }}</td>
-							<td>{{ $product->stock }}</td>
 							<td>{{ $product->weight }}</td>
                             <td>{{ $product->unit }}</td>
-                            <td>{{ $product->discount }}</td>
                             <td>{{ $product->badge }}</td>
                             <td>
                                 @foreach ($product['product_translations'] as $product_translation)
