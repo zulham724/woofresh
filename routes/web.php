@@ -20,7 +20,12 @@ Route::get('/privacy', function () {
 });
 
 Route::get('test',function(){
-	return route('users.show',2);
+	$file = fopen(database_path('csv/districts.csv'),"r");
+	$csv = array();
+	while (($row = fgetcsv($file, 0, ",")) !== FALSE) {
+	    $csv[] = $row;
+	}
+	return response()->json($csv);
 });
 
 Auth::routes();

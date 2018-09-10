@@ -19,7 +19,7 @@ class CreateRecipesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('description');
-            $table->text('tutorial')->default();
+            $table->text('tutorial')->nullable();
             $table->integer('difficulty_level');
             $table->integer('preparation_time');
             $table->integer('portion_per_serve');
