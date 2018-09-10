@@ -11,6 +11,8 @@ use App\Language;
 use App\ProductTranslation;
 use App\Group;
 use App\Category;
+use App\State;
+use App\ProductSale;
 
 class ProductController extends Controller
 {
@@ -36,6 +38,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $data["states"] = State::get();
         $data["languages"] = Language::get();
         $data['subcategories'] = SubCategory::get();
         $data['suppliers'] = Supplier::get();
@@ -54,7 +57,7 @@ class ProductController extends Controller
     {
         // dd($request->request);
         $product = new Product;
-        $product->fill($request->except('languages'));
+        $product->fill($request->except(['languages','sales']));
         $product->save();
 
         foreach ($request['languages'] as $l => $language) {
@@ -64,6 +67,16 @@ class ProductController extends Controller
             $translation->name = $language['name'];
             $translation->description = $language['description'];
             $translation->save();
+        }
+
+        foreach ($request['sales'] as $s => $sale) {
+            $product_sale = new ProductSale;
+            $product_sale->product_id = $product->id;
+            $product_sale->state_id = $sale['state_id'];
+            $product_sale->stocks = $sale['stock'];
+            $product_sale->price = $sale['price'];
+            $product_sale->discount = $sale['discount'];
+            $product_sale->save();
         }
 
         return redirect('products');

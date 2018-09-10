@@ -10,6 +10,9 @@
 	
 <div class="container">
 	{{ Form::open(['route'=>'products.store','method'=>'post']) }}
+	<div class="alert alert-info">
+	  <strong>Info!</strong> Harap mengisi semua form yang ada dibawah, dari form produk lalu mengisi bahasa dari produk tersebut lalu mengisi harga di tiap daerah yang akan dijual.
+	</div>
 	<div class="row">
 		<div class=" col-6">
 			<div class="card">
@@ -105,6 +108,32 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="row">
+		@foreach ($states as $s => $state)	
+		<div class="col-4">
+			<div class="card">
+				<div class="card-header">
+					Harga di {{ $state->name }}
+				</div>
+				<div class="card-body">
+					<input type="hidden" name="sales[{{$s}}][state_id]" value="{{$state->id}}">
+					<div class="form-group">
+						<label>Stock</label>
+						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][stock]" required value="1">
+					</div>
+					<div class="form-group">
+						<label>Price</label>
+						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][price]" required value="1">
+					</div>
+					<div class="form-group">
+						<label>Discount</label>
+						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][discount]" required value="1">
+					</div>
+				</div>
+			</div>
+		</div>
+		@endforeach
 	</div>
 	{{ Form::close() }}
 </div>

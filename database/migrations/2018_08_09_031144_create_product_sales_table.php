@@ -20,7 +20,7 @@ class CreateProductSalesTable extends Migration
             $table->integer('state_id')->unsigned();
             $table->integer('city_id')->nullable()->unsigned();
             $table->integer('subdistrict_id')->nullable()->unsigned();
-            $table->integer('stocks');
+            $table->integer('stock');
             $table->bigInteger('price');
             $table->integer('discount')->default(0);
             $table->integer('is_available')->default(1);

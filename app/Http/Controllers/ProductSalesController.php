@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\ProductSales; 
+use App\ProductSale; 
 use App\Product; 
 use App\State; 
 use App\City; 
@@ -18,7 +18,7 @@ class ProductSalesController extends Controller
      */
     public function index()
     {
-        $data["productsales"] = ProductSales::
+        $data["productsales"] = ProductSale::
         with('product')
         ->get();
         return view('productsales.index',$data);
@@ -48,7 +48,7 @@ class ProductSalesController extends Controller
     public function store(Request $request)
     {
         // dd($request->request);
-        $productsale = new ProductSales;
+        $productsale = new ProductSale;
         $productsale->fill($request->all());
         $productsale->save();
         return redirect('productsales');
@@ -96,7 +96,7 @@ class ProductSalesController extends Controller
      */
     public function destroy($id)
     {
-        $productsale = ProductSales::find($id)->delete();
+        $productsale = ProductSale::find($id)->delete();
         return response()->json($productsale);
     }
 }
