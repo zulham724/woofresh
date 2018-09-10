@@ -9,7 +9,8 @@ use App\Biodata;
 use App\Transaction;
 use App\City;
 use App\State;
-use App\subdistrict;
+use App\subdistrict; 
+use App\Recipe;
 
 
 class UserController extends Controller
@@ -72,8 +73,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-       $data["users"] = User::with('transactions')->find($id);
-        return view('user.show',$data);
+       
     }
 
     /**
@@ -122,5 +122,17 @@ class UserController extends Controller
     {
         $user = User::find($id)->delete();
         return response()->json($user);
+    }
+
+    public function recipe($id)
+    {
+        $data["user"] = User::with('recipes')->find($id);
+        $data["recipes"] = Recipe::where('user_id',$id);
+        return view('user.recipe',$data);
+    } 
+    public function transaction($id)
+    {
+      $data["users"] = User::with('transactions')->find($id);
+        return view('user.show',$data);  
     }
 }

@@ -10,6 +10,7 @@ use App\Supplier;
 use App\City;
 use App\Language;
 use App\ProductTranslation;
+use App\ProductSales;
 
 class ProductController extends Controller
 {
@@ -99,15 +100,7 @@ class ProductController extends Controller
         return response()->json($products);
     }
     public function state($id){
-        $products = Product::where('state_id',$id)->get();
-        return response()->json($products);
-    }
-    public function city($id){
-        $products = Product::where('city_id',$id)->get();
-        return response()->json($products);
-    }
-    public function subdistrict($id){
-        $products = Product::where('subdistict_id',$id)->get();
+        $products = Product::with('product_sales',$id)->get();
         return response()->json($products);
     }
 }

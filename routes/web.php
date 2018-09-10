@@ -63,6 +63,9 @@ Route::group(['middleware'=>'auth'],function(){
 		'/componentlists'=>'ComponentListController'
 	]);
 
+	Route::get('/users/{id}/recipe','UserController@recipe')->name('users.recipe');
+	Route::get('/users/{id}/transaction','UserController@transaction')->name('users.transaction');
+
 });
 // end middleware auth
 

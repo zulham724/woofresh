@@ -39,8 +39,8 @@
 							<td>
                                 <div class="btn-group-vertical">
                                     <button type="button" class="btn btn-danger" onclick="destroy({{$user->id}})"><i class="fa fa-trash"></i> Delete</button>
-                                <a href="{{ route('users.show',$user->id) }}" type="button" class="btn btn-primary"><i class="fa fa-folder"></i> Show Transactions</a>
-                                <a href="{{ route('recipes.show',$user->id) }}" type="button" class="btn btn-info"><i class="fa fa-folder"></i> Show Recipes</a>
+                                <a href="{{ route('users.transaction',$user->id) }}" type="button" class="btn btn-primary"><i class="fa fa-folder"></i> Show Transactions</a>
+                                <a href="{{ route('users.recipe',$user->id) }}" type="button" class="btn btn-info"><i class="fa fa-folder"></i> Show Recipes</a>
                                 </div>
                             </td>
 						</tr>
