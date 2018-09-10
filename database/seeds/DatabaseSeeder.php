@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             LanguagesTableSeeder::class,
             StatesTableSeeder::class,
             CitiesTableSeeder::class,
+            SubdistrictsTableSeeder::class,
             RolesTableSeeder::class,
             UsersTableSeeder::class
         ]);
