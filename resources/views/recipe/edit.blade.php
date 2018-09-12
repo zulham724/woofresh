@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Language</h2>
+    <h2 class="h5 no-margin-bottom">Recipe</h2>
   </div>
 </div>
 
@@ -17,27 +17,27 @@
 					<h5 class="pull-right"> Fill the Form</h5>
 				</div>
 				<div class="card-body"> 
-					{{ Form::open(['route'=>['recipes.update',$recipe->id],'method'=>'patch','files'=>true]) }}
+					{{ Form::open(['route'=>['recipes.update',$recipe->id],'method'=>'patch']) }}
 						<div class="form-group">
 							<label>User ID</label>
 							<select class="form-control select2" name="user_id" required>
 								<option>--select--</option>
-								@foreach ($users as $user)
+								@foreach ($users as $u => $user)
 									<option value="{{ $user->id }}">{{ $user->name }}</option>
 								@endforeach
 							</select>
 						</div>
 						<div class="form-group">
 							<label>Name</label>
-							<input type="text" class="form-control" name="name" placeholder="type something" required>
+							<input type="text" class="form-control" value="{{ $recipe->name }}" name="name" placeholder="type something" required>
 						</div>
 						<div class="form-group">
 							<label>Description</label>
-							<input type="text" class="form-control" name="description" placeholder="type something">
+							<input type="text" class="form-control" value="{{ $recipe->description }}" name="description" placeholder="type something">
 						</div>
 						<div class="form-group">
 							<label>Difficulty Level</label>
-							<select class="form-control rating" name="difficulty_level">
+							<select class="form-control rating" value="{{ $recipe->difficulty_level }}" name="difficulty_level">
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -47,11 +47,11 @@
 						</div>
 						<div class="form-group">
 							<label>Preparation Time</label>
-							<input type="number" class="form-control" name="preparation_time" placeholder="How long ?"><p>Minutes</p>
+							<input type="number" class="form-control" value="{{ $recipe->preparation_time}}" name="preparation_time" placeholder="How long ?"><p>Minutes</p>
 						</div>
 						<div class="form-group">
 							<label>Portion per Serve</label>
-							<input type="number" class="form-control" name="portion_per_serve" placeholder="How much ?">
+							<input type="number" class="form-control" value="{{ $recipe->portion_per_serve }}" name="portion_per_serve" placeholder="How much ?">
 						</div>
 						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					{{ Form::close() }}

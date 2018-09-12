@@ -63,7 +63,9 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data["supplier"] = Supplier::find($id);
+        // dd($data);
+        return view('supplier.edit',$data);
     }
 
     /**
@@ -75,7 +77,16 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $supplier = Supplier::find($id);
+        $supplier->fill($request->all());
+        if($request->hasFile('image')){
+            $file = Storage::delete($supplier->image);
+            $path = $request->file('image')->store('suppliers');
+            $supplier->image = $path;
+        }
+        $supplier->update();
+
+        return redirect('suppliers');
     }
 
     /**

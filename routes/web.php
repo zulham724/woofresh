@@ -60,11 +60,13 @@ Route::group(['middleware'=>'auth'],function(){
 		'/recipeimages'=>'RecipeImageController',
 		'/productimages'=>'ProductImageController',
 		'/productsales'=>'ProductSalesController',
-		'/componentlists'=>'ComponentListController'
+		'/componentlists'=>'ComponentListController',
+		
 	]);
 
 	Route::get('/users/{id}/recipe','UserController@recipe')->name('users.recipe');
 	Route::get('/users/{id}/transaction','UserController@transaction')->name('users.transaction');
+	Route::get('/users/{id}/edit','UserController@edit')->name('users.edit');
 
 });
 // end middleware auth

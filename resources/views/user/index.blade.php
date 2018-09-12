@@ -27,9 +27,9 @@
     					</tr>
     				</thead>
     				<tbody>
-    					@foreach ($users as $l => $user)
+    					@foreach ($users as $u => $user)
     					<tr>
-							<td>{{ $l+1 }}</td>
+							<td>{{ $u+1 }}</td>
                             <td>{{ $user->role->name }}</td>
                             <td>
                                 <img src="{{ asset($user->avatar == null ? 'storage/uploads/avatars/default.png' : 'storage/'.$user->avatar) }}" class="rounded mx-auto d-block" width="150">
@@ -41,6 +41,7 @@
                                     <button type="button" class="btn btn-danger" onclick="destroy({{$user->id}})"><i class="fa fa-trash"></i> Delete</button>
                                 <a href="{{ route('users.transaction',$user->id) }}" type="button" class="btn btn-primary"><i class="fa fa-folder"></i> Show Transactions</a>
                                 <a href="{{ route('users.recipe',$user->id) }}" type="button" class="btn btn-info"><i class="fa fa-folder"></i> Show Recipes</a>
+                                <a href="{{ route('users.edit',$user->id) }}" type="button" class="btn btn-warning" ><i class="fa fa-gear"></i> Edit</a>
                                 </div>
                             </td>
 						</tr>

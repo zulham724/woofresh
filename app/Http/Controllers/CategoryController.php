@@ -31,7 +31,7 @@ class CategoryController extends Controller
     public function create()
     {
         $data['languages'] = Language::get();
-        $data['categories'] = Group::get();
+        $data['categories'] = Category::get();
         return view('category.create',$data);
     }
 
@@ -77,8 +77,11 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    { 
+        $data["category"] = Category::find($id);
+        $data["groups"] = Group::get();
+        // dd($data);
+        return view('category.edit',$data);
     }
 
     /**
@@ -90,7 +93,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      
+        $category = Category::find($id);
+        $category->fill($request->all());
+        if($request->hasFile('image')){
+            $file = Storage::delete($category->image);
+            $path = $request->file('image')->store('categories');
+            $category->image = $path;
+        }
+        $category->update();
+
+        return redirect('categories');
     }
 
     /**

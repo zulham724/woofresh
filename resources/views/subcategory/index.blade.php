@@ -41,7 +41,9 @@
                                     <img src="{{ asset('storage/'.$sub_category_translation->language->image) }}" class="img-responsive" width="30">
                                 @endforeach                                
                             </td>
-							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$subcategory->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+							<td>
+                            <a type="button" class="btn btn-warning" href="{{ route('subcategories.edit',$subcategory->id) }}"><i class="fa fa-gear"></i> Edit</a>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$subcategory->id}})"><i class="fa fa-trash"></i> Delete</button></td>
 						</tr>
 						@endforeach
     				</tbody>

@@ -66,7 +66,10 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-        //
+       $data["recipe"] = Recipe::find($id);
+       $data["users"] = User::get();
+        // dd($data);
+        return view('recipe.edit',$data);
     }
 
     /**
@@ -78,7 +81,11 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $recipe = Recipe::find($id);
+        $recipe->fill($request->all());
+        $recipe->update();
+
+        return redirect()->route('recipes.index',$recipe->user_id);
     }
 
     /**

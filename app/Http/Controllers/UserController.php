@@ -11,6 +11,7 @@ use App\City;
 use App\State;
 use App\subdistrict; 
 use App\Recipe;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserController extends Controller
@@ -22,7 +23,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data["users"] = User::with('role')->get();
+        $data["users"] = User::
+        with('role')
+        ->with('biodata')
+        ->get();
         return view('user.index',$data);
     }
 
@@ -82,9 +86,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+   public function edit($id)
     {
-        //
+        $data["user"] = User::with('biodata')->find($id);
+        $data["roles"] = Role::get();
+        $data["cities"] = City::get();
+        $data["states"] = State::get();
+        $data["subdistricts"] = subdistrict::get();
+
+        // dd($data);
+        return view('user.edit',$data);
     }
 
     /**
@@ -96,18 +107,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        $user = User::with('biodata')->find($id);
         if($request->hasFile('avatar')){
             $path = $request->file('avatar')->store('uploads/avatars');
+            $file = Storage::delete($user->avatar);
             $user->avatar = $path;
         }
         $user->fill($request->all());
         $user->update();
 
-        $biodata = new Biodata;
-        $biodata->user_id = $user->id;
-        $biodata->fill($request->except(['role_id','name','email','password','avatar']));
-        $biodata->update();
+        $user->biodata->user_id = $user->id;
+        $user->biodata->fill($request->except(['role_id','name','email','password','avatar']));
+        $user->biodata->update();
 
         return redirect('users');
     }

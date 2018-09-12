@@ -43,6 +43,7 @@
                                 @endforeach
                             </td>
                             <td>
+                                <a type="button" class="btn btn-warning" href="{{ route('categories.edit',$category->id) }}"><i class="fa fa-gear"></i> Edit</a>
                                 <button type="submit" class="btn btn-danger"onclick="destroy({{$category->id}})"><i class="fa fa-trash"></i> Delete</button></td>
                         </tr>
                         @endforeach

@@ -31,12 +31,13 @@
                        @foreach ($recipeimages as $ri => $recipeimage)
                            <tr>
                                <td>{{ $ri+1 }}</td>
-                               <td>{{ $recipeimage->recipe_id }}</td>
+                               <td>{{ $recipeimage->recipe->name }}</td>
                                <td>
                                 <img src="{{ asset('storage/'.$recipeimage->image) }}" class="rounded mx-auto d-block" width="150">
                                </td>
                                <td>{{ $recipeimage->description }}</td>
                                <td>
+                                    <a type="button" class="btn btn-warning" href="{{ route('recipeimages.edit',$recipeimage->id) }}"><i class="fa fa-gear"></i> Edit</a>
                                   <button type="button" class="btn btn-danger" onclick="destroy({{$recipeimage->id}})"><i class="fa fa-trash"></i> Delete</button> 
                                </td>
                            </tr>

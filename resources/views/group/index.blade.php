@@ -41,8 +41,10 @@
                                 @endforeach
                             </td>
 							<td>
+                                <a type="button" class="btn btn-warning" href="{{ route('groups.edit',$group->id) }}"><i class="fa fa-gear"></i> Edit</a>
                                 <button type="submit" class="btn btn-danger" onclick="destroy({{$group->id}})"><i class="fa fa-trash"></i> Delete</button>
                             </td>
+
 						</tr>
 						@endforeach
     				</tbody>

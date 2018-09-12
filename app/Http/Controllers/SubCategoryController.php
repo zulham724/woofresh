@@ -77,7 +77,10 @@ class SubCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+         $data["categories"] = Category::get();
+         $data["subcategory"] = SubCategory::find($id);
+        // dd($data);
+        return view('subcategory.edit',$data);
     }
 
     /**
@@ -89,7 +92,16 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subcategory = SubCategory::find($id);
+        $subcategory->fill($request->all());
+        if($request->hasFile('image')){
+            $file = Storage::delete($subcategory->image);
+            $path = $request->file('image')->store('subcategories');
+            $subcategory->image = $path;
+        }
+        $subcategory->update();
+
+        return redirect('subcategories');
     }
 
     /**

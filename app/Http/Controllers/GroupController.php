@@ -76,7 +76,9 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data["group"] = Group::find($id);
+        // dd($data);
+        return view('group.edit',$data);
     }
 
     /**
@@ -88,7 +90,16 @@ class GroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $group = Group::find($id);
+        $group->fill($request->all());
+        if($request->hasFile('image')){
+            $file = Storage::delete($group->image);
+            $path = $request->file('image')->store('groups');
+            $group->image = $path;
+        }
+        $group->update();
+
+        return redirect('groups');
     }
 
     /**

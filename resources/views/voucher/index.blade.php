@@ -42,7 +42,7 @@
                             <td>{{ $voucher->percent }}</td>
 							<td>
                                 
-                                <a href="{{ route('vouchers.show',$voucher->id) }}" type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                                <a href="{{ route('vouchers.edit',$voucher->id) }}" type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
                                 <button type="button" class="btn btn-danger" onclick="destroy({{$voucher->id}})"><i class="fa fa-trash"></i> Delete</button>
                                
                             </td>
