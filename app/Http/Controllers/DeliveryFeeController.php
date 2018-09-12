@@ -63,7 +63,10 @@ class DeliveryFeeController extends Controller
      */
     public function edit($id)
     {
-        //
+      $data["deliveryfee"] = Deliveryfee::find($id);
+        // dd($data);
+        $data["states"] = State::get();
+        return view('deliveryfee.edit',$data);
     }
 
     /**
@@ -75,7 +78,11 @@ class DeliveryFeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $deliveryfee = Deliveryfee::find($id);
+        $deliveryfee->fill($request->all());
+        $deliveryfee->update();
+
+        return redirect()->route('deliveryfees.index',$deliveryfee->state_id);
     }
 
     /**

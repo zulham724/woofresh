@@ -41,8 +41,9 @@
                                <td>{{ $order->delivery_fee }}</td>
                                <td>{{ $order->total }}</td>
                                <td>
-                                   <button type="button" class="btn btn-danger" onclick="destroy({{$order->id}})"><i class="fa fa-trash"></i> Delete</button>
-                               </td>
+                                 <td>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$order->id}})"><i class="fa fa-trash"></i> Delete</button>
+                            </td>
                            </tr>
                        @endforeach
                     </tbody>

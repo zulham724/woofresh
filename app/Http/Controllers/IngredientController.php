@@ -67,7 +67,7 @@ class IngredientController extends Controller
      */
     public function edit($id)
     {
-        //
+    //
     }
 
     /**
@@ -79,7 +79,7 @@ class IngredientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    //
     }
 
     /**

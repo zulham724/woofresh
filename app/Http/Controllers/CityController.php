@@ -64,7 +64,10 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        //
+         $data["city"] = City::find($id);
+        // dd($data);
+        $data["states"] = State::get();
+        return view('city.edit',$data);
     }
 
     /**
@@ -75,10 +78,13 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
-    }
+    {  
+       $city = City::find($id);
+        $city->fill($request->all());
+        $city->update();
 
+        return redirect()->route('cities.index',$city->state_id);
+    }
     /**
      * Remove the specified resource from storage.
      *

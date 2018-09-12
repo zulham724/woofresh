@@ -33,7 +33,9 @@
                             <td>{{ $city->state->name }}</td>
 							<td>{{ $city->name }}</td>
 							<td>{{ $city->description }}</td>
-							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$city->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+                              <td><a href="{{ route('cities.edit',$city->id) }}" type="button" class="btn btn-secondary" ><i class="fa fa-pencil"></i>Edit</a>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$city->id}})"><i class="fa fa-trash"></i> Delete</button>
+                            </td>
 						</tr>
 						@endforeach
     				</tbody>

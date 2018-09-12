@@ -31,7 +31,9 @@
 							<td>{{ $d+1 }}</td>
                             <td>{{ $deliveryfee->state->name }}</td>
 							<td>{{ $deliveryfee->value }}</td>
-							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$deliveryfee->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+                              <td><a href="{{ route('deliveryfees.edit',$deliveryfee->id) }}" type="button" class="btn btn-secondary" ><i class="fa fa-pencil"></i>Edit</a>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$deliveryfee->id}})"><i class="fa fa-trash"></i> Delete</button>
+                            </td>
 						</tr>
 						@endforeach
     				</tbody>

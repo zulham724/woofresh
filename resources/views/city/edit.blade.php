@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Cities</h2>
+    <h2 class="h5 no-margin-bottom">City</h2>
   </div>
 </div>
 
@@ -17,7 +17,7 @@
 					<h5 class="pull-right"> Fill the Form</h5>
 				</div>
 				<div class="card-body"> 
-					{{ Form::open(['route'=>'cities.store','method'=>'post']) }}
+					{{ Form::open(['route'=>['cities.update',$city->id],'method'=>'patch']) }}
 						<div class="form-group">
 						<label>State</label>
 							<select class="form-control select2" name="state_id">
@@ -28,11 +28,11 @@
 						</div>
 						<div class="form-group">
 							<label>Name</label>
-							<input type="text" class="form-control" name="name" placeholder="type something" required> 
+							<input type="text" class="form-control" name="name" placeholder="type something" value="{{ $city->name }}"  required> 
 						</div>
 						<div class="form-group">
 							<label>Description</label>
-							<input type="text" class="form-control" name="description" placeholder="type something"> 
+							<input type="text" class="form-control" name="description" placeholder="type something" value="{{ $city->description}}" > 
 						</div> 
 						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					{{ Form::close() }}

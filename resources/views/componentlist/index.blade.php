@@ -32,7 +32,9 @@
 							<td>{{ $st+1 }}</td>
 							<td>{{ $componentlist->name }}</td>
 							<td>{{ $componentlist->description }}</td>
-							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$componentlist->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+							<td>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$componentlist->id}})"><i class="fa fa-trash"></i> Delete</button>
+                            </td>
 						</tr>
 						@endforeach
     				</tbody>

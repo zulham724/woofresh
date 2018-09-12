@@ -23,6 +23,7 @@
     						<td>No</td>
                             <td>City ID</td>
     						<td>Name</td>
+                            <td>Description</td>
                             <td>Action</td>
     					</tr>
     				</thead>
@@ -32,7 +33,10 @@
 							<td>{{ $sd+1 }}</td>
                             <td>{{ $subdistrict->city->name }}</td>
 							<td>{{ $subdistrict->name }}</td>
-							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$subdistrict->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+                            <td>{{ $subdistrict->description }}</td>
+                            <td><a href="{{ route('subdistricts.edit',$subdistrict->id) }}" type="button" class="btn btn-secondary" ><i class="fa fa-pencil"></i>Edit</a>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$subdistrict->id}})"><i class="fa fa-trash"></i> Delete</button>
+                            </td>
 						</tr>
 						@endforeach
     				</tbody>

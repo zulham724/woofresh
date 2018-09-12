@@ -32,7 +32,9 @@
 							<td>{{ $st+1 }}</td>
 							<td>{{ $state->name }}</td>
 							<td>{{ $state->description }}</td>
-							<td><button type="submit" class="btn btn-danger" onclick="destroy({{$state->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+                             <td><a href="{{ route('states.edit',$state->id) }}" type="button" class="btn btn-secondary" ><i class="fa fa-pencil"></i>Edit</a>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$state->id}})"><i class="fa fa-trash"></i> Delete</button>
+                            </td>
 						</tr>
 						@endforeach
     				</tbody>

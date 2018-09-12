@@ -61,7 +61,9 @@ class StateController extends Controller
      */
     public function edit($id)
     {
-        //
+      $data["state"] = State::find($id);
+        // dd($data);
+        return view('state.edit',$data);
     }
 
     /**
@@ -73,7 +75,11 @@ class StateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $state = State::find($id);
+        $state->fill($request->all());
+        $state->update();
+
+        return redirect('states');
     }
 
     /**

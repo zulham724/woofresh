@@ -30,9 +30,9 @@
                                <td>{{ $i+1 }}</td>
                                <td>{{ $ingredient->recipe->name }}</td>
                                <td>{{ $ingredient->product->name }}</td>
-                               <td>
-                                   <button type="button" class="btn btn-danger" onclick="destroy({{$ingredient->id}})"><i class="fa fa-trash"></i> Delete</button>
-                               </td>
+                                <td><a href="{{ route('ingredients.edit',$ingredient->id) }}" type="button" class="btn btn-secondary" ><i class="fa fa-pencil"></i>Edit</a>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$ingredient->id}})"><i class="fa fa-trash"></i> Delete</button>
+                            </td>
                            </tr>
                        @endforeach
                     </tbody>

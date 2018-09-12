@@ -68,9 +68,7 @@ class VoucherController extends Controller
      */
     public function edit($id)
     {
-        $data["voucher"] = Voucher::find($id);
-        // dd($data);
-        return view('voucher.edit',$data);
+      //
     }
 
     /**
@@ -82,16 +80,7 @@ class VoucherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $voucher = Voucher::find($id);
-        $voucher->fill($request->all());
-        if($request->hasFile('image')){
-            $file = Storage::delete($voucher->image);
-            $path = $request->file('image')->store('vouchers');
-            $voucher->image = $path;
-        }
-        $voucher->update();
-
-        return redirect('vouchers');
+        //
     }
 
     /**

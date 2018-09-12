@@ -39,7 +39,7 @@ class SubdistrictController extends Controller
      */
     public function store(Request $request)
     {
-        $subdistrict = new subdistrict();
+        $subdistrict = new Subdistrict();
         $subdistrict->fill($request->all());
         $subdistrict->save();
 
@@ -65,7 +65,10 @@ class SubdistrictController extends Controller
      */
     public function edit($id)
     {
-        //
+       $data["subdistrict"] = Subdistrict::find($id);
+        // dd($data);
+        $data["cities"] = City::get();
+        return view('subdistrict.edit',$data);
     }
 
     /**
@@ -77,7 +80,11 @@ class SubdistrictController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subdistrict = Subdistrict::find($id);
+        $subdistrict->fill($request->all());
+        $subdistrict->update();
+
+        return redirect()->route('subdistricts.index',$subdistrict->city_id);
     }
 
     /**

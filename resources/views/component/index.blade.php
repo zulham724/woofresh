@@ -21,7 +21,6 @@
                           <td>  No</td>
                             <td>Product</td>
                             <td>Component list</td>
-                            <td>Name</td>
                             <td>Action</td>
                           </tr>
                     </thead>
@@ -30,11 +29,10 @@
                            <tr>
                                <td>{{ $i+1 }}</td>
                                <td>{{ $component->product->name }}</td>
-                               <td>{{ $component->name }}</td>
-                               <td>{{ $component->name }}</td>
+                               <td>{{ $component->component_list_id }}</td>
                                <td>
-                                   <button type="button" class="btn btn-danger" onclick="destroy({{$component->id}})"><i class="fa fa-trash"></i> Delete</button>
-                               </td>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$component->id}})"><i class="fa fa-trash"></i> Delete</button>
+                            </td>
                            </tr>
                        @endforeach
                     </tbody>
