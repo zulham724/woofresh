@@ -63,7 +63,9 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-       //
+       $data["supplier"] = Supplier::find($id);
+        // dd($data);
+        return view('supplier.edit',$data);
     }
 
     /**
@@ -75,7 +77,11 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-    //
+        $supplier = Supplier::find($id);
+        $supplier->fill($request->all());
+        $supplier->update();
+
+        return redirect('suppliers');
     }
 
     /**
