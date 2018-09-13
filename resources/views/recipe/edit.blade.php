@@ -23,7 +23,7 @@
 							<select class="form-control select2" name="user_id" required>
 								<option>--select--</option>
 								@foreach ($users as $u => $user)
-									<option value="{{ $user->id }}">{{ $user->name }}</option>
+									<option value="{{ $user->id }}" {{ $recipe->user_id == $user->id ? 'selected': null }}>{{ $user->name }}</option>
 								@endforeach
 							</select>
 						</div>
@@ -37,7 +37,7 @@
 						</div>
 						<div class="form-group">
 							<label>Difficulty Level</label>
-							<select class="form-control rating" value="{{ $recipe->difficulty_level }}" name="difficulty_level">
+							<select class="form-control rating" name="difficulty_level">
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -62,4 +62,12 @@
 </div>
 	
 </section>
+@endsection
+@section('script')
+<script type="text/javascript">
+	$('.rating').barrating({
+          theme: 'fontawesome-stars-o',
+          initialRating:{!! $recipe->difficulty_level !!}
+    });
+</script>
 @endsection

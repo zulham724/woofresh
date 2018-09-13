@@ -80,7 +80,7 @@
               <a href="{{ route('home') }}"> <i class="icon-home"></i>Dashboard </a>
             </li>
 
-            <li  {{ Request::is('recipes') ? 'class=active' : '' }}><a href="#areadropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Area </a>
+            <li><a href="#areadropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Area </a>
               <ul id="areadropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('states.index') }}"><i class="fa fa-angle-right"></i>States</a></li>
                 <li><a href="{{ route('cities.index') }}"><i class="fa fa-angle-right"></i>Cities</a></li>
@@ -115,8 +115,7 @@
             <li  {{ Request::is('recipes') ? 'class=active' : '' }}><a href="#recipesdropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Recipes </a>
               <ul id="recipesdropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('recipes.index') }}"><i class="fa fa-angle-right"></i>All Recipes</a></li>
-                <li {{ Request::is('recipeimages') ? 'class=active' : '' }}>
-                  <a href="{{ route('recipeimages.index') }}"> <i class="fa fa-angle-right"></i>Recipe Images</a>
+                <li><a href="{{ route('recipeimages.index') }}"> <i class="fa fa-angle-right"></i>Recipe Images</a>
                 </li>
                 <li><a href="{{ route('ingredients.index') }}"><i class="fa fa-angle-right"></i>Ingredients</a></li>
               </ul>

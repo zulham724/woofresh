@@ -5,6 +5,7 @@
     <h2 class="h5 no-margin-bottom">Ingredients</h2>
   </div>
 </div>
+<section>
 <div class="container">
 	{{ Form::open(['route'=>['ingredients.store'],'method'=>'post']) }}
 	<div class="row">
@@ -38,4 +39,5 @@
 	</div>
 	{{ Form::close() }}
 </div>
+</section>
 @endsection

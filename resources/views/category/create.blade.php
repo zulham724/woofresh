@@ -21,8 +21,8 @@
 					<div class="form-group">
 						<label>Group ID</label>
 						<select class="form-control" name="group_id">
-							@foreach ($categories as $ca => $category)
-							<option value="{{ $category->id }}">{{ $category->name }}</option>
+							@foreach ($groups as $g => $group)
+							<option value="{{ $group->id }}">{{ $group->name }}</option>
 							@endforeach
 						</select>
 					</div> 

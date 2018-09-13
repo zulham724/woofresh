@@ -76,7 +76,7 @@
         $.each({!! $recipes !!},(key,val)=>{
           $("#recipe_rating"+val.id).barrating({
             theme: 'fontawesome-stars-o',
-            initialRating:2,
+            initialRating:val.difficulty_level,
             readonly:true
           });
         });

@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Recipe;
-use App\User;
-use App\Ingredient;
 
-class RecipeController extends Controller
+class ComponentListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +13,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $data["recipes"] = Recipe::with('user')->get();
-        // dd($data);
-        return view('recipe.index',$data);
+        //
     }
 
     /**
@@ -28,8 +23,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $data["users"] = User::get();
-        return view('recipe.create',$data);
+        //
     }
 
     /**
@@ -40,11 +34,7 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        $recipe = new Recipe();
-        $recipe->fill($request->all());
-        $recipe->save();
-
-        return redirect()->route('recipes.index',$recipe->user_id);
+        //
     }
 
     /**
@@ -55,8 +45,7 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        $data["recipe"] = Recipe::with('ingredients')->find($id);
-        return view('recipe.show',$data);
+        //
     }
 
     /**
@@ -67,10 +56,7 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-       $data["recipe"] = Recipe::find($id);
-       $data["users"] = User::get();
-        // dd($data);
-        return view('recipe.edit',$data);
+        //
     }
 
     /**
@@ -82,12 +68,7 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
-        $recipe = Recipe::find($id);
-        $recipe->fill($request->all());
-        $recipe->update();
-
-        return redirect()->route('recipes.index',$recipe->user_id);
+        //
     }
 
     /**
@@ -96,9 +77,8 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user_id,$id)
+    public function destroy($id)
     {
-        $recipe = Recipe::find($id)->delete();
-        return response()->json($recipe);
+        //
     }
 }

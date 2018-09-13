@@ -19,7 +19,7 @@
 				<div class="card-body">
 					{{ Form::open(['route'=>['users.update',$user->id],'method'=>'patch','files'=>true]) }}
 					<div class="form-group">
-						<img src="{{ asset('storage/'.$user->avatar) }}" class="rounded mx-auto d-block" width="150">
+						<img src="{{ asset($user->avatar != null ? 'storage/'.$user->avatar : 'storage/avatar/default.png') }}" class="rounded mx-auto d-block" width="150">
 						<input type="file" name="avatar" class="form-control">
 					</div>
 				</div>
@@ -77,19 +77,19 @@
 					</div> 
 					<div class="form-group">
 						<label>First name</label>
-						<input type="text" class="form-control" value="{{ $user->biodata->first_name }}"  name="first_name" placeholder="type something" required>
+						<input type="text" class="form-control" value="{{ $user->biodata->first_name ?? 'kosong' }}"  name="first_name" placeholder="type something" required>
 					</div>
 					<div class="form-group">
 						<label>Last name</label>
-						<input type="text" class="form-control" value="{{ $user->biodata->last_name }}"  name="last_name" placeholder="type something" required>
+						<input type="text" class="form-control" value="{{ $user->biodata->last_name ?? 'kosong' }}"  name="last_name" placeholder="type something" required>
 					</div>			
 					<div class="form-group">
 						<label>Address</label>
-						<input type="text" class="form-control" value="{{ $user->biodata->address }}"  name="address" placeholder="type something" required>
+						<input type="text" class="form-control" value="{{ $user->biodata->address ?? 'kosong' }}"  name="address" placeholder="type something" required>
 					</div>
 					<div class="form-group">
 						<label>Phone number</label>
-						<input type="number" class="form-control" value="{{ $user->biodata->phone_number }}"  name="phone_number" placeholder="type something" required>
+						<input type="number" class="form-control" value="{{ $user->biodata->phone_number ?? '0' }}"  name="phone_number" placeholder="type something" required>
 					</div>
 					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					{{ Form::close() }}

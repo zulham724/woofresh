@@ -28,7 +28,7 @@
 						</div>
 						<div class="form-group">
 							<label>Value</label>
-							<input type="text" class="form-control" name="value" placeholder="type something" required> 
+							<input type="number" class="form-control" name="value" placeholder="type something" required> 
 						</div>
 						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					{{ Form::close() }}
