@@ -11,7 +11,7 @@ class Component extends Model
     public function product(){
     	return $this->belongsTo('App\Product');
     }
-    public function componentlist(){
+    public function component_list(){
     	return $this->belongsTo('App\ComponentList');
     }
 

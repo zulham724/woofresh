@@ -5,11 +5,11 @@
     <h2 class="h5 no-margin-bottom">Components</h2>
   </div>
 </div>
-
+  <section>
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-flag"></i> Components List
+            <i class="fa fa-flag"></i> Components
             <a href="{{ route('components.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
             <a href="{{ route('components.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
@@ -18,9 +18,11 @@
                 <table class="table table-striped datatable">
                     <thead>
                         <tr>
-                          <td>  No</td>
+                            <td>No</td>
                             <td>Product</td>
                             <td>Component list</td>
+                            <td>Unit</td>
+                            <td>Value</td>
                             <td>Action</td>
                           </tr>
                     </thead>
@@ -28,9 +30,12 @@
                       @foreach ($components as $i => $component)
                            <tr>
                                <td>{{ $i+1 }}</td>
-                               <td>{{ $component->product->name }}</td>
-                               <td>{{ $component->component_list_id }}</td>
+                               <td>{{ $component->product->product_translations[0]->name }}</td>
+                               <td>{{ $component->component_list->name }}</td>
+                               <td>{{ $component->unit }}</td>
+                               <td>{{ $component->value }}</td>
                                <td>
+                                <a type="button" class="btn btn-secondary" href="{{ route('components.edit',$component->id) }}"><i class="fa fa-pencil"></i> Edit</a>
                                 <button type="submit" class="btn btn-danger" onclick="destroy({{$component->id}})"><i class="fa fa-trash"></i> Delete</button>
                             </td>
                            </tr>
@@ -41,6 +46,7 @@
         </div>
     </div>
 </div>
+</section>
 
 @endsection
 

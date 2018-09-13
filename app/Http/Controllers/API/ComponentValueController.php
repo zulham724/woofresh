@@ -15,9 +15,9 @@ class ComponentValueController extends Controller
      */
     public function index()
     {
-        //
+     //  
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -26,7 +26,7 @@ class ComponentValueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //
     }
 
     /**
@@ -39,7 +39,7 @@ class ComponentValueController extends Controller
     {
         //
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -49,7 +49,7 @@ class ComponentValueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    //
     }
 
     /**
