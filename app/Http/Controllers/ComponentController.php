@@ -28,7 +28,8 @@ class ComponentController extends Controller
     public function create()
     {
        $data["componentlists"] = ComponentList::get();
-       $data["products"]=Product::get();
+       $data["products"]= Product::with('product_translations')->get();
+       // dd($data);
        return view('component.create',$data);
     }
 
@@ -40,9 +41,10 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
-       $component= new Component;
+        $component= new Component;
         $component->fill($request->all());
         $component->save();
+
         return redirect('components');
     }
 
@@ -65,7 +67,11 @@ class ComponentController extends Controller
      */
     public function edit($id)
     {
-    //
+        $data["component"] = Component::with('component_list')->find($id);
+        $data["componentlists"] = ComponentList::get();
+        $data["products"] = Product::get();
+        // dd($data);
+        return view('component.edit',$data);
     }
 
     /**
@@ -77,7 +83,11 @@ class ComponentController extends Controller
      */
     public function update(Request $request, $id)
     {
-    //
+        $component = Component::find($id);
+        $component->fill($request->all());
+        $component->update();
+
+        return redirect('components');
     }
 
     /**

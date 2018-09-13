@@ -33,6 +33,7 @@
 							<td>{{ $componentlist->name }}</td>
 							<td>{{ $componentlist->description }}</td>
 							<td>
+                                <a href="{{ route('componentlists.edit',$componentlist->id) }}" type="button" class="btn btn-secondary" ><i class="fa fa-pencil"></i>Edit</a>
                                 <button type="submit" class="btn btn-danger" onclick="destroy({{$componentlist->id}})"><i class="fa fa-trash"></i> Delete</button>
                             </td>
 						</tr>

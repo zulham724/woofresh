@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ComponentList;
 
 class ComponentListController extends Controller
 {
@@ -13,7 +14,8 @@ class ComponentListController extends Controller
      */
     public function index()
     {
-        //
+        $data["componentlists"] = ComponentList::get();
+        return view('componentlist.index',$data);
     }
 
     /**
@@ -23,7 +25,8 @@ class ComponentListController extends Controller
      */
     public function create()
     {
-        //
+        $data["componentlists"] = ComponentList::get();
+        return view('componentlist.create',$data);
     }
 
     /**
@@ -34,7 +37,10 @@ class ComponentListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $componentlist= new ComponentList;
+        $componentlist->fill($request->all());
+        $componentlist->save();
+        return redirect('componentlists');
     }
 
     /**
@@ -56,7 +62,9 @@ class ComponentListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data["componentlist"] = ComponentList::find($id);
+        // dd($data);
+        return view('componentlist.edit',$data);
     }
 
     /**
@@ -68,7 +76,11 @@ class ComponentListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $componentlist = ComponentList::find($id);
+        $componentlist->fill($request->all());
+        $componentlist->update();
+
+        return redirect('componentlists');
     }
 
     /**
@@ -79,6 +91,10 @@ class ComponentListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        $componentlist = ComponentList::find($id);
+        $componentlist->delete();
+        
+        return response()->json($componentlist);
     }
 }
