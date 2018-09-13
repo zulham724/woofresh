@@ -28,7 +28,7 @@
 						</div>
 						<div class="form-group">
 							<label>Name</label>
-							<input type="text" class="form-control" name="name" placeholder="type something" value="{{ $city->name }}"  required> 
+							<input type="text" class="form-control" name="name"  value="{{ $city->name }}"  required> 
 						</div>
 						<div class="form-group">
 							<label>Description</label>

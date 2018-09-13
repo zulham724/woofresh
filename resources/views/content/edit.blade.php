@@ -64,6 +64,7 @@
 						@endforeach
 						@if(!isset($content['content_translations'][$l]))
 						<div id="{{$language->name}}" class="tab-pane {{$l==0 ? 'active':null}}">
+							<input type="hidden" name="languages[{{$l}}][id]" value="0">
 							<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$language->id}}">
 							<div class="form-group">
 								<label>Content Name in {{$language->name}}</label>

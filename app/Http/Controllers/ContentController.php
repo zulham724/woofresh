@@ -105,7 +105,11 @@ class ContentController extends Controller
         }
         $content->update();
         foreach ($request['languages'] as $l => $language) {
-            $translation = ContentTranslation::updateOrCreate([
+            $translation = ContentTranslation::updateOrCreate(
+            [
+                "id"=>$language['id']
+            ],
+            [
                 "content_id"=>$content->id,
                 "language_id"=>$language['language_id'],
                 'name'=>$language['name'],

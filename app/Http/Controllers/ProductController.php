@@ -101,7 +101,15 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['product'] = Product::with('product_sales')->find($id);
+        $data["states"] = State::get();
+        $data["languages"] = Language::get();
+        $data['subcategories'] = SubCategory::get();
+        $data['suppliers'] = Supplier::get();
+        $data['groups'] = Group::get();
+        $data['categories'] = Category::get();
+        // dd($data);
+        return view('product.edit',$data);
     }
 
     /**
@@ -113,7 +121,32 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        $product = Product::with('product_sales')->find($id);
+        $product->fill($request->except(['languages','sales']));
+        $product->update();
+
+        foreach ($request['languages'] as $l => $language) {
+            $translation = ProductTranslation::updateOrCreate(
+            [
+                "id"=>$language['id']
+            ],
+            [
+                "product_id"=>$product->id,
+                "language_id"=>$language['language_id'],
+                'name'=>$language['name'],
+                'description'=>$language['description']
+            ]);
+        }
+    
+        foreach ($product['product_sales'] as $s => $sale) {
+            $sale->product_id = $product->id;
+            $sale->stock = $request['sales'][$s]['stock'];
+            $sale->price = $request['sales'][$s]['price'];
+            $sale->discount = $request['sales'][$s]['discount'];
+            $sale->update();
+        }
+        return redirect('products');
     }
 
     /**

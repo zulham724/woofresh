@@ -30,4 +30,8 @@ class Product extends Model
     public function group(){
         return $this->belongsTo('App\Group');
     }
+
+    public function product_sales(){
+        return $this->hasMany('App\ProductSale');
+    }
 }
