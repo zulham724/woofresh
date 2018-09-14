@@ -46,11 +46,11 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	]);
 
 	
-	Route::get('/products/{id}/group','ProductController@group')->name('group');
-	Route::get('/products/{id}/category','ProductController@category')->name('category');
-	Route::get('/products/{id}/subcategory','ProductController@subcategory')->name('subcategory');
-	Route::get('/products/{id}/state','ProductController@state')->name('state');
-	Route::get('/products/{id}/city','ProductController@city')->name('city');
-	Route::get('/products/{id}/subdistrict','ProductController@subdistrict')->name('subdistrict');
+	Route::get('/products/group/{id}','ProductController@group')->name('group');
+	Route::get('/products/category/{id}','ProductController@category')->name('category');
+	Route::get('/products/subcategory/{id}','ProductController@subcategory')->name('subcategory');
+	Route::get('/products/state/{id}','ProductController@state')->name('state');
+	Route::get('/products/city/{id}','ProductController@city')->name('city');
+	Route::get('/products/subdistrict/{id}','ProductController@subdistrict')->name('subdistrict');
 	
 });
