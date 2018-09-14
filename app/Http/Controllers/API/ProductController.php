@@ -96,11 +96,19 @@ class ProductController extends Controller
         return response()->json($products);
     }
     public function subcategory($id){
-        $products = Product::where('subcategory_id',$id)->get();
+        $products = Product::with('sub_categories')->where('id',$id)->first();
+        return response()->json($products);
+    }
+    public function subdistrict($id){
+        $products = Product::with('subdistricts')->where('id',$id)->first();
         return response()->json($products);
     }
     public function state($id){
-        $products = Product::with('product_sales',$id)->get();
+        $products = Product::with('product_sales')->where('id',$id)->first();
+        return response()->json($products);
+    }
+    public function city($id){
+        $products = Product::with('cities')->where('id',$id)->first();
         return response()->json($products);
     }
 }
