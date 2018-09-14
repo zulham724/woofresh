@@ -13,6 +13,8 @@ use App\Group;
 use App\Category;
 use App\State;
 use App\ProductSale;
+use App\ComponentList;
+use App\Component;
 
 class ProductController extends Controller
 {
@@ -44,6 +46,7 @@ class ProductController extends Controller
         $data['suppliers'] = Supplier::get();
         $data['groups'] = Group::get();
         $data['categories'] = Category::get();
+        $data['component_lists'] = ComponentList::get();
         return view('product.create',$data);
     }
 
@@ -57,7 +60,7 @@ class ProductController extends Controller
     {
         // dd($request->request);
         $product = new Product;
-        $product->fill($request->except(['languages','sales']));
+        $product->fill($request->except(['languages','sales','components']));
         $product->save();
 
         foreach ($request['languages'] as $l => $language) {
@@ -67,6 +70,13 @@ class ProductController extends Controller
             $translation->name = $language['name'];
             $translation->description = $language['description'];
             $translation->save();
+        }
+
+        foreach ($request['components'] as $c => $component) {
+            $product_component = new Component;
+            $product_component->product_id = $product->id;
+            $product_component->fill($component);
+            $product_component->save();
         }
 
         foreach ($request['sales'] as $s => $sale) {
@@ -101,13 +111,14 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $data['product'] = Product::with('product_sales')->find($id);
+        $data['product'] = Product::with('product_sales')->with('components.component_list')->find($id);
         $data["states"] = State::get();
         $data["languages"] = Language::get();
         $data['subcategories'] = SubCategory::get();
         $data['suppliers'] = Supplier::get();
         $data['groups'] = Group::get();
         $data['categories'] = Category::get();
+        $data['component_lists'] = ComponentList::get();
         // dd($data);
         return view('product.edit',$data);
     }
@@ -122,20 +133,31 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request);
-        $product = Product::with('product_sales')->find($id);
-        $product->fill($request->except(['languages','sales']));
+        $product = Product::with('product_sales')->with('components')->find($id);
+        $product->fill($request->except(['languages','sales','components']));
         $product->update();
 
         foreach ($request['languages'] as $l => $language) {
             $translation = ProductTranslation::updateOrCreate(
             [
-                "id"=>$language['id']
+                "id"=>$language['id'] ?? 0
             ],
             [
                 "product_id"=>$product->id,
                 "language_id"=>$language['language_id'],
                 'name'=>$language['name'],
                 'description'=>$language['description']
+            ]);
+        }
+
+        foreach ($request['components'] as $c => $component) {
+            $product_component = Component::updateOrCreate(
+            [
+                "id"=>$component['id'] ?? 0
+            ],
+            [
+                "unit"=>$component["unit"],
+                "value"=>$component["value"]
             ]);
         }
     

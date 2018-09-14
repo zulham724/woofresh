@@ -59,19 +59,19 @@
 					</div>
 					<div class="form-group">
 						<label>Quantity</label>
-						<input type="number" class="form-control" name="quantity" placeholder="type something" required> 
+						<input type="number" class="form-control" name="quantity" placeholder="type something" required value="0"> 
 					</div>
 					<div class="form-group">
 						<label>Weight</label>
-						<input type="number" class="form-control" name="weight" placeholder="type something" required> 
+						<input type="number" class="form-control" name="weight" placeholder="type something" required value="0"> 
 					</div> 
 					<div class="form-group">
 						<label>Unit</label>
-						<input type="text" class="form-control" name="unit" placeholder="type something" required> 
+						<input type="text" class="form-control" name="unit" required placeholder="kg/ml/g"> 
 					</div>  
 					<div class="form-group">
 						<label>Badge</label>
-						<input type="text" class="form-control" name="badge" placeholder="type something" required> 
+						<input type="text" class="form-control" name="badge" required placeholder="Local / Impor"> 
 					</div> 
 					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 					
 				</div>
@@ -109,6 +109,39 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="alert alert-info">
+	  <strong>Info!</strong> Tentukan Nutrisi Barang anda.
+	</div>
+
+	<div class="row">
+		@foreach ($component_lists as $cl => $component_list)	
+		<div class="col-4">
+			<div class="card">
+				<div class="card-header">
+					Nutrisi {{ $component_list->name }} <br>
+					<small>{{ $component_list->description }}</small>
+				</div>
+				<div class="card-body">
+					<input type="hidden" name="components[{{$cl}}][component_list_id]" value="{{ $component_list->id }}">
+					<div class="form-group">
+						<label>Unit</label>
+						<input type="text" class="form-control" name="components[{{$cl}}][unit]" placeholder="ml/g/kg">
+					</div>
+					<div class="form-group">
+						<label>Value</label>
+						<input type="number" class="form-control" name="components[{{$cl}}][value]" placeholder="Type Something">
+					</div>
+				</div>
+			</div>
+		</div>	
+		@endforeach
+	</div>
+
+	<div class="alert alert-info">
+	  <strong>Info!</strong> Tentukan Penjualan Barang anda.
+	</div>
+
 	<div class="row">
 		@foreach ($states as $s => $state)	
 		<div class="col-4">

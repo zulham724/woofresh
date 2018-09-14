@@ -124,6 +124,39 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="alert alert-info">
+	  <strong>Info!</strong> Tentukan Nutrisi Barang anda.
+	</div>
+
+	<div class="row">
+		@foreach ($product['components'] as $c => $component)	
+		<div class="col-4">
+			<div class="card">
+				<input type="hidden" name="components[{{$c}}][id]" value="{{ $component->id }}">
+				<div class="card-header">
+					Nutrisi {{ $component->component_list->name }} <br>
+					<small>{{ $component->component_list->description }}</small>
+				</div>
+				<div class="card-body">
+					<div class="form-group">
+						<label>Unit</label>
+						<input type="text" class="form-control" name="components[{{$c}}][unit]" placeholder="ml/g/kg" value="{{ $component->unit }}">
+					</div>
+					<div class="form-group">
+						<label>Value</label>
+						<input type="number" class="form-control" name="components[{{$c}}][value]" placeholder="Type Something" value="{{ $component->value }}">
+					</div>
+				</div>
+			</div>
+		</div>	
+		@endforeach
+	</div>
+
+	<div class="alert alert-info">
+	  <strong>Info!</strong> Tentukan Penjualan Barang anda.
+	</div>
+
 	<div class="row">
 		@foreach ($product['product_sales'] as $s => $state)	
 		<div class="col-4">
