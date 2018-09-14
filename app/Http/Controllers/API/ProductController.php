@@ -87,28 +87,46 @@ class ProductController extends Controller
     }
 
     public function group($id){
-        $products = Product::where('group_id',$id)->get();
+        $products = Product::with('product_translations')->where('group_id',$id)->get();
         return response()->json($products);
     }
 
     public function category($id){
-        $products = Product::where('category_id',$id)->get();
+        $products = Product::with('product_translations')->where('category_id',$id)->get();
         return response()->json($products);
     }
     public function subcategory($id){
-        $products = Product::with('sub_categories')->where('id',$id)->first();
-        return response()->json($products);
-    }
-    public function subdistrict($id){
-        $products = Product::with('subdistricts')->where('id',$id)->first();
+        $products = Product::with('product_translations')->where('sub_category_id',$id)->get();
         return response()->json($products);
     }
     public function state($id){
-        $products = Product::with('product_sales')->where('id',$id)->first();
+        $products = Product::with(['product_sales'=>function($query)use($id){
+            $query->where('state_id',$id);
+        }])
+        ->whereHas('product_sales',function($query)use($id){
+            $query->where('state_id',$id);
+        })
+        ->get();
         return response()->json($products);
     }
     public function city($id){
-        $products = Product::with('cities')->where('id',$id)->first();
+        $products = Product::with(['product_sales'=>function($query)use($id){
+            $query->where('city_id',$id);
+        }])
+        ->whereHas('product_sales',function($query)use($id){
+            $query->where('city_id',$id);
+        })
+        ->get();
+        return response()->json($products);
+    }
+    public function subdistrict($id){
+        $products = Product::with(['product_sales'=>function($query)use($id){
+            $query->where('subdistrict_id',$id);
+        }])
+        ->whereHas('product_sales',function($query)use($id){
+            $query->where('subdistrict_id',$id);
+        })
+        ->get();
         return response()->json($products);
     }
 }
