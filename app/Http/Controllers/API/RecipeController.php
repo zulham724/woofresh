@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Recipe;
-use App\User;
+
 
 class RecipeController extends Controller
 {
@@ -16,17 +16,10 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $data["recipes"] = Recipe::get();
-        return view('recipe.index',$data);
+        $recipes = Recipe::get();
+        return response()->json($recipes);
     }
-     public function create()
-    {
-        $data["recipes"] = Recipe::get();
-        $data["users"] = User::get();
-        return view('recipe.create',$data);
-    }
-
-
+     
     /**
      * Store a newly created resource in storage.
      *
@@ -39,7 +32,7 @@ class RecipeController extends Controller
         $recipe->fill($request->all());
         $recipe->save();
 
-        return redirect()->route('recipes.index',$recipe->user_id);
+        return response()->json($recipe);
     }
 
     /**
@@ -52,15 +45,7 @@ class RecipeController extends Controller
     {
         //
     }
-     public function edit($id)
-    {
-        $data["recipe"] = Recipe::find($id);
-        // dd($data);
-        $data["users"] = User::get();
-        return view('recipe.edit',$data);
-    }
-
-
+     
     /**
      * Update the specified resource in storage.
      *
@@ -70,11 +55,11 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $recipe = Recipe::find($id);
+       $recipe = Recipe::find($id);
         $recipe->fill($request->all());
         $recipe->update();
 
-        return redirect()->route('recipes.index',$recipe->user_id);
+        return response()->json($recipe);
     }
 
     /**
