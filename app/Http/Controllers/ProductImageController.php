@@ -15,7 +15,7 @@ class ProductImageController extends Controller
      */
     public function index()
     {
-        $data["productimages"] = ProductImage::get();
+        $data["productimages"] = ProductImage::with('product.product_translations')->get();
         return view('productimage.index',$data);
     }
 

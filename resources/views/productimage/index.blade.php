@@ -30,7 +30,7 @@
                        @foreach ($productimages as $pi => $productimage)
                            <tr>
                                <td>{{ $pi+1 }}</td>
-                               <td>{{ $productimage->product->name }}</td>
+                               <td>{{ $productimage->product->product_translations[0]->name }}</td>
                                <td>
                                 <img src="{{ asset('storage/'.$productimage->image) }}" class="rounded mx-auto d-block" width="150">
                                </td>
