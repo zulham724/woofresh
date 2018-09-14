@@ -4,10 +4,10 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Recipe;
+use Illuminate\Support\Facades\Storage;
+use App\Voucher;
 
-
-class RecipeController extends Controller
+class VoucherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,10 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::get();
-        return response()->json($recipes);
+        $vouchers = Voucher::get();
+        return response()->json($vouchers);
     }
-     
+
     /**
      * Store a newly created resource in storage.
      *
@@ -28,11 +28,15 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        $recipe = new Recipe;
-        $recipe->fill($request->all());
-        $recipe->save();
+        $voucher = new Voucher();
+        $voucher->fill($request->all());
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('voucher');
+            $voucher->image = $path;    
+        }
+        $voucher->save();
 
-        return response()->json($recipe);
+        return response()->json($voucher);
     }
 
     /**
@@ -45,7 +49,7 @@ class RecipeController extends Controller
     {
         //
     }
-     
+
     /**
      * Update the specified resource in storage.
      *
@@ -55,11 +59,16 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $recipe = Recipe::find($id);
-        $recipe->fill($request->all());
-        $recipe->update();
+       $voucher = Voucher::find($id);
+        $voucher->fill($request->all());
+        if($request->hasFile('image')){
+            $file = Storage::delete($voucher->image);
+            $path = $request->file('image')->store('vouchers');
+            $voucher->image = $path;
+        }
+        $voucher->update();
 
-        return response()->json($recipe);
+        return response()->json($voucher);
     }
 
     /**
@@ -70,7 +79,9 @@ class RecipeController extends Controller
      */
     public function destroy($id)
     {
-        $recipe = Recipe::find($id)->delete();
-        return response()->json($recipe);
+        $voucher = Voucher::find($id);
+        $file = Storage::delete($voucher->image);
+        $voucher->delete();
+        return response()->json($voucher);
     }
 }
