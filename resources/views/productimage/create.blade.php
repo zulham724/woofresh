@@ -10,7 +10,7 @@
 	
 <div class="container">
 	<div class="row">
-		<div class="col-6">
+		<div class="offset-3 col-6">
 			<div class="card">
 				<div class="card-header">
 					<a href="{{ url('productimages') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
@@ -23,7 +23,7 @@
 							<select class="form-control select2" name="product_id" required>
 								<option>--select--</option>
 								@foreach ($products as $product)
-									<option value="{{ $product->id }}">{{ $product->name }}</option>
+									<option value="{{ $product->id }}">{{ $product->product_translations[0]->name }}</option>
 								@endforeach
 							</select>
 						</div>

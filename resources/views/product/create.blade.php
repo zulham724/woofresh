@@ -120,15 +120,15 @@
 					<input type="hidden" name="sales[{{$s}}][state_id]" value="{{$state->id}}">
 					<div class="form-group">
 						<label>Stock</label>
-						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][stock]" required>
+						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][stock]" required value="0">
 					</div>
 					<div class="form-group">
 						<label>Price</label>
-						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][price]" required>
+						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][price]" required value="0">
 					</div>
 					<div class="form-group">
 						<label>Discount</label>
-						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][discount]" required>
+						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][discount]" required value="0">
 					</div>
 				</div>
 			</div>

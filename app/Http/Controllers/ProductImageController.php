@@ -27,7 +27,7 @@ class ProductImageController extends Controller
     public function create()
     {
         $data["productimages"] = ProductImage::get();
-         $data["products"] = Product::get();
+         $data["products"] = Product::with('product_translations')->get();
         return view('productimage.create',$data);
           }
     
