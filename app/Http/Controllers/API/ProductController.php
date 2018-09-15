@@ -89,20 +89,33 @@ class ProductController extends Controller
     }
 
     public function group($id){
-        $products = Product::with('product_translations')->where('group_id',$id)->get();
+        $products = Product::with('supplier')
+        ->with('product_sales')
+        ->with('product_images')
+        ->with('product_translations')->where('group_id',$id)->get();
         return response()->json($products);
     }
 
     public function category($id){
-        $products = Product::with('product_translations')->where('category_id',$id)->get();
+        $products = Product::
+        with('supplier')
+        ->with('product_sales')
+        ->with('product_images')
+        ->with('product_translations')->where('category_id',$id)->get();
         return response()->json($products);
     }
     public function subcategory($id){
-        $products = Product::with('product_translations')->where('sub_category_id',$id)->get();
+        $products = Product::with('supplier')
+        ->with('product_sales')
+        ->with('product_images')
+        ->with('product_translations')->where('sub_category_id',$id)->get();
         return response()->json($products);
     }
     public function state($id){
-        $products = Product::with(['product_sales'=>function($query)use($id){
+        $products = Product::with('supplier')
+        ->with('product_sales')
+        ->with('product_images')
+        ->with(['product_sales'=>function($query)use($id){
             $query->where('state_id',$id);
         }])
         ->whereHas('product_sales',function($query)use($id){
@@ -112,7 +125,10 @@ class ProductController extends Controller
         return response()->json($products);
     }
     public function city($id){
-        $products = Product::with(['product_sales'=>function($query)use($id){
+        $products = Product::with('supplier')
+        ->with('product_sales')
+        ->with('product_images')
+        ->with(['product_sales'=>function($query)use($id){
             $query->where('city_id',$id);
         }])
         ->whereHas('product_sales',function($query)use($id){
@@ -122,7 +138,10 @@ class ProductController extends Controller
         return response()->json($products);
     }
     public function subdistrict($id){
-        $products = Product::with(['product_sales'=>function($query)use($id){
+        $products = Product::with('supplier')
+        ->with('product_sales')
+        ->with('product_images')
+        ->with(['product_sales'=>function($query)use($id){
             $query->where('subdistrict_id',$id);
         }])
         ->whereHas('product_sales',function($query)use($id){
