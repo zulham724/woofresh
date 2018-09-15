@@ -38,4 +38,8 @@ class Product extends Model
     public function components(){
         return $this->hasMany('App\Component');
     }
+
+    public function product_images(){
+        return $this->hasMany('App\ProductImage');
+    }
 }
