@@ -20,7 +20,6 @@ class Product extends Model
         return $this->belongsTo('App\SubCategory');
     }
 
-
     public function product_translations(){
     	return $this->hasMany('App\ProductTranslation');
     }
@@ -41,5 +40,9 @@ class Product extends Model
 
     public function product_images(){
         return $this->hasMany('App\ProductImage');
+    }
+
+    public function product_ratings(){
+        return $this->hasMany('App\ProductRating');
     }
 }

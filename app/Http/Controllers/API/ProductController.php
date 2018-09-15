@@ -26,6 +26,7 @@ class ProductController extends Controller
         ->with('product_sales')
         ->with('product_images')
         ->with('product_translations.language')
+        ->with('product_ratings')
         ->get();
         return response()->json($products);
     }
