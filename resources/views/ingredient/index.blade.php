@@ -29,7 +29,7 @@
                            <tr>
                                <td>{{ $i+1 }}</td>
                                <td>{{ $ingredient->recipe->name }}</td>
-                               <td>{{ $ingredient->product->name }}</td>
+                               <td>{{ $ingredient->product->product_translations[0]->name }}</td>
                                 <td>
                                     <button type="submit" class="btn btn-danger" onclick="destroy({{$ingredient->id}})"><i class="fa fa-trash"></i> Delete</button>
                                 </td>
