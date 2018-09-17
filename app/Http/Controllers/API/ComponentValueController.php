@@ -15,7 +15,8 @@ class ComponentValueController extends Controller
      */
     public function index()
     {
-     //  
+     $componentvalues = ComponentValue::get();
+     return response()->json($componentvalues);
     }
     
     /**
@@ -26,7 +27,10 @@ class ComponentValueController extends Controller
      */
     public function store(Request $request)
     {
-    //
+        $componentvalue = new ComponentValue;
+        $componentvalue->fill($request->all());
+        $componentvalue->save();
+        return response()->json($componentvalue);
     }
 
     /**
