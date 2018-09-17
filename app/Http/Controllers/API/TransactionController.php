@@ -5,6 +5,13 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Transaction;
+use App\User;
+use App\Order;
+use App\State;
+use App\City;
+use App\Subdistrict;
+use App\Voucher;
+use App\DeliveryFee;
 
 class TransactionController extends Controller
 {
@@ -15,7 +22,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transactions = Transaction::get();
+        return response()->json($transactions);
     }
 
     /**
@@ -26,7 +34,10 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $transaction = new Transaction;
+        $transaction->fill($request->all());
+        $transaction->save();
+        return response()->json($transaction);
     }
 
     /**
@@ -37,7 +48,8 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $data["transaction"] = Transaction::with('orders')->find($id);
+        return response()->json($transaction);
     }
 
     /**
@@ -49,7 +61,10 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $transaction = Transaction::find($id);
+        $transaction->fill($request->all());
+        $transaction->update();
+        return response()->json($transaction);
     }
 
     /**
@@ -60,6 +75,7 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $transaction = Transaction::find($id)->delete();
+        return response()->json($transaction);
     }
 }

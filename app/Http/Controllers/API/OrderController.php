@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Transaction;
+use App\Product;
 
 class OrderController extends Controller
 {
@@ -15,7 +17,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::with('transaction')->with('product')->get();
+        return response()->json($orders);
     }
 
     /**
@@ -26,7 +29,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = new Order;
+        $order->fill($request->all());
+        $order->save();
+        return response()->json($order);
     }
 
     /**
@@ -60,6 +66,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::find($id)->delete();
+        return response()->json($order);
     }
 }

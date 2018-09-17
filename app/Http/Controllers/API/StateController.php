@@ -27,7 +27,10 @@ class StateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $state = new State;
+        $state->fill($request->all());
+        $state->save();
+        return response()->json($state);
     }
 
     /**
@@ -50,7 +53,10 @@ class StateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $state = State::find($id);
+        $state->fill($request->all());
+        $state->update();
+        return response()->json($state);
     }
 
     /**

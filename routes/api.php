@@ -36,6 +36,7 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 		'/ingredients'=>'IngredientController',
 		'/contents'=>'ContentController',
 		'/components'=>'ComponentController',
+		'/componentlists'=>'ComponentListController',
 		'/componentvalues'=>'ComponentValueController',
 		'/states'=>'StateController',
 		'/cities'=>'CityController',
