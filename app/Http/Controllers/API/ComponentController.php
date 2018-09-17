@@ -15,7 +15,8 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        //
+        $component = Component::get();
+       return response()->json($component);
     }
 
     /**
@@ -26,7 +27,11 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $component= new Component;
+        $component->fill($request->all());
+        $component->save();
+
+        return response()->json($component);
     }
 
     /**
@@ -49,7 +54,11 @@ class ComponentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $component = Component::find($id);
+        $component->fill($request->all());
+        $component->update();
+
+        return response()->json($component);
     }
 
     /**
@@ -60,6 +69,7 @@ class ComponentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $component = Component::find($id)->delete();
+        return response()->json($component);
     }
 }
