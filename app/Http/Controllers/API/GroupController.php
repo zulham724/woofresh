@@ -29,8 +29,10 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+        $path = $request->file('image')->store('groups');
         $group = new Group;
         $group->fill($request->except('languages'));
+        $group->image = $path;
         $group->save();
 
         foreach ($request['languages'] as $l => $language) {

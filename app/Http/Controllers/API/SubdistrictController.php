@@ -4,12 +4,10 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Category;
-use App\Group;
-use App\CategoryTranslation;
-use App\Language;
+use App\Subdistrict;
+use App\City;
 
-class CategoryController extends Controller
+class SubdistrictController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('category_translations.language')->get();
-        return response()->json($categories);
+        $subdistrict = Subdistrict::get();
+        return response()->json($subdistrict);;
     }
 
     /**
@@ -30,21 +28,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $path = $request->file('image')->store('categories');
-        $category = new Category;
-        $category->fill($request->except('languages'));
-        $category->image = $path;
-        $category->save();
+        $subdistrict = new Subdistrict();
+        $subdistrict->fill($request->all());
+        $subdistrict->save();
 
-        foreach ($request['languages'] as $l => $language) {
-            $translation = new CategoryTranslation;
-            $translation->category_id = $category->id;
-            $translation->language_id = $language['language_id'];
-            $translation->name = $language['name'];
-            $translation->save();
-             }
-
-        return response()->json($category);
+        return response()->json($subdistrict);
     }
 
     /**
@@ -67,11 +55,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id);
-        $category->fill($request->all());
-        $category->update();
+        $subdistrict = Subdistrict::find($id);
+        $subdistrict->fill($request->all());
+        $subdistrict->update();
 
-        return response()->json($category);
+        return response()->json($subdistrict);
     }
 
     /**
@@ -82,7 +70,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id)->delete();
-        return response()->json($category);
+        $subdistrict = Subdistrict::find($id)->delete();
+        return response()->json($subdistrict);
     }
 }

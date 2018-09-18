@@ -55,7 +55,11 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $city = City::find($id);
+        $city->fill($request->all());
+        $city->update();
+
+        return response()->json($city);
     }
 
     /**

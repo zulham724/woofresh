@@ -54,7 +54,11 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $supplier = Supplier::find($id);
+        $supplier->fill($request->all());
+        $supplier->update();
+
+        return response()->json($supplier);
     }
 
     /**

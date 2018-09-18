@@ -55,7 +55,7 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $recipe = Recipe::find($id);
+        $recipe = Recipe::find($id);
         $recipe->fill($request->all());
         $recipe->update();
 
