@@ -55,7 +55,10 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::find($id);
+        $order->fill($request->all());
+        $order->update();
+        return response()->json($order);
     }
 
     /**

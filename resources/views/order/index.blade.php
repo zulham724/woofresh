@@ -23,9 +23,6 @@
                             <td>Product</td>
                             <td>Quantity</td>
                             <td>Sub Total Price</td>
-                            <td>Discout</td>
-                            <td>Delivery Fee</td>
-                            <td>Total</td>
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -37,10 +34,6 @@
                                <td>{{ $order->product->name }}</td>
                                <td>{{ $order->quantity }}</td>
                                <td>{{ $order->subtotal_price }}</td>
-                               <td>{{ $order->discount }}</td>
-                               <td>{{ $order->delivery_fee }}</td>
-                               <td>{{ $order->total }}</td>
-                               <td>
                                  <td>
                                 <button type="submit" class="btn btn-danger" onclick="destroy({{$order->id}})"><i class="fa fa-trash"></i> Delete</button>
                             </td>

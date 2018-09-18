@@ -57,7 +57,10 @@ class IngredientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ingredient = Ingredient::find($id);
+        $ingredient->fill($request->all());
+        $ingredient->update();
+        return response()->json($ingredient);
     }
 
     /**

@@ -39,18 +39,6 @@
 						<label>Sub Total Price</label>
 						<input type="text" class="form-control" name="subtotal_price" placeholder="type something" required> 
 					</div>
-					<div class="form-group">
-						<label>Discount</label>
-						<input type="text" class="form-control" name="discount" placeholder="type something" required> 
-					</div>
-					<div class="form-group">
-						<label>Delivery Fee</label>
-						<input type="text" class="form-control" name="delivery_fee" placeholder="type something" required> 
-					</div>
-					<div class="form-group">
-						<label>Total</label>
-						<input type="text" class="form-control" name="total" placeholder="type something" required> 
-					</div>
 					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 					
 				</div>
 			</div>
