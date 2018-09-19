@@ -57,5 +57,11 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::get('/products/subdistrict/{id}','ProductController@subdistrict')->name('subdistrict');
 	Route::get('/states/search/{id}','StateController@search')->name('search');
 	Route::get('/products/search/{id}','ProductController@search')->name('search');
+	Route::get('/recipes/search/{id}','RecipeController@search')->name('search');
+	Route::get('/components/search/{id}','ComponentController@search')->name('search');
+	Route::get('/suppliers/search/{id}','SupplierController@search')->name('search');
+	Route::get('/ingredients/search/{id}','IngredientController@search')->name('search');
+	Route::get('/vouchers/search/{id}','VoucherController@search')->name('search');
+	Route::get('/cities/search/{id}','CityController@search')->name('search');
 	
 });
