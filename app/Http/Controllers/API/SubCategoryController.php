@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\SubCategory;
 use App\Category;
 use App\SubCategoryTranslation;
@@ -18,7 +19,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $subcategory = SubCategory::with('sub_category_translations.language')->get();
+        $subcategory = SubCategory::with('sub_category_translations.language')
+        ->get();
         return response()->json($subcategory);
     }
 
@@ -32,15 +34,10 @@ class SubCategoryController extends Controller
     {
         $subcategory = new SubCategory;
         $subcategory->fill($request->except('languages'));
+        $path = $request->file('image')->store('subcategories');
+        $subcategory->image = $path;
         $subcategory->save();
 
-        foreach ($request['languages'] as $l => $language) {
-            $translation = new SubCategoryTranslation;
-            $translation->sub_category_id = $subcategory->id;
-            $translation->language_id = $language['language_id'];
-            $translation->name = $language['name'];
-            $translation->save();
-        }
         return response()->json($subcategory);
     }
 
@@ -64,7 +61,16 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subcategory = SubCategory::find($id);
+        $subcategory->fill($request->all());
+        if($request->hasFile('image')){
+            $file = Storage::delete($subcategory->image);
+            $path = $request->file('image')->store('subcategories');
+            $subcategory->image = $path;
+        }
+        $subcategory->update();
+        return response()->json($subcategory);
+
     }
 
     /**
@@ -75,7 +81,9 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $subcategory = SubCategory::find($id)->delete();
+        $subcategory = SubCategory::find($id);
+        $file = Storage::delete($subcategory->image);
+        $subcategory->delete();
         return response()->json($subcategory);
     }
 }
