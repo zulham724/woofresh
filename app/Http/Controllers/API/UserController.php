@@ -102,4 +102,10 @@ class UserController extends Controller
         $user = User::find($id)->delete();
         return response()->json($user);
     }
+    public function search($user)
+    {
+        $users = User::where('name','like',"%".$user."%")->get();
+
+        return response()->json($users);
+    }
 }

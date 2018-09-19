@@ -85,4 +85,10 @@ class CategoryController extends Controller
         $category = Category::find($id)->delete();
         return response()->json($category);
     }
+    public function search($category)
+    {
+        $categories = Category::where('name','like',"%".$category."%")->get();
+
+        return response()->json($categories);
+    }
 }

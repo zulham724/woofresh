@@ -73,4 +73,10 @@ class SubdistrictController extends Controller
         $subdistrict = Subdistrict::find($id)->delete();
         return response()->json($subdistrict);
     }
+     public function search($subdistrict)
+    {
+        $subdistricts = Subdistrict::where('name','like',"%".$subdistrict."%")->get();
+
+        return response()->json($subdistricts);
+    }
 }
