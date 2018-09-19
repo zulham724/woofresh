@@ -55,5 +55,7 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::get('/products/state/{id}','ProductController@state')->name('state');
 	Route::get('/products/city/{id}','ProductController@city')->name('city');
 	Route::get('/products/subdistrict/{id}','ProductController@subdistrict')->name('subdistrict');
+	Route::get('/states/search/{id}','StateController@search')->name('search');
+	Route::get('/products/search/{id}','ProductController@search')->name('search');
 	
 });

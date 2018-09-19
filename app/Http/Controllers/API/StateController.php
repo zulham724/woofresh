@@ -70,4 +70,10 @@ class StateController extends Controller
         $state = State::find($id)->delete();
         return response()->json($state);
     }
+    public function search($state)
+    {
+        $states = State::where('name','like',"%".$state."%")->get();
+
+        return response()->json($states);
+    }
 }

@@ -114,7 +114,6 @@ class ProductController extends Controller
     }
     public function state($id){
         $products = Product::with('supplier')
-        ->with('product_sales')
         ->with('product_images')
         ->with(['product_sales'=>function($query)use($id){
             $query->where('state_id',$id);
@@ -150,5 +149,11 @@ class ProductController extends Controller
         })
         ->get();
         return response()->json($products);
+    }
+    public function search($product)
+    {
+        // $products = Product::with()where('name','like',"%".$product."%")->get();
+
+        // return response()->json($products);
     }
 }
