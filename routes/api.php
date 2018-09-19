@@ -64,6 +64,7 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::get('/vouchers/search/{id}','VoucherController@search')->name('search');
 	Route::get('/cities/search/{id}','CityController@search')->name('search');
 	Route::get('/groups/search/{id}','GroupController@search')->name('search');
+	Route::get('/subdistricts/search/{id}','SubdistrictController@search')->name('search');
 	
 	
 });
