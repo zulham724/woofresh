@@ -152,8 +152,14 @@ class ProductController extends Controller
     }
     public function search($product)
     {
-        // $products = Product::with()where('name','like',"%".$product."%")->get();
+        $products = Product::with(['product_translations'=>function($query)use($product){
+            $query->where('name','like',"%".$product."%");
+        }])
+        ->whereHas('product_translations',function($query)use($product){
+            $query->where('name','like',"%".$product."%");
+        })
+        ->get();
 
-        // return response()->json($products);
+        return response()->json($products);
     }
 }
