@@ -67,6 +67,7 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::get('/subdistricts/search/{id}','SubdistrictController@search')->name('search');
 	Route::get('/categories/search/{id}','CategoryController@search')->name('search');
 	Route::get('/subcategories/search/{id}','SubCategoryController@search')->name('search');
+	Route::get('/users/search/{id}','UserController@search')->name('search');
 	
 	
 });
