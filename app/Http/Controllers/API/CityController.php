@@ -73,4 +73,10 @@ class CityController extends Controller
         $city = City::find($id)->delete();
         return response()->json($city);
     }
+    public function search($city)
+    {
+        $cities = City::where('name','like',"%".$city."%")->get();
+
+        return response()->json($cities);
+    }
 }

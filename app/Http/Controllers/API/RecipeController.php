@@ -73,4 +73,10 @@ class RecipeController extends Controller
         $recipe = Recipe::find($id)->delete();
         return response()->json($recipe);
     }
+    public function search($recipe)
+    {
+        $recipes = Recipe::where('name','like',"%".$recipe."%")->get();
+
+        return response()->json($recipes);
+    }
 }

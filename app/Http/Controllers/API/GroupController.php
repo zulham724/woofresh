@@ -79,4 +79,16 @@ class GroupController extends Controller
         $group = Group::find($id)->delete();
         return response()->json($group);
     }
+    public function search($group)
+    {
+        $groups = group::with(['group_translations'=>function($query)use($group){
+            $query->where('name','like',"%".$group."%");
+        }])
+        ->whereHas('group_translations',function($query)use($group){
+            $query->where('name','like',"%".$group."%");
+        })
+        ->get();
+
+        return response()->json($groups);
+    }
 }
