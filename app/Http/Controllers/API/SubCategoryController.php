@@ -86,4 +86,10 @@ class SubCategoryController extends Controller
         $subcategory->delete();
         return response()->json($subcategory);
     }
+    public function search($subcategory)
+    {
+        $subcategories = SubCategory::where('name','like',"%".$subcategory."%")->get();
+
+        return response()->json($subcategories);
+    }
 }

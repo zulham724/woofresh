@@ -84,4 +84,10 @@ class VoucherController extends Controller
         $voucher->delete();
         return response()->json($voucher);
     }
+    public function search($voucher)
+    {
+        $vouchers = Voucher::where('name','like',"%".$voucher."%")->get();
+
+        return response()->json($vouchers);
+    }
 }
