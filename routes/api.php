@@ -65,6 +65,8 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::get('/cities/search/{id}','CityController@search')->name('search');
 	Route::get('/groups/search/{id}','GroupController@search')->name('search');
 	Route::get('/subdistricts/search/{id}','SubdistrictController@search')->name('search');
+	Route::get('/categories/search/{id}','CategoryController@search')->name('search');
+	Route::get('/subcategories/search/{id}','SubCategoryController@search')->name('search');
 	
 	
 });
