@@ -74,4 +74,16 @@ class IngredientController extends Controller
         $ingredient = Ingredient::find($id)->delete();
         return response()->json($ingredient);
     }
+    public function search($ingredient)
+    {
+        $ingredients = Ingredient::with(['product.product_translations'=>function($query)use($ingredient){
+            $query->where('name','like',"%".$ingredient."%");
+        }])
+        ->whereHas('product.product_translations',function($query)use($ingredient){
+            $query->where('name','like',"%".$ingredient."%");
+        })
+        ->get();
+
+        return response()->json($ingredients);
+    }
 }
