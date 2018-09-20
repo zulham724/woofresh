@@ -102,4 +102,10 @@ class ContentController extends Controller
         $content->delete();
         return response()->json($content);
     }
+    public function search($content)
+    {
+        $contents = Content::where('name','like',"%".$content."%")->get();
+
+        return response()->json($contents);
+    }
 }
