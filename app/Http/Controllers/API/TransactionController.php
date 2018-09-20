@@ -78,4 +78,10 @@ class TransactionController extends Controller
         $transaction = Transaction::find($id)->delete();
         return response()->json($transaction);
     }
+    public function search($transaction)
+    {
+        $transactions = Transaction::where('transaction_number','like',"%".$transaction."%")->get();
+
+        return response()->json($transactions);
+    }
 }

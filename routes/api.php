@@ -68,6 +68,9 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::get('/categories/search/{id}','CategoryController@search')->name('search');
 	Route::get('/subcategories/search/{id}','SubCategoryController@search')->name('search');
 	Route::get('/users/search/{id}','UserController@search')->name('search');
+	Route::get('/transactions/search/{id}','TransactionController@search')->name('search');
+	Route::get('/languages/search/{id}','LanguageController@search')->name('search');
+	Route::get('/contents/search/{id}','ContentController@search')->name('search');
 	
 	
 });
