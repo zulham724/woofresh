@@ -107,7 +107,6 @@
                 <li><a href="{{ route('componentlists.index') }}"><i class="fa fa-angle-right"></i>Component Lists</a></li>
                 <li><a href="{{ route('components.index') }}"><i class="fa fa-angle-right"></i>Components</a></li>
                 <li><a href="{{ route('suppliers.index') }}"><i class="fa fa-angle-right"></i>Suppliers</a></li>
-                <li><a href="{{ route('vouchers.index') }}"><i class="fa fa-angle-right"></i>Vouchers</a></li>
               </ul>
             </li>
 
@@ -125,6 +124,7 @@
               <ul id="transactionsdropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('transactions.index') }}"><i class="fa fa-angle-right"></i> Transactions</a></li>
                 <li><a href="{{ route('orders.index') }}"><i class="fa fa-angle-right"></i> Orders</a></li>
+                <li><a href="{{ route('vouchers.index') }}"><i class="fa fa-angle-right"></i>Vouchers</a></li>
               </ul>
             </li>
 

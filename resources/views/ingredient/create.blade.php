@@ -31,6 +31,18 @@
 							<option value="{{ $product->id }}">{{ $product->product_translations [0]->name }}</option>
 							@endforeach
 						</select>
+					</div>
+					<div class="form-group">
+						<label>Optional Product</label>
+						<input type="text" class="form-control" name="optional_product" placeholder="type something">
+					</div> 
+					<div class="form-group">
+						<label>Weight</label>
+						<input type="number" class="form-control" name="weight" placeholder="type something">
+					</div> 
+					<div class="form-group">
+						<label>Unit</label>
+						<input type="text" class="form-control" name="unit" placeholder="type something">
 					</div> 
 					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 					
 				</div>

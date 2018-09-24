@@ -34,6 +34,18 @@
 							@endforeach
 						</select>
 					</div> 
+					<div class="form-group">
+						<label>Optional Product</label>
+						<input type="text" class="form-control" name="optional_product" placeholder="type something" value="{{ $ingredient->optional_product }}">
+					</div> 
+					<div class="form-group">
+						<label>Weight</label>
+						<input type="number" class="form-control" name="weight" placeholder="type something" value="{{ $ingredient->weight }}">
+					</div> 
+					<div class="form-group">
+						<label>Unit</label>
+						<input type="text" class="form-control" name="unit" placeholder="type something" value="{{ $ingredient->unit }}">
+					</div> 
 						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					{{ Form::close() }}
 				</div>
