@@ -114,6 +114,7 @@
             <li  {{ Request::is('recipes') ? 'class=active' : '' }}><a href="#recipesdropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Recipes </a>
               <ul id="recipesdropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('recipes.index') }}"><i class="fa fa-angle-right"></i>All Recipes</a></li>
+                <li><a href="{{ route('recipetutorials.index') }}"><i class="fa fa-angle-right"></i>Recipe Tutorials</a></li>
                 <li><a href="{{ route('recipeimages.index') }}"> <i class="fa fa-angle-right"></i>Recipe Images</a>
                 </li>
                 <li><a href="{{ route('ingredients.index') }}"><i class="fa fa-angle-right"></i>Ingredients</a></li>

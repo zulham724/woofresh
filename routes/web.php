@@ -61,6 +61,7 @@ Route::group(['middleware'=>'auth'],function(){
 		'/productimages'=>'ProductImageController',
 		'/productsales'=>'ProductSalesController',
 		'/componentlists'=>'ComponentListController',
+		'/recipetutorials'=>'RecipeTutorialController',
 		
 	]);
 
