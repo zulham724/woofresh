@@ -96,7 +96,7 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user_id,$id)
+    public function destroy($id)
     {
         $recipe = Recipe::find($id)->delete();
         return response()->json($recipe);

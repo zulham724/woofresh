@@ -67,7 +67,11 @@ class IngredientController extends Controller
      */
     public function edit($id)
     {
-    //
+        $data["ingredient"] = Ingredient::find($id);
+        $data["recipes"] = Recipe::get();
+        $data["products"] = product::get();
+        // dd($data);
+        return view('ingredient.edit',$data);
     }
 
     /**
@@ -79,7 +83,12 @@ class IngredientController extends Controller
      */
     public function update(Request $request, $id)
     {
-    //
+        // dd($request);
+        $ingredient = ingredient::find($id);
+        $ingredient->fill($request->all());
+        $ingredient->update();
+
+        return redirect()->route('ingredients.index',$ingredient->user_id);
     }
 
     /**

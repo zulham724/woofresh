@@ -37,7 +37,7 @@
                                </td>
                                <td>{{ $recipeimage->description }}</td>
                                <td>
-                                    <a type="button" class="btn btn-warning" href="{{ route('recipeimages.edit',$recipeimage->id) }}"><i class="fa fa-gear"></i> Edit</a>
+                                    <a type="button" class="btn btn-secondary" href="{{ route('recipeimages.edit',$recipeimage->id) }}"><i class="fa fa-pencil"></i> Edit</a>
                                   <button type="button" class="btn btn-danger" onclick="destroy({{$recipeimage->id}})"><i class="fa fa-trash"></i> Delete</button> 
                                </td>
                            </tr>
