@@ -21,6 +21,7 @@ class ProductSalesController extends Controller
         $data["productsales"] = ProductSale::
         with('product.product_translations','city','state')
         ->get();
+        dd($data);
         return view('productsales.index',$data);
     }
 
