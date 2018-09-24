@@ -19,9 +19,8 @@ class ProductSalesController extends Controller
     public function index()
     {
         $data["productsales"] = ProductSale::
-        with('product.product_translations','city','state')
+        with('product.product_translations','state')
         ->get();
-        dd($data);
         return view('productsales.index',$data);
     }
 

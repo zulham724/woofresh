@@ -21,7 +21,6 @@
     					<tr>
     						<td>No</td>
                             <td>Product</td>
-                            <td>City</td>
                             <td>State </td>
                             <td>Subdistrict</td>
     						<td>Stock</td>
@@ -35,7 +34,6 @@
     					<tr>
 							<td>{{ $l+1 }}</td>
                             <td>{{ $productsale->product->product_translations[0]->name}}</td>
-                            <td>{{ $productsale->city->name}}</td>
                             <td>{{ $productsale->state->name }}</td>
                             <td>{{ $productsale->subdistrict->name }}</td>
                             <td>{{ $productsale->stocks}}</td>
