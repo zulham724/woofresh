@@ -19,7 +19,7 @@ class ProductSalesController extends Controller
     public function index()
     {
         $data["productsales"] = ProductSale::
-        with('product')
+        with('product.product_translations','city','state')
         ->get();
         return view('productsales.index',$data);
     }
