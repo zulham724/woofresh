@@ -34,7 +34,7 @@
 							<td>{{ $l+1 }}</td>
                             <td>{{ $productsale->product->product_translations[0]->name}}</td>
                             <td>{{ $productsale->state->name }}</td>
-                            <td>{{ $productsale->stocks}}</td>
+                            <td>{{ $productsale->stock}}</td>
 							<td>{{ $productsale->price }}</td>
 							<td>{{ $productsale->discount }}</td>
 							<td>
