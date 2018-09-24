@@ -10,7 +10,7 @@
 	
 <div class="container">
 	<div class="row">
-		<div class="col-6">
+		<div class="offset-3 col-6">
 			<div class="card">
 				<div class="card-header">
 					<a href="{{ route('recipes.index') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
@@ -33,7 +33,7 @@
 						</div>
 						<div class="form-group">
 							<label>Description</label>
-							<input type="text" class="form-control" name="description" placeholder="type something">
+							<textarea name="description" class="form-control" placeholder="Type something"></textarea>
 						</div>
 						<div class="form-group">
 							<label>Tutorial</label>
