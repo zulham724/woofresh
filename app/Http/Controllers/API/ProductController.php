@@ -115,6 +115,7 @@ class ProductController extends Controller
     public function state($id){
         $products = Product::with('supplier')
         ->with('product_images')
+        ->with('product_translations.language')
         ->with(['product_sales'=>function($query)use($id){
             $query->where('state_id',$id);
         }])

@@ -73,4 +73,10 @@ class LanguageController extends Controller
         $language = Language::find($id)->delete();
         return response()->json($language);
     }
+    public function search($language)
+    {
+        $languages = Language::where('name','like',"%".$language."%")->get();
+
+        return response()->json($languages);
+    }
 }
