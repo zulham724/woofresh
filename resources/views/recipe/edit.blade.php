@@ -33,7 +33,7 @@
 						</div>
 						<div class="form-group">
 							<label>Description</label>
-							<input type="text" class="form-control" value="{{ $recipe->description }}" name="description" placeholder="type something">
+							<textarea type="text" class="form-control" value="{{ $recipe->description }}" name="description" placeholder="type something"></textarea>
 						</div>
 						<div class="form-group">
 							<label>Difficulty Level</label>

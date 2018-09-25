@@ -24,7 +24,7 @@
 					</div> 
 					<div class="form-group">
 						<label>Description</label>
-						<input type="text" class="form-control" name="description" placeholder="type something" required> 
+						<textarea type="text" class="form-control" name="description" placeholder="type something" required> </textarea>
 					</div>
 					<div class="form-group">
 						<label>First Name</label>

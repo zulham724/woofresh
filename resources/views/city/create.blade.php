@@ -32,7 +32,7 @@
 						</div>
 						<div class="form-group">
 							<label>Description</label>
-							<input type="text" class="form-control" name="description" placeholder="type something"> 
+							<textarea type="text" class="form-control" name="description" placeholder="type something" > </textarea>
 						</div> 
 						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
 					{{ Form::close() }}
