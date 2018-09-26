@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Product</h2>
+    <h2 class="h5 no-margin-bottom">Produk</h2>
   </div>
 </div>
 
@@ -17,12 +17,12 @@
 		<div class=" col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ url('products') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
-					<h5 class="pull-right"> Fill the Form</h5>
+					<a href="{{ url('products') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Kembali</a>
+					<h5 class="pull-right"> Isi Data Berikut</h5>
 				</div>
 				<div class="card-body"> 
 					<div class="form-group">
-						<label>Supplier</label>
+						<label>Pemasok</label>
 						<select class="form-control select2" name="supplier_id">
 							@foreach ($suppliers as $s => $supplier)
 							<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
@@ -30,7 +30,7 @@
 						</select>
 					</div> 
 						<div class="form-group">
-						<label>Group ID</label>
+						<label>ID Grup</label>
 						<select class="form-control select2" name="group_id">
 							@foreach ($groups as $g => $group)
 							<option value="{{ $group->id }}">{{ $group->name }}</option>
@@ -38,7 +38,7 @@
 						</select>
 					</div> 
 					<div class="form-group">
-						<label>Category ID</label>
+						<label>ID Kategori</label>
 						<select class="form-control select2" name="category_id">
 							@foreach ($categories as $ca => $category)
 							<option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -46,7 +46,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label>Sub Category</label>
+						<label>Sub Kategori</label>
 						<select class="form-control select2" name="sub_category_id">
 							@foreach ($subcategories as $sc => $subcategory)
 							<option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
@@ -54,29 +54,29 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label>Quantity</label>
+						<label>Kuantitas</label>
 						<input type="number" class="form-control" name="quantity"  value={{ $product->quantity }} required> 
 					</div>
 					<div class="form-group">
-						<label>Weight</label>
+						<label>Berat</label>
 						<input type="number" class="form-control" name="weight" value={{ $product->weight }} required> 
 					</div> 
 					<div class="form-group">
-						<label>Unit</label>
+						<label>Satuan</label>
 						<input type="text" class="form-control" name="unit" value={{ $product->unit }} required> 
 					</div>  
 					<div class="form-group">
 						<label>Badge</label>
 						<input type="text" class="form-control" name="badge" value={{ $product->badge }} required> 
 					</div> 
-					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 					
+					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Simpan</button> 					
 				</div>
 			</div>
 		</div>
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					Languages
+					Bahasa
 				</div>
 				<div class="card-body">
 					<ul class="nav nav-tabs">
@@ -94,11 +94,11 @@
 								<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$product_translation->language->id}}">
 								<input type="hidden" name="languages[{{$l}}][id]" value="{{$product_translation->id}}">
 								<div class="form-group">
-									<label>Product Name in {{$product_translation->language->name}}</label>
+									<label>Nama Produk di {{$product_translation->language->name}}</label>
 									<input type="text" value="{{$product_translation->name}}" class="form-control" name="languages[{{$l}}][name]" placeholder="Type something" required>
 								</div>
 								<div class="form-group">
-									<label>Product Description in {{$product_translation->language->name}}</label>
+									<label>Deskripsi Produk di {{$product_translation->language->name}}</label>
 									<input type="text" value="{{$product_translation->description}}" class="form-control" name="languages[{{$l}}][description]" placeholder="Type something" required>
 								</div>
 							</div>
@@ -109,11 +109,11 @@
 							<input type="hidden" name="languages[{{$l}}][id]" value="0">
 							<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$language->id}}">
 							<div class="form-group">
-								<label>Product Name in {{$language->name}}</label>
+								<label>Nama Produk di {{$language->name}}</label>
 								<input type="text" class="form-control" name="languages[{{$l}}][name]" placeholder="Type something" required>
 							</div>
 							<div class="form-group">
-								<label>Product Description in {{$language->name}}</label>
+								<label>Deskripsi Produk di {{$language->name}}</label>
 								<input type="text" class="form-control" name="languages[{{$l}}][description]" placeholder="Type something" required>
 							</div>
 						</div>
@@ -140,11 +140,11 @@
 				</div>
 				<div class="card-body">
 					<div class="form-group">
-						<label>Unit</label>
+						<label>Satuan</label>
 						<input type="text" class="form-control" name="components[{{$c}}][unit]" placeholder="ml/g/kg" value="{{ $component->unit }}">
 					</div>
 					<div class="form-group">
-						<label>Value</label>
+						<label>Nilai</label>
 						<input type="number" class="form-control" name="components[{{$c}}][value]" placeholder="Type Something" value="{{ $component->value }}">
 					</div>
 				</div>
@@ -167,15 +167,15 @@
 				<div class="card-body">
 					<input type="hidden" name="sales[{{$s}}][state_id]" value="{{$state->id}}">
 					<div class="form-group">
-						<label>Stock</label>
+						<label>Stok</label>
 						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][stock]" required value="{{ $state->stock }}">
 					</div>
 					<div class="form-group">
-						<label>Price</label>
+						<label>Harga</label>
 						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][price]" required value="{{ $state->price }}">
 					</div>
 					<div class="form-group">
-						<label>Discount</label>
+						<label>Diskon</label>
 						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][discount]" required value="{{ $state->discount }}">
 					</div>
 				</div>

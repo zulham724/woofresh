@@ -13,36 +13,36 @@
 		<div class="offset-3 col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ url('groups') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
-					<h5 class="pull-right"> Fill the Form</h5>
+					<a href="{{ url('groups') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Kembali</a>
+					<h5 class="pull-right"> Isi Data Berikut</h5>
 				</div>
 				<div class="card-body"> 
 					{{ Form::open(['route'=>['vouchers.update',$voucher->id],'method'=>'patch','files'=>true]) }}
 					<div class="form-group">
-						<label>Name</label>
-						<input type="text" class="form-control" value="{{ $voucher->name }}" name="name" placeholder="type something" required> 
+						<label>Nama</label>
+						<input type="text" class="form-control" value="{{ $voucher->name }}" name="name" placeholder="tulis disini" required> 
 					</div>
 					<div class="form-group">
-							<label>Image</label>
+							<label>Gambar</label>
 							{{ Form::file('image',['class'=>'form-control'])}}
 					</div> 
 					<div class="form-group">
-						<label>Code</label>
-						<input type="number" class="form-control" value="{{ $voucher->code }}" name="code" placeholder="type something" required> 
+						<label>Kode</label>
+						<input type="number" class="form-control" value="{{ $voucher->code }}" name="code" placeholder="tulis disini" required> 
 					</div> 
 					<div class="form-group">
-						<label>Description</label>
-						<input type="text" class="form-control" value="{{ $voucher->description }}" name="description" placeholder="type something" required> 
+						<label>Deskripsi</label>
+						<input type="text" class="form-control" value="{{ $voucher->description }}" name="description" placeholder="tulis disini" required> 
 					</div> 
 					<div class="form-group">
-						<label>Value</label>
-						<input type="number" class="form-control" value="{{ $voucher->value }}" name="value" placeholder="type something" required>
+						<label>Nilai</label>
+						<input type="number" class="form-control" value="{{ $voucher->value }}" name="value" placeholder="tulis disini" required>
 					</div>
 					<div class="form-group">
-						<label>Percent</label>
-						<input type="number" class="form-control" value="{{ $voucher->percent }}" name="percent" placeholder="type something" required>
+						<label>Persen</label>
+						<input type="number" class="form-control" value="{{ $voucher->percent }}" name="percent" placeholder="tulis disini" required>
 					</div>	
-						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
+						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Simpan</button> 
 					{{ Form::close() }}
 				</div>
 			</div>

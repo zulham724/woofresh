@@ -2,14 +2,14 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Users</h2>
+    <h2 class="h5 no-margin-bottom">Pengguna</h2>
   </div>
 </div>
 <div class="container-fluid">
     <div class="card">
     	<div class="card-header">
-    		<i class="fa fa-flag"></i> Users List
-    		<a href="{{ route('users.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+    		<i class="fa fa-flag"></i> Daftar Pengguna
+    		<a href="{{ route('users.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
     	</div>
     	<div class="card-body">
     		<div class="table-responsive">
@@ -17,11 +17,11 @@
     				<thead>
     					<tr>
     						<td>No</td>
-    						<td>First Name</td>
-    						<td>Last Name</td>
-                            <td>Address</td>
-                            <td>Phone Number</td>
-    						<td>Action</td>
+    						<td>Nama Depan</td>
+    						<td>Nama Belakang</td>
+                            <td>Alamat</td>
+                            <td>No Telepon</td>
+    						<td>Aksi</td>
     					</tr>
     				</thead>
     				<tbody>
@@ -32,7 +32,7 @@
 							<td>{{ $biodata->last_name }}</td>
                             <td>{{ $biodata->address }}</td>
                             <td>{{ $biodata->phone_number }}</td>
-							<td><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button></td>
+							<td><button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button></td>
 						</tr>
 						@endforeach
     				</tbody>
@@ -50,13 +50,13 @@
 
     const destroy = (id)=>{
         swal({
-            title:"Are you sure?",
-            text:"You won't be able to revert this!",
+            title:"Apakah Anda Yakin?",
+            text:"Anda Tidak Akan Dapat Mengembalikan Data Ini!",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Ya, Saya Yakin!'
         }).then(result=>{
             if(result.value){
                 let access = {
@@ -68,8 +68,8 @@
                 .done(res=>{
                     console.log(res);
                     swal({
-                        title:"Okay",
-                        text:"You deleted language",
+                        title:"Berhasil",
+                        text:"Anda Menghapus Data",
                         type:"success",
                     }).then(result=>{
                         window.location = "{{ url('users') }}";

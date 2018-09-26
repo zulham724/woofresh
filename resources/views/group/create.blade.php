@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Groups</h2>
+    <h2 class="h5 no-margin-bottom">Grup</h2>
   </div>
 </div>
 
@@ -14,26 +14,26 @@
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ url('groups') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
-					<h5 class="pull-right"> Fill the Form</h5>
+					<a href="{{ url('groups') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Kembali</a>
+					<h5 class="pull-right"> Isi Data Berikut</h5>
 				</div>
 				<div class="card-body"> 
 						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" name="name" placeholder="type something" required> 
+							<label>Nama</label>
+							<input type="text" class="form-control" name="name" placeholder="tulis disini" required> 
 						</div> 
 						<div class="form-group">
-							<label>Upload Image</label>
+							<label>Unggah Gambar</label>
 							{{ Form::file('image',['class'=>'form-control','required'=>true])}}
 						</div> 
-						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
+						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Simpan</button> 
 				</div>
 			</div>
 		</div>
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					Languages
+					Bahasa
 				</div>
 				<div class="card-body">
 					<ul class="nav nav-tabs">
@@ -48,7 +48,7 @@
 							<div id="{{$language->name}}" class="tab-pane {{$l==0 ? 'active':null}}">
 								<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$language->id}}">
 								<div class="form-group">
-									<label>Group Name in {{$language->name}}</label>
+									<label>Nama Grup di {{$language->name}}</label>
 									<input type="text" class="form-control" name="languages[{{$l}}][name]" placeholder="Type something" required>
 								</div>
 							</div>

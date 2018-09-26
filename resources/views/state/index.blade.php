@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">States</h2>
+    <h2 class="h5 no-margin-bottom">Negara</h2>
   </div>
 </div>
 
@@ -11,9 +11,9 @@
 <div class="container-fluid">
     <div class="card">
     	<div class="card-header">
-    		<i class="fa fa-flag"></i> States List
-    		<a href="{{ route('states.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
-            <a href="{{ url('cities') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"> </i> Back</a>
+    		<i class="fa fa-flag"></i> Data Negara
+    		<a href="{{ route('states.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
+            <a href="{{ url('cities') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"> </i> Kembali</a>
     	</div>
     	<div class="card-body">
     		<div class="table-responsive">
@@ -21,9 +21,9 @@
     				<thead>
     					<tr>
     						<td>No</td>
-    						<td>Name</td>
-    						<td>Description</td>
-    						<td>Action</td>
+    						<td>Nama</td>
+    						<td>Deskripsi</td>
+    						<td>Aksi</td>
     					</tr>
     				</thead>
     				<tbody>
@@ -33,7 +33,7 @@
 							<td>{{ $state->name }}</td>
 							<td>{{ $state->description }}</td>
                              <td><a href="{{ route('states.edit',$state->id) }}" type="button" class="btn btn-secondary" ><i class="fa fa-pencil"></i>Edit</a>
-                                <button type="submit" class="btn btn-danger" onclick="destroy({{$state->id}})"><i class="fa fa-trash"></i> Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$state->id}})"><i class="fa fa-trash"></i> Hapus</button>
                             </td>
 						</tr>
 						@endforeach
@@ -51,12 +51,13 @@
 <script type="text/javascript">
     const destroy = (id)=>{
         swal({
-            type:"warning",
-            title:"Are you sure?",
-            text:"You won't be able to revert this!",
+           type:"warning",
+            title:"Apakah Anda Yakin?",
+            text:"Anda Tidak Akan Dapat Mengembalikan Data Ini!",
             showCancelButton:true,
+            cancelButtonText: "Batal",
             cancelButtonColor:"#d33",
-            confirmButtonText:"Yes, delete it!",
+            confirmButtonText:"Ya, Saya Yakin!",
             confirmButtonColor:"#3085d6"
         }).then(result=>{
             if(result.value){
@@ -69,8 +70,8 @@
                 $.post("{{ url('states') }}/"+id,access)
                 .done(res=>{
                     swal({
-                        title:"Okay!",
-                        text:"You deleted product",
+                        title:"Berhasil!",
+                        text:"Anda Berhasil Menghapus Data",
                         type:"success"
                     }).then(result=>{
                         window.location = "{{ url('states') }}";
@@ -78,7 +79,7 @@
                 })
                 .fail(err=>{
                     // console.log(err);
-                    swal("Oops","Something not right","error");
+                    swal("Oops","Ada Sesuatu Yang Tidak beres","error");
                 });
             }
         });

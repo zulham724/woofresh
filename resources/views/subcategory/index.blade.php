@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Sub Categories</h2>
+    <h2 class="h5 no-margin-bottom">Sub Kategori</h2>
   </div>
 </div>
 
@@ -11,8 +11,8 @@
 <div class="container-fluid">
     <div class="card">
     	<div class="card-header">
-    		<i class="fa fa-flag"></i> Sub Categories List
-    		<a href="{{ route('subcategories.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+    		<i class="fa fa-flag"></i> Data Sub Kategori
+    		<a href="{{ route('subcategories.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
     	</div>
     	<div class="card-body">
     		<div class="table-responsive">
@@ -20,11 +20,11 @@
     				<thead>
     					<tr>
     						<td>No</td>
-    						<td>Group Id</td>
-    						<td>Name</td>
-                            <td>Image</td>
-                            <td>Available Language</td>
-    						<td>Action</td>
+    						<td>Id Grup</td>
+    						<td>Nama</td>
+                            <td>Gambar</td>
+                            <td>Bahasa yang Tersedia</td>
+    						<td>Aksi</td>
     					</tr>
     				</thead>
     				<tbody>
@@ -43,12 +43,12 @@
                             </td>
 							<td>
                             <a type="button" class="btn btn-warning" href="{{ route('subcategories.edit',$subcategory->id) }}"><i class="fa fa-gear"></i> Edit</a>
-                                <button type="submit" class="btn btn-danger" onclick="destroy({{$subcategory->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$subcategory->id}})"><i class="fa fa-trash"></i> Hapus</button></td>
 						</tr>
 						@endforeach
     				</tbody>
     			</table>
-                <small><a href="{{ url('groups') }}">click here</a> for a New Data Groups, And  <a href="{{ url('categories') }}">click me</a> for a new data categories</small>
+                <small><a href="{{ url('groups') }}">Klik Disini</a> untuk data grup, dan <a href="{{ url('categories') }}">klik ini</a> untuk data kategori</small>
     		</div>
     	</div>
     </div>
@@ -62,11 +62,12 @@
     const destroy = (id)=>{
         swal({
             type:"warning",
-            title:"Are you sure?",
-            text:"You won't be able to revert this!",
+            title:"Apakah Anda Yakin?",
+            text:"Anda Tidak Akan Dapat Mengembalikan Data Ini!",
             showCancelButton:true,
+            cancelButtonText: "Batal",
             cancelButtonColor:"#d33",
-            confirmButtonText:"Yes, delete it!",
+            confirmButtonText:"Ya, Saya Yakin!",
             confirmButtonColor:"#3085d6"
         }).then(result=>{
             if(result.value){
@@ -79,8 +80,8 @@
                 $.post("{{ url('subcategories') }}/"+id,access)
                 .done(res=>{
                     swal({
-                        title:"Okay!",
-                        text:"You deleted data",
+                        title:"Berhasil!",
+                        text:"Anda Berhasil Menghapus Data",
                         type:"success"
                     }).then(result=>{
                         window.location = "{{ url('subcategories') }}";
@@ -88,7 +89,7 @@
                 })
                 .fail(err=>{
                     // console.log(err);
-                    swal("Oops","Something not right","error");
+                    swal("Oops","Ada Sesuatu yang Tidak Beres","error");
                 });
             }
         });

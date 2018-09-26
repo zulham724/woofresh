@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Users</h2>
+    <h2 class="h5 no-margin-bottom">Pngguna</h2>
   </div>
 </div>
 <section>
@@ -10,8 +10,8 @@
 <div class="container-fluid">
     <div class="card">
     	<div class="card-header">
-    		<i class="fa fa-flag"></i> Users List
-    		<a href="{{ route('users.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+    		<i class="fa fa-flag"></i> Data Pengguna
+    		<a href="{{ route('users.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
     	</div>
     	<div class="card-body">
     		<div class="table-responsive">
@@ -21,9 +21,9 @@
     						<td>No</td>
                             <td>Role</td>
                             <td>Avatar</td>
-                            <td>Name</td>
+                            <td>Nama</td>
                             <td>Email</td>
-    						<td>Action</td>
+    						<td>Aksi</td>
     					</tr>
     				</thead>
     				<tbody>
@@ -38,9 +38,9 @@
                             <td>{{ $user->email }}</td>
 							<td>
                                 <div class="btn-group-vertical">
-                                    <button type="button" class="btn btn-danger" onclick="destroy({{$user->id}})"><i class="fa fa-trash"></i> Delete</button>
-                                <a href="{{ route('users.transaction',$user->id) }}" type="button" class="btn btn-primary"><i class="fa fa-folder"></i> Show Transactions</a>
-                                <a href="{{ route('users.recipe',$user->id) }}" type="button" class="btn btn-info"><i class="fa fa-folder"></i> Show Recipes</a>
+                                    <button type="button" class="btn btn-danger" onclick="destroy({{$user->id}})"><i class="fa fa-trash"></i> Hapus</button>
+                                <a href="{{ route('users.transaction',$user->id) }}" type="button" class="btn btn-primary"><i class="fa fa-folder"></i> Tampil Transaksi</a>
+                                <a href="{{ route('users.recipe',$user->id) }}" type="button" class="btn btn-info"><i class="fa fa-folder"></i> Tampil Resp</a>
                                 <a href="{{ route('users.edit',$user->id) }}" type="button" class="btn btn-warning" ><i class="fa fa-gear"></i> Edit</a>
                                 </div>
                             </td>
@@ -63,13 +63,14 @@
 
     const destroy = (id)=>{
         swal({
-            title:"Are you sure?",
-            text:"You won't be able to revert this!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            type:"warning",
+            title:"Apakah Anda Yakin?",
+            text:"Anda Tidak Akan Dapat Mengembalikan Data Ini!",
+            showCancelButton:true,
+            cancelButtonText: "Batal",
+            cancelButtonColor:"#d33",
+            confirmButtonText:"Ya, Saya Yakin!",
+            confirmButtonColor:"#3085d6"
         }).then(result=>{
             if(result.value){
                 let access = {
@@ -81,9 +82,9 @@
                 .done(res=>{
                     console.log(res);
                     swal({
-                        title:"Okay",
-                        text:"You deleted language",
-                        type:"success",
+                        title:"Berhasil!",
+                        text:"Anda Berhasil Menghapus Data",
+                        type:"success"
                     }).then(result=>{
                         window.location = "{{ url('users') }}";
                     })

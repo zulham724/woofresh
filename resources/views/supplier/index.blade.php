@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Supplier</h2>
+    <h2 class="h5 no-margin-bottom">Pemasok</h2>
   </div>
 </div>
 
@@ -11,8 +11,8 @@
 <div class="container-fluid">
     <div class="card">
     	<div class="card-header">
-    		<i class="fa fa-flag"></i> Supplier List
-    		<a href="{{ route('suppliers.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+    		<i class="fa fa-flag"></i> Data Pemasok
+    		<a href="{{ route('suppliers.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
     	</div>
     	<div class="card-body">
     		<div class="table-responsive">
@@ -20,15 +20,15 @@
     				<thead>
     					<tr>
     						<td>No</td>
-    						<td>Name</td>
-    						<td>Description</td>
-    						<td>First Name</td>
-    						<td>Last Name</td>
-    						<td>Tittle</td>
-                            <td>Address</td>
+    						<td>Nama</td>
+    						<td>Deskripsi</td>
+    						<td>Nama Depan</td>
+    						<td>Nama Belakang</td>
+    						<td>Judul</td>
+                            <td>Alamat</td>
                             <td>Email</td>
-                            <td>Phone Numb</td>
-    						<td>Action</td>
+                            <td>No Telepon</td>
+    						<td>Aksi</td>
     					</tr>
     				</thead>
     				<tbody>
@@ -45,7 +45,7 @@
                             <td>{{ $supplier->phone_number }}</td>
 							<td>
                             <a type="button" class="btn btn-warning" href="{{ route('suppliers.edit',$supplier->id) }}"><i class="fa fa-gear"></i> Edit</a>
-                                <button type="submit" class="btn btn-danger"  onclick="destroy({{$supplier->id}})"><i class="fa fa-trash"></i> Delete</button></td>
+                                <button type="submit" class="btn btn-danger"  onclick="destroy({{$supplier->id}})"><i class="fa fa-trash"></i> Hapus</button></td>
 						</tr>
 						@endforeach
     				</tbody>
@@ -63,11 +63,12 @@
     const destroy = (id)=>{
         swal({
             type:"warning",
-            title:"Are you sure?",
-            text:"You won't be able to revert this!",
+            title:"Apakah Anda Yakin?",
+            text:"Anda Tidak Akan Dapat Mengembalikan Data Ini!",
             showCancelButton:true,
+            cancelButtonText: "Batal",
             cancelButtonColor:"#d33",
-            confirmButtonText:"Yes, delete it!",
+            confirmButtonText:"Ya, Saya Yakin!",
             confirmButtonColor:"#3085d6"
         }).then(result=>{
             if(result.value){
@@ -80,8 +81,8 @@
                 $.post("{{ url('suppliers') }}/"+id,access)
                 .done(res=>{
                     swal({
-                        title:"Okay!",
-                        text:"You deleted data",
+                        title:"Berhasil!",
+                        text:"Anda Berhasil Menghapus Data",
                         type:"success"
                     }).then(result=>{
                         window.location = "{{ url('suppliers') }}";
@@ -89,7 +90,7 @@
                 })
                 .fail(err=>{
                     // console.log(err);
-                    swal("Oops","Something not right","error");
+                    swal("Oops","Ada Sesuatu yang Tidak Beres","error");
                 });
             }
         });

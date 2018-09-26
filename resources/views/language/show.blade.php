@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Language</h2>
+    <h2 class="h5 no-margin-bottom">Bahasa</h2>
   </div>
 </div>
 
@@ -13,8 +13,8 @@
 		<div class="offset-3 col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ url('languages') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
-					<h5 class="pull-right"> Show</h5>
+					<a href="{{ url('languages') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Kembali</a>
+					<h5 class="pull-right"> Tampilkan</h5>
 				</div>
 				<div class="card-body text-center"> 
 					{{ Form::open(['route'=>'languages.store','method'=>'post','files'=>true]) }}
@@ -24,7 +24,7 @@
 						<div class="form-group">
 							<h3>{{ $language->name }}</h3>
 						</div> 
-						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
+						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Simpan</button> 
 					{{ Form::close() }}
 				</div>
 			</div>

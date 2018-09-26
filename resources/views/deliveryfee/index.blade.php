@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Delivery Fees</h2>
+    <h2 class="h5 no-margin-bottom">Pengiriman</h2>
   </div>
 </div>
 
@@ -11,8 +11,8 @@
 <div class="container-fluid">
     <div class="card">
     	<div class="card-header">
-    		<i class="fa fa-flag"></i> Delivery Fees List
-    		<a href="{{ route('deliveryfees.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+    		<i class="fa fa-flag"></i> Data Pengiriman
+    		<a href="{{ route('deliveryfees.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
     	</div>
     	<div class="card-body">
     		<div class="table-responsive ">
@@ -20,9 +20,9 @@
     				<thead>
     					<tr>
     						<td>No</td>
-                            <td>State</td>
-    						<td>Value</td>
-    						<td>Action</td>
+                            <td>Negara</td>
+    						<td>Nilai</td>
+    						<td>Aksi</td>
     					</tr>
     				</thead>
     				<tbody>
@@ -32,7 +32,7 @@
                             <td>{{ $deliveryfee->state->name }}</td>
 							<td>{{ $deliveryfee->value }}</td>
                               <td><a href="{{ route('deliveryfees.edit',$deliveryfee->id) }}" type="button" class="btn btn-secondary" ><i class="fa fa-pencil"></i>Edit</a>
-                                <button type="submit" class="btn btn-danger" onclick="destroy({{$deliveryfee->id}})"><i class="fa fa-trash"></i> Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$deliveryfee->id}})"><i class="fa fa-trash"></i> Hapus</button>
                             </td>
 						</tr>
 						@endforeach
@@ -51,11 +51,12 @@
     const destroy = (id)=>{
         swal({
             type:"warning",
-            title:"Are you sure?",
-            text:"You won't be able to revert this!",
+            title:"Apakah Anda Yakin?",
+            text:"Anda Tidak Akan Dapat Mengembalikan Data Ini!",
             showCancelButton:true,
+            ancelButtonText: "Batal",
             cancelButtonColor:"#d33",
-            confirmButtonText:"Yes, delete it!",
+            confirmButtonText:"Ya, Saya Yakin!",
             confirmButtonColor:"#3085d6"
         }).then(result=>{
             if(result.value){
@@ -68,8 +69,8 @@
                 $.post("{{ url('deliveryfees') }}/"+id,access)
                 .done(res=>{
                     swal({
-                        title:"Okay!",
-                        text:"You deleted data",
+                        title:"Berhasil!",
+                        text:"Anda Berhasil Menghapus Data",
                         type:"success"
                     }).then(result=>{
                         window.location = "{{ url('deliveryfees') }}";
@@ -77,7 +78,7 @@
                 })
                 .fail(err=>{
                     // console.log(err);
-                    swal("Oops","Something not right","error");
+                    swal("Oops","Ada Sesuatu Yang tidak Beres","error");
                 });
             }
         });

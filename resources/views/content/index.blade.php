@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Language</h2>
+    <h2 class="h5 no-margin-bottom">Konten</h2>
   </div>
 </div>
 <section>
@@ -10,8 +10,8 @@
 <div class="container-fluid">
     <div class="card">
     	<div class="card-header">
-    		<i class="fa fa-flag"></i> Content List
-    		<a href="{{ route('contents.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+    		<i class="fa fa-flag"></i> Data Konten
+    		<a href="{{ route('contents.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
     	</div>
     	<div class="card-body">
     		<div class="table-responsive">
@@ -19,10 +19,10 @@
     				<thead>
     					<tr>
     						<td>No</td>
-    						<td>Category</td>
-                            <td>Image</td>
-                            <td>Available Language</td>
-    						<td>Action</td>
+    						<td>Kategori</td>
+                            <td>Gambar</td>
+                            <td>Bahasa yang Tersedia</td>
+    						<td>Aksi</td>
     					</tr>
     				</thead>
     				<tbody>
@@ -37,8 +37,8 @@
                                 @endforeach
                             </td>
                             <td>
-                                <a href="{{ route('contents.edit',$content->id) }}" type="button" class="btn btn-warning"><i class="fa fa-gear"></i> Show/Edit</a>
-                                <button type="button" class="btn btn-danger" onclick="destroy({{$content->id}})"><i class="fa fa-trash"></i> Delete</button>
+                                <a href="{{ route('contents.edit',$content->id) }}" type="button" class="btn btn-warning"><i class="fa fa-gear"></i> Tampilkan/Edit</a>
+                                <button type="button" class="btn btn-danger" onclick="destroy({{$content->id}})"><i class="fa fa-trash"></i> Hapus</button>
                             </td>
 						</tr>
     					@endforeach
@@ -57,13 +57,14 @@
 
     const destroy = (id)=>{
         swal({
-            title:"Are you sure?",
-            text:"You won't be able to revert this!",
+            title:"Apakaha Anda Yakin?",
+            text:"Anda Tidak Akan Dapat Mengembalikan Data Ini!",
             type: 'warning',
             showCancelButton: true,
+            cancelButtonText: "Batal",
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Ya, Saya Yakin!'
         }).then(result=>{
             if(result.value){
                 let access = {
@@ -75,8 +76,8 @@
                 .done(res=>{
                     console.log(res);
                     swal({
-                        title:"Okay",
-                        text:"You deleted content",
+                        title:"Berhasil",
+                        text:"Anda Berhasil Menghapus Data",
                         type:"success",
                     }).then(result=>{
                         window.location = "{{ url('contents') }}";

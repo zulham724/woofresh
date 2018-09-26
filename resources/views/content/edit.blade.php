@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Content</h2>
+    <h2 class="h5 no-margin-bottom">Konten</h2>
   </div>
 </div>
 
@@ -14,27 +14,27 @@
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ url('contents') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
-					<h5 class="pull-right"> Fill the Form</h5>
+					<a href="{{ url('contents') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Kembali</a>
+					<h5 class="pull-right"> Isi Data Berikut</h5>
 				</div>
 				<div class="card-body"> 
 						<div class="form-group">
-							<label>Content Name</label>
-							<input type="text" class="form-control" value="{{ $content->name }}" name="name" placeholder="type something" required> 
+							<label>Nama Konten</label>
+							<input type="text" class="form-control" value="{{ $content->name }}" name="name" placeholder="tulis disini" required> 
 						</div>
 						<img src="{{ asset('storage/'.$content->image) }}" class="img-responsive" width="100">
 						<div class="form-group">
-							<label>Image</label>
+							<label>Gambar</label>
 							{{ Form::file('image',['class'=>'form-control'])}}
 						</div> 
-						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
+						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Simpan</button> 
 				</div>
 			</div>
 		</div>
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					Languages
+					Bahasa
 				</div>
 				<div class="card-body">
 					<ul class="nav nav-tabs">
@@ -52,11 +52,11 @@
 								<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$content_translation->language->id}}">
 								<input type="hidden" name="languages[{{$l}}][id]" value="{{$content_translation->id}}">
 								<div class="form-group">
-									<label>Content Name in {{$content_translation->language->name}}</label>
+									<label>Nama Konten di {{$content_translation->language->name}}</label>
 									<input type="text" value="{{$content_translation->name}}" class="form-control" name="languages[{{$l}}][name]" placeholder="Type something" required>
 								</div>
 								<div class="form-group">
-									<label>Content Description in {{$content_translation->language->name}}</label>
+									<label>Deskripsi Konten di {{$content_translation->language->name}}</label>
 									<input type="text" value="{{$content_translation->description}}" class="form-control" name="languages[{{$l}}][description]" placeholder="Type something" required>
 								</div>
 							</div>
@@ -67,11 +67,11 @@
 							<input type="hidden" name="languages[{{$l}}][id]" value="0">
 							<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$language->id}}">
 							<div class="form-group">
-								<label>Content Name in {{$language->name}}</label>
+								<label>Nama Konten di {{$language->name}}</label>
 								<input type="text" class="form-control" name="languages[{{$l}}][name]" placeholder="Type something" required>
 							</div>
 							<div class="form-group">
-								<label>Content Description in {{$language->name}}</label>
+								<label>Deskripsi Konten di {{$language->name}}</label>
 								<input type="text" class="form-control" name="languages[{{$l}}][description]" placeholder="Type something" required>
 							</div>
 						</div>

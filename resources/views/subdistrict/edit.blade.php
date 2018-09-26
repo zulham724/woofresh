@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Subdistrict</h2>
+    <h2 class="h5 no-margin-bottom">Kecamatan</h2>
   </div>
 </div>
 
@@ -13,20 +13,20 @@
         <div class="offset-3 col-6">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ url('subdistricts') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
-                    <h5 class="pull-right"> Fill the Form</h5>
+                    <a href="{{ url('subdistricts') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Kembali</a>
+                    <h5 class="pull-right"> Isi Data Berikut</h5>
                 </div>
                 <div class="card-body"> 
                    {{ Form::open(['route'=>['subdistricts.update',$subdistrict->id],'method'=>'patch']) }}
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="type something" value="{{ $subdistrict->name }}" required> 
+                            <label>Nama</label>
+                            <input type="text" class="form-control" name="name" placeholder="tulis disini" value="{{ $subdistrict->name }}" required> 
                         </div>
                         <div class="form-group">
-                            <label>Description</label>
-                            <input type="text" class="form-control" name="description" placeholder="type something" value="{{ $subdistrict->description }}"> 
+                            <label>Deskripsi</label>
+                            <input type="text" class="form-control" name="description" placeholder="tulis disini" value="{{ $subdistrict->description }}"> 
                         </div> 
-                        <button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
+                        <button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Simpan</button> 
                     {{ Form::close() }}
                 </div>
             </div>

@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Product</h2>
+    <h2 class="h5 no-margin-bottom">Produk</h2>
   </div>
 </div>
 
@@ -17,70 +17,70 @@
 		<div class=" col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ url('products') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
-					<h5 class="pull-right"> Fill the Form</h5>
+					<a href="{{ url('products') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Kembali</a>
+					<h5 class="pull-right"> Isi Data Berikut</h5>
 				</div>
 				<div class="card-body"> 
 					<div class="form-group">
-						<label>Supplier</label>
+						<label>Pemasok</label>
 						<select class="form-control select2" name="supplier_id">
-							<option value="">Choose one</option>
+							<option value="">Pilih</option>
 							@foreach ($suppliers as $s => $supplier)
 							<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
 							@endforeach
 						</select>
 					</div> 
 						<div class="form-group">
-						<label>Group ID</label>
+						<label>ID Grup</label>
 						<select class="form-control select2" name="group_id">
-							<option value="">Choose one</option>
+							<option value="">Pilih</option>
 							@foreach ($groups as $g => $group)
 							<option value="{{ $group->id }}">{{ $group->name }}</option>
 							@endforeach
 						</select>
 					</div> 
 					<div class="form-group">
-						<label>Category ID</label>
+						<label>ID Kategori</label>
 						<select class="form-control select2" name="category_id">
-							<option value="">Choose one</option>
+							<option value="">Pilih</option>
 							@foreach ($categories as $ca => $category)
 							<option value="{{ $category->id }}">{{ $category->name }}</option>
 							@endforeach
 						</select>
 					</div>
 					<div class="form-group">
-						<label>Sub Category</label>
+						<label>Sub Kategori</label>
 						<select class="form-control select2" name="sub_category_id">
-							<option value="">Choose one</option>
+							<option value="">Pilih</option>
 							@foreach ($subcategories as $sc => $subcategory)
 							<option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
 							@endforeach
 						</select>
 					</div>
 					<div class="form-group">
-						<label>Quantity</label>
-						<input type="number" class="form-control" name="quantity" placeholder="type something" required value="0"> 
+						<label>Kuantitas</label>
+						<input type="number" class="form-control" name="quantity" placeholder="tulis disini" required value="0"> 
 					</div>
 					<div class="form-group">
-						<label>Weight</label>
-						<input type="number" class="form-control" name="weight" placeholder="type something" required value="0"> 
+						<label>Berat</label>
+						<input type="number" class="form-control" name="weight" placeholder="tulis disini" required value="0"> 
 					</div> 
 					<div class="form-group">
-						<label>Unit</label>
+						<label>Satuan</label>
 						<input type="text" class="form-control" name="unit" required placeholder="kg/ml/g"> 
 					</div>  
 					<div class="form-group">
 						<label>Badge</label>
-						<input type="text" class="form-control" name="badge" required placeholder="Local / Impor"> 
+						<input type="text" class="form-control" name="badge" required placeholder="Lokal / Impor"> 
 					</div> 
-					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 					
+					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Simpan</button> 					
 				</div>
 			</div>
 		</div>
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					Languages
+					Bahasa
 				</div>
 				<div class="card-body">
 					<ul class="nav nav-tabs">
@@ -95,12 +95,12 @@
 							<div id="{{$language->name}}" class="tab-pane {{$l==0 ? 'active':null}}">
 								<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$language->id}}">
 								<div class="form-group">
-									<label>Product Name in {{$language->name}}</label>
-									<input type="text" class="form-control" name="languages[{{$l}}][name]" placeholder="Type something" required>
+									<label>Nama Produk di {{$language->name}}</label>
+									<input type="text" class="form-control" name="languages[{{$l}}][name]" placeholder="tulis disini" required>
 								</div>
 								<div class="form-group">
-									<label>Product Description in {{$language->name}}</label>
-									<input type="text" class="form-control" name="languages[{{$l}}][description]" placeholder="Type something" required>
+									<label>Deskripsi Produk di {{$language->name}}</label>
+									<input type="text" class="form-control" name="languages[{{$l}}][description]" placeholder="tulis disini" required>
 								</div>
 							</div>
 						@endforeach
@@ -125,12 +125,12 @@
 				<div class="card-body">
 					<input type="hidden" name="components[{{$cl}}][component_list_id]" value="{{ $component_list->id }}">
 					<div class="form-group">
-						<label>Unit</label>
+						<label>Satuan</label>
 						<input type="text" class="form-control" name="components[{{$cl}}][unit]" placeholder="ml/g/kg">
 					</div>
 					<div class="form-group">
-						<label>Value</label>
-						<input type="number" class="form-control" name="components[{{$cl}}][value]" placeholder="Type Something">
+						<label>Nilai</label>
+						<input type="number" class="form-control" name="components[{{$cl}}][value]" placeholder="tulis disini">
 					</div>
 				</div>
 			</div>
@@ -152,16 +152,16 @@
 				<div class="card-body">
 					<input type="hidden" name="sales[{{$s}}][state_id]" value="{{$state->id}}">
 					<div class="form-group">
-						<label>Stock</label>
-						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][stock]" required value="0">
+						<label>Stok</label>
+						<input type="number" class="form-control" placeholder="tulis disini" name="sales[{{$s}}][stock]" required value="0">
 					</div>
 					<div class="form-group">
-						<label>Price</label>
-						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][price]" required value="0">
+						<label>Harga</label>
+						<input type="number" class="form-control" placeholder="tulis disini" name="sales[{{$s}}][price]" required value="0">
 					</div>
 					<div class="form-group">
-						<label>Discount</label>
-						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][discount]" required value="0">
+						<label>Diskon</label>
+						<input type="number" class="form-control" placeholder="tulis disini" name="sales[{{$s}}][discount]" required value="0">
 					</div>
 				</div>
 			</div>

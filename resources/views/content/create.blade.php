@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Content</h2>
+    <h2 class="h5 no-margin-bottom">Konten</h2>
   </div>
 </div>
 
@@ -14,31 +14,31 @@
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ url('contents') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
-					<h5 class="pull-right"> Fill the Form</h5>
+					<a href="{{ url('contents') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Kembali</a>
+					<h5 class="pull-right"> Isi Data Berikut</h5>
 				</div>
 				<div class="card-body"> 
 						<div class="form-group">
-							<label>Content Category</label>
+							<label>Kategori Konten</label>
 							<select class="form-control" name="name" required>
-								<option value="">--Choose--</option>
+								<option value="">--Pilih--</option>
 								<option value="slider">Slider</option>
 								<option value="icon">Icon</option>
 								<option value="sale">Sale</option>
 							</select> 
 						</div>
 						<div class="form-group">
-							<label>Image</label>
+							<label>Gambar</label>
 							{{ Form::file('image',['class'=>'form-control'])}}
 						</div> 
-						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 
+						<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Simpan</button> 
 				</div>
 			</div>
 		</div>
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					Languages
+					Bahasa
 				</div>
 				<div class="card-body">
 					<ul class="nav nav-tabs">
@@ -53,11 +53,11 @@
 							<div id="{{$language->name}}" class="tab-pane {{$l==0 ? 'active':null}}">
 								<input type="hidden" name="languages[{{$l}}][language_id]" value="{{$language->id}}">
 								<div class="form-group">
-									<label>Content Name in {{$language->name}}</label>
+									<label>Nama Konten di {{$language->name}}</label>
 									<input type="text" class="form-control" name="languages[{{$l}}][name]" placeholder="Type something" required>
 								</div>
 								<div class="form-group">
-									<label>Content Description in {{$language->name}}</label>
+									<label>Deskripsi Konten di {{$language->name}}</label>
 									<input type="text" class="form-control" name="languages[{{$l}}][description]" placeholder="Type something" required>
 								</div>
 							</div>

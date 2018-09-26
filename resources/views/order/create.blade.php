@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Orders</h2>
+    <h2 class="h5 no-margin-bottom">Pesanan</h2>
   </div>
 </div>
 <div class="container-fluid">
@@ -11,12 +11,12 @@
 		<div class="offset-3 col-6">
 			<div class="card">
 				<div class="card-header">
-					<a href="{{ url('orders') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Back</a>
-					<h5 class="pull-right"> Fill the Form</h5>
+					<a href="{{ url('orders') }}" type="button" class="btn btn-secondary"><i class="fa fa-arrow-left"> </i> Kembali</a>
+					<h5 class="pull-right"> Isi Data Berikut</h5>
 				</div>
 				<div class="card-body"> 
 					<div class="form-group">
-						<label>Transaction</label>
+						<label>Transaksi</label>
 						<select class="form-control select2" name="transaction_id">
 							@foreach ($transactions as $tr => $transaction)
 							<option value="{{ $transaction->id }}">{{ $transaction->id }}</option>
@@ -24,7 +24,7 @@
 						</select>
 					</div>  
 					<div class="form-group">
-						<label>Product</label>
+						<label>Produk</label>
 						<select class="form-control select2" name="product_id">
 							@foreach ($products as $product)
 							<option value="{{ $product->id }}">{{ $product->name }}</option>
@@ -32,14 +32,14 @@
 						</select>
 					</div> 
 					<div class="form-group">
-						<label>Quantity</label>
-						<input type="text" class="form-control" name="quantity" placeholder="type something" required> 
+						<label>Kuantitas</label>
+						<input type="text" class="form-control" name="quantity" placeholder="tulis disini" required> 
 					</div>
 					<div class="form-group">
-						<label>Sub Total Price</label>
-						<input type="text" class="form-control" name="subtotal_price" placeholder="type something" required> 
+						<label>Sub Total Harga</label>
+						<input type="text" class="form-control" name="subtotal_price" placeholder="tulis disini" required> 
 					</div>
-					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Submit</button> 					
+					<button type="submit" class="btn btn-dark pull-right"><i class="fa fa-check"></i> Simpan</button> 					
 				</div>
 			</div>
 		</div>

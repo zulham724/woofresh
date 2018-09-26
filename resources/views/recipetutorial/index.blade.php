@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Recipe</h2>
+    <h2 class="h5 no-margin-bottom">Tutorial Resep</h2>
   </div>
 </div>
 
@@ -11,9 +11,9 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-flag"></i> Recipe List
-            <a href="{{ route('recipetutorials.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
-            <a href="{{ route('recipetutorials.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back</a>
+            <i class="fa fa-flag"></i> Data Tutorial Resep
+            <a href="{{ route('recipetutorials.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
+            <a href="{{ route('recipetutorials.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> kembali</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -21,10 +21,10 @@
                     <thead>
                         <tr>
                             <td>No</td>
-                            <td>Recipe ID</td>
-                            <td>Name</td>
-                            <td>Description</td>
-                            <td>Action</td>
+                            <td>ID Resep</td>
+                            <td>Nama</td>
+                            <td>Deskripsi</td>
+                            <td>Aksi</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,7 +36,7 @@
                                <td>{{ $recipetutorial->description }}</td>
                                <td>
                                     <a type="button" class="btn btn-warning" href="{{ route('recipetutorials.edit',$recipetutorial->id) }}"><i class="fa fa-gear"></i> Edit</a>
-                                  <button type="button" class="btn btn-danger" onclick="destroy({{$recipetutorial->id}})"><i class="fa fa-trash"></i> Delete</button> 
+                                  <button type="button" class="btn btn-danger" onclick="destroy({{$recipetutorial->id}})"><i class="fa fa-trash"></i> Hapus</button> 
                                </td>
                            </tr>
                        @endforeach
@@ -59,13 +59,14 @@
 
     const destroy = (id)=>{
         swal({
-            title:"Are you sure?",
-            text:"You won't be able to revert this!",
+            title:"Apakah Anda Yakin?",
+            text:"Anda Tidak Akan Dapat Mengembalikan Data Ini!",
             type: 'warning',
             showCancelButton: true,
+            cancelButtonText: "Batal",
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText:"Ya, Saya Yakin!",
         }).then(result=>{
             if(result.value){
                 let access = {
@@ -77,9 +78,9 @@
                 .done(res=>{
                     console.log(res);
                     swal({
-                        title:"Okay",
-                        text:"You deleted language",
-                        type:"success",
+                        title:"Berhasil!",
+                        text:"Anda Berhasil Menghapus Data",
+                        type:"success"
                     }).then(result=>{
                        window.location = "{{ url('recipetutorials') }}";
                     })

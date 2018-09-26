@@ -2,16 +2,16 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Components</h2>
+    <h2 class="h5 no-margin-bottom">Komponen</h2>
   </div>
 </div>
   <section>
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-flag"></i> Components
-            <a href="{{ route('components.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
-            <a href="{{ route('components.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Back</a>
+            <i class="fa fa-flag"></i> Komponen
+            <a href="{{ route('components.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
+            <a href="{{ route('components.index') }}" type="button" class="btn btn-secondary pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -19,11 +19,11 @@
                     <thead>
                         <tr>
                             <td>No</td>
-                            <td>Product</td>
-                            <td>Component list</td>
-                            <td>Unit</td>
-                            <td>Value</td>
-                            <td>Action</td>
+                            <td>Produk</td>
+                            <td>Daftar Komponen</td>
+                            <td>Satuan</td>
+                            <td>Nilai</td>
+                            <td>Aksi</td>
                           </tr>
                     </thead>
                     <tbody>
@@ -36,7 +36,7 @@
                                <td>{{ $component->value }}</td>
                                <td>
                                 <a type="button" class="btn btn-secondary" href="{{ route('components.edit',$component->id) }}"><i class="fa fa-pencil"></i> Edit</a>
-                                <button type="submit" class="btn btn-danger" onclick="destroy({{$component->id}})"><i class="fa fa-trash"></i> Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="destroy({{$component->id}})"><i class="fa fa-trash"></i> Hapus</button>
                             </td>
                            </tr>
                        @endforeach
@@ -56,11 +56,12 @@
   const destroy = (id)=>{
         swal({
             type:"warning",
-            title:"Are you sure?",
-            text:"You won't be able to revert this!",
+            title:"Apakah Anda Yakin?",
+            text:"Anda Tidak Akan Dapat Mengembalikan Data Ini!",
             showCancelButton:true,
+            cancelButtonText: "Batal",
             cancelButtonColor:"#d33",
-            confirmButtonText:"Yes, delete it!",
+            confirmButtonText:"Ya, Saya Yakin!",
             confirmButtonColor:"#3085d6"
         }).then(result=>{
             if(result.value){
@@ -73,8 +74,8 @@
                 $.post("components/"+id,access)
                 .done(res=>{
                     swal({
-                        title:"Okay!",
-                        text:"You deleted data",
+                        title:"Berhasil!",
+                        text:"Anda Berhasil Mengahapus Data",
                         type:"success"
                     }).then(result=>{
                         window.location.reload();

@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Language</h2>
+    <h2 class="h5 no-margin-bottom">Bahasa</h2>
   </div>
 </div>
 
@@ -11,8 +11,8 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <i class="fa fa-flag"></i> Language List
-            <a href="{{ route('languages.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add</a>
+            <i class="fa fa-flag"></i> Data Bahasa
+            <a href="{{ route('languages.create') }}" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -20,9 +20,9 @@
                     <thead>
                         <tr>
                             <td>No</td>
-                            <td>Language code</td>
-                            <td>image</td>
-                            <td>Action</td>
+                            <td>Kode Bahasa</td>
+                            <td>Gambar</td>
+                            <td>Aksi</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,9 +32,9 @@
                                <td>{{ $language->name }}</td>
                                <td><img src="{{ asset('storage/'.$language->image) }}" class="img-responsive" width="30"></td>
                                <td>
-                                   <a type="button" class="btn btn-primary" href="{{ route('languages.show',$language->id) }}"><i class="fa fa-search"></i> Show</a>
+                                   <a type="button" class="btn btn-primary" href="{{ route('languages.show',$language->id) }}"><i class="fa fa-search"></i> Tampilkan</a>
                                    <a type="button" class="btn btn-info" href="{{ route('languages.edit',$language->id) }}"><i class="fa fa-gear"></i> Edit</a>
-                                   <button type="button" class="btn btn-danger" onclick="destroy({{$language->id}})"><i class="fa fa-trash"></i> Delete</button>
+                                   <button type="button" class="btn btn-danger" onclick="destroy({{$language->id}})"><i class="fa fa-trash"></i> Hapus</button>
                                </td>
                            </tr>
                        @endforeach
@@ -57,13 +57,14 @@
 
     const destroy = (id)=>{
         swal({
-            title:"Are you sure?",
-            text:"You won't be able to revert this!",
+            title:"Apakah Anda Yakin?",
+            text:"Anda Tidak Akan Dapat Mengembalikan Data Ini!",
             type: 'warning',
             showCancelButton: true,
+            cancelButtonText: "Batal",
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Ya, Saya Yakin!'
         }).then(result=>{
             if(result.value){
                 let access = {
@@ -75,8 +76,8 @@
                 .done(res=>{
                     console.log(res);
                     swal({
-                        title:"Okay",
-                        text:"You deleted language",
+                        title:"Berhasil!",
+                        text:"Anda Berhasil Menghapus Data",
                         type:"success",
                     }).then(result=>{
                         window.location = "{{ url('languages') }}";
