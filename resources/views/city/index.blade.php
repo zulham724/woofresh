@@ -20,7 +20,7 @@
     				<thead>
     					<tr>
     						<td>No</td>
-                            <td>Negara</td>
+                            <td>Provinsi</td>
     						<td>Kota</td>
     						<td>Deskripsi</td>
     						<td>Aksi</td>
@@ -40,7 +40,7 @@
 						@endforeach
     				</tbody>
     			</table>
-                 <small>Anda mempunyai data Negara? <a href="{{ url('states') }}">Klik Disini</a></small>
+                 <small>Anda mempunyai data Provinsi? <a href="{{ url('states') }}">Klik Disini</a></small>
     		</div>
     	</div>
     </div>

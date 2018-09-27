@@ -20,7 +20,7 @@
     				<thead>
     					<tr>
     						<td>No</td>
-                            <td>Negara</td>
+                            <td>Provinsi</td>
     						<td>Nilai</td>
     						<td>Aksi</td>
     					</tr>

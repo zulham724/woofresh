@@ -28,7 +28,7 @@
 						</select>
 					</div> 
 					<div class="form-group">
-						<label>Negara </label>
+						<label>Provinsi </label>
 						<select class="form-control select2" name="state_id">
 							@foreach ($states as $s => $state)
 							<option value="{{ $state->id }}">{{ $state->name }}</option>

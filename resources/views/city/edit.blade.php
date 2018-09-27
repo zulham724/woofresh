@@ -19,7 +19,7 @@
 				<div class="card-body"> 
 					{{ Form::open(['route'=>['cities.update',$city->id],'method'=>'patch']) }}
 						<div class="form-group">
-						<label>Negara</label>
+						<label>Provinsi</label>
 							<select class="form-control select2" name="state_id">
 								@foreach ($states as $st => $state)
 								<option value="{{ $state->id }}">{{ $state->name }}</option>

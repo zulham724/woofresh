@@ -23,7 +23,7 @@
                             <td>No</td>
                             <td>Penulis</td>
                             <td>Nama</td>
-                            <td>Desckripsi</td>
+                            <td>Deskripsi</td>
                             <td>Tutorial</td>
                             <td>Tingkat kesulitan</td>
                             <td>Waktu Persiapan</td>

@@ -21,7 +21,7 @@
     					<tr>
     						<td>No</td>
                             <td>Produk</td>
-                            <td>Negara </td>
+                            <td>Provinsi </td>
     						<td>Stok</td>
                             <td>Harga</td>
     						<td>Diskon</td>
