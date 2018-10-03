@@ -96,4 +96,9 @@ class CityController extends Controller
         $city = City::find($id)->delete();
         return response()->json($city);
     }
+
+    public function state($state_id){
+        $cities = City::where('state_id',$state_id)->get();
+        return response()->json($cities);
+    }
 }

@@ -71,6 +71,7 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::get('/transactions/search/{id}','TransactionController@search')->name('search');
 	Route::get('/languages/search/{id}','LanguageController@search')->name('search');
 	Route::get('/contents/search/{id}','ContentController@search')->name('search');
+	Route::get('/cities/state/{id}','CityController@state');
 	
 	
 });
