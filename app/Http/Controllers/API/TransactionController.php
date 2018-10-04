@@ -48,7 +48,7 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        $data["transaction"] = Transaction::with('orders')->find($id);
+        $transaction = Transaction::with('orders')->find($id);
         return response()->json($transaction);
     }
 

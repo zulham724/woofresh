@@ -44,7 +44,7 @@ class IngredientController extends Controller
      */
     public function show($id)
     {
-        $data["recipes"] = User::with('recipes')->find($id);
+        $ingredient = User::with('recipes')->find($id);
         return response()->json($ingredient);
     }
 
