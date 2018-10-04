@@ -43,7 +43,8 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        //
+        $recipe = Recipe::find($id);
+        return response()->json($recipe);
     }
      
     /**

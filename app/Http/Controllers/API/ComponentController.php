@@ -42,7 +42,9 @@ class ComponentController extends Controller
      */
     public function show($id)
     {
-        //
+        $component = Component::find($id);
+        return response()->json($component);
+
     }
 
     /**

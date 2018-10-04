@@ -15,8 +15,8 @@ class ProductRatingController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $productrating = ProductRating::get();
+        return response()->json($productrating);    }
 
     /**
      * Store a newly created resource in storage.
@@ -40,7 +40,8 @@ class ProductRatingController extends Controller
      */
     public function show($id)
     {
-        //
+        $productrating = ProductRating::find($id);
+        return response()->json($productrating);
     }
 
     /**
@@ -52,7 +53,10 @@ class ProductRatingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $productrating = ProductRating::find($id);
+        $productrating->fill($request->all());
+        $productrating->save();
+        return response()->json($productrating);
     }
 
     /**
@@ -63,6 +67,7 @@ class ProductRatingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $productrating = ProductRating::find($id)->delete();
+        return response()->json($productrating);
     }
 }

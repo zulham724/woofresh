@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\RecipeTutorial;
 
 class RecipeTutorialController extends Controller
 {
@@ -14,7 +15,8 @@ class RecipeTutorialController extends Controller
      */
     public function index()
     {
-        //
+        $recipetorial = RecipeTutorial::get();
+        return response()->json($recipetorial);
     }
 
     /**
@@ -25,7 +27,10 @@ class RecipeTutorialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recipetutorial = new RecipeTutorial;
+        $recipetutorial->fill($request->all());
+        $recipetutorial->save();
+        return response()->json($recipetutorial);
     }
 
     /**
@@ -36,7 +41,8 @@ class RecipeTutorialController extends Controller
      */
     public function show($id)
     {
-        //
+        $recipetutorial = RecipeTutorial::find($id);
+        return response()->json($recipetutorial);
     }
 
     /**
@@ -48,7 +54,10 @@ class RecipeTutorialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $recipetutorial = RecipeTutorial::find($id);
+        $recipetutorial->fill($request->all());
+        $recipetutorial->save();
+        return response()->json($recipetutorial);
     }
 
     /**
@@ -59,6 +68,7 @@ class RecipeTutorialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $recipetutorial = RecipeTutorial::find($id)->delete();
+        return response()->json($recipetutorial);
     }
 }

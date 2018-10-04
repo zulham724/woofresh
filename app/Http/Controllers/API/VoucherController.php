@@ -47,7 +47,8 @@ class VoucherController extends Controller
      */
     public function show($id)
     {
-        //
+        $voucher = Voucher::find($id);
+        return response()->json($voucher);
     }
 
     /**

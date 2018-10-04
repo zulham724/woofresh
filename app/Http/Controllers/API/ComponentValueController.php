@@ -41,9 +41,10 @@ class ComponentValueController extends Controller
      */
     public function show($id)
     {
-        //
+        $componentvalue = Componentvalue::find($id);
+        return response()->json($componentvalue);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -53,7 +54,10 @@ class ComponentValueController extends Controller
      */
     public function update(Request $request, $id)
     {
-    //
+        $componentvalue = Componentvalue::find($id);
+        $componentvalue->fill($request->all());
+        $componentvalue->save();
+        return response()->json($componentvalue);
     }
 
     /**
@@ -64,6 +68,7 @@ class ComponentValueController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $componentvalue = Componentvalue::find($id)->delete();
+        return response()->json($componentvalue);
     }
 }

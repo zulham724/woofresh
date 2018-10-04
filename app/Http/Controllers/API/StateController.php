@@ -41,8 +41,8 @@ class StateController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $state = State::find($id);
+        return response()->json($state);    }
 
     /**
      * Update the specified resource in storage.

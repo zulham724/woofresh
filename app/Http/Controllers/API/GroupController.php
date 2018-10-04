@@ -53,7 +53,8 @@ class GroupController extends Controller
      */
     public function show($id)
     {
-        //
+        $group = Group::find($id);
+        return response()->json($group);
     }
 
     /**
@@ -65,7 +66,10 @@ class GroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $group = Group::find($id);
+        $group->fill($request->all());
+        $group->save();
+        return response()->json($group);
     }
 
     /**
@@ -81,7 +85,7 @@ class GroupController extends Controller
     }
     public function search($group)
     {
-        $groups = group::with(['group_translations'=>function($query)use($group){
+        $groups = Group::with(['group_translations'=>function($query)use($group){
             $query->where('name','like',"%".$group."%");
         }])
         ->whereHas('group_translations',function($query)use($group){

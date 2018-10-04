@@ -49,8 +49,8 @@ class SubCategoryController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $subcategory = Subcategory::find($id);
+        return response()->json($subcategory);    }
 
     /**
      * Update the specified resource in storage.

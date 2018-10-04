@@ -15,7 +15,8 @@ class BiodataController extends Controller
      */
     public function index()
     {
-        //
+        $biodata = Biodata::get();
+        return response()->json($biodata);
     }
 
     /**
@@ -26,7 +27,10 @@ class BiodataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $biodata = new Biodata;
+        $biodata->fill($request->all());
+        $biodata->save();
+        return response()->json($biodata);
     }
 
     /**
@@ -37,7 +41,8 @@ class BiodataController extends Controller
      */
     public function show($id)
     {
-        //
+        $biodata = Biodata::find($id);
+        return response()->json($biodata);
     }
 
     /**
@@ -49,7 +54,10 @@ class BiodataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $biodata = Biodata::find($id);
+        $biodata->fill($request->all());
+        $biodata->save();
+        return response()->json($biodata);
     }
 
     /**
@@ -60,6 +68,7 @@ class BiodataController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $biodata = Biodata::find($id)->delete();
+        return response()->json($biodata);
     }
 }

@@ -43,7 +43,8 @@ class SubdistrictController extends Controller
      */
     public function show($id)
     {
-        //
+        $subdistrict = Subdistrict::find($id);
+        return response()->json($subdistrict);
     }
 
     /**

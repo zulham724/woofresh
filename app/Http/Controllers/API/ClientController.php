@@ -27,7 +27,10 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = new Client;
+        $client->fill($request->all());
+        $client->save();
+        return response()->json($client);
     }
 
     /**
@@ -38,7 +41,8 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = Client::find($id);
+        return response()->json($client);
     }
 
     /**
@@ -50,7 +54,10 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::find($id);
+        $client->fill($request->all());
+        $client->save();
+        return response()->json($client);
     }
 
     /**
@@ -61,6 +68,7 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::find($id)->delete();
+        return response()->json($client);
     }
 }

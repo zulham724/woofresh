@@ -15,7 +15,8 @@ class RecipeCommentController extends Controller
      */
     public function index()
     {
-        //
+        $recipecomment = RecipeComment::get();
+        return response()->json($recipecomment);
     }
 
     /**
@@ -26,7 +27,10 @@ class RecipeCommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recipecomment = new RecipeComment;
+        $recipecomment->fill($request->all());
+        $recipecomment->save();
+        return response()->json($recipecomment);
     }
 
     /**
@@ -37,7 +41,8 @@ class RecipeCommentController extends Controller
      */
     public function show($id)
     {
-        //
+        $recipecomment = RecipeComment::find($id);
+        return response()->json($recipecomment);
     }
 
     /**
@@ -49,7 +54,10 @@ class RecipeCommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $recipecomment = RecipeComment::find($id);
+        $recipecomment->fill($request->all());
+        $recipecomment->save();
+        return response()->json($recipecomment);
     }
 
     /**
@@ -60,6 +68,7 @@ class RecipeCommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $recipecomment = RecipeComment::find($id)->delete();
+        return response()->json($recipecomment);
     }
 }
