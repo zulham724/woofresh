@@ -72,11 +72,13 @@ class ProductController extends Controller
             $translation->save();
         }
 
-        foreach ($request['components'] as $c => $component) {
-            $product_component = new Component;
-            $product_component->product_id = $product->id;
-            $product_component->fill($component);
-            $product_component->save();
+        if(isset($request['components'])){
+            foreach ($request['components'] as $c => $component) {
+                $product_component = new Component;
+                $product_component->product_id = $product->id;
+                $product_component->fill($component);
+                $product_component->save();
+            }
         }
 
         foreach ($request['sales'] as $s => $sale) {
