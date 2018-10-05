@@ -105,7 +105,7 @@
                 </li>
                 <li><a href="{{ route('productsales.index') }}"><i class="fa fa-angle-right"></i>Product Sales</a></li>
                 <li><a href="{{ route('componentlists.index') }}"><i class="fa fa-angle-right"></i>Component Lists</a></li>
-                <li><a href="{{ route('components.index') }}"><i class="fa fa-angle-right"></i>Components</a></li>
+                {{-- <li><a href="{{ route('components.index') }}"><i class="fa fa-angle-right"></i>Components</a></li> --}}
                 <li><a href="{{ route('suppliers.index') }}"><i class="fa fa-angle-right"></i>Suppliers</a></li>
               </ul>
             </li>
