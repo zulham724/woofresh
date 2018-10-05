@@ -152,16 +152,21 @@ class ProductController extends Controller
             ]);
         }
 
-        foreach ($request['components'] as $c => $component) {
-            $product_component = Component::updateOrCreate(
-            [
-                "id"=>$component['id'] ?? 0
-            ],
-            [
-                "unit"=>$component["unit"],
-                "value"=>$component["value"]
-            ]);
+        if(isset($request['components'])){
+
+            foreach ($request['components'] as $c => $component) {
+                $product_component = Component::updateOrCreate(
+                [
+                    "id"=>$component['id'] ?? 0
+                ],
+                [
+                    "unit"=>$component["unit"],
+                    "value"=>$component["value"]
+                ]);
+            }
+            
         }
+
     
         foreach ($product['product_sales'] as $s => $sale) {
             $sale->product_id = $product->id;
