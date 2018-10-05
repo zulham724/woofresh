@@ -17,7 +17,7 @@ class CreateSuppliersTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->text('description')->nullable();
             $table->string('contact_first_name');
             $table->string('contact_last_name');
             $table->string('contact_title');
