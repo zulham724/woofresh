@@ -78180,9 +78180,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            components: [{
-                component_list_id: 0
-            }],
+            components: [{}],
             componentlists: [{}]
         };
     },
@@ -78203,9 +78201,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         add: function add() {
-            this.components.push({
-                component_list_id: 0
-            });
+            this.components.push({});
         },
         remove: function remove(index) {
             this.components.splice(index, 1);
@@ -78255,41 +78251,14 @@ var render = function() {
                 _c(
                   "select",
                   {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: component.component_list_id,
-                        expression: "component.component_list_id"
-                      }
-                    ],
-                    staticClass: "select2 form-control",
+                    staticClass: "form-control",
                     attrs: {
                       name: "components[" + c + "][component_list_id]",
                       required: ""
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          component,
-                          "component_list_id",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
                     }
                   },
                   [
-                    _c("option", { attrs: { value: "0" } }, [
+                    _c("option", { attrs: { value: "" } }, [
                       _vm._v("--Pilih--")
                     ]),
                     _vm._v(" "),
