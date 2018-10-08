@@ -110,33 +110,7 @@
 		</div>
 	</div>
 
-	<div class="alert alert-info">
-	  <strong>Info!</strong> Tentukan Nutrisi Barang anda.
-	</div>
-
-	<div class="row">
-		@foreach ($component_lists as $cl => $component_list)	
-		<div class="col-4">
-			<div class="card">
-				<div class="card-header">
-					Nutrisi {{ $component_list->name }} <br>
-					<small>{{ $component_list->description }}</small>
-				</div>
-				<div class="card-body">
-					<input type="hidden" name="components[{{$cl}}][component_list_id]" value="{{ $component_list->id }}">
-					<div class="form-group">
-						<label>Satuan</label>
-						<input type="text" class="form-control" name="components[{{$cl}}][unit]" placeholder="ml/g/kg">
-					</div>
-					<div class="form-group">
-						<label>Nilai</label>
-						<input type="number" class="form-control" name="components[{{$cl}}][value]" placeholder="tulis disini">
-					</div>
-				</div>
-			</div>
-		</div>	
-		@endforeach
-	</div>
+	<nutrition-component></nutrition-component>
 
 	<div class="alert alert-info">
 	  <strong>Info!</strong> Tentukan Penjualan Barang anda.

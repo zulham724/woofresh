@@ -29,7 +29,7 @@ window.swal = require('sweetalert2');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-// Vue.component('language-component', require('./components/LanguageComponent.vue'));
+Vue.component('nutrition-component', require('./components/NutritionComponent.vue'));
 
 const app = new Vue({
     el: '#app',

@@ -25,14 +25,21 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/themes/fontawesome-stars-o.min.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('adminlte/img/favicon.ico') }}">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <style type="text/css">
       .select2 span { display:block }
+      .select2-container, .select2-dropdown, .select2-search, .select2-results {
+      -webkit-transition: none !important;
+      -moz-transition: none !important;
+      -ms-transition: none !important;
+      -o-transition: none !important;
+      transition: none !important;
+      }
     </style>
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    <script src="{{ asset('js/app.js') }}" defer></script>
   </head>
   <body>
     <div class="page">
@@ -159,11 +166,11 @@
     </div>
     <!-- JavaScript files-->
     <script src="{{ asset('adminlte/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('adminlte/vendor/popper.js/umd/popper.min.js') }}"> </script>
-    <script src="{{ asset('adminlte/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('adminlte/vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
-    <script src="{{ asset('adminlte/vendor/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('adminlte/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+    {{-- <script src="{{ asset('adminlte/vendor/popper.js/umd/popper.min.js') }}"> </script> --}}
+    {{-- <script src="{{ asset('adminlte/vendor/bootstrap/js/bootstrap.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('adminlte/vendor/jquery.cookie/jquery.cookie.js') }}"> </script> --}}
+    {{-- <script src="{{ asset('adminlte/vendor/chart.js/Chart.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('adminlte/vendor/jquery-validation/jquery.validate.min.js') }}"></script> --}}
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script>
