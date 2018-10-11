@@ -16,7 +16,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::get();
+        $recipes = Recipe::with('recipe_images')->get();
         return response()->json($recipes);
     }
      
@@ -43,7 +43,7 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        $recipe = Recipe::find($id);
+        $recipe = Recipe::with('recipe_images')->find($id);
         return response()->json($recipe);
     }
      
@@ -76,7 +76,7 @@ class RecipeController extends Controller
     }
     public function search($recipe)
     {
-        $recipes = Recipe::where('name','like',"%".$recipe."%")->get();
+        $recipes = Recipe::where('name','like',"%".$recipe."%")->with('recipe_images')->get();
 
         return response()->json($recipes);
     }
