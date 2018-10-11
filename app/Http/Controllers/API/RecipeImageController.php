@@ -16,7 +16,7 @@ class RecipeImageController extends Controller
      */
     public function index()
     {
-        $recieimages = RecipeImage::get();
+        $recipeimages = RecipeImage::get();
         return response()->json($recipeimages);
     }
 
