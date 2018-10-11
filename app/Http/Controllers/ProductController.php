@@ -58,7 +58,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->request);
+        dd($request->request);
         $product = new Product;
         $product->fill($request->except(['languages','sales','components']));
         $product->save();

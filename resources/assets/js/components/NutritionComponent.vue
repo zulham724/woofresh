@@ -14,8 +14,8 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Nutrisi</label>
-                            <select class="form-control" :name="'components['+c+'][component_list_id]'" required>
-                                <option value="">--Pilih--</option>
+                            <select class="form-control" :name="'components['+c+'][component_list_id]'" @change="loadComponentLists()" v-model="component.component_list_id" required>
+                                <option value="0">--Pilih--</option>
                                 <option v-for="(componentlist,cl) in componentlists" :value="componentlist.id">{{ componentlist.name }}</option>
                             </select>
                         </div>
@@ -39,7 +39,9 @@
     export default {
         data(){
             return {
-                components:[{}],
+                components:[{
+                    component_list_id:0
+                }],
                 componentlists:[{}]
             }
         },
@@ -57,7 +59,9 @@
                 });
             },
             add(){
-                this.components.push({});
+                this.components.push({
+                    component_list_id:0
+                });
             },
             remove(index){
                 this.components.splice(index,1);
