@@ -16,7 +16,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $supplier = Supplier::get();
+        $supplier = Supplier::with('products')->get();
         return response()->json($supplier);
     }
 
@@ -42,7 +42,7 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        $supplier = Supplier::find($id);
+        $supplier = Supplier::with('products')->find($id);
         return response()->json($supplier);
     }
 
@@ -76,7 +76,7 @@ class SupplierController extends Controller
     }
     public function search($supplier)
     {
-        $suppliers = Supplier::where('name','like',"%".$supplier."%")->get();
+        $suppliers = Supplier::where('name','like',"%".$supplier."%")->with('products')->get();
 
         return response()->json($suppliers);
     }

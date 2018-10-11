@@ -15,4 +15,17 @@ class Transaction extends Model
     public function orders(){
     	return $this->hasMany('App\Order');
     }
+
+    public function voucher(){
+    	return $this->hasOne('App\Voucher');
+    }
+
+    public function shipping_address(){
+    	return $this->hasOne('App\ShippingAddress');
+    }
+
+    public function delivery_fee(){
+    	return $this->belongsTo('App\DeliveryFee');
+    }
+
 }

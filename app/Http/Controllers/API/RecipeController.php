@@ -16,7 +16,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::with('recipe_images')->get();
+        $recipes = Recipe::with('recipe_images','recipe_tutorials','ingredients','recipe_comments')->get();
         return response()->json($recipes);
     }
      
@@ -43,7 +43,7 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        $recipe = Recipe::with('recipe_images')->find($id);
+        $recipe = Recipe::with('recipe_images','recipe_tutorials','ingredients','recipe_comments')->find($id);
         return response()->json($recipe);
     }
      

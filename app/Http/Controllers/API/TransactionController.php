@@ -22,7 +22,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::get();
+        $transactions = Transaction::with('orders.product','voucher','shipping_address','user','delivery_fee')->get();
         return response()->json($transactions);
     }
 
@@ -48,7 +48,7 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        $transaction = Transaction::with('orders')->find($id);
+        $transaction = Transaction::with('orders.product','voucher','shipping_address','user','delivery_fee')->find($id);
         return response()->json($transaction);
     }
 
@@ -80,7 +80,7 @@ class TransactionController extends Controller
     }
     public function search($transaction)
     {
-        $transactions = Transaction::where('transaction_number','like',"%".$transaction."%")->get();
+        $transactions = Transaction::where('transaction_number','like',"%".$transaction."%")->with('orders.product','voucher','shipping_address','user','delivery_fee')->get();
 
         return response()->json($transactions);
     }

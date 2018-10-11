@@ -23,4 +23,8 @@ class Recipe extends Model
     public function recipe_images(){
         return $this->hasMany('App\RecipeImage');
     }
+
+    public function recipe_tutorials(){
+        return $this->hasMany('App\RecipeTutorial');
+    }
 }
