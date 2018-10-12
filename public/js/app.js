@@ -78178,6 +78178,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['edit_components'],
     data: function data() {
         return {
             components: [{
@@ -78190,6 +78191,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Component mounted.');
     },
     created: function created() {
+        this.edit_components ? this.components = this.edit_components : null;
+        console.log(this.components);
         this.loadComponentLists();
     },
 

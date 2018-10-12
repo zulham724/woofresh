@@ -154,15 +154,14 @@ class ProductController extends Controller
 
         if(isset($request['components'])){
 
-            foreach ($request['components'] as $c => $component) {
-                $product_component = Component::updateOrCreate(
-                [
-                    "id"=>$component['id'] ?? 0
-                ],
-                [
-                    "unit"=>$component["unit"],
-                    "value"=>$component["value"]
-                ]);
+            $db = Component::where('product_id',$product->id)->delete();
+            if(isset($request['components'])){
+                foreach ($request['components'] as $c => $component) {
+                    $product_component = new Component;
+                    $product_component->product_id = $product->id;
+                    $product_component->fill($component);
+                    $product_component->save();
+                }
             }
             
         }

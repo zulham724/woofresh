@@ -37,6 +37,7 @@
 
 <script>
     export default {
+        props:['edit_components'],
         data(){
             return {
                 components:[{
@@ -49,6 +50,8 @@
             console.log('Component mounted.');
         },
         created(){
+            this.edit_components ? this.components = this.edit_components : null;
+            console.log(this.components);
             this.loadComponentLists();
         },
         methods:{
