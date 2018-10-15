@@ -15,7 +15,7 @@ class BiodataController extends Controller
      */
     public function index()
     {
-        $biodata = Biodata::get();
+        $biodata = Biodata::with('user')->get();
         return response()->json($biodata);
     }
 
@@ -41,7 +41,7 @@ class BiodataController extends Controller
      */
     public function show($id)
     {
-        $biodata = Biodata::find($id);
+        $biodata = Biodata::with('user')->find($id);
         return response()->json($biodata);
     }
 
