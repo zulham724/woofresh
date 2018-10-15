@@ -113,7 +113,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $data['product'] = Product::with('product_sales')->with('components.component_list')->find($id);
+        $data['product'] = Product::with('product_sales.state')->with('components.component_list')->find($id);
         $data["states"] = State::get();
         $data["languages"] = Language::get();
         $data['subcategories'] = SubCategory::get();

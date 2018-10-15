@@ -132,25 +132,25 @@
 	</div>
 
 	<div class="row">
-		@foreach ($product['product_sales'] as $s => $state)	
+		@foreach ($product['product_sales'] as $s => $product_sale)	
 		<div class="col-4">
 			<div class="card">
 				<div class="card-header">
-					Harga di {{ $state->name }}
+					Harga di {{ $product_sale->state->name }}
 				</div>
 				<div class="card-body">
-					<input type="hidden" name="sales[{{$s}}][state_id]" value="{{$state->id}}">
+					<input type="hidden" name="sales[{{$s}}][state_id]" value="{{$product_sale->id}}">
 					<div class="form-group">
 						<label>Stok</label>
-						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][stock]" required value="{{ $state->stock }}">
+						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][stock]" required value="{{ $product_sale->stock }}">
 					</div>
 					<div class="form-group">
 						<label>Harga</label>
-						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][price]" required value="{{ $state->price }}">
+						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][price]" required value="{{ $product_sale->price }}">
 					</div>
 					<div class="form-group">
 						<label>Diskon</label>
-						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][discount]" required value="{{ $state->discount }}">
+						<input type="number" class="form-control" placeholder="type something" name="sales[{{$s}}][discount]" required value="{{ $product_sale->discount }}">
 					</div>
 				</div>
 			</div>
