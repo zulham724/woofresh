@@ -19,7 +19,10 @@ class CreateProductTranslationsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->integer('language_id')->unsigned();
             $table->string('name');
-            $table->string('description');
+            $table->text('description')->nullable();
+            $table->text('long_description')->nullable();
+            $table->text('key_information')->nullable();
+            $table->text('handling_and_delivery')->nullable();
             $table->timestamps();
 
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade')->onUpdate('cascade');

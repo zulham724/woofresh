@@ -44,10 +44,6 @@ class UserController extends Controller
             $user->fill($request->all());
             $user->save();
 
-            $biodata = new Biodata;
-            $biodata->user_id = $user->id;
-            $biodata->fill($request->except(['role_id','name','email','password','avatar']));
-            $biodata->save();
             return response()->json($user);
         }
 
@@ -84,11 +80,6 @@ class UserController extends Controller
         }
         $user->fill($request->all());
         $user->update();
-
-        $biodata = new Biodata;
-        $biodata->user_id = $user->id;
-        $biodata->fill($request->except(['role_id','name','email','password','avatar']));
-        $biodata->update();
         return response()->json($user);
     }
 
@@ -100,7 +91,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
+        $user = User::find($id);
+        $user->delete();
         return response()->json($user);
     }
     public function search($user)

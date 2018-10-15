@@ -27,6 +27,7 @@ class ProductController extends Controller
         ->with('product_images')
         ->with('product_translations.language')
         ->with('product_ratings')
+        ->orderBy('created_at','desc')
         ->get();
         return response()->json($products);
     }
