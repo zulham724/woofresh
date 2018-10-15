@@ -58,7 +58,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->request);
+        // dd($request->request);
         $product = new Product;
         $product->fill($request->except(['languages','sales','components']));
         $product->save();
@@ -154,14 +154,12 @@ class ProductController extends Controller
 
         if(isset($request['components'])){
 
-            $db = Component::where('product_id',$product->id)->delete();
-            if(isset($request['components'])){
-                foreach ($request['components'] as $c => $component) {
-                    $product_component = new Component;
-                    $product_component->product_id = $product->id;
-                    $product_component->fill($component);
-                    $product_component->save();
-                }
+            $db = $db = Component::where('product_id',$product->id)->delete();
+            foreach ($request['components'] as $c => $component) {
+                $product_component = new Component;
+                $product_component->product_id = $product->id;
+                $product_component->fill($component);
+                $product_component->save();
             }
             
         }
