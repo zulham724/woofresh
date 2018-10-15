@@ -15,7 +15,7 @@ class RecipeCommentController extends Controller
      */
     public function index()
     {
-        $recipecomment = RecipeComment::get();
+        $recipecomment = RecipeComment::with('recipe')->get();
         return response()->json($recipecomment);
     }
 
@@ -41,7 +41,7 @@ class RecipeCommentController extends Controller
      */
     public function show($id)
     {
-        $recipecomment = RecipeComment::find($id);
+        $recipecomment = RecipeComment::with('recipe')->find($id);
         return response()->json($recipecomment);
     }
 

@@ -15,7 +15,7 @@ class RecipeTutorialController extends Controller
      */
     public function index()
     {
-        $recipetorial = RecipeTutorial::get();
+        $recipetorial = RecipeTutorial::with('recipe')->get();
         return response()->json($recipetorial);
     }
 
@@ -41,7 +41,7 @@ class RecipeTutorialController extends Controller
      */
     public function show($id)
     {
-        $recipetutorial = RecipeTutorial::find($id);
+        $recipetutorial = RecipeTutorial::with('recipe')->find($id);
         return response()->json($recipetutorial);
     }
 

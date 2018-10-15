@@ -28,6 +28,8 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 		'/users'=>'UserController',
 		'/recipes'=>'RecipeController',
 		'/recipeimages'=>'RecipeImageController',
+		'/recipecomments'=>'RecipeCommentController',
+		'/recipetutorials'=>'RecipeTutorialController',
 		'/transactions'=>'TransactionController',
 		'/biodatas'=>'BiodataController',
 		'/products'=>'ProductController',
