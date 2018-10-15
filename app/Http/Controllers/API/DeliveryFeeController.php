@@ -16,6 +16,7 @@ class DeliveryFeeController extends Controller
     public function index()
     {
         $deliveryfees = DeliveryFee::with('state')->get();
+        return response()->json($deliveryfees);
     }
 
     /**
