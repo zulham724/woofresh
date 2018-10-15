@@ -46,7 +46,8 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 		'/vouchers'=>'VoucherController',
 		'/subdistricts'=>'SubdistrictController',
 		'/productratings'=>'ProductRatingController',
-		'/deliveryfees'=>'DeliveryFeeController'
+		'/deliveryfees'=>'DeliveryFeeController',
+		'/shippingaddresses'=>'ShippingAddressController'
 	]);
 
 	
