@@ -40,8 +40,9 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $recipe = new Recipe();
-        $recipe->fill($request->all());
+        $recipe->fill($request['order']);
         $recipe->save();
 
         return redirect()->route('recipes.index',$recipe->user_id);

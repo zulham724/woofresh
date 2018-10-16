@@ -31261,6 +31261,9 @@ window.swal = __webpack_require__(50);
 
 Vue.component('example-component', __webpack_require__(51));
 Vue.component('nutrition-component', __webpack_require__(54));
+Vue.component('ingredient-component', __webpack_require__(62));
+Vue.component('recipeimage-component', __webpack_require__(65));
+Vue.component('recipetutorial-component', __webpack_require__(68));
 
 var app = new Vue({
   el: '#app',
@@ -78420,6 +78423,731 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(13)
+/* script */
+var __vue_script__ = __webpack_require__(63)
+/* template */
+var __vue_template__ = __webpack_require__(64)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/IngredientComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-39299a76", Component.options)
+  } else {
+    hotAPI.reload("data-v-39299a76", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            products: [{}],
+            ingredients: [{
+                product_id: ''
+            }]
+        };
+    },
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+    created: function created() {
+        var _this = this;
+
+        axios.get('/api/products').then(function (res) {
+            _this.products = res.data;
+        });
+    },
+
+    methods: {
+        add: function add() {
+            this.ingredients.push({
+                product_id: ''
+            });
+        },
+        remove: function remove(index) {
+            this.ingredients.splice(index, 1);
+        }
+    }
+});
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "alert alert-info" }, [
+      _c("strong", [_vm._v("Info!")]),
+      _vm._v(" Tentukan Bahan Resep Anda.\n      "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary pull-right",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.add()
+            }
+          }
+        },
+        [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" Tambah")]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.ingredients, function(ingredient, i) {
+        return _c("div", { staticClass: "col-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Bahan")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: ingredient.product_id,
+                        expression: "ingredient.product_id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "ingredients[" + i + "][product_id]" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          ingredient,
+                          "product_id",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("--Pilih Bahan--")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.products, function(product, p) {
+                      return _c("option", { domProps: { value: product.id } }, [
+                        _vm._v(_vm._s(product.name))
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Produk Opsional")]),
+                _vm._v(" "),
+                ingredient.product_id == ""
+                  ? _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: ingredient.optional_product,
+                          expression: "ingredient.optional_product"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Product Opsional",
+                        name: "ingredients[" + i + "][optional_product]"
+                      },
+                      domProps: { value: ingredient.optional_product },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            ingredient,
+                            "optional_product",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Satuan")]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "ml/kg",
+                    name: "ingredients[" + i + "][unit]"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Berat")]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "number",
+                    placeholder: "Berat",
+                    name: "ingredients[" + i + "][weight]"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger pull-right",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.remove(i)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
+              )
+            ])
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _vm._v("\n                    Pilih\n                    "),
+      _c("small", [_vm._v("Bahan")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-39299a76", module.exports)
+  }
+}
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(13)
+/* script */
+var __vue_script__ = __webpack_require__(66)
+/* template */
+var __vue_template__ = __webpack_require__(67)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/RecipeImageComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e50c9472", Component.options)
+  } else {
+    hotAPI.reload("data-v-e50c9472", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            recipeimages: [{}]
+        };
+    },
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+    created: function created() {},
+
+    methods: {
+        add: function add() {
+            this.recipeimages.push({});
+        },
+        remove: function remove(index) {
+            this.recipeimages.splice(index, 1);
+        }
+    }
+});
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "alert alert-info" }, [
+      _c("strong", [_vm._v("Info!")]),
+      _vm._v(" Tentukan Gambar-gambar Resep Anda.\n      "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary pull-right",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.add()
+            }
+          }
+        },
+        [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" Tambah")]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.recipeimages, function(recieimage, ri) {
+        return _c("div", { staticClass: "col-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Image")]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "file",
+                    placeholder: "type something",
+                    name: "recipeimages[" + ri + "][image]"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Description")]),
+                _vm._v(" "),
+                _c("textarea", {
+                  staticClass: "form-control",
+                  attrs: {
+                    placeholder: "Type something",
+                    name: "recipeimages[" + ri + "][description]"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger pull-right",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.remove(ri)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
+              )
+            ])
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _vm._v("\n                    Tentukan\n                    "),
+      _c("small", [_vm._v("Gambar Resep")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e50c9472", module.exports)
+  }
+}
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(13)
+/* script */
+var __vue_script__ = __webpack_require__(69)
+/* template */
+var __vue_template__ = __webpack_require__(70)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/RecipeTutorialComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-10aadcea", Component.options)
+  } else {
+    hotAPI.reload("data-v-10aadcea", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            products: [{}],
+            ingredients: [{}]
+        };
+    },
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+    created: function created() {
+        var _this = this;
+
+        axios.get('/api/products').then(function (res) {
+            _this.products = res.data;
+        });
+    },
+
+    methods: {
+        add: function add() {
+            this.ingredients.push({});
+        },
+        remove: function remove(index) {
+            this.ingredients.splice(index, 1);
+        }
+    }
+});
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "alert alert-info" }, [
+      _c("strong", [_vm._v("Info!")]),
+      _vm._v(" Tentukan Bahan Resep Anda.\n      "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary pull-right",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.add()
+            }
+          }
+        },
+        [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" Tambah")]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.ingredients, function(ingredient, i) {
+        return _c("div", { staticClass: "col-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _vm._m(1, true),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger pull-right",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.remove(i)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
+              )
+            ])
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _vm._v("\n                    Pilih\n                    "),
+      _c("small", [_vm._v("Bahan")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label"),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "type something", name: "" }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-10aadcea", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

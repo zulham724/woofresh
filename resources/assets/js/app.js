@@ -30,6 +30,10 @@ window.swal = require('sweetalert2');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('nutrition-component', require('./components/NutritionComponent.vue'));
+Vue.component('ingredient-component', require('./components/IngredientComponent.vue'));
+Vue.component('recipeimage-component', require('./components/RecipeImageComponent.vue'));
+Vue.component('recipetutorial-component', require('./components/RecipeTutorialComponent.vue'));
+
 
 const app = new Vue({
     el: '#app',

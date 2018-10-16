@@ -15,4 +15,8 @@ class City extends Model
     public function state(){
     	return $this->belongsTo('App\State');
     }
+
+    public function subdistricts(){
+    	return $this->hasMany('App\Subdistrict');
+    }
 }

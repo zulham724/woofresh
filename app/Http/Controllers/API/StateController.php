@@ -15,7 +15,7 @@ class StateController extends Controller
      */
     public function index()
     {
-        $state = State::get();
+        $state = State::with('cities')->get();
         return response()->json($state);
     }
 
@@ -41,7 +41,7 @@ class StateController extends Controller
      */
     public function show($id)
     {
-        $state = State::find($id);
+        $state = State::with('cities')->find($id);
         return response()->json($state);    }
 
     /**

@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/client','API\ClientController@index');
 Route::post('/register','API\UserController@store');
-Route::post('/forgot/password', 'API\Auth\ForgotPasswordController')->name('forgot.password');
+Route::post('/forgot/password', 'API\Auth\ForgotPasswordController');
 
 Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 
@@ -53,28 +53,28 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	]);
 
 	
-	Route::get('/products/group/{id}','ProductController@group')->name('group');
-	Route::get('/products/category/{id}','ProductController@category')->name('category');
-	Route::get('/products/subcategory/{id}','ProductController@subcategory')->name('subcategory');
-	Route::get('/products/state/{id}','ProductController@state')->name('state');
-	Route::get('/products/city/{id}','ProductController@city')->name('city');
-	Route::get('/products/subdistrict/{id}','ProductController@subdistrict')->name('subdistrict');
-	Route::get('/states/search/{id}','StateController@search')->name('search');
-	Route::get('/products/search/{id}','ProductController@search')->name('search');
-	Route::get('/recipes/search/{id}','RecipeController@search')->name('search');
-	Route::get('/components/search/{id}','ComponentController@search')->name('search');
-	Route::get('/suppliers/search/{id}','SupplierController@search')->name('search');
-	Route::get('/ingredients/search/{id}','IngredientController@search')->name('search');
-	Route::get('/vouchers/search/{id}','VoucherController@search')->name('search');
-	Route::get('/cities/search/{id}','CityController@search')->name('search');
-	Route::get('/groups/search/{id}','GroupController@search')->name('search');
-	Route::get('/subdistricts/search/{id}','SubdistrictController@search')->name('search');
-	Route::get('/categories/search/{id}','CategoryController@search')->name('search');
-	Route::get('/subcategories/search/{id}','SubCategoryController@search')->name('search');
-	Route::get('/users/search/{id}','UserController@search')->name('search');
-	Route::get('/transactions/search/{id}','TransactionController@search')->name('search');
-	Route::get('/languages/search/{id}','LanguageController@search')->name('search');
-	Route::get('/contents/search/{id}','ContentController@search')->name('search');
+	Route::get('/products/group/{id}','ProductController@group');
+	Route::get('/products/category/{id}','ProductController@category');
+	Route::get('/products/subcategory/{id}','ProductController@subcategory');
+	Route::get('/products/state/{id}','ProductController@state');
+	Route::get('/products/city/{id}','ProductController@city');
+	Route::get('/products/subdistrict/{id}','ProductController@subdistrict');
+	Route::get('/states/search/{id}','StateController@search');
+	Route::get('/products/search/{id}','ProductController@search');
+	Route::get('/recipes/search/{id}','RecipeController@search');
+	Route::get('/components/search/{id}','ComponentController@search');
+	Route::get('/suppliers/search/{id}','SupplierController@search');
+	Route::get('/ingredients/search/{id}','IngredientController@search');
+	Route::get('/vouchers/search/{id}','VoucherController@search');
+	Route::get('/cities/search/{id}','CityController@search');
+	Route::get('/groups/search/{id}','GroupController@search');
+	Route::get('/subdistricts/search/{id}','SubdistrictController@search');
+	Route::get('/categories/search/{id}','CategoryController@search');
+	Route::get('/subcategories/search/{id}','SubCategoryController@search');
+	Route::get('/users/search/{id}','UserController@search');
+	Route::get('/transactions/search/{id}','TransactionController@search');
+	Route::get('/languages/search/{id}','LanguageController@search');
+	Route::get('/contents/search/{id}','ContentController@search');
 	Route::get('/cities/state/{id}','CityController@state');
 	
 	
