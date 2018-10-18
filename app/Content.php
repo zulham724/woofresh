@@ -11,4 +11,8 @@ class Content extends Model
     public function content_translations(){
     	return $this->hasMany('App\ContentTranslation');
     }
+
+    public function content_list(){
+    	return $this->belongsTo('App\ContentList');
+    }
 }

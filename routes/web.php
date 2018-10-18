@@ -45,6 +45,7 @@ Route::group(['middleware'=>'auth'],function(){
 		'/suppliers'=>'SupplierController',
 		'/roles'=>'RoleController',
 		'/ingredients'=>'IngredientController',
+		'/contentlists'=>'ContentListController',
 		'/contents'=>'ContentController',
 		'/components'=>'ComponentController',
 		'/componentvalues'=>'ComponentValueController',

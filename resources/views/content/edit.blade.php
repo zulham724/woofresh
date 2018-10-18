@@ -19,8 +19,17 @@
 				</div>
 				<div class="card-body"> 
 						<div class="form-group">
-							<label>Nama Konten</label>
-							<input type="text" class="form-control" value="{{ $content->name }}" name="name" placeholder="tulis disini" required> 
+							<label>Kategori Konten</label>
+							<select class="form-control" name="content_list_id" required>
+								<option value="">--Pilih--</option>
+								@foreach ($content_lists as $content_list)
+									<option value="{{ $content_list->id }}" {{ $content->content_list_id == $content_list->id ? 'selected' : null }}>{{ $content_list->name }}</option>
+								@endforeach
+							</select> 
+						</div>
+						<div class="form-group">
+							<label>Nama</label>
+							<input type="text" class="form-control" value="{{ $content->name }}" placeholder="type something" name="name">
 						</div>
 						<img src="{{ asset('storage/'.$content->image) }}" class="img-responsive" width="100">
 						<div class="form-group">

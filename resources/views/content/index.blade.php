@@ -20,6 +20,7 @@
     					<tr>
     						<td>No</td>
     						<td>Kategori</td>
+                            <td>Nama</td>
                             <td>Gambar</td>
                             <td>Bahasa yang Tersedia</td>
     						<td>Aksi</td>
@@ -29,6 +30,7 @@
     					@foreach ($contents as $c => $content)
 						<tr>
 							<td>{{ $c+1 }}</td>
+                            <td>{{ $content->content_list->name }}</td>
                             <td>{{ $content->name }}</td>
                             <td><img src="{{ $content->image ? asset('storage/'.$content->image) : asset('img/blank.png') }}" class="img-responsive" width="100"></td>
                             <td>
@@ -91,28 +93,6 @@
 
     $(()=>{
         $('.custom').DataTable({
-            "dom": '<"toolbar">frtip',
-            initComplete: function () {
-                this.api().columns([1]).every( function (index) {
-                    var column = this;
-                    var select = $('<select><option value="">Choose Category</option></select>')
-                        .appendTo( $("div.toolbar") )
-                        .on( 'change', function () {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
-     
-                            column
-                                .search( val ? '^'+val+'$' : '', true, false )
-                                .draw();
-                        } );
-     
-                    column.data().unique().sort().each( function ( d, j ) {
-                      // console.log("ini",d,j);
-                        select.append( '<option value="'+d+'">'+d+'</option>' )
-                    } );
-                } );
-            }
         });
     });
 </script>

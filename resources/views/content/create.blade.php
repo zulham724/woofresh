@@ -20,12 +20,16 @@
 				<div class="card-body"> 
 						<div class="form-group">
 							<label>Kategori Konten</label>
-							<select class="form-control" name="name" required>
+							<select class="form-control" name="content_list_id" required>
 								<option value="">--Pilih--</option>
-								<option value="slider">Slider</option>
-								<option value="icon">Icon</option>
-								<option value="sale">Sale</option>
+								@foreach ($content_lists as $content_list)
+									<option value="{{ $content_list->id }}">{{ $content_list->name }}</option>
+								@endforeach
 							</select> 
+						</div>
+						<div class="form-group">
+							<label>Nama</label>
+							<input type="text" class="form-control" placeholder="type something" name="name">
 						</div>
 						<div class="form-group">
 							<label>Gambar</label>

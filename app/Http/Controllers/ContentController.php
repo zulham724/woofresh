@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Content;
 use App\ContentTranslation;
 use App\Language;
+use App\ContentList;
 
 class ContentController extends Controller
 {
@@ -17,7 +18,7 @@ class ContentController extends Controller
      */
     public function index()
     {
-        $data["contents"] = Content::with('content_translations.language')->get();
+        $data["contents"] = Content::with('content_translations.language','content_list')->get();
         return view('content.index',$data);
     }
 
@@ -29,6 +30,7 @@ class ContentController extends Controller
     public function create()
     {
         $data["languages"] = Language::get();
+        $data["content_lists"] = ContentList::get();
         return view('content.create',$data);
     }
 
@@ -43,6 +45,7 @@ class ContentController extends Controller
         // dd($request);
         $content = new Content;
         $content->name = $request["name"];
+        $content->content_list_id = $request["content_list_id"];
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('content');
             $content->image = $path;    
@@ -82,6 +85,7 @@ class ContentController extends Controller
     {
         $data["content"] = Content::with('content_translations.language')->find($id);
         $data["languages"] = Language::get();
+        $data["content_lists"] = ContentList::get();
         // dd($data);
         return view('content.edit',$data);
     }
@@ -98,6 +102,7 @@ class ContentController extends Controller
         // dd($request);
         $content = Content::find($id);
         $content->name = $request["name"];
+        $content->content_list_id = $request["content_list_id"];
         if($request->hasFile('image')){
             $file = Storage::delete($content->image);
             $path = $request->file('image')->store('content');

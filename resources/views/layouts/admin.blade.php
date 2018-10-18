@@ -108,9 +108,9 @@
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('products.index') }}"><i class="fa fa-angle-right"></i>All Products</a></li>
                 <li {{ Request::is('productimage') ? 'class=active' : '' }}>
-                  <a href="{{ route('productimages.index') }}"> <i class="fa fa-angle-right"></i>Product Images</a>
+                  {{-- <a href="{{ route('productimages.index') }}"> <i class="fa fa-angle-right"></i>Product Images</a> --}}
                 </li>
-                <li><a href="{{ route('productsales.index') }}"><i class="fa fa-angle-right"></i>Product Sales</a></li>
+                {{-- <li><a href="{{ route('productsales.index') }}"><i class="fa fa-angle-right"></i>Product Sales</a></li> --}}
                 <li><a href="{{ route('componentlists.index') }}"><i class="fa fa-angle-right"></i>Component Lists</a></li>
                 {{-- <li><a href="{{ route('components.index') }}"><i class="fa fa-angle-right"></i>Components</a></li> --}}
                 <li><a href="{{ route('suppliers.index') }}"><i class="fa fa-angle-right"></i>Suppliers</a></li>
@@ -120,10 +120,10 @@
             <li  {{ Request::is('recipes') ? 'class=active' : '' }}><a href="#recipesdropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Recipes </a>
               <ul id="recipesdropdown" class="collapse list-unstyled ">
                 <li><a href="{{ route('recipes.index') }}"><i class="fa fa-angle-right"></i>All Recipes</a></li>
-                <li><a href="{{ route('recipetutorials.index') }}"><i class="fa fa-angle-right"></i>Recipe Tutorials</a></li>
-                <li><a href="{{ route('recipeimages.index') }}"> <i class="fa fa-angle-right"></i>Recipe Images</a>
+                {{-- <li><a href="{{ route('recipetutorials.index') }}"><i class="fa fa-angle-right"></i>Recipe Tutorials</a></li> --}}
+                {{-- <li><a href="{{ route('recipeimages.index') }}"> <i class="fa fa-angle-right"></i>Recipe Images</a> --}}
                 </li>
-                <li><a href="{{ route('ingredients.index') }}"><i class="fa fa-angle-right"></i>Ingredients</a></li>
+                {{-- <li><a href="{{ route('ingredients.index') }}"><i class="fa fa-angle-right"></i>Ingredients</a></li> --}}
               </ul>
             </li>
             
@@ -141,6 +141,7 @@
                 
         </ul><span class="heading">Settings</span>
         <ul class="list-unstyled">
+          <li {{ Request::is('contentlists') ? 'class=active' : '' }}><a href="{{ route('contentlists.index') }}"> <i class="icon-padnote"></i>Content List</a></li>
           <li {{ Request::is('contents') ? 'class=active' : '' }}><a href="{{ url('contents') }}"> <i class="icon-padnote"></i>Content </a></li>
           <li {{ Request::is('languages') ? 'class=active' : '' }}> <a href="{{ url('/languages') }}"> <i class="icon-settings"></i>Language </a></li>
         </ul>
