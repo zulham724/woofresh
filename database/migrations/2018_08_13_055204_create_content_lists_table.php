@@ -14,6 +14,7 @@ class CreateContentListsTable extends Migration
     public function up()
     {
         Schema::create('content_lists', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('name');
             $table->text('description')->nullable();
