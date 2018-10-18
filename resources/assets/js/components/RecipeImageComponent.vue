@@ -5,7 +5,7 @@
           <button @click="add()" type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah</button>
         </div>
         <div class="row">
-            <div class="col-4" v-for="(recieimage,ri) in recipeimages">
+            <div class="col-4" v-for="(recipeimage,ri) in recipeimages">
                 <div class="card">
                     <div class="card-header">
                         Tentukan
@@ -13,12 +13,12 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Image</label>
-                            <input type="file" class="form-control" placeholder="type something" :name="'recipeimages['+ri+'][image]'">
+                            <span v-model="recipeimage.image">Gambar: </span>
+                            <input type="file" :name="'recipeimages['+ri+'][image]'" > 
                         </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control" placeholder="Type something" :name="'recipeimages['+ri+'][description]'"></textarea>
+                         <div class="form-group">
+                            <label>Deskripsi</label>
+                            <textarea type="text" class="form-control" v-model="recipeimage.description" :name="'recipeimages['+ri+'][description]'" placeholder="type something" > </textarea>
                         </div>
                         <button type="button" class="btn btn-danger pull-right" @click="remove(ri)"><i class="fa fa-trash"></i> Hapus</button>
                     </div>
@@ -30,6 +30,7 @@
 
 <script>
     export default {
+        props:['edit_recipeimages'],
         data(){
             return{
                 recipeimages:[{}]
@@ -39,7 +40,8 @@
             console.log('Component mounted.')
         },
         created(){
-            
+            this.edit_recipeimages ? this.recipeimages = this.edit_recipeimages : null;
+            console.log("resep Gambar",this.recipeimages);
         },
         methods:{
             add(){

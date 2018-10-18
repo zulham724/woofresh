@@ -78514,11 +78514,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['edit_ingredients'],
     data: function data() {
         return {
             products: [{}],
             ingredients: [{
-                product_id: ''
+                product_id: 0
             }]
         };
     },
@@ -78526,17 +78527,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Component mounted.');
     },
     created: function created() {
-        var _this = this;
-
-        axios.get('/api/products').then(function (res) {
-            _this.products = res.data;
-        });
+        this.edit_ingredients ? this.ingredients = this.edit_ingredients : null;
+        console.log(this.ingredients);
     },
 
     methods: {
+        loadProducts: function loadProducts() {
+            var _this = this;
+
+            axios.get('/api/products').then(function (res) {
+                _this.products = res.data;
+                console.log(_this.products);
+            });
+        },
         add: function add() {
             this.ingredients.push({
-                product_id: ''
+                product_id: 0
             });
         },
         remove: function remove(index) {
@@ -78556,7 +78562,7 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "alert alert-info" }, [
       _c("strong", [_vm._v("Info!")]),
-      _vm._v(" Tentukan Bahan Resep Anda.\n      "),
+      _vm._v(" Tentukan Bahan Resep Anda.\n          "),
       _c(
         "button",
         {
@@ -78598,23 +78604,28 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: { name: "ingredients[" + i + "][product_id]" },
                     on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          ingredient,
-                          "product_id",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            ingredient,
+                            "product_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                        function($event) {
+                          _vm.loadProducts()
+                        }
+                      ]
                     }
                   },
                   [
@@ -78624,7 +78635,7 @@ var render = function() {
                     _vm._v(" "),
                     _vm._l(_vm.products, function(product, p) {
                       return _c("option", { domProps: { value: product.id } }, [
-                        _vm._v(_vm._s(product.name))
+                        _vm._v(_vm._s(product.product_translations[0].name))
                       ])
                     })
                   ],
@@ -78672,11 +78683,28 @@ var render = function() {
                 _c("label", [_vm._v("Satuan")]),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: ingredient.unit,
+                      expression: "ingredient.unit"
+                    }
+                  ],
                   staticClass: "form-control",
                   attrs: {
                     type: "text",
                     placeholder: "ml/kg",
                     name: "ingredients[" + i + "][unit]"
+                  },
+                  domProps: { value: ingredient.unit },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(ingredient, "unit", $event.target.value)
+                    }
                   }
                 })
               ]),
@@ -78685,11 +78713,28 @@ var render = function() {
                 _c("label", [_vm._v("Berat")]),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: ingredient.weight,
+                      expression: "ingredient.weight"
+                    }
+                  ],
                   staticClass: "form-control",
                   attrs: {
                     type: "number",
                     placeholder: "Berat",
                     name: "ingredients[" + i + "][weight]"
+                  },
+                  domProps: { value: ingredient.weight },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(ingredient, "weight", $event.target.value)
+                    }
                   }
                 })
               ]),
@@ -78819,6 +78864,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['edit_recipeimages'],
     data: function data() {
         return {
             recipeimages: [{}]
@@ -78827,7 +78873,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         console.log('Component mounted.');
     },
-    created: function created() {},
+    created: function created() {
+        this.edit_recipeimages ? this.recipeimages = this.edit_recipeimages : null;
+        console.log("resep Gambar", this.recipeimages);
+    },
 
     methods: {
         add: function add() {
@@ -78869,33 +78918,61 @@ var render = function() {
     _c(
       "div",
       { staticClass: "row" },
-      _vm._l(_vm.recipeimages, function(recieimage, ri) {
+      _vm._l(_vm.recipeimages, function(recipeimage, ri) {
         return _c("div", { staticClass: "col-4" }, [
           _c("div", { staticClass: "card" }, [
             _vm._m(0, true),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Image")]),
+                _c(
+                  "span",
+                  {
+                    model: {
+                      value: recipeimage.image,
+                      callback: function($$v) {
+                        _vm.$set(recipeimage, "image", $$v)
+                      },
+                      expression: "recipeimage.image"
+                    }
+                  },
+                  [_vm._v("Gambar: ")]
+                ),
                 _vm._v(" "),
                 _c("input", {
-                  staticClass: "form-control",
                   attrs: {
                     type: "file",
-                    placeholder: "type something",
                     name: "recipeimages[" + ri + "][image]"
                   }
                 })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Description")]),
+                _c("label", [_vm._v("Deskripsi")]),
                 _vm._v(" "),
                 _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: recipeimage.description,
+                      expression: "recipeimage.description"
+                    }
+                  ],
                   staticClass: "form-control",
                   attrs: {
-                    placeholder: "Type something",
-                    name: "recipeimages[" + ri + "][description]"
+                    type: "text",
+                    name: "recipeimages[" + ri + "][description]",
+                    placeholder: "type something"
+                  },
+                  domProps: { value: recipeimage.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(recipeimage, "description", $event.target.value)
+                    }
                   }
                 })
               ]),
@@ -79019,31 +79096,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['edit_recipetutorials'],
     data: function data() {
         return {
-            products: [{}],
-            ingredients: [{}]
+            recipetutorials: [{}]
         };
     },
     mounted: function mounted() {
         console.log('Component mounted.');
     },
     created: function created() {
-        var _this = this;
-
-        axios.get('/api/products').then(function (res) {
-            _this.products = res.data;
-        });
+        this.edit_recipetutorials ? this.recipetutorials = this.edit_recipetutorials : null;
+        console.log("Resep Tutorial nya ", this.recipetutorials);
     },
 
     methods: {
         add: function add() {
-            this.ingredients.push({});
+            this.recipetutorials.push({});
         },
         remove: function remove(index) {
-            this.ingredients.splice(index, 1);
+            this.recipetutorials.splice(index, 1);
         }
     }
 });
@@ -79059,7 +79136,7 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "alert alert-info" }, [
       _c("strong", [_vm._v("Info!")]),
-      _vm._v(" Tentukan Bahan Resep Anda.\n      "),
+      _vm._v(" Tuliskan Tutorial Resep Anda.\n          "),
       _c(
         "button",
         {
@@ -79078,13 +79155,76 @@ var render = function() {
     _c(
       "div",
       { staticClass: "row" },
-      _vm._l(_vm.ingredients, function(ingredient, i) {
+      _vm._l(_vm.recipetutorials, function(recipetutorial, r) {
         return _c("div", { staticClass: "col-4" }, [
           _c("div", { staticClass: "card" }, [
             _vm._m(0, true),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _vm._m(1, true),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Nama Resep")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: recipetutorial.name,
+                      expression: "recipetutorial.name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "recipetutorials[" + r + "][name]",
+                    placeholder: "type something",
+                    required: ""
+                  },
+                  domProps: { value: recipetutorial.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(recipetutorial, "name", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Deskripsi")]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: recipetutorial.description,
+                      expression: "recipetutorial.description"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "recipetutorials[" + r + "][description]",
+                    placeholder: "type something"
+                  },
+                  domProps: { value: recipetutorial.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        recipetutorial,
+                        "description",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
               _vm._v(" "),
               _c(
                 "button",
@@ -79093,7 +79233,7 @@ var render = function() {
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
-                      _vm.remove(i)
+                      _vm.remove(r)
                     }
                   }
                 },
@@ -79112,21 +79252,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n                    Pilih\n                    "),
-      _c("small", [_vm._v("Bahan")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label"),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "type something", name: "" }
-      })
+      _c("small", [_vm._v("Tuliskan Resep")])
     ])
   }
 ]
