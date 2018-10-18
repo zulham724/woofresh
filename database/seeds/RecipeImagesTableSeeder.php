@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\recipeimage;
+use App\RecipeImage;
 class RecipeImagesTableSeeder extends Seeder
 {
     /**
@@ -27,6 +27,6 @@ class RecipeImagesTableSeeder extends Seeder
         	],
 		];
 
-        recipeimage::insert($data);		
+        RecipeImage::insert($data);		
     }
 }
