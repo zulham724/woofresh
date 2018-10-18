@@ -56,7 +56,7 @@
         },
         methods:{
             loadComponentLists(){
-                axios.get('/api/componentlists').then(res=>{
+                axios.get('/api/componentlists/').then(res=>{
                     this.componentlists = res.data;
                     console.log(this.componentlists);
                 });

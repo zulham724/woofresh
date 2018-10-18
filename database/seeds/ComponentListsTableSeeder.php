@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Group;
-class GroupsTableSeeder extends Seeder
+use App\ComponentList;
+
+class ComponentListsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,17 +15,17 @@ class GroupsTableSeeder extends Seeder
    		$data = [
 		    [
 		    	"id"=>1,
-        		"name"=>"Minuman",
-        		"image"=>"uploads/avatars/default.png"
+        		"name"=>"Vitamin",
+        		"description"=>"oke"
         	],
 
         	[
 		    	"id"=>2,
-        		"name"=>"makanan",
-        		"image"=>"uploads/avatars/default.png"
+        		"name"=>"Karbohidrat",
+        		"description"=>"oke"
         	],
 		];
 
-        Group::insert($data);		
+        ComponentList::insert($data);		
     }
 }

@@ -15,17 +15,17 @@ class LanguagesTableSeeder extends Seeder
        $data = [
        		[
        			"id"=>1,
-       			"image"=>"-",
+       		  "image"=>"uploads/avatars/MC.png",
        			"name"=>'id'
        		],
        		[
        			"id"=>2,
-       			"image"=>"-",
+       			"image"=>"uploads/avatars/england.png",
        			"name"=>'en'
        		],
        		[
        			"id"=>3,
-       			"image"=>"-",
+       			"image"=>"uploads/avatars/FK.png",
        			"name"=>'fr'
        		]
        ];

@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Order;
+use App\ProductImage;
 
-class OrdersTableSeeder extends Seeder
+class ProductImagesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,21 +15,19 @@ class OrdersTableSeeder extends Seeder
    		$data = [
 		    [
 		    	"id"=>1,
-		    	"transaction_id"=>1,
 		    	"product_id"=>1,
-        		"quantity"=>1,
-        		"subtotal_price"=>1000
+        		"image"=>"uploads/avatars/default.png",
+        		"description"=>"oke"
         	],
 
         	[
 		    	"id"=>2,
-		    	"transaction_id"=>2,
 		    	"product_id"=>2,
-        		"quantity"=>2,
-        		"subtotal_price"=>2000
+        		"image"=>"uploads/avatars/default.png",
+        		"description"=>"oke"
         	],
 		];
 
-        Order::insert($data);		
+        ProductImage::insert($data);		
     }
 }

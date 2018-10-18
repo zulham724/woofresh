@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Group;
-class GroupsTableSeeder extends Seeder
+use App\RecipeTutorial;
+
+class RecipeTutorialsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,17 +15,19 @@ class GroupsTableSeeder extends Seeder
    		$data = [
 		    [
 		    	"id"=>1,
+		    	"recipe_id"=>1,
         		"name"=>"Minuman",
-        		"image"=>"uploads/avatars/default.png"
+        		"description"=>"oke"
         	],
 
         	[
 		    	"id"=>2,
+		    	"recipe_id"=>2,
         		"name"=>"makanan",
-        		"image"=>"uploads/avatars/default.png"
+        		"description"=>"oke"
         	],
 		];
 
-        Group::insert($data);		
+        RecipeTutorial::insert($data);		
     }
 }

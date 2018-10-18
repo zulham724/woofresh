@@ -17,7 +17,26 @@ class DatabaseSeeder extends Seeder
             CitiesTableSeeder::class,
             SubdistrictsTableSeeder::class,
             RolesTableSeeder::class,
-            UsersTableSeeder::class
+            UsersTableSeeder::class,
+            BiodatasTableSeeder::class,
+            DeliveryFeesTableSeeder::class,
+            GroupsTableSeeder::class,
+            CategoriesTableSeeder::class,
+            SubCategoriesTableSeeder::class,
+            SuppliersTableSeeder::class,
+            //ComponentsTableSeeder::class,
+            ComponentListsTableSeeder::class,
+            //ComponentValuesTableSeeder::class,
+            ProductsTableSeeder::class,
+            ProductTranslationsTableSeeder::class,
+            ProductImagesTableSeeder::class,
+            RecipesTableSeeder::class,
+            RecipeTutorialsTableSeeder::class,
+            RecipeImagesTableSeeder::class,
+            IngredientsTableSeeder::class,
+            TransactionsTableSeeder::class,
+            OrdersTableSeeder::class,
+            VouchersTableSeeder::class,
         ]);
     }
 }
