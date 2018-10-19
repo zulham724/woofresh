@@ -12,6 +12,7 @@
                     <small>Bahan</small>
                 </div>
                 <div class="card-body">
+                    <input type="hidden" :name="'ingredients['+i+'][id]'" :value="ingredient.id">
                     <div class="form-group">
                         <label>Bahan</label>
                         <select class="form-control" v-model="ingredient.product_id" @change="loadProducts()" :name="'ingredients['+i+'][product_id]'">
@@ -31,7 +32,7 @@
                         <label>Berat</label>
                         <input type="number" class="form-control" placeholder="Berat" v-model="ingredient.weight" :name="'ingredients['+i+'][weight]'" required>
                     </div>
-                    <button type="button" class="btn btn-danger pull-right" @click="remove(i)"><i class="fa fa-trash"></i> Hapus</button>
+                    <button type="button" class="btn btn-danger pull-right" @click="remove(i,ingredient.id)"><i class="fa fa-trash"></i> Hapus</button>
                 </div>
             </div>
         </div>
@@ -44,7 +45,11 @@ export default {
     props:['edit_ingredients'],
     data(){
         return{
-            products:[{}],
+            products:[{
+                product_translations:[{
+                    name:null
+                }]
+            }],
             ingredients:[{
                 product_id:''
             }]
@@ -70,8 +75,26 @@ export default {
                 product_id:''
             });
         },
-        remove(index){
-            this.ingredients.splice(index,1);
+        remove(index,id){
+            if(id){
+                axios.post('/api/ingredients/'+id,{_method:'delete'}).then(res=>{
+                    swal({
+                        title:"Berhasil",
+                        text:"Anda Berhasil Menghapus Data",
+                        type:"success",
+                    }).then(result=>{
+                        this.ingredients.splice(index,1);
+                    });
+                });
+            } else {
+                swal({
+                    title:"Berhasil",
+                    text:"Anda Berhasil Menghapus Data",
+                    type:"success",
+                }).then(result=>{
+                    this.ingredients.splice(index,1);
+                });
+            }
         }
     }
 }

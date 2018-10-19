@@ -11,6 +11,7 @@
                     <small>Tuliskan Resep</small>
                 </div>
                 <div class="card-body">
+                    <input type="hidden" :name="'recipetutorials['+r+'][id]'" :value="recipetutorial.id">
                     <div class="form-group">
                             <label>Nama Resep</label>
                             <input type="text" class="form-control" :name="'recipetutorials['+r+'][name]'" v-model="recipetutorial.name" placeholder="type something" required> 
@@ -19,7 +20,7 @@
                             <label>Deskripsi</label>
                             <textarea type="text" class="form-control" v-model="recipetutorial.description" :name="'recipetutorials['+r+'][description]'" placeholder="type something" > </textarea>
                         </div>
-                    <button type="button" class="btn btn-danger pull-right" @click="remove(r)"><i class="fa fa-trash"></i> Hapus</button>
+                    <button type="button" class="btn btn-danger pull-right" @click="remove(r,recipetutorial.id)"><i class="fa fa-trash"></i> Hapus</button>
                 </div>
             </div>
         </div>
@@ -46,8 +47,26 @@ export default {
         add(){
             this.recipetutorials.push({});
         },
-        remove(index){
-            this.recipetutorials.splice(index,1);
+        remove(index,id){
+            if(id){
+                axios.post('/api/recipetutorials/'+id,{_method:'delete'}).then(res=>{
+                    swal({
+                        title:"Berhasil",
+                        text:"Anda Berhasil Menghapus Data",
+                        type:"success",
+                    }).then(result=>{
+                        this.recipetutorials.splice(index,1);
+                    });
+                });
+            } else {
+                swal({
+                    title:"Berhasil",
+                    text:"Anda Berhasil Menghapus Data",
+                    type:"success",
+                }).then(result=>{
+                    this.recipetutorials.splice(index,1);
+                });
+            }
         }
     }
 }

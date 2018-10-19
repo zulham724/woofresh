@@ -78512,12 +78512,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['edit_ingredients'],
     data: function data() {
         return {
-            products: [{}],
+            products: [{
+                product_translations: [{
+                    name: null
+                }]
+            }],
             ingredients: [{
                 product_id: ''
             }]
@@ -78546,8 +78551,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 product_id: ''
             });
         },
-        remove: function remove(index) {
-            this.ingredients.splice(index, 1);
+        remove: function remove(index, id) {
+            var _this2 = this;
+
+            if (id) {
+                axios.post('/api/ingredients/' + id, { _method: 'delete' }).then(function (res) {
+                    swal({
+                        title: "Berhasil",
+                        text: "Anda Berhasil Menghapus Data",
+                        type: "success"
+                    }).then(function (result) {
+                        _this2.ingredients.splice(index, 1);
+                    });
+                });
+            } else {
+                swal({
+                    title: "Berhasil",
+                    text: "Anda Berhasil Menghapus Data",
+                    type: "success"
+                }).then(function (result) {
+                    _this2.ingredients.splice(index, 1);
+                });
+            }
         }
     }
 });
@@ -78588,6 +78613,11 @@ var render = function() {
             _vm._m(0, true),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
+              _c("input", {
+                attrs: { type: "hidden", name: "ingredients[" + i + "][id]" },
+                domProps: { value: ingredient.id }
+              }),
+              _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", [_vm._v("Bahan")]),
                 _vm._v(" "),
@@ -78749,7 +78779,7 @@ var render = function() {
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
-                      _vm.remove(i)
+                      _vm.remove(i, ingredient.id)
                     }
                   }
                 },
@@ -78866,6 +78896,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['edit_recipeimages'],
@@ -78886,8 +78917,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         add: function add() {
             this.recipeimages.push({});
         },
-        remove: function remove(index) {
-            this.recipeimages.splice(index, 1);
+        remove: function remove(index, id) {
+            var _this = this;
+
+            if (id) {
+                axios.post('/api/recipeimages/' + id, { _method: 'delete' }).then(function (res) {
+                    swal({
+                        title: "Berhasil",
+                        text: "Anda Berhasil Menghapus Data",
+                        type: "success"
+                    }).then(function (result) {
+                        _this.recipeimages.splice(index, 1);
+                    });
+                });
+            } else {
+                swal({
+                    title: "Berhasil",
+                    text: "Anda Berhasil Menghapus Data",
+                    type: "success"
+                }).then(function (result) {
+                    _this.recipeimages.splice(index, 1);
+                });
+            }
         }
     }
 });
@@ -78928,6 +78979,11 @@ var render = function() {
             _vm._m(0, true),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
+              _c("input", {
+                attrs: { type: "hidden", name: "recipeimages[" + ri + "][id]" },
+                domProps: { value: recipeimage.id }
+              }),
+              _vm._v(" "),
               recipeimage.image
                 ? _c("img", {
                     staticClass: "img img-rounded",
@@ -78956,8 +79012,7 @@ var render = function() {
                 _c("input", {
                   attrs: {
                     type: "file",
-                    name: "recipeimages[" + ri + "][image]",
-                    required: ""
+                    name: "recipeimages[" + ri + "][image]"
                   }
                 })
               ]),
@@ -78999,7 +79054,7 @@ var render = function() {
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
-                      _vm.remove(ri)
+                      _vm.remove(ri, recipeimage.id)
                     }
                   }
                 },
@@ -79114,6 +79169,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['edit_recipetutorials'],
@@ -79134,8 +79190,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         add: function add() {
             this.recipetutorials.push({});
         },
-        remove: function remove(index) {
-            this.recipetutorials.splice(index, 1);
+        remove: function remove(index, id) {
+            var _this = this;
+
+            if (id) {
+                axios.post('/api/recipetutorials/' + id, { _method: 'delete' }).then(function (res) {
+                    swal({
+                        title: "Berhasil",
+                        text: "Anda Berhasil Menghapus Data",
+                        type: "success"
+                    }).then(function (result) {
+                        _this.recipetutorials.splice(index, 1);
+                    });
+                });
+            } else {
+                swal({
+                    title: "Berhasil",
+                    text: "Anda Berhasil Menghapus Data",
+                    type: "success"
+                }).then(function (result) {
+                    _this.recipetutorials.splice(index, 1);
+                });
+            }
         }
     }
 });
@@ -79176,6 +79252,14 @@ var render = function() {
             _vm._m(0, true),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
+              _c("input", {
+                attrs: {
+                  type: "hidden",
+                  name: "recipetutorials[" + r + "][id]"
+                },
+                domProps: { value: recipetutorial.id }
+              }),
+              _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", [_vm._v("Nama Resep")]),
                 _vm._v(" "),
@@ -79248,7 +79332,7 @@ var render = function() {
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
-                      _vm.remove(r)
+                      _vm.remove(r, recipetutorial.id)
                     }
                   }
                 },

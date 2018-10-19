@@ -12,16 +12,17 @@
                         <small>Gambar Resep</small>
                     </div>
                     <div class="card-body">
+                        <input type="hidden" :name="'recipeimages['+ri+'][id]'" :value="recipeimage.id">
                         <img v-if="recipeimage.image" :src="'/storage/'+recipeimage.image" class="img img-rounded" width="100">
                         <div class="form-group">
                             <span v-model="recipeimage.image">Gambar: </span>
-                            <input type="file" :name="'recipeimages['+ri+'][image]'" required > 
+                            <input type="file" :name="'recipeimages['+ri+'][image]'" > 
                         </div>
                          <div class="form-group">
                             <label>Deskripsi</label>
                             <textarea type="text" class="form-control" v-model="recipeimage.description" :name="'recipeimages['+ri+'][description]'" placeholder="type something"> </textarea>
                         </div>
-                        <button type="button" class="btn btn-danger pull-right" @click="remove(ri)"><i class="fa fa-trash"></i> Hapus</button>
+                        <button type="button" class="btn btn-danger pull-right" @click="remove(ri,recipeimage.id)"><i class="fa fa-trash"></i> Hapus</button>
                     </div>
                 </div>
             </div>
@@ -48,8 +49,26 @@
             add(){
                 this.recipeimages.push({});
             },
-            remove(index){
-                this.recipeimages.splice(index,1);
+            remove(index,id){
+                if(id){
+                    axios.post('/api/recipeimages/'+id,{_method:'delete'}).then(res=>{
+                        swal({
+                            title:"Berhasil",
+                            text:"Anda Berhasil Menghapus Data",
+                            type:"success",
+                        }).then(result=>{
+                            this.recipeimages.splice(index,1);
+                        });
+                    });
+                } else {
+                    swal({
+                        title:"Berhasil",
+                        text:"Anda Berhasil Menghapus Data",
+                        type:"success",
+                    }).then(result=>{
+                        this.recipeimages.splice(index,1);
+                    });
+                }
             }
         }
     }
