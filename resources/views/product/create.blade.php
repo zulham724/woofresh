@@ -30,33 +30,7 @@
 							@endforeach
 						</select>
 					</div> 
-						<div class="form-group">
-						<label>ID Grup</label>
-						<select class="form-control select2" name="group_id">
-							<option value="">Pilih</option>
-							@foreach ($groups as $g => $group)
-							<option value="{{ $group->id }}">{{ $group->name }}</option>
-							@endforeach
-						</select>
-					</div> 
-					<div class="form-group">
-						<label>ID Kategori</label>
-						<select class="form-control select2" name="category_id">
-							<option value="">Pilih</option>
-							@foreach ($categories as $ca => $category)
-							<option value="{{ $category->id }}">{{ $category->name }}</option>
-							@endforeach
-						</select>
-					</div>
-					<div class="form-group">
-						<label>Sub Kategori</label>
-						<select class="form-control select2" name="sub_category_id">
-							<option value="">Pilih</option>
-							@foreach ($subcategories as $sc => $subcategory)
-							<option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
-							@endforeach
-						</select>
-					</div>
+					<selectgroup-component></selectgroup-component>
 					<div class="form-group">
 						<label>Kuantitas</label>
 						<input type="number" class="form-control" name="quantity" placeholder="tulis disini" required value="0"> 

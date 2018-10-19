@@ -33,6 +33,8 @@ Vue.component('nutrition-component', require('./components/NutritionComponent.vu
 Vue.component('ingredient-component', require('./components/IngredientComponent.vue'));
 Vue.component('recipeimage-component', require('./components/RecipeImageComponent.vue'));
 Vue.component('recipetutorial-component', require('./components/RecipeTutorialComponent.vue'));
+Vue.component('selectgroup-component', require('./components/SelectGroupComponent.vue'));
+
 
 
 const app = new Vue({
