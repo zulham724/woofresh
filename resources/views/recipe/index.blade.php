@@ -52,8 +52,8 @@
                                <td>{{ $recipe->portion_per_serve }} pcs</td>
                                <td>
                                  <div class="btn-group-vertical">
-                                  <a href="{{ route('recipes.show',$recipe->id) }}" type="button" class="btn btn-info" ><i class="fa fa-folder"></i> Tampilkan Bahan</a>
-                                  <a href="{{ route('recipes.edit',$recipe->id) }}" type="button" class="btn btn-info" ><i class="fa fa-pencil"></i>Edit</a>
+                                  {{-- <a href="{{ route('recipes.show',$recipe->id) }}" type="button" class="btn btn-primary" ><i class="fa fa-folder"></i> Tampilkan Bahan</a> --}}
+                                  <a href="{{ route('recipes.edit',$recipe->id) }}" type="button" class="btn btn-warning" ><i class="fa fa-pencil"></i>Edit</a>
                                   <button type="button" class="btn btn-danger" onclick="destroy({{$recipe->id}})"><i class="fa fa-trash"></i> Hapus</button>
                                  </div>    
                                </td>

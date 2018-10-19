@@ -19,17 +19,17 @@
                             <option v-for="(product,p) in products" :value="product.id">{{ product.product_translations[0].name }}</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" v-if="ingredient.product_id == '' || ingredient.product_id == null">
                         <label>Produk Opsional</label>
-                        <input type="text" class="form-control" v-model="ingredient.optional_product" v-if="ingredient.product_id == ''" placeholder="Product Opsional" :name="'ingredients['+i+'][optional_product]'">
+                        <input type="text" class="form-control" v-model="ingredient.optional_product" placeholder="Product Opsional" :name="'ingredients['+i+'][optional_product]'">
                     </div>
                     <div class="form-group">
                         <label>Satuan</label>
-                        <input type="text" class="form-control" placeholder="ml/kg" v-model="ingredient.unit" :name="'ingredients['+i+'][unit]'">
+                        <input type="text" class="form-control" placeholder="ml/kg" v-model="ingredient.unit" :name="'ingredients['+i+'][unit]'" required>
                     </div>
                     <div class="form-group">
                         <label>Berat</label>
-                        <input type="number" class="form-control" placeholder="Berat" v-model="ingredient.weight" :name="'ingredients['+i+'][weight]'">
+                        <input type="number" class="form-control" placeholder="Berat" v-model="ingredient.weight" :name="'ingredients['+i+'][weight]'" required>
                     </div>
                     <button type="button" class="btn btn-danger pull-right" @click="remove(i)"><i class="fa fa-trash"></i> Hapus</button>
                 </div>
@@ -46,7 +46,7 @@ export default {
         return{
             products:[{}],
             ingredients:[{
-                product_id:0
+                product_id:''
             }]
         }
     },
@@ -55,8 +55,9 @@ export default {
     },
     created(){
         this.edit_ingredients ? this.ingredients = this.edit_ingredients : null;
-            console.log(this.ingredients);
-        },
+        console.log(this.ingredients);
+        this.loadProducts();
+    },
     methods:{
         loadProducts(){
             axios.get('/api/products').then(res=>{
@@ -66,7 +67,7 @@ export default {
         },
         add(){
             this.ingredients.push({
-                product_id:0
+                product_id:''
             });
         },
         remove(index){

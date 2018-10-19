@@ -78519,7 +78519,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             products: [{}],
             ingredients: [{
-                product_id: 0
+                product_id: ''
             }]
         };
     },
@@ -78529,6 +78529,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         this.edit_ingredients ? this.ingredients = this.edit_ingredients : null;
         console.log(this.ingredients);
+        this.loadProducts();
     },
 
     methods: {
@@ -78542,7 +78543,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         add: function add() {
             this.ingredients.push({
-                product_id: 0
+                product_id: ''
             });
         },
         remove: function remove(index) {
@@ -78643,11 +78644,11 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Produk Opsional")]),
-                _vm._v(" "),
-                ingredient.product_id == ""
-                  ? _c("input", {
+              ingredient.product_id == "" || ingredient.product_id == null
+                ? _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Produk Opsional")]),
+                    _vm._v(" "),
+                    _c("input", {
                       directives: [
                         {
                           name: "model",
@@ -78676,8 +78677,8 @@ var render = function() {
                         }
                       }
                     })
-                  : _vm._e()
-              ]),
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", [_vm._v("Satuan")]),
@@ -78695,7 +78696,8 @@ var render = function() {
                   attrs: {
                     type: "text",
                     placeholder: "ml/kg",
-                    name: "ingredients[" + i + "][unit]"
+                    name: "ingredients[" + i + "][unit]",
+                    required: ""
                   },
                   domProps: { value: ingredient.unit },
                   on: {
@@ -78725,7 +78727,8 @@ var render = function() {
                   attrs: {
                     type: "number",
                     placeholder: "Berat",
-                    name: "ingredients[" + i + "][weight]"
+                    name: "ingredients[" + i + "][weight]",
+                    required: ""
                   },
                   domProps: { value: ingredient.weight },
                   on: {
@@ -78862,6 +78865,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['edit_recipeimages'],
@@ -78924,6 +78928,16 @@ var render = function() {
             _vm._m(0, true),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
+              recipeimage.image
+                ? _c("img", {
+                    staticClass: "img img-rounded",
+                    attrs: {
+                      src: "/storage/" + recipeimage.image,
+                      width: "100"
+                    }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c(
                   "span",
@@ -78942,7 +78956,8 @@ var render = function() {
                 _c("input", {
                   attrs: {
                     type: "file",
-                    name: "recipeimages[" + ri + "][image]"
+                    name: "recipeimages[" + ri + "][image]",
+                    required: ""
                   }
                 })
               ]),

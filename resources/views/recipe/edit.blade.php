@@ -9,7 +9,7 @@
 <section>
 	
 	<div class="container">
-		{{ Form::open(['route'=>['recipes.update',$recipe->id],'method'=>'patch']) }}
+		{{ Form::open(['route'=>['recipes.update',$recipe->id],'method'=>'patch','files'=>true]) }}
 		<div class="row">
 			<div class="col-12">
 				<div class="card">
@@ -58,9 +58,9 @@
 				</div>
 			</div>
 		</div>
-		<ingredient-component></ingredient-component>
-		<recipetutorial-component></recipetutorial-component>
-		<recipeimage-component></recipeimage-component>
+		<ingredient-component v-bind:edit_ingredients="{{ $recipe->ingredients }}"></ingredient-component>
+		<recipetutorial-component v-bind:edit_recipetutorials="{{ $recipe->recipe_tutorials }}"></recipetutorial-component>
+		<recipeimage-component v-bind:edit_recipeimages="{{ $recipe->recipe_images }}"></recipeimage-component>
 		{{ Form::close() }}
 	</div>
 	

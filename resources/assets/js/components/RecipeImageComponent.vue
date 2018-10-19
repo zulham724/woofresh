@@ -12,13 +12,14 @@
                         <small>Gambar Resep</small>
                     </div>
                     <div class="card-body">
+                        <img v-if="recipeimage.image" :src="'/storage/'+recipeimage.image" class="img img-rounded" width="100">
                         <div class="form-group">
                             <span v-model="recipeimage.image">Gambar: </span>
-                            <input type="file" :name="'recipeimages['+ri+'][image]'" > 
+                            <input type="file" :name="'recipeimages['+ri+'][image]'" required > 
                         </div>
                          <div class="form-group">
                             <label>Deskripsi</label>
-                            <textarea type="text" class="form-control" v-model="recipeimage.description" :name="'recipeimages['+ri+'][description]'" placeholder="type something" > </textarea>
+                            <textarea type="text" class="form-control" v-model="recipeimage.description" :name="'recipeimages['+ri+'][description]'" placeholder="type something"> </textarea>
                         </div>
                         <button type="button" class="btn btn-danger pull-right" @click="remove(ri)"><i class="fa fa-trash"></i> Hapus</button>
                     </div>

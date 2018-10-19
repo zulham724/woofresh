@@ -188,9 +188,9 @@
 
         $('.select2').select2();
 
-        $('.rating').barrating({
-          theme: 'fontawesome-stars-o'
-        });
+        // $('.rating').barrating({
+        //   theme: 'fontawesome-stars-o'
+        // });
 
       
       });

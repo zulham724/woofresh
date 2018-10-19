@@ -21,7 +21,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $data["recipes"] = Recipe::with('user')->get();
+        $data["recipes"] = Recipe::with('user')->orderBy('created_at','desc')->get();
         // dd($data);
         return view('recipe.index',$data);
     }
@@ -79,7 +79,7 @@ class RecipeController extends Controller
 
         // dd($request);
 
-        return redirect()->route('recipes.index',$recipe->user_id);
+        return redirect()->route('recipes.index');
     }
 
     /**
@@ -90,7 +90,7 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        $data["recipe"] = Recipe::with('ingredients')->find($id);
+        $data["recipe"] = Recipe::with('ingredients.product.product_translations')->find($id);
         return view('recipe.show',$data);
     }
 
@@ -102,7 +102,7 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-       $data["recipe"] = Recipe::with('ingredients','recipe_tutorials','recipe_images')->find($id);
+       $data["recipe"] = Recipe::with('ingredients.product.product_translations','recipe_tutorials','recipe_images')->find($id);
        $data["users"] = User::get();
         // dd($data);
         return view('recipe.edit',$data);
@@ -122,28 +122,23 @@ class RecipeController extends Controller
         $recipe->fill($request->except(['ingredients','recipetutorials','recipeimages']));
         $recipe->update();
 
-        $recipe_ingredient = Ingredient::where('recipe_id',$recipe->id)->delete();
         // dd($umkm_products);
         foreach ($request['ingredients'] as $i => $ingredient) {
-            $db = new Ingredient;
+            $db = Ingredient::firstOrNew(['id'=>$ingredient['id'] ?? 0]);
             $db->fill($ingredient);    
             $db->recipe_id = $recipe->id;
             $db->save();
         }
 
-        $recipe_tutorial = RecipeTutorial::where('recipe_id',$recipe->id)->delete();
-
         foreach ($request['recipetutorials'] as $rt => $recipetutorial) {
-            $data = new RecipeTutorial;
+            $data = RecipeTutorial::firstOrNew(['id'=>$recipetutorial['id'] ?? 0]);
             $data->fill($recipetutorial);
             $data->recipe_id = $recipe->id;
             $data->save();
         }
 
-        $recipe_image = recipeimage::where('recipe_id',$recipe->id)->delete();
-
         foreach ($request['recipeimages'] as $ri => $recipeimage) {
-            $recipeimages = new recipeimage;
+            $recipeimages = recipeimage::firstOrNew(['id'=>$recipeimage['id'] ?? 0]);
             $recipeimages->fill($recipeimage);
             $recipeimages->recipe_id = $recipe->id;
             if (isset($recipeimage["image"])){
@@ -153,7 +148,7 @@ class RecipeController extends Controller
             $recipeimages->save();
         }
 
-        return redirect()->route('recipes.index',$recipe->user_id);
+        return redirect()->route('recipes.index');
     }
 
     /**
