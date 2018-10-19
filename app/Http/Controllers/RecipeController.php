@@ -9,7 +9,7 @@ use App\ProductTranslation;
 use App\Recipe;
 use App\User;
 use App\RecipeTutorial;
-use App\recipeimage;
+use App\RecipeImage;
 use App\Ingredient;
 
 class RecipeController extends Controller
@@ -67,7 +67,7 @@ class RecipeController extends Controller
         }
 
         foreach ($request['recipeimages'] as $ri => $recipeimage) {
-            $recipeimages = new recipeimage;
+            $recipeimages = new RecipeImage;
             $recipeimages->fill($recipeimage);
             $recipeimages->recipe_id = $recipe->id;
             if (isset($recipeimage["image"])){
@@ -138,7 +138,7 @@ class RecipeController extends Controller
         }
 
         foreach ($request['recipeimages'] as $ri => $recipeimage) {
-            $recipeimages = recipeimage::firstOrNew(['id'=>$recipeimage['id'] ?? 0]);
+            $recipeimages = RecipeImage::firstOrNew(['id'=>$recipeimage['id'] ?? 0]);
             $recipeimages->fill($recipeimage);
             $recipeimages->recipe_id = $recipe->id;
             if (isset($recipeimage["image"])){
