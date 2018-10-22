@@ -51,30 +51,35 @@ class RecipeController extends Controller
         $recipe->save();
 
          // dd($recipe);
-
-         foreach ($request['ingredients'] as $i => $ingredient) {
-            $db = new Ingredient;
-            $db->fill($ingredient);
-            $db->recipe_id = $recipe->id;
-            $db->save();
-        }
-
-        foreach ($request['recipetutorials'] as $rt => $recipetutorial) {
-            $data = new RecipeTutorial;
-            $data->fill($recipetutorial);
-            $data->recipe_id = $recipe->id;
-            $data->save();
-        }
-
-        foreach ($request['recipeimages'] as $ri => $recipeimage) {
-            $recipeimages = new RecipeImage;
-            $recipeimages->fill($recipeimage);
-            $recipeimages->recipe_id = $recipe->id;
-            if (isset($recipeimage["image"])){
-                $path = $recipeimage['image']->store('recipeimage');
-                $recipeimages->image = $path;
+        if (isset($request["ingredients"])) {
+            foreach ($request['ingredients'] as $i => $ingredient) {
+                $db = new Ingredient;
+                $db->fill($ingredient);
+                $db->recipe_id = $recipe->id;
+                $db->save();
             }
-            $recipeimages->save();
+        }
+
+        if (isset($request["recipetutorials"])) {
+            foreach ($request['recipetutorials'] as $rt => $recipetutorial) {
+                $data = new RecipeTutorial;
+                $data->fill($recipetutorial);
+                $data->recipe_id = $recipe->id;
+                $data->save();
+            }
+        }
+
+        if (isset($request["recipeimages"])) {
+            foreach ($request['recipeimages'] as $ri => $recipeimage) {
+                $recipeimages = new RecipeImage;
+                $recipeimages->fill($recipeimage);
+                $recipeimages->recipe_id = $recipe->id;
+                if (isset($recipeimage["image"])){
+                    $path = $recipeimage['image']->store('recipeimage');
+                    $recipeimages->image = $path;
+                }
+                $recipeimages->save();
+            }
         }
 
         // dd($request);
@@ -117,38 +122,44 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        // dd($request);
         $recipe = Recipe::find($id);
         $recipe->fill($request->except(['ingredients','recipetutorials','recipeimages']));
         $recipe->update();
 
         // dd($umkm_products);
-        foreach ($request['ingredients'] as $i => $ingredient) {
-            $db = Ingredient::firstOrNew(['id'=>$ingredient['id'] ?? 0]);
-            $db->fill($ingredient);    
-            $db->recipe_id = $recipe->id;
-            $db->save();
-        }
-
-        foreach ((array)$request['recipetutorials'] as $rt => $recipetutorial) {
-            $data = RecipeTutorial::firstOrNew(['id'=>$recipetutorial['id'] ?? 0]);
-            $data->fill($recipetutorial);
-            $data->recipe_id = $recipe->id;
-            $data->save();
-        }
-
-        foreach ($request['recipeimages'] as $ri => $recipeimage) {
-            $db = RecipeImage::firstOrNew(['id'=>$recipeimage['id'] ?? 0]);
-            $db->fill($recipeimage);
-            $db->recipe_id = $recipe->id;
-            if (isset($recipeimage["image"])){
-                if (isset($db->image)) {
-                    $file = Storage::delete($db->image);
-                }
-                $path = $recipeimage['image']->store('recipeimage');
-                $db->image = $path;
+        if (isset($request['ingredients'])) {
+            foreach ($request['ingredients'] as $i => $ingredient) {
+                $db = Ingredient::firstOrNew(['id'=>$ingredient['id'] ?? 0]);
+                $db->fill($ingredient);    
+                $db->recipe_id = $recipe->id;
+                $db->save();
             }
-            $db->save();
+        }
+
+        if (isset($request["recipetutorials"])) {
+            foreach ($request['recipetutorials'] as $rt => $recipetutorial) {
+                $data = RecipeTutorial::firstOrNew(['id'=>$recipetutorial['id'] ?? 0]);
+                $data->fill($recipetutorial);
+                $data->recipe_id = $recipe->id;
+                $data->save();
+            }
+        }
+
+        if (isset($request["recipeimages"])) {
+            foreach ($request['recipeimages'] as $ri => $recipeimage) {
+                $db = RecipeImage::firstOrNew(['id'=>$recipeimage['id'] ?? 0]);
+                $db->fill($recipeimage);
+                $db->recipe_id = $recipe->id;
+                if (isset($recipeimage["image"])){
+                    if (isset($db->image)) {
+                        $file = Storage::delete($db->image);
+                    }
+                    $path = $recipeimage['image']->store('recipeimage');
+                    $db->image = $path;
+                }
+                $db->save();
+            }
         }
 
         return redirect()->route('recipes.index');
