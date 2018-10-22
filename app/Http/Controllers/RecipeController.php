@@ -117,7 +117,7 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
+        dd($request);
         $recipe = Recipe::find($id);
         $recipe->fill($request->except(['ingredients','recipetutorials','recipeimages']));
         $recipe->update();
@@ -130,7 +130,7 @@ class RecipeController extends Controller
             $db->save();
         }
 
-        foreach ($request['recipetutorials'] as $rt => $recipetutorial) {
+        foreach ((array)$request['recipetutorials'] as $rt => $recipetutorial) {
             $data = RecipeTutorial::firstOrNew(['id'=>$recipetutorial['id'] ?? 0]);
             $data->fill($recipetutorial);
             $data->recipe_id = $recipe->id;
