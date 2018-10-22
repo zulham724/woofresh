@@ -138,14 +138,17 @@ class RecipeController extends Controller
         }
 
         foreach ($request['recipeimages'] as $ri => $recipeimage) {
-            $recipeimages = RecipeImage::firstOrNew(['id'=>$recipeimage['id'] ?? 0]);
-            $recipeimages->fill($recipeimage);
-            $recipeimages->recipe_id = $recipe->id;
+            $db = RecipeImage::firstOrNew(['id'=>$recipeimage['id'] ?? 0]);
+            $db->fill($recipeimage);
+            $db->recipe_id = $recipe->id;
             if (isset($recipeimage["image"])){
+                if (isset($db->image)) {
+                    $file = Storage::delete($db->image);
+                }
                 $path = $recipeimage['image']->store('recipeimage');
-                $recipeimages->image = $path;
+                $db->image = $path;
             }
-            $recipeimages->save();
+            $db->save();
         }
 
         return redirect()->route('recipes.index');
