@@ -9,7 +9,7 @@
 <section>
 	
 <div class="container">
-	{{ Form::open(['route'=>['products.update',$product->id],'method'=>'patch']) }}
+	{{ Form::open(['route'=>['products.update',$product->id],'method'=>'patch','files'=>true]) }}
 	<div class="alert alert-info">
 	  <strong>Info!</strong> Harap mengisi semua form yang ada dibawah, dari form produk lalu mengisi bahasa dari produk tersebut lalu mengisi harga di tiap daerah yang akan dijual.
 	</div>
