@@ -30,7 +30,6 @@
                             <td>Satuan</td>
                             <td>Badge</td>
                             <td>Bahasa Yang Tersedia</td>
-    						<td>Tersedia ?</td>
     						<td>Action</td>
     					</tr>
     				</thead>
@@ -52,7 +51,6 @@
                                     <img src="{{ asset('storage/'.$product_translation->language->image) }}" class="img-responsive" width="30">
                                 @endforeach
                             </td>
-							<td>{{ $product->is_available == 0 ? 'Not available' : 'Available' }}</td>
 							<td>
                                 <a href="{{ route('products.edit',$product->id) }}" type="button" class="btn btn-secondary" ><i class="fa fa-pencil"></i>Edit</a>
                                 <button type="submit" class="btn btn-danger" onclick="destroy({{$product->id}})"><i class="fa fa-trash"></i> Hapus</button>
