@@ -15,6 +15,7 @@ use App\State;
 use App\ProductSale;
 use App\ComponentList;
 use App\Component;
+use App\ProductImage;
 
 class ProductController extends Controller
 {
@@ -26,9 +27,8 @@ s     *
     public function index()
     {
         $data["products"] = Product::
-        with('supplier')
-        ->with('group')
-        ->with('product_translations.language')
+        with('supplier','group','product_images','product_translations.language')
+        ->orderBy('created_at','desc')
         ->get();
         return view('product.index',$data);
     }
@@ -60,7 +60,7 @@ s     *
     {
         // dd($request->request);
         $product = new Product;
-        $product->fill($request->except(['languages','sales','components']));
+        $product->fill($request->except(['languages','sales','components','productimages']));
         $product->save();
 
         foreach ($request['languages'] as $l => $language) {
@@ -70,6 +70,19 @@ s     *
             $translation->name = $language['name'];
             $translation->description = $language['description'];
             $translation->save();
+        }
+
+        if (isset($request["productimages"])) {
+            foreach ($request['productimages'] as $ri => $productimage) {
+                $db = new ProductImage;
+                $db->fill($productimage);
+                $db->product_id = $product->id;
+                if (isset($productimage["image"])){
+                    $path = $productimage['image']->store('productimage');
+                    $db->image = $path;
+                }
+                $db->save();
+            }
         }
 
         if(isset($request['components'])){
@@ -113,7 +126,7 @@ s     *
      */
     public function edit($id)
     {
-        $data['product'] = Product::with('product_sales.state')->with('components.component_list')->find($id);
+        $data['product'] = Product::with('product_sales.state','product_images')->with('components.component_list')->find($id);
         $data["states"] = State::get();
         $data["languages"] = Language::get();
         $data['subcategories'] = SubCategory::get();
@@ -136,7 +149,7 @@ s     *
     {
         // dd($request);
         $product = Product::with('product_sales')->with('components')->find($id);
-        $product->fill($request->except(['languages','sales','components']));
+        $product->fill($request->except(['languages','sales','components','productimages']));
         $product->update();
 
         foreach ($request['languages'] as $l => $language) {
@@ -150,6 +163,22 @@ s     *
                 'name'=>$language['name'],
                 'description'=>$language['description']
             ]);
+        }
+
+        if (isset($request["productimages"])) {
+            foreach ($request['productimages'] as $ri => $productimage) {
+                $db = ProductImage::firstOrNew(['id'=>$productimage['id'] ?? 0]);
+                $db->fill($productimage);
+                $db->product_id = $product->id;
+                if (isset($productimage["image"])){
+                    if (isset($db->image)) {
+                        $file = Storage::delete($db->image);
+                    }
+                    $path = $productimage['image']->store('productimage');
+                    $db->image = $path;
+                }
+                $db->save();
+            }
         }
 
         if(isset($request['components'])){

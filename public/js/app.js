@@ -31265,6 +31265,7 @@ Vue.component('ingredient-component', __webpack_require__(57));
 Vue.component('recipeimage-component', __webpack_require__(60));
 Vue.component('recipetutorial-component', __webpack_require__(63));
 Vue.component('selectgroup-component', __webpack_require__(66));
+Vue.component('productimage-component', __webpack_require__(74));
 
 var app = new Vue({
   el: '#app',
@@ -79262,38 +79263,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Nama Resep")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: recipetutorial.name,
-                      expression: "recipetutorial.name"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    name: "recipetutorials[" + r + "][name]",
-                    placeholder: "type something",
-                    required: ""
-                  },
-                  domProps: { value: recipetutorial.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(recipetutorial, "name", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Deskripsi")]),
+                _c("label", [_vm._v("Step " + _vm._s(r + 1))]),
                 _vm._v(" "),
                 _c("textarea", {
                   directives: [
@@ -79352,7 +79322,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("small", [_vm._v("Tuliskan Resep")])
+      _c("small", [_vm._v("Tutorial")])
     ])
   }
 ]
@@ -79669,6 +79639,288 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(75)
+/* template */
+var __vue_template__ = __webpack_require__(76)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/ProductImageComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-32824aec", Component.options)
+  } else {
+    hotAPI.reload("data-v-32824aec", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 75 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['edit_productimages'],
+    data: function data() {
+        return {
+            productimages: [{}]
+        };
+    },
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+    created: function created() {
+        this.edit_productimages ? this.productimages = this.edit_productimages : null;
+        console.log("resep Gambar", this.productimages);
+    },
+
+    methods: {
+        add: function add() {
+            this.productimages.push({});
+        },
+        remove: function remove(index, id) {
+            var _this = this;
+
+            if (id) {
+                axios.post('/api/productimages/' + id, { _method: 'delete' }).then(function (res) {
+                    swal({
+                        title: "Berhasil",
+                        text: "Anda Berhasil Menghapus Data",
+                        type: "success"
+                    }).then(function (result) {
+                        _this.productimages.splice(index, 1);
+                    });
+                });
+            } else {
+                swal({
+                    title: "Berhasil",
+                    text: "Anda Berhasil Menghapus Data",
+                    type: "success"
+                }).then(function (result) {
+                    _this.productimages.splice(index, 1);
+                });
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "alert alert-info" }, [
+      _c("strong", [_vm._v("Info!")]),
+      _vm._v(" Tentukan Gambar-gambar Product Anda.\n      "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary pull-right",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.add()
+            }
+          }
+        },
+        [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" Tambah")]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.productimages, function(productimage, ri) {
+        return _c("div", { staticClass: "col-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("input", {
+                attrs: {
+                  type: "hidden",
+                  name: "productimages[" + ri + "][id]"
+                },
+                domProps: { value: productimage.id }
+              }),
+              _vm._v(" "),
+              productimage.image
+                ? _c("img", {
+                    staticClass: "img img-rounded",
+                    attrs: {
+                      src: "/storage/" + productimage.image,
+                      width: "100"
+                    }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "span",
+                  {
+                    model: {
+                      value: productimage.image,
+                      callback: function($$v) {
+                        _vm.$set(productimage, "image", $$v)
+                      },
+                      expression: "productimage.image"
+                    }
+                  },
+                  [_vm._v("Gambar: ")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: {
+                    type: "file",
+                    name: "productimages[" + ri + "][image]"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Deskripsi")]),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: productimage.description,
+                      expression: "productimage.description"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "productimages[" + ri + "][description]",
+                    placeholder: "type something"
+                  },
+                  domProps: { value: productimage.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(productimage, "description", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger pull-right",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.remove(ri, productimage.id)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
+              )
+            ])
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _vm._v("\n                    Tentukan\n                    "),
+      _c("small", [_vm._v("Gambar Product")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-32824aec", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

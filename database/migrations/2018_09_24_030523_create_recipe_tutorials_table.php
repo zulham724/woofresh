@@ -16,7 +16,7 @@ class CreateRecipeTutorialsTable extends Migration
         Schema::create('recipe_tutorials', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('recipe_id')->unsigned();
-            $table->string("name");
+            $table->string("name")->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
 

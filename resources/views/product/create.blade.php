@@ -9,7 +9,7 @@
 <section>
 	
 <div class="container">
-	{{ Form::open(['route'=>'products.store','method'=>'post']) }}
+	{{ Form::open(['route'=>'products.store','method'=>'post','files'=>true]) }}
 	<div class="alert alert-info">
 	  <strong>Info!</strong> Harap mengisi semua form yang ada dibawah, dari form produk lalu mengisi bahasa dari produk tersebut lalu mengisi harga di tiap daerah yang akan dijual.
 	</div>
@@ -84,6 +84,7 @@
 		</div>
 	</div>
 
+	<productimage-component></productimage-component>
 	<nutrition-component></nutrition-component>
 
 	<div class="alert alert-info">

@@ -125,6 +125,7 @@
 		</div>
 	</div>
 
+	<productimage-component v-bind:edit_productimages="{{ $product['product_images'] }}"></productimage-component>
 	<nutrition-component v-bind:edit_components="{{ $product['components'] }}"></nutrition-component>
 
 	<div class="alert alert-info">
