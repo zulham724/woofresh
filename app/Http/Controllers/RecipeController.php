@@ -130,7 +130,7 @@ class RecipeController extends Controller
             $db->save();
         }
 
-        foreach ($request['recipetutorials'] as $rt => $recipetutorial) {
+        foreach ((array)$request['recipetutorials'] as $rt => $recipetutorial) {
             $data = RecipeTutorial::firstOrNew(['id'=>$recipetutorial['id'] ?? 0]);
             $data->fill($recipetutorial);
             $data->recipe_id = $recipe->id;
